@@ -1,5 +1,19 @@
-.App {
+/* CSS Reset File */
+@import "css/base/reset.scss";
+
+/* Base Styles */
+@import "css/base/fonts.scss";
+@import "css/base/colors.scss";
+
+/* Component Styles */
+// @import "css/components/*";
+@import "./css/components/home_page.scss";
+@import "./css/components/main.scss";
+
+/* .App {
   text-align: center;
+  background-image: url("./background-image.jpg");
+  height: 100%;
 }
 
 .App-logo {
@@ -14,7 +28,8 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-image: url("./background-image.jpg");
+  background-color: #2b337c;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +50,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
