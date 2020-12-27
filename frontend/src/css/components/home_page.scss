@@ -8,9 +8,10 @@
     // }
 
     .logo-title {
-        font-family: $sans-serif;
+        font-family: $bold;
         font-size: 50px;
         color: $logo-yellow;
+        letter-spacing: 2px;
         // -webkit-text-stroke: 1px $dark-gray;
         text-shadow: 5px 5px 5px $dark-gray;
         padding-bottom: 30px;
