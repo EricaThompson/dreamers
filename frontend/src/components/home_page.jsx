@@ -1,10 +1,12 @@
 import React from 'react';
-import "../App.css";
+import "../App.scss";
 
 class HomePage extends React.Component {
     render() {
         return (
-            <h1>THIS IS THE HOMEPAGE</h1>
+            <div className="logo" >
+                <h1 className="logo-title">DREAMERS</h1>
+            </div>
         )
     }
 }

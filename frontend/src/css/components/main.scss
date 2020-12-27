@@ -1,0 +1,11 @@
+.main-app {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("background-image-resized3.jpg");
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-color:$background-blue;
+}

@@ -1,10 +1,10 @@
 import React from 'react';
 import HomePage from './home_page';
+import "../App.scss";
 
 const App = () => (
-    <div>
+    <div className="main-app" >
         <HomePage />
-        WELCOME TO THE APP
     </div>
 );
 

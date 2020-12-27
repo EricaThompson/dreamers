@@ -1,6 +1,16 @@
-@import "./css-reset.css";
+/* CSS Reset File */
+@import "css/base/reset.scss";
 
-.App {
+/* Base Styles */
+@import "css/base/fonts.scss";
+@import "css/base/colors.scss";
+
+/* Component Styles */
+// @import "css/components/*";
+@import "./css/components/home_page.scss";
+@import "./css/components/main.scss";
+
+/* .App {
   text-align: center;
   background-image: url("./background-image.jpg");
   height: 100%;
@@ -40,4 +50,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
