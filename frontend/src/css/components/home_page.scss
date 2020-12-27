@@ -1,0 +1,28 @@
+.logo {
+    // position: relative;
+
+    // .logo-icon {
+    //     font-size: 250px;
+    //     color: $dark-gray;
+    //     // opacity: .7;
+    // }
+
+    .logo-title {
+        font-family: $bold;
+        font-size: 50px;
+        color: $logo-yellow;
+        letter-spacing: 2px;
+        // -webkit-text-stroke: 1px $dark-gray;
+        text-shadow: 5px 5px 5px $dark-gray;
+        padding-bottom: 30px;
+        // position: absolute;
+        // top: 0;
+    }
+
+    .box {
+        height: 100px;
+        width: 100px;
+        background-color: $light-blue;
+        z-index: 1000;
+    }
+}
