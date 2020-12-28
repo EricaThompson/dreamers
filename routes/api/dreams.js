@@ -1,8 +1,17 @@
 const express = require('express'); 
 const router = express.Router();
+const mongoose = require('mongoose');
+const passport = require('passport');
 
-router.get('/test', (req, res) => {
-    res.json({ msg: 'This is the dream route'})
-});
+const Dream = require('../../models/Dream');
+const validateDreamInput = require('../../validation/dreams');
+
+// create
+
+// read
+
+// update
+
+// delete
 
 module.exports = router; 
