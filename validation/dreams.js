@@ -14,6 +14,18 @@ module.exports = function validateDreamInput(data) {
     errors.text = 'Text field is required';
   }
 
+  if (data.tags.length > 10) {
+    errors.tags = 'Only 10 tags are allowed'
+  }
+
+  if (!Validator.equals(data.type, 'dream') && !Validator.equals(data.type, 'goal')) {
+    errors.type = 'Type needs to be either dream or goal';
+  }
+
+  if (Validator.isEmpty(data.type)) {
+    errors.text = 'Type field is required';
+  }
+
   return {
     errors,
     isValid: Object.keys(errors).length === 0
