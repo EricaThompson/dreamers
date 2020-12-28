@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const DreamSchema = new Schema({
   userId: {
-    type: ObjectId,
-    ref: 'User'
+    type: Schema.Types.ObjectId,
+    ref: 'users'
   },
   text: {
     type: String,
@@ -16,6 +16,10 @@ const DreamSchema = new Schema({
   type: {
     type: String,
     required: true
+  },
+  date: {
+    type: Date,
+    default: Date.now
   }
 }, {
   timestamps: true
