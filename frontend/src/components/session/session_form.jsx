@@ -8,28 +8,46 @@ class SessionForm extends React.Component {
             password: '',
             password2: '',
         }
+        this.handleChange = this.handleChange.bind(this);
     }
+
+    handleChange(type) {
+        return (e) => {
+            this.setState({ [type]: e.target.value })
+        }
+    }
+
+
     render() {
         let { formType } = this.props;
         return (
             <div className="session-form-container" >
-                <h1>{formType === "signup" ? "Sign Up" : "Log In"}</h1>
-                <form>
-                    <label>
-                        <h2>Username</h2>
-                        <input type="text" value={this.state.username} />
+                <h1 className="session-form-title" >{formType === "signup" ? "Sign Up" : "Log In"}</h1>
+                <form className="session-form" >
+                    <label className="session-form-label" >
+                        <h2 className="session-form-header" >Username</h2>
+                        <input className="session-form-input" 
+                            type="text" 
+                            value={this.state.username}
+                            onChange={this.handleChange('username')} />
                     </label>
-                    <label>
-                        <h2>Password</h2>
-                        <input type="password" value={this.state.password} />
+                    <label className="session-form-label" >
+                        <h2 className="session-form-header" >Password</h2>
+                        <input className="session-form-input" 
+                            type="password" 
+                            value={this.state.password}
+                            onChange={this.handleChange('password')} />
                     </label>
                     {formType === "signup" ? 
-                        <label>
-                            <h2>Confirm Password</h2>
-                            <input type="password" value={this.state.password2} />
+                        <label className="session-form-label" >
+                            <h2 className="session-form-header" >Confirm Password</h2>
+                            <input className="session-form-input" 
+                                type="password" 
+                                value={this.state.password2}
+                                onChange={this.handleChange('password2')} />
                         </label>
                     : ''}
-                    <input type="submit" value={formType === "signup" ? "Sign Up" : "Log In"} />
+                    <input className="session-form-submit" type="submit" value={formType === "signup" ? "Sign Up" : "Log In"} />
                 </form>
             </div>
         )

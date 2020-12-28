@@ -2,7 +2,7 @@ import SessionForm from './session_form';
 import { connect } from 'react-redux';
 
 const mapSTP = state => ({
-    formType: 'login',
+    formType: 'signup',
 })
 
 const mapDTP = dispatch => ({
