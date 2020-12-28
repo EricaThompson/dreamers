@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class SessionForm extends React.Component {
     constructor(props) {
@@ -62,6 +63,10 @@ class SessionForm extends React.Component {
                         <input className="session-form-submit" type="submit" value={formType === "signup" ? "Sign Up" : "Log In"} />
                     </div>
                 </form>
+                <div className="session-switch" >
+                    <p>{formType === "signup" ? "Already a user?" : "Not a user yet?"}</p>
+                    <Link className="session-switch-link" style={{ textDecoration: 'none' }} to={formType === 'signup' ? `/api/login` : `/api/signup` } >{formType === "signup" ? "Log In Here" : "Sign Up Here"}</Link>
+                </div>
             </div>
         )
     }
