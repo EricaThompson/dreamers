@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from './nav/nav_bar';
+import NavBarContainer from './nav/navbar_container';
 import HomePage from './home_page/home_page';
 import "../App.scss";
 import { Route, Switch, Redirect } from 'react-router-dom';
@@ -10,7 +10,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 const App = () => (
     <div className="app-container">
         <div className="nav-bar">
-            <NavBar />
+            <NavBarContainer />
         </div>    
         <div className="main-app" >
             <Switch>

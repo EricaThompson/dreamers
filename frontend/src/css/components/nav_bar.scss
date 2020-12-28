@@ -2,25 +2,62 @@
     
     .nav-bar {
         width: 100%;
-        // display: block;
         display: flex; 
         justify-content: space-between;
-        // align-content: center;
-        // float: left;
         height: 64px;
         background-color: #2C3181;
-        border: 1px solid red;
 
-        
-        
+        .nav-title {
+            margin-top: 10px;
+            margin-left: 25px;
+            font-family: $bold;
+            font-size: 25px;
+            color: $logo-yellow;
+            letter-spacing: 2px;
+            text-shadow: 5px 5px 5px $dark-gray;
+            padding-bottom: 30px;
+    }
+
         .menu {
-            // justify-self: flex-end;
-            // float: right;
+            position: relative;
+            margin-top: 10px;
             color: $off-white;
             font-size: 40px;
             height: 100%;
-            // padding: 15px;
             margin-right: 25px;
+            
+            
+        }
+
+        .menu-items {
+            position: absolute;
+            right: 25px;
+            top: 54px;
+            z-index: 3;
+            background-color: $off-white;
+            font-family: $sans-serif;
+            padding: 7px;
+            border-radius: 4px;
+            color: $background-blue;
+            opacity: .8;
+
+            a {
+                font-family: $sans-serif;
+                text-decoration: none;
+                color: $background-blue;
+
+                &:hover {
+                    color: $light-purple;
+                }
+            }
+
+            .logout {
+                cursor: pointer;
+
+                &:hover {
+                    color: $magenta;
+                }
+            }
         }
     }
 }
