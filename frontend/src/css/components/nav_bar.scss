@@ -1,14 +1,26 @@
 .app-container {
     
     .nav-bar {
-    // width: 100%;
-    // display: block;
-    display: flex; 
-    justify-content: flex-end;
-    background-color: yellow;
-    
-        .fa-bars {
+        width: 100%;
+        // display: block;
+        display: flex; 
+        justify-content: space-between;
+        // align-content: center;
+        // float: left;
+        height: 64px;
+        background-color: #2C3181;
+        border: 1px solid red;
+
+        
+        
+        .menu {
+            // justify-self: flex-end;
+            // float: right;
             color: $off-white;
+            font-size: 40px;
+            height: 100%;
+            // padding: 15px;
+            margin-right: 25px;
         }
     }
 }
