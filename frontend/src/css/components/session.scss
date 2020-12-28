@@ -1,0 +1,171 @@
+.session-form-container {
+    height: 70%;
+    width: 80%;
+    background-color: $off-white-opaque;
+    position: relative;
+    
+    .session-form-title {
+        font-family: $bold;
+        font-size: 40px;
+        color: $logo-yellow;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 5px $dark-gray;
+        padding-bottom: 20px;
+        text-align: center;
+        padding-top: 40px;
+
+    }
+
+    .session-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        .session-form-label {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+
+            .session-form-header {
+                color: $dark-gray;
+                font-family: $sans-serif;
+                font-size: 25px;
+                padding: 30px 5px 0;
+            }
+
+            .session-form-input {
+                border-bottom: 1px solid $dark-gray;
+                width: 80%;
+                color: $dark-gray;
+                font-family: $sans-serif;
+                font-size: 25px;
+                padding: 5px 5px;
+            }
+
+             .session-form-input:focus {
+                border-bottom: 3px solid $magenta;
+                padding: 5px 5px 3px;
+            }
+
+            .session-errors-container {
+                position: absolute;
+                top: 92px;
+
+                .session-errors {
+                    color: $magenta;
+                    font-family: $sans-serif;
+                    font-size: 13px;
+                    text-align: center;
+                }
+            }
+        }
+        .session-form-submit-container {
+            padding-top: 25px;
+            cursor: pointer;
+
+            .session-form-submit {
+                color: $dark-gray;
+                font-family: $sans-serif;
+                font-size: 20px;
+                border: 1px solid $dark-gray;
+                border-radius: 5px;
+                padding: 9px 10px 7px;
+                box-shadow: 1px 1px 8px $dark-gray;
+                background-color: $off-white;
+            }
+
+            .session-form-submit:hover {
+                background-color: $logo-yellow;
+            }
+        }
+
+    }
+    
+    .session-form-demo-user-container {
+        padding-top: 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+
+        .session-form-demo-user {
+            color: $dark-gray;
+            font-family: $sans-serif;
+            font-size: 20px;
+            border: 1px solid $dark-gray;
+            border-radius: 5px;
+            padding: 9px 10px 7px;
+            box-shadow: 1px 1px 8px $dark-gray;
+            background-color: $off-white;
+        }
+
+        .session-form-demo-user:hover {
+            background-color: $logo-yellow;
+        }
+    }
+
+    .session-switch {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        width: 100%;
+        bottom: 10px;
+        color: $dark-gray;
+        font-family: $sans-serif;
+        font-size: 15px;
+        padding: 5px 5px;
+
+        .session-switch-link {
+            color: $magenta;
+        }
+    }
+}
+
+@media (min-width: 800px) {
+    .session-form-container {
+        // .session-form-title {
+            
+        // }
+
+        .session-form {
+
+            .session-form-label {
+
+                // .session-form-header {
+
+                // }
+
+                .session-form-input {
+                    width: 50%;
+                }
+
+                //  .session-form-input:focus {
+
+                // }
+
+                // .session-errors-container {
+
+
+                    // .session-errors {
+
+                    // }
+                // }
+            }
+            // .session-form-submit-container {
+
+                // .session-form-submit {
+
+                // }
+
+                // .session-form-submit:hover {
+
+                // }
+            // }
+        }
+    }
+}
