@@ -11,7 +11,7 @@ const DreamSchema = new Schema({
     required: true
   },
   tags: [
-    { type: ObjectId, ref: 'Tag' }
+    { type: String }
   ],
   type: {
     type: String,
@@ -21,4 +21,4 @@ const DreamSchema = new Schema({
   timestamps: true
 })
 
-module.exports = User = mongoose.model('Dream', DreamSchema);
+module.exports = Dream = mongoose.model('Dream', DreamSchema);
