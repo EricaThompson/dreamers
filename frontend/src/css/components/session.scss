@@ -12,7 +12,7 @@
         text-shadow: 2px 2px 5px $dark-gray;
         padding-bottom: 20px;
         text-align: center;
-        padding-top: 50px;
+        padding-top: 40px;
 
     }
 
@@ -63,7 +63,7 @@
             }
         }
         .session-form-submit-container {
-            padding-top: 40px;
+            padding-top: 20px;
             cursor: pointer;
 
             .session-form-submit {
@@ -80,6 +80,29 @@
             .session-form-submit:hover {
                 background-color: $logo-yellow;
             }
+        }
+
+    }
+    
+    .session-form-demo-user-container {
+        padding-top: 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+
+        .session-form-demo-user {
+            color: $dark-gray;
+            font-family: $sans-serif;
+            font-size: 20px;
+            border: 1px solid $dark-gray;
+            border-radius: 5px;
+            padding: 9px 10px 7px;
+            box-shadow: 1px 1px 8px $dark-gray;
+            background-color: $off-white;
+        }
+
+        .session-form-demo-user:hover {
+            background-color: $logo-yellow;
         }
     }
 

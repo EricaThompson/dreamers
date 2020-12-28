@@ -4,7 +4,7 @@ import { signup } from '../../actions/session_actions';
 
 const mapSTP = state => ({
     formType: 'signup',
-    errors: state.errors.session
+    errors: Object.values(state.errors.session),
 })
 
 const mapDTP = dispatch => ({

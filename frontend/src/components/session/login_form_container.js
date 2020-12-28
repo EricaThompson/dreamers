@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 const mapSTP = state => ({
     formType: 'login',
-    errors: state.errors.session
+    errors: Object.values(state.errors.session),
 })
 
 const mapDTP = dispatch => ({
