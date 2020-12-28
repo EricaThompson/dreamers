@@ -1,5 +1,5 @@
 import SessionForm from './session_form';
-import { login } from '../../actions/session_actions';
+import { login, resetErrors } from '../../actions/session_actions';
 import { connect } from 'react-redux';
 
 const mapSTP = state => ({
@@ -10,6 +10,7 @@ const mapSTP = state => ({
 const mapDTP = dispatch => ({
     login: user => dispatch(login(user)),
     action: user => dispatch(login(user)),
+    resetErrors: () => dispatch(resetErrors()),
 })
 
 export default connect(mapSTP, mapDTP)(SessionForm);

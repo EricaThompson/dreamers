@@ -15,6 +15,10 @@ class SessionForm extends React.Component {
         this.loginDemoUser = this.loginDemoUser.bind(this);
     }
 
+    componentDidMount() {
+        this.props.resetErrors();
+    }
+    
     componentDidUpdate(nextProps) {
         if (nextProps.isSignedIn === true) {
             let user = {
@@ -89,6 +93,7 @@ class SessionForm extends React.Component {
                             <div className="session-errors-container">
                                 {errors.map(err => err.includes('Confirm Password field is required') ? <p className="session-errors" >{err}</p> : '')}
                                 {errors.map(err => err.includes('Passwords must match') ? <p className="session-errors" >{err}</p> : '')}
+                                {errors.map(err => err.includes('Incorrect password') ? <p className="session-errors" >{err}</p> : '')}
                             </div>
                         </label>
                     : ''}
