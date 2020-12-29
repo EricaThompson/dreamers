@@ -1,0 +1,90 @@
+.feed-container {
+    width: 80%;
+    height: 80%;
+    background-color: transparent;
+    padding: 20px;
+    box-sizing: border-box;
+
+    .feed-search-container {
+        display: flex;
+        border: 2px solid $dark-gray;
+        border-radius: 20px;
+        padding: 10px;
+        background-color: $off-white;
+
+        .feed-search-icon {
+            font-size: 15px;
+            padding: 2px 5px 0;
+            color: $dark-gray;
+        }
+
+        .feed-search-form {
+            width: 100%;
+
+            .feed-search-input {
+                font-family: $sans-serif;
+                font-size: 15px;
+                width: 100%;
+                color: $dark-gray;
+                padding-top: 2px;
+            }
+        }
+    }
+
+    .feed-search-container:focus-within {
+        border: 2px solid $magenta;
+    }
+
+    .feed-index-container {
+        padding: 15px 0;
+
+        .feed-header-container {
+            display: flex;
+            justify-content: space-around;
+            padding-bottom: 10px;
+            border-bottom: 1px solid $off-white-opaque;
+            box-shadow: 0px 5px 5px -5px $off-white;
+
+            .feed-header {
+                font-family: $sans-serif;
+                font-size: 20px;
+                color: $off-white;
+            }
+        }
+
+        .feed-dreams-outer-container {
+            padding: 10px 0;
+
+            .feed-dreams-container {
+                padding-top: 10px;
+
+                .feed-dreams {
+                    padding: 10px;
+                    border: 3px solid $off-white;
+                    border-radius: 20px;
+                    background-color: $dark-purple;
+                    box-shadow: 2px 2px 8px $dark-gray;
+
+                    
+                    .feed-dreams-info {
+                        color: $off-white;
+                        font-family: $serif;
+                    }
+                }
+    
+                .feed-goals {
+                    padding: 10px;
+                    border: 3px solid $off-white;
+                    // border-radius: 20px;
+                    background-color: $logo-yellow;
+                    box-shadow: 2px 2px 8px $dark-gray;
+                    
+                    .feed-dreams-info {
+                        color: $dark-gray;
+                        font-family: $serif;
+                    }
+                }
+            }
+        }
+    }
+}
