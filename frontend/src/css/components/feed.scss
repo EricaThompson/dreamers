@@ -70,6 +70,29 @@
                         color: $off-white;
                         font-family: $serif;
                     }
+
+                    .feed-dreams-footer {
+                        display: flex;
+                        justify-content: space-around;
+                        align-items: flex-end;
+                        padding-top: 3px;
+
+                        .feed-dreams-footer-info {
+                            color: $off-white;
+                            font-family: $serif;
+                            font-size: 13px;
+
+                            .feed-dreams-footer-comments,
+                            .feed-dreams-footer-likes {
+                                cursor: pointer;
+                            }
+
+                            .feed-dreams-footer-comments:hover,
+                            .feed-dreams-footer-likes:hover {
+                                color: $magenta;
+                            }
+                        }
+                    }
                 }
     
                 .feed-goals {

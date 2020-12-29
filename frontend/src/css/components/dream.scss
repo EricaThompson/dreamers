@@ -26,6 +26,7 @@
         font-size: 30px;
         color: $dark-gray;
         letter-spacing: 2px;
+        padding-top: 40px;
         padding-bottom: 10px;
     }
 
@@ -168,5 +169,6 @@
     .create-dream-btn {
         display: flex;
         justify-content: center;
+        padding-bottom: 40px;
     }
 }

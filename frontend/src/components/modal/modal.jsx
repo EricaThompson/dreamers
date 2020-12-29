@@ -2,6 +2,7 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import NewDreamContainer from '../dreams/new_dream_container';
+import CommentModal from '../feed/comment_modal';
 
 const Modal = ({ modal, closeModal }) => {
     if (!modal) {
@@ -11,6 +12,9 @@ const Modal = ({ modal, closeModal }) => {
     switch (modal) {
         case 'newDream':
             component = <NewDreamContainer />;
+            break;
+        case 'comment':
+            component = <CommentModal />;
             break;
         default:
             return null;

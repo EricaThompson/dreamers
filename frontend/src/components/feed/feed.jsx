@@ -15,6 +15,7 @@ class Feed extends React.Component {
     }
 
     render() {
+        let { openModal } = this.props;
         return (
             <div className="feed-container" >
                 <div className="feed-search-container" >
@@ -36,24 +37,24 @@ class Feed extends React.Component {
                     <div className="feed-dreams-outer-container" >
                         <div className="feed-dreams-container" >
                             <div className="feed-dreams" >
-                                <Link style={{ textDecoration: 'none' }} >
+                                <Link to="/feed" style={{ textDecoration: 'none' }} >
                                     <p className="feed-dreams-info" >username</p>
                                     <p className="feed-dreams-info" >this is the text of a dream</p>
                                     <div className="feed-dreams-footer" >
-                                        <p className="feed-dreams-info" >3 comments</p>
-                                        <p className="feed-dreams-info" >3 likes</p>
+                                        <p className="feed-dreams-footer-info" >3 <span onClick={() => openModal('comment')} className="feed-dreams-footer-comments" >comments</span></p>
+                                        <p className="feed-dreams-footer-info" >3 <span className="feed-dreams-footer-likes" >likes</span></p>
                                     </div>
                                 </Link>
                             </div>
                         </div>
                         <div className="feed-dreams-container" >
                             <div className="feed-goals" >
-                                <Link style={{ textDecoration: 'none' }} >
+                                <Link to="/feed" style={{ textDecoration: 'none' }} >
                                     <p className="feed-dreams-info" >username</p>
                                     <p className="feed-dreams-info" >this is the text of a goal</p>
                                     <div className="feed-dreams-footer" >
-                                        <p className="feed-dreams-info" >3 comments</p>
-                                        <p className="feed-dreams-info" >3 likes</p>
+                                        <p className="feed-dreams-footer-info" >3 comments</p>
+                                        <p className="feed-dreams-footer-info" >3 likes</p>
                                     </div>
                                 </Link>
                             </div>
