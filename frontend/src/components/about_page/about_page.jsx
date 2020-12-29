@@ -8,10 +8,10 @@ class AboutPage extends React.Component {
         return (
             <div className="about-container">
                 <h1 className="about-title">Team Members:</h1>
-                <p className="team-member">Frontend Lead - <a href="https://github.com/joshkohane">Josh Kohane</a></p>
-                <p className="team-member">Backend Lead - <a href="https://github.com/AlanDai">Alan Dai</a></p>
-                <p className="team-member">Frontend/Backend Flex - <a href="https://github.com/cindy803">Cindy Li</a></p>
-                <p className="team-member">Team Lead - <a href="https://github.com/EricaThompson">Erica Thompson</a></p>
+                <p className="team-member">Frontend Lead - <a target="_blank" href="https://github.com/joshkohane">Josh Kohane</a></p>
+                <p className="team-member">Backend Lead - <a target="_blank" href="https://github.com/AlanDai">Alan Dai</a></p>
+                <p className="team-member">Frontend/Backend Flex - <a target="_blank" href="https://github.com/cindy803">Cindy Li</a></p>
+                <p className="team-member">Team Lead - <a target="_blank" href="https://github.com/EricaThompson">Erica Thompson</a></p>
             </div>
         );
     }
