@@ -9,7 +9,6 @@
         display: flex; 
         justify-content: space-between;
         height: 64px;
-        // background-color: #2C3181;
 
         .nav-title {
             margin-top: 10px;
@@ -20,7 +19,6 @@
             letter-spacing: 2px;
             text-shadow: 5px 5px 5px $dark-gray;
             padding-bottom: 30px;
-
             text-decoration: none;
         }
 
@@ -31,16 +29,20 @@
             right: 0;
 
             a {
+                color: $background-blue;
                 padding: 8px;
                 width: 65px;
                 text-align: center;
                 text-decoration: none;
                 font-family: $sans-serif;
-                border: 1px solid $off-white;
+                border: 2px solid $off-white-opaque;
                 background-color: $off-white;
                 margin: 15px;
                 border-radius: 4px;
 
+                &:hover {
+                    color: $light-purple;
+                }
             }
             
         }
@@ -64,7 +66,7 @@
             z-index: 3;
             background-color: $off-white;
             font-family: $sans-serif;
-            padding: 7px;
+            padding: 20px 15px;
             border-radius: 4px;
             color: $background-blue;
             opacity: .8;
@@ -78,6 +80,7 @@
                     color: $light-purple;
                 }
             }
+
 
             .logout {
                 cursor: pointer;
