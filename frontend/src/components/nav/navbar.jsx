@@ -23,12 +23,27 @@ class NavBar extends React.Component {
 
     render() {
         let dropdown;
-        if (this.state.showDropdown){
-            dropdown = <div className="menu-items">
-                <Link to={'/signup'}><p>signup</p></Link>
-                <Link to={'/login'}><p>login</p></Link>
-                <p className="logout" onClick={this.logoutUser} >logout</p>
+        let menu;
+
+        if (this.props.loggedIn){
+            menu = <div
+                onClick={() => this.dropdownToggle()}
+                className='menu'>
+                <i className="fas fa-bars"></i>
             </div>
+
+            if (this.state.showDropdown) {
+                dropdown = <div className="menu-items">
+                                <Link to={'/signup'}><p>signup</p></Link>
+                                <Link to={'/login'}><p>login</p></Link>
+                                <p className="logout" onClick={this.logoutUser} >logout</p>
+                            </div>
+            }
+        } else {
+            menu = <div className="session-links">
+                        <Link to={'/login'}><p className="session-login-link">login</p></Link>
+                        <Link to={'/signup'}><p className="session-signup-link">signup</p></Link>  
+                    </div>
         }
 
         return (
@@ -36,12 +51,8 @@ class NavBar extends React.Component {
                 <div className="logo">
                     <Link to="/"> <h1 className="nav-title">DREAMERS</h1></Link>
                 </div>
+                {menu}
                 {dropdown}
-                <div
-                    onClick={()=>this.dropdownToggle()}
-                    className='menu'>
-                        <i className="fas fa-bars"></i>
-                </div>
 
             </div>
         );
