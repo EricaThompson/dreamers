@@ -64,16 +64,6 @@ router.get('/:id', (req, res) => {
     );
 });
 
-// router.get('/tag/:tag', (req, res) => {
-//     Dream.find( { tags: req.params.tag } )
-//         .sort({ date: -1 })
-//         .then(dreams => res.json(dreams))
-//         .catch(err =>
-//             res.status(404).json({ nodreamsfound: 'No dreams found with that tag'}
-//         )
-//     );
-// })
-
 router.post('/tags', (req, res) => {
     Dream.find( { tags: { $all: req.body.tags } } )
         .sort({ date: -1 })
