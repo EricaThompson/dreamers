@@ -1,0 +1,25 @@
+.about-container {
+    
+
+    .about-title {
+        font-family: $bold;
+        font-size: 50px;
+        color: $off-white-opaque;
+        letter-spacing: 2px;
+        text-shadow: 5px 5px 5px $dark-gray;
+        padding-bottom: 30px;
+    }
+
+    .team-member {
+        font-family: $sans-serif;
+        text-align: center;
+        font-size: 5vw;
+        color: $logo-yellow;
+        a {
+            color: $off-white-opaque;
+            text-decoration: none;
+            
+        }
+    }
+    
+}
