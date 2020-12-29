@@ -12,3 +12,159 @@
 .new-dream-btn:hover {
     background-color: $logo-yellow;
 }
+
+.new-dream-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    .new-dream-header {
+        font-family: $bold;
+        font-size: 30px;
+        color: $dark-gray;
+        letter-spacing: 2px;
+        padding-bottom: 20px;
+    }
+
+    .new-dream-radio {
+        display: flex;
+
+        .new-dream-radio-btn {
+            padding: 20px 10px;
+            display: flex;
+            // align-items: center;
+
+            .new-dream-radio-btn-header {
+                font-family: $sans-serif;
+                padding: 0 5px;
+            }
+
+            .new-dream-radio-btn-header-checked {
+                font-family: $sans-serif;
+                padding: 0 5px;
+                color: $magenta;
+            }
+        }
+    }
+
+    .new-dream-tags-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .new-dream-tags-header {
+            font-family: $sans-serif;
+            color: $dark-gray;
+            font-size: 16px;
+            padding-bottom: 15px;
+        }
+
+        .new-dream-tags {
+            display: flex;
+            padding-bottom: 20px;
+
+            .new-dream-tags-item-container {
+                padding: 0 7px;
+                position: relative;
+
+                .new-dream-tags-item-circle {
+                    position: absolute;
+                    top: 8px;
+                    left: 10px;
+                    width: 7px;
+                    height: 7px;
+                    border-radius: 50%;
+                    border: 2px solid $dark-gray;
+                }
+
+                .new-dream-tags-item {
+                    padding: 4px 7px 2px 12px;
+                    border: 1px solid $dark-gray;
+                    border-top-left-radius: 9px;
+                    border-bottom-left-radius: 9px;
+                    font-family: $sans-serif;
+                    color: $dark-gray;
+                }
+
+            }
+            .new-dream-tags-item-container:hover {
+                .new-dream-tags-item-circle {
+                    background-color: $off-white;
+                }
+
+                .new-dream-tags-item {
+                    background-color: $magenta;
+                    color: $off-white;
+                }
+            }
+        }
+    }
+
+    .create-dream-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+        .create-dream-text-container {
+            padding: 20px 0px 20px 0px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+            .create-dream-textarea {
+                resize: none;
+                width: 80%;
+                height: 250px;
+                border: 2px solid $dark-gray;
+                border-radius: 10px;
+                padding: 10px;
+                font-family: $serif;
+                color: $dark-gray;
+                font-size: 15px;
+            }
+
+            .create-dream-textarea:focus-within {
+                outline: none;
+                border: 2px solid $magenta;
+            }
+        }
+
+        .create-dream-search-container {
+            display: flex;
+            border: 2px solid $dark-gray;
+            border-radius: 20px;
+            padding: 10px;
+            background-color: white;
+            width: 90%;
+
+            .dream-search-icon {
+                font-size: 15px;
+                padding: 2px 5px 0;
+                color: $dark-gray;
+            }
+
+            .create-dream-search-form {
+                width: 100%;
+
+                .create-dream-search-input {
+                    font-family: $sans-serif;
+                    font-size: 15px;
+                    width: 100%;
+                    color: $dark-gray;
+                    padding-top: 2px;
+                }
+            }
+        }
+
+        .create-dream-search-container:focus-within {
+            border: 2px solid $magenta;
+        }
+    }
+
+    .create-dream-btn {
+        display: flex;
+        justify-content: center;
+    }
+}
