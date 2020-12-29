@@ -38,8 +38,16 @@ router.get('/', (req, res) => {
         .catch(err => res.status(400).json({ nodreamsfound: 'No dreams found'}));
 })
 
+router.get('/type/:type', (req, res) => {
+    Dream.find({ type: req.params.type })
+        .sort({ date: -1 })
+        .then(dreams => res.json(dreams))
+        .catch(err => res.status(400).json({ nodreamsfound: 'No dreams found of that type'}));
+})
+
 router.get('/user/:userId', (req, res) => {
     Dream.find({userId: req.params.userId})
+        .sort({ date: -1 })
         .then(dreams => res.json(dreams))
         .catch(err =>
             res.status(404).json({ nodreamsfound: 'No dreams found from that user' }
@@ -48,16 +56,17 @@ router.get('/user/:userId', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    Dream.find({userId: req.params.id})
-        .then(dreams => res.json(dreams))
+    Dream.findOne({userId: req.params.id})
+        .then(dream => res.json(dream))
         .catch(err =>
-            res.status(404).json({ nodreamsfound: 'No dreams found with that ID' }
+            res.status(404).json({ nodreamfound: 'No dream found with that ID' }
         )
     );
 });
 
 // router.get('/tag/:tag', (req, res) => {
 //     Dream.find( { tags: req.params.tag } )
+//         .sort({ date: -1 })
 //         .then(dreams => res.json(dreams))
 //         .catch(err =>
 //             res.status(404).json({ nodreamsfound: 'No dreams found with that tag'}
@@ -67,6 +76,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/tags', (req, res) => {
     Dream.find( { tags: { $all: req.body.tags } } )
+        .sort({ date: -1 })
         .then(dreams => res.json(dreams))
         .catch(err =>
             res.status(400).json({ nodreamsfound: 'No dreams found with all of the specified tags'}
