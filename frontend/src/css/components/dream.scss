@@ -19,13 +19,14 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    position: relative;
 
     .new-dream-header {
         font-family: $bold;
         font-size: 30px;
         color: $dark-gray;
         letter-spacing: 2px;
-        padding-bottom: 20px;
+        padding-bottom: 10px;
     }
 
     .new-dream-radio {
