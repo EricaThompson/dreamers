@@ -7,6 +7,7 @@ import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import Modal from './modal/modal';
 import Feed from './feed/feed';
+import ProfileContainer from './profile/profile_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
@@ -22,6 +23,7 @@ const App = () => (
                 <AuthRoute exact path="/" component={HomePage} />
 
                 <ProtectedRoute path={`/feed`} component={Feed} />
+                <ProtectedRoute path={`/profile`} component={ProfileContainer} />
                 <Redirect to="/" />
             </Switch>
         </div>
