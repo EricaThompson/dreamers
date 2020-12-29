@@ -7,10 +7,10 @@ import {
 
 const DreamReducer = (oldState = {all: {}, user: {}, new: undefined}, action) => {
     Object.freeze(oldState)
-    let newState = Object.assign({}, state); 
+    let newState = Object.assign({}, oldState); 
     switch(action.type) {
         case RECEIVE_ALL_DREAMS:
-            return action.dreams
+            return action.dreams;
         case RECEIVE_USER_DREAMS:
             newState[action.user.id] = action.user; 
             return newState;
