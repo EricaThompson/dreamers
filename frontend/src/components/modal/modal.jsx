@@ -18,6 +18,7 @@ const Modal = ({ modal, closeModal }) => {
     return (
         <div className="modal-background" onClick={closeModal} >
             <div className="modal-child" onClick={e => e.stopPropagation()} >
+                <span onClick={closeModal} className="close-modal-btn">&#x2715;</span>
                 { component }
                 {/* <NewDreamContainer /> */}
             </div>
