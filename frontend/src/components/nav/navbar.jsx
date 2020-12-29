@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import '../../css/components/nav_bar.scss';
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -34,8 +33,10 @@ class NavBar extends React.Component {
 
             if (this.state.showDropdown) {
                 dropdown = <div className="menu-items">
-                                <Link to={'/signup'}><p>signup</p></Link>
-                                <Link to={'/login'}><p>login</p></Link>
+                                {/* <Link to={'/signup'}><p>signup</p></Link>
+                                <Link to={'/login'}><p>login</p></Link> */}
+                                <Link to={"/user/5fea402f69e4673c9345018b"}><p>profile</p></Link>
+                                <Link to={`/about`}><p>about</p></Link>
                                 <p className="logout" onClick={this.logoutUser} >logout</p>
                             </div>
             }
