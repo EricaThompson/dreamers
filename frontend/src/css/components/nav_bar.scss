@@ -1,11 +1,12 @@
 .app-container {
-    
+    background-image: url("background-image-resized4.jpg");
+
     .nav-bar {
         width: 100%;
         display: flex; 
         justify-content: space-between;
         height: 64px;
-        background-color: #2C3181;
+        // background-color: #2C3181;
 
         .nav-title {
             margin-top: 10px;
