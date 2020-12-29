@@ -1,0 +1,14 @@
+.new-dream-btn {
+    color: $dark-gray;
+    font-family: $sans-serif;
+    font-size: 20px;
+    border: 1px solid $dark-gray;
+    border-radius: 5px;
+    padding: 9px 10px 7px;
+    box-shadow: 1px 1px 8px $dark-gray;
+    background-color: $off-white;
+}
+
+.new-dream-btn:hover {
+    background-color: $logo-yellow;
+}
