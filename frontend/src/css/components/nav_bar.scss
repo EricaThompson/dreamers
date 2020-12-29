@@ -1,0 +1,64 @@
+.app-container {
+    background-image: url("background-image-resized4.jpg");
+
+    .nav-bar {
+        width: 100%;
+        display: flex; 
+        justify-content: space-between;
+        height: 64px;
+        // background-color: #2C3181;
+
+        .nav-title {
+            margin-top: 10px;
+            margin-left: 25px;
+            font-family: $bold;
+            font-size: 25px;
+            color: $logo-yellow;
+            letter-spacing: 2px;
+            text-shadow: 5px 5px 5px $dark-gray;
+            padding-bottom: 30px;
+    }
+
+        .menu {
+            position: relative;
+            margin-top: 10px;
+            color: $off-white;
+            font-size: 40px;
+            height: 100%;
+            margin-right: 25px;
+            
+            
+        }
+
+        .menu-items {
+            position: absolute;
+            right: 25px;
+            top: 54px;
+            z-index: 3;
+            background-color: $off-white;
+            font-family: $sans-serif;
+            padding: 7px;
+            border-radius: 4px;
+            color: $background-blue;
+            opacity: .8;
+
+            a {
+                font-family: $sans-serif;
+                text-decoration: none;
+                color: $background-blue;
+
+                &:hover {
+                    color: $light-purple;
+                }
+            }
+
+            .logout {
+                cursor: pointer;
+
+                &:hover {
+                    color: $magenta;
+                }
+            }
+        }
+    }
+}
