@@ -1,12 +1,14 @@
 import React from 'react';
 import NavBarContainer from './nav/navbar_container';
 import HomePage from './home_page/home_page';
+import AboutPage from './about_page/about_page';
 import "../App.scss";
 import { Route, Switch, Redirect } from 'react-router-dom';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import Modal from './modal/modal';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
+
 
 const App = () => (
     <div className="app-container">
@@ -19,6 +21,7 @@ const App = () => (
                 <AuthRoute path={`/login`} component={LoginFormContainer} />
                 <AuthRoute path={`/signup`} component={SignupFormContainer} />
                 <Route exact path="/" component={HomePage} />
+                <Route exact path="/about" component={AboutPage} />
                 <Redirect to="/" />
             </Switch>
         </div>
