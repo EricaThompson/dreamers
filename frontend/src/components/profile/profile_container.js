@@ -6,11 +6,9 @@ const mapSTP = state => ({
 
 })
 
-const mapDTP = dispatch => {
-    debugger;
-    return {
+const mapDTP = dispatch => ({
     openModal: (modal) => dispatch(openModal(modal)),
     closeModal: () => dispatch(closeModal())
-}}
+})
 
 export default connect(mapSTP, mapDTP)(Profile);

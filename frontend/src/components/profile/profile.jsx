@@ -7,7 +7,6 @@ class Profile extends React.Component {
 
     render() {
         let { openModal } = this.props;
-        debugger;
         return (
             <div>
                 <button className="new-dream-btn" onClick={() => openModal('newDream')} >Create new dream</button>
