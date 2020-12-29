@@ -1,3 +1,8 @@
+@keyframes fade-in {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
 .modal-background {
     position: fixed;
     top: 0;
@@ -6,6 +11,7 @@
     left: 0;
     background: $off-white-opaque;
     z-index: 10;
+    animation: fade-in .5s ease-in-out;
 }
 
 .modal-child {
@@ -19,6 +25,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    .close-modal-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+        color: $dark-gray;
+    }
 }
 
 @media (min-width: 800px) {
