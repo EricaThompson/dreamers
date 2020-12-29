@@ -1,22 +1,28 @@
 .about-container {
+    background-color: $off-white;
+    opacity: .95;
+    border-radius: 4px;
+    padding: 20px;
     
-
     .about-title {
-        font-family: $bold;
-        font-size: 50px;
-        color: $off-white-opaque;
+        font-family: $sans-serif;
+        font-weight: bolder;
+        font-size: 6vw;
+        color: $dark-gray;
         letter-spacing: 2px;
-        text-shadow: 5px 5px 5px $dark-gray;
         padding-bottom: 30px;
+        text-align: center;
     }
 
     .team-member {
         font-family: $sans-serif;
         text-align: center;
         font-size: 5vw;
-        color: $logo-yellow;
+        color: $dark-gray;
+
         a {
-            color: $off-white-opaque;
+            //darkened $logo-yellow for readability
+            color: #d6b40b;
             text-decoration: none;
             
         }
