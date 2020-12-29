@@ -52,7 +52,7 @@ class NavBar extends React.Component {
         return (
             <div className="nav-bar">
                 <div className="logo">
-                    <Link to="/" style={{ textDecoration: 'none' }} > <h1 className="nav-title">DREAMERS</h1></Link>
+                    <Link to="/feed" style={{ textDecoration: 'none' }} > <h1 className="nav-title">DREAMERS</h1></Link>
                 </div>
                 {menu}
                 {dropdown}

@@ -7,7 +7,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import Modal from './modal/modal';
-import Feed from './feed/feed';
+import FeedContainer from './feed/feed_container';
 import ProfileContainer from './profile/profile_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
@@ -24,7 +24,7 @@ const App = () => (
                 <AuthRoute path={`/signup`} component={SignupFormContainer} />
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/about" component={AboutPage} />
-                <ProtectedRoute path={`/feed`} component={Feed} />
+                <ProtectedRoute path={`/feed`} component={FeedContainer} />
                 <ProtectedRoute path={`/users/:userId`} component={ProfileContainer} />
                 <Redirect to="/" />
             </Switch>

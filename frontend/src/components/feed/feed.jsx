@@ -39,8 +39,10 @@ class Feed extends React.Component {
                                 <Link style={{ textDecoration: 'none' }} >
                                     <p className="feed-dreams-info" >username</p>
                                     <p className="feed-dreams-info" >this is the text of a dream</p>
-                                    <p className="feed-dreams-info" >3 comments</p>
-                                    <p className="feed-dreams-info" >3 likes</p>
+                                    <div className="feed-dreams-footer" >
+                                        <p className="feed-dreams-info" >3 comments</p>
+                                        <p className="feed-dreams-info" >3 likes</p>
+                                    </div>
                                 </Link>
                             </div>
                         </div>
@@ -49,8 +51,10 @@ class Feed extends React.Component {
                                 <Link style={{ textDecoration: 'none' }} >
                                     <p className="feed-dreams-info" >username</p>
                                     <p className="feed-dreams-info" >this is the text of a goal</p>
-                                    <p className="feed-dreams-info" >3 comments</p>
-                                    <p className="feed-dreams-info" >3 likes</p>
+                                    <div className="feed-dreams-footer" >
+                                        <p className="feed-dreams-info" >3 comments</p>
+                                        <p className="feed-dreams-info" >3 likes</p>
+                                    </div>
                                 </Link>
                             </div>
                         </div>
