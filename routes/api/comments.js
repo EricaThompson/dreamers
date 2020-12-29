@@ -59,6 +59,31 @@ router.get('/user/:userId', (req, res) => {
 
 // update
 
+router.patch('/:commentId',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    var query = { _id: req.params.commentId }
+    Comment.findOne(query)
+      .then(comment => {
+        
+        if (comment.userId != req.user.id ) {
+          res.status(400).json({ userauth: 'You can only edit your own comments'})
+        } else {
+          Comment.update(query, { $set: { comment: req.body.comment } }, (err) => {
+            
+            if (err) {
+              res.status(400).json(err);
+            } else {
+              res.json(req.params.commentId);
+            }
+
+          })
+        }
+
+      })
+      .catch(err => res.status(400).json(err))
+  }
+)
 
 // delete
 
