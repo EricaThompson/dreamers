@@ -34,7 +34,7 @@ class NavBar extends React.Component {
         return (
             <div className="nav-bar">
                 <div className="logo">
-                    <Link to="/"> <h1 className="nav-title">DREAMERS</h1></Link>
+                    <Link to="/" style={{ textDecoration: 'none' }} > <h1 className="nav-title">DREAMERS</h1></Link>
                 </div>
                 {dropdown}
                 <div
