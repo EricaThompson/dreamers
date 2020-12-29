@@ -35,14 +35,14 @@ router.get('/', (req, res) => {
     Dream.find()
         .sort({ date: -1})
         .then(dreams => res.json(dreams))
-        .catch(err => res.status(400).json({ nodreamsfound: 'No dreams found'}));
+        .catch(err => res.status(404).json({ nodreamsfound: 'No dreams found'}));
 })
 
 router.get('/type/:type', (req, res) => {
     Dream.find({ type: req.params.type })
         .sort({ date: -1 })
         .then(dreams => res.json(dreams))
-        .catch(err => res.status(400).json({ nodreamsfound: 'No dreams found of that type'}));
+        .catch(err => res.status(404).json({ nodreamsfound: 'No dreams found of that type'}));
 })
 
 router.get('/user/:userId', (req, res) => {
@@ -69,7 +69,7 @@ router.post('/tags', (req, res) => {
         .sort({ date: -1 })
         .then(dreams => res.json(dreams))
         .catch(err =>
-            res.status(400).json({ nodreamsfound: 'No dreams found with all of the specified tags'}
+            res.status(404).json({ nodreamsfound: 'No dreams found with all of the specified tags'}
         )
     );
 })
