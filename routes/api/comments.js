@@ -36,6 +36,13 @@ router.post('/:dreamId',
 
 // read
 
+router.get('/:commentId', (req, res) => {
+  Comment.findOne({_id: req.params.commentId})
+    .sort({date: -1})
+    .then(comment => res.json(comment))
+    .catch(err => res.status(404).json({ nocommentfound: 'No comment found with the specified id'}))
+});
+
 router.get('/dream/:dreamId', (req, res) => {
   Comment.find({dreamId: req.params.dreamId})
     .sort({date: -1})
@@ -50,16 +57,35 @@ router.get('/user/:userId', (req, res) => {
     .catch(err => res.status(404).json({ nocommentsfound: 'This user has no comments'}))
 });
 
-router.get('/:id', (req, res) => {
-  Comment.findOne({_id: req.params.id})
-    .sort({date: -1})
-    .then(comment => res.json(comment))
-    .catch(err => res.status(404).json({ nocommentfound: 'No comment found with the specified id'}))
-});
-
 // update
 
 
 // delete
+
+router.delete('/:commentId',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    var query = { _id: req.params.commentId }
+    Comment.findOne(query)
+      .then(comment => {
+        
+        if (comment.userId != req.user.id ) {
+          res.status(400).json({ userauth: 'You can only delete your own comments'})
+        } else {
+          Comment.deleteOne(query, (err) => {
+            
+            if (err) {
+              res.status(400).json(err);
+            } else {
+              res.json(req.params.commentId);
+            }
+
+          })
+        }
+
+      })
+      .catch(err => res.status(400).json(err))
+  }
+)
 
 module.exports = router; 
