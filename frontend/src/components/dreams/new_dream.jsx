@@ -23,7 +23,14 @@ class NewDream extends React.Component {
 
     // handleSubmit(e) {
     //     e.preventDefault();
-    //     this.props.createDream(this.state);
+    //     let newDream = {
+    //         user: this.props.currentUser,
+    //         type: this.state.selectedOption,
+    //         text: this.state.dreamText,
+    //         tags: this.state.tags
+    //     }
+    //     debugger;
+    //     this.props.createDream(newDream);
     // }
 
     // handleTags(e) {
@@ -103,7 +110,7 @@ class NewDream extends React.Component {
                     <input className="new-dream-btn create-dream-btn" 
                         type="submit" 
                         value="Create Dream"
-                        // onSubmit={this.handleSubmit} 
+                        // onClick={this.handleSubmit} 
                         />
                 </div>
             </div>
