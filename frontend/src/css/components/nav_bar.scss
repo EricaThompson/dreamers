@@ -1,6 +1,9 @@
 .app-container {
     background-image: url("background-image-resized4.jpg");
-height: 100vh;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-color: #2C3181;
+
     .nav-bar {
         width: 100%;
         display: flex; 
@@ -17,7 +20,31 @@ height: 100vh;
             letter-spacing: 2px;
             text-shadow: 5px 5px 5px $dark-gray;
             padding-bottom: 30px;
-    }
+
+            text-decoration: none;
+        }
+
+        .session-links {
+            position: absolute;
+            display: flex;
+            top: 0;
+            right: 0;
+
+            a {
+                padding: 8px;
+                width: 65px;
+                text-align: center;
+                text-decoration: none;
+                font-family: $sans-serif;
+                border: 1px solid $off-white;
+                background-color: $off-white;
+                margin: 15px;
+                border-radius: 4px;
+
+            }
+            
+        }
+
 
         .menu {
             position: relative;
