@@ -56,7 +56,7 @@ router.get('/user/:userId', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    Dream.findOne({userId: req.params.id})
+    Dream.findOne({_id: req.params.id})
         .then(dream => res.json(dream))
         .catch(err =>
             res.status(404).json({ nodreamfound: 'No dream found with that ID' }
