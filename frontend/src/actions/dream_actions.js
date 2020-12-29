@@ -1,5 +1,4 @@
 import * as DreamApiUtils from '../util/dream_api_util';
-import jwt_decode from 'jwt_decode';
 
 export const RECEIVE_ALL_DREAMS = 'RECEIVE_ALL_DREAMS';
 export const RECEIVE_USER_DREAMS = 'RECEIVE_USER_DREAMS';
