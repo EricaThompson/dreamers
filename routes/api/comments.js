@@ -28,15 +28,25 @@ router.post('/:dreamId',
             newComment.save().then(comment => res.json(comment));
           })
           .catch(err => 
-            res.status(404).json({ })
+            res.status(404).json({err})
           )
     }
 )
 
 // read
 
+route.get('/:dreamId', (req, res) => {
+  Comment.find({dreamId: dreamId})
+    .sort({date: -1})
+    .then(comments => res.json(comments))
+    .catch(err => res.status(404).json({ nocommentsfound: 'This dream has no comments'}))
+})
+// by id
+// by user
 
 // update
 
 
 // delete
+
+module.exports = router; 
