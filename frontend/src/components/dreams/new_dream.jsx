@@ -10,6 +10,8 @@ class NewDream extends React.Component {
             tags: ['KillingIt', 'Love', 'Teeth'],
         }
         this.handleChange = this.handleChange.bind(this);
+        this.handleTags = this.handleTags.bind(this);
+        this.removeTag = this.removeTag.bind(this);
     }
 
     handleChange(type) {
@@ -22,6 +24,16 @@ class NewDream extends React.Component {
         let newTags = this.state.tags
         newTags.push(e.target.value)
         this.setState({ tags: newTags })
+    }
+
+    removeTag(tag) {
+        debugger;
+        return (e) => {
+            let newTags = this.state.tags
+            let idx = newTags.indexOf(tag)
+            newTags.delete[idx]
+            this.setState({ tags: newTags })
+        }
     }
 
     render() {
@@ -53,7 +65,7 @@ class NewDream extends React.Component {
                     <div className="new-dream-tags" >
                         {this.state.tags.map((tag, idx) => {
                             return (
-                                <div className="new-dream-tags-item-container" >
+                                <div className="new-dream-tags-item-container" onClick={this.removeTag}>
                                     <div className="new-dream-tags-item-circle" ></div>
                                     <p key={idx} className="new-dream-tags-item" >{tag}</p>
                                 </div>

@@ -54,21 +54,22 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-
+        
         .new-dream-tags-header {
             font-family: $sans-serif;
             color: $dark-gray;
             font-size: 16px;
             padding-bottom: 15px;
         }
-
+        
         .new-dream-tags {
             display: flex;
             padding-bottom: 20px;
-
+            
             .new-dream-tags-item-container {
                 padding: 0 7px;
                 position: relative;
+                cursor: pointer;
 
                 .new-dream-tags-item-circle {
                     position: absolute;
