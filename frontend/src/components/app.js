@@ -25,7 +25,7 @@ const App = () => (
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/about" component={AboutPage} />
                 <ProtectedRoute path={`/feed`} component={Feed} />
-                <ProtectedRoute path={`/profile`} component={ProfileContainer} />
+                <ProtectedRoute path={`/users/:userId`} component={ProfileContainer} />
                 <Redirect to="/" />
             </Switch>
         </div>

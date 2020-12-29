@@ -23,6 +23,7 @@ class NavBar extends React.Component {
     render() {
         let dropdown;
         let menu;
+        let { currentUser } = this.props;
 
         if (this.props.loggedIn){
             menu = <div
@@ -35,7 +36,7 @@ class NavBar extends React.Component {
                 dropdown = <div className="menu-items">
                                 {/* <Link to={'/signup'}><p>signup</p></Link>
                                 <Link to={'/login'}><p>login</p></Link> */}
-                                <Link to={"/user/5fea402f69e4673c9345018b"}><p>profile</p></Link>
+                                <Link to={`/users/${currentUser.id}`}><p>profile</p></Link>
                                 <Link to={`/about`}><p>about</p></Link>
                                 <p className="logout" onClick={this.logoutUser} >logout</p>
                             </div>
