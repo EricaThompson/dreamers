@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import '../../css/components/nav_bar.scss';
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -43,6 +42,7 @@ class NavBar extends React.Component {
             }
         } else {
             menu = <div className="session-links">
+                        <Link to={`/about`}><p>about</p></Link>
                         <Link to={'/login'}><p className="session-login-link">login</p></Link>
                         <Link to={'/signup'}><p className="session-signup-link">signup</p></Link>  
                     </div>
