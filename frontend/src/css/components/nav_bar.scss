@@ -22,8 +22,27 @@
             padding-bottom: 30px;
 
             text-decoration: none;
+        }
+
+        .session-links {
+            position: absolute;
+            display: flex;
+            top: 0;
+            right: 0;
+
+            a {
+                padding: 8px;
+                width: 65px;
+                text-align: center;
+                text-decoration: none;
+                font-family: $sans-serif;
+                border: 1px solid $off-white;
+                background-color: $off-white;
+                margin: 15px;
+                border-radius: 4px;
+
+            }
             
-    
         }
 
 
