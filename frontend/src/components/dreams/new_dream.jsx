@@ -10,6 +10,7 @@ class NewDream extends React.Component {
             tags: ['KillingIt', 'Love', 'Teeth'],
         }
         this.handleChange = this.handleChange.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(this);
         // this.handleTags = this.handleTags.bind(this);
         this.removeTag = this.removeTag.bind(this);
     }
@@ -19,6 +20,11 @@ class NewDream extends React.Component {
             this.setState({ [type]: e.currentTarget.value })
         }
     }
+
+    // handleSubmit(e) {
+    //     e.preventDefault();
+    //     this.props.createDream(this.state);
+    // }
 
     // handleTags(e) {
     //     let newTags = this.state.tags
@@ -94,8 +100,11 @@ class NewDream extends React.Component {
                     </form>
                 </div>
                 <div className="create-dream-btn" >
-
-                    <input className="new-dream-btn create-dream-btn" type="submit" value="Create Dream"/>
+                    <input className="new-dream-btn create-dream-btn" 
+                        type="submit" 
+                        value="Create Dream"
+                        // onSubmit={this.handleSubmit} 
+                        />
                 </div>
             </div>
         )
