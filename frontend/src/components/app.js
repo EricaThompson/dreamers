@@ -5,6 +5,7 @@ import "../App.scss";
 import { Route, Switch, Redirect } from 'react-router-dom';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
+import Modal from './modal/modal';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
@@ -13,6 +14,7 @@ const App = () => (
             <NavBarContainer />
         </div>    
         <div className="main-app" >
+            <Modal />
             <Switch>
                 <AuthRoute path={`/login`} component={LoginFormContainer} />
                 <AuthRoute path={`/signup`} component={SignupFormContainer} />
