@@ -76,7 +76,7 @@ router.post('/tags', (req, res) => {
 
 // update
 
-router.post('/update/:dreamId',
+router.patch('/update/:dreamId',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
         const { errors, isValid } = validateUpdateDreamInput(req.body);
