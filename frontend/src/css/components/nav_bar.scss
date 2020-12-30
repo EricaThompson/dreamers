@@ -9,6 +9,7 @@
         display: flex; 
         justify-content: space-between;
         height: 64px;
+        z-index: 10;
 
         .nav-title {
             margin-top: 10px;
