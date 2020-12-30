@@ -27,7 +27,7 @@ export const removeComment = (commentId) => ({
 
 export const fetchCommentById = (commentId) => dispatch => (
     CommentApiUtil.fetchCommentById(commentId)
-    .then(comments => dispatch(receiveNewComment(comments)))
+    .then(comment => dispatch(receiveNewComment(comment)))
     .catch(err => console.error(err))
 )
 
