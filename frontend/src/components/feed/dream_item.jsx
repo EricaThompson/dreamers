@@ -11,7 +11,7 @@ const DreamItem = ({ dream, openModal }) => {
                     <p className="feed-dreams-info" >username</p>
                     <p className="feed-dreams-info" >{dream.text}</p>
                     <div className="feed-dreams-footer" >
-                        <p className="feed-dreams-footer-info" >3 <span onClick={() => openModal('comment')} className="feed-dreams-footer-comments" >comments</span></p>
+                        <p className="feed-dreams-footer-info" >3 <span onClick={() => openModal('commentDream')} className="feed-dreams-footer-comments" >comments</span></p>
                         <p className="feed-dreams-footer-info" >3 <span className="feed-dreams-footer-likes" >likes</span></p>
                     </div>
                 </Link>

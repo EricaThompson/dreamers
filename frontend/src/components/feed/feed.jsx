@@ -8,12 +8,13 @@ class Feed extends React.Component {
         super(props);
         this.state = {
             searchValue: '',
+            selected: 'feed'
         }
         this.handleChange = this.handleChange.bind(this);
+        this.handleSelected = this.handleSelected.bind(this);
     }
 
     componentDidMount() {
-        // debugger;
         this.props.fetchDreams();
     }
 
@@ -21,17 +22,39 @@ class Feed extends React.Component {
         this.setState({ searchValue: e.target.value })
     }
 
+    handleSelected(type) {
+        return (e) => {
+            this.setState({ selected: type })
+        }
+    }
+
     render() {
         let { openModal, dreams } = this.props;
         if ( dreams.length === 0 ) return null;
 
-        let feed = Object.values(dreams).map((dream, idx) => {
-            if (dream.type === "dream" ) {
-                return <DreamItem key={idx} dream={dream} openModal={openModal} />
-            } else {
-                return <GoalItem key={idx} dream={dream} openModal={openModal} />
-            }
-        })
+        let feed; 
+        
+        if (this.state.selected === "feed") {
+            feed = Object.values(dreams).map((dream, idx) => {
+                if (dream.type === "dream" ) {
+                    return <DreamItem key={idx} dream={dream} openModal={openModal} />
+                } else {
+                    return <GoalItem key={idx} dream={dream} openModal={openModal} />
+                }
+            })
+        } else if (this.state.selected === "dreams") {
+            feed = Object.values(dreams).map((dream, idx) => {
+                if (dream.type === "dream") {
+                    return <DreamItem key={idx} dream={dream} openModal={openModal} />
+                }
+            })
+        } else if (this.state.selected === "goals") {
+            feed = Object.values(dreams).map((dream, idx) => {
+                if (dream.type === "goal") {
+                    return <GoalItem key={idx} dream={dream} openModal={openModal} />
+                }
+            })
+        }
 
         return (
             <div className="feed-outer-container" >
@@ -48,9 +71,15 @@ class Feed extends React.Component {
                     </div>
                     <div className="feed-index-container" >
                         <div className="feed-header-container">
-                            <h1 className="feed-header feed-header-feed" >Feed</h1>
-                            <h1 className="feed-header feed-header-dreams" >Dreams</h1>
-                            <h1 className="feed-header feed-header-goals" >Goals</h1>
+                            <h1 className={this.state.selected === 'feed' ? "feed-header feed-header-selected" : "feed-header"} 
+                                onClick={this.handleSelected('feed')}
+                            >Feed</h1>
+                            <h1 className={this.state.selected === 'dreams' ? "feed-header feed-header-selected" : "feed-header"} 
+                                onClick={this.handleSelected('dreams')}
+                            >Dreams</h1>
+                            <h1 className={this.state.selected === 'goals' ? "feed-header feed-header-selected" : "feed-header"} 
+                                onClick={this.handleSelected('goals')}
+                            >Goals</h1>
                         </div>
                     </div>
                 </div>
