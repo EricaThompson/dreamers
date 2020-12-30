@@ -21,23 +21,23 @@ class NewDream extends React.Component {
         }
     }
 
-    // handleSubmit(e) {
-    //     e.preventDefault();
-    //     let newDream = {
-    //         user: this.props.currentUser,
-    //         type: this.state.selectedOption,
-    //         text: this.state.dreamText,
-    //         tags: this.state.tags
-    //     }
-    //     debugger;
-    //     this.props.createDream(newDream);
-    // }
+    handleSubmit(e) {
+        e.preventDefault();
+        let newDream = {
+            user: this.props.currentUser,
+            type: this.state.selectedOption,
+            text: this.state.dreamText,
+            tags: this.state.tags
+        }
+        debugger;
+        this.props.createDream(newDream);
+    }
 
-    // handleTags(e) {
-    //     let newTags = this.state.tags
-    //     newTags.push(e.target.value)
-    //     this.setState({ tags: newTags })
-    // }
+    handleTags(e) {
+        let newTags = this.state.tags
+        newTags.push(e.target.value)
+        this.setState({ tags: newTags })
+    }
 
     removeTag(tag) {
         return (e) => {
@@ -110,7 +110,7 @@ class NewDream extends React.Component {
                     <input className="new-dream-btn" 
                         type="submit" 
                         value="Create Dream"
-                        // onClick={this.handleSubmit} 
+                        onClick={this.handleSubmit} 
                         />
                 </div>
             </div>

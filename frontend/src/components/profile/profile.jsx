@@ -11,8 +11,13 @@ class Profile extends React.Component {
             selected: 'feed',
             userDreams: null,
             currentUser: this.props.currentUser,
+            //!temporary
             thisUser: {
-                id: 2385280, username: 'tester', location: 'the cloud', age: 100, bio: 'Here are a few things about me. Here are a few things about me. Here are a few things about me.'}
+                id: 2385280, 
+                username: 'tester', 
+                location: 'the cloud', 
+                age: 100, 
+                bio: 'Here are a few things about me. Here are a few things about me. Here are a few things about me.'}
         }
         // this.handleChange = this.handleChange.bind(this);
         // this.handleSelected = this.handleSelected.bind(this);
@@ -42,10 +47,20 @@ class Profile extends React.Component {
         console.log('dreams state', this.props.dreams)
         console.log('state dreams', this.state.userDreams)
 
-        let edit;
+        let editBtn;
+        let followBtn;
+        //! change this when we get getUserById action
         if (this.state.thisUser.id === this.state.currentUser.id){
-            edit = <button className="profile-edit-button">
+            editBtn = <button className="profile-edit-button">
                         edit profile
+                    </button>
+            
+        } else {
+            followBtn = <button
+                        className="new-dream-btn"
+                        // onClick={() => openModal('newDream')} 
+                    >
+                        Follow
                     </button>
         }
 
@@ -59,31 +74,20 @@ class Profile extends React.Component {
                         <i className="fas fa-cloud"></i>
                     </div>
                     <div className='user-info'>
-                        {edit}
+                        {editBtn}
                         <button
                             className="new-dream-btn"
                             onClick={() => openModal('newDream')} 
                         >
                             Create new dream
                         </button>
-                        {/* <button
-                            className="new-dream-btn"
-                            // onClick={() => openModal('newDream')} 
-                        >
-                            Edit Profile
-                        </button> */}
                         <div className="username">@{this.state.thisUser.username}</div>
                         <div>Location: {this.state.thisUser.location}</div>
                         <div className="age">Age: {this.state.thisUser.age}</div>
                         <div className="about">
                             {this.state.thisUser.bio}
                         </div>
-                        <button
-                            className="new-dream-btn"
-                            // onClick={() => openModal('newDream')} 
-                        >
-                            Follow
-                        </button>
+                        {followBtn}
                     </div>
                 </div>
                 <div className="profile-dream-feed">
