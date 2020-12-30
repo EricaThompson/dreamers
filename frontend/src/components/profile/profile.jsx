@@ -1,3 +1,4 @@
+import { set } from 'mongoose';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Feed from '../feed/feed';
@@ -8,7 +9,10 @@ class Profile extends React.Component {
         this.state = {
             searchValue: '',
             selected: 'feed',
-            userDreams: null
+            userDreams: null,
+            currentUser: this.props.currentUser,
+            thisUser: {
+                id: 2385280, username: 'tester', location: 'the cloud', age: 100, bio: 'Here are a few things about me. Here are a few things about me. Here are a few things about me.'}
         }
         // this.handleChange = this.handleChange.bind(this);
         // this.handleSelected = this.handleSelected.bind(this);
@@ -17,7 +21,9 @@ class Profile extends React.Component {
     componentDidMount() {
         // this.props.fetchDreamsByUser(this.props.match.params.userId)
         this.props.fetchDreams()
-        console.log('profile state',this.props.dreams)
+            .then(res => this.setState({userDreams: Object.values(res)[1].data}))
+        console.log('props dreams',this.props.dreams)
+        console.log('state dreams', this.state.userDreams)
             // .then(res => this.setState({userDreams: res}))
     }
 
@@ -34,16 +40,26 @@ class Profile extends React.Component {
     render() {
         console.log('match params id',this.props.match.params.userId)
         console.log('dreams state', this.props.dreams)
+        console.log('state dreams', this.state.userDreams)
+
+        let edit;
+        if (this.state.thisUser.id === this.state.currentUser.id){
+            edit = <button className="profile-edit-button">
+                        edit profile
+                    </button>
+        }
 
         let { openModal } = this.props;
         // if (this.state.userDreams.length === 0) return null;
         return (
             <div className="profile-container">
                 <div className="profile">
+                    
                     <div className='profile-pic'>
                         <i className="fas fa-cloud"></i>
                     </div>
                     <div className='user-info'>
+                        {edit}
                         <button
                             className="new-dream-btn"
                             onClick={() => openModal('newDream')} 
@@ -56,12 +72,11 @@ class Profile extends React.Component {
                         >
                             Edit Profile
                         </button> */}
-                        <div className="username">Username</div>
-                        <div className="age">Age: 100</div>
+                        <div className="username">@{this.state.thisUser.username}</div>
+                        <div>Location: {this.state.thisUser.location}</div>
+                        <div className="age">Age: {this.state.thisUser.age}</div>
                         <div className="about">
-                            Here are a few things about me.
-                            Here are a few things about me.
-                            Here are a few things about me.
+                            {this.state.thisUser.bio}
                         </div>
                         <button
                             className="new-dream-btn"

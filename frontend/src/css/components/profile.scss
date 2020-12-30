@@ -7,7 +7,7 @@
     font-family: $sans-serif;
     // display: flex;
     text-align: center;
-    background-color: $off-white-opaque;
+    // background-color: $off-white-opaque;
     padding: 20px;
     width: 91vw;
     // height: 1900px;
@@ -34,6 +34,7 @@
         padding: 20px;
         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
         z-index: 100;
+        font-size: 14px;
         
         .fa-cloud {
             font-size: 12vw;
