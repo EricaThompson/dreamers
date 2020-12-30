@@ -20,6 +20,7 @@ router.post('/',
 
         const newDream = new Dream({
             userId: req.user.id,
+            username: req.user.username,
             text: req.body.text,
             tags: req.body.tags,
             type: req.body.type
