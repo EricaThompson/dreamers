@@ -14,7 +14,7 @@ module.exports = function validateCreateDreamInput(data) {
     errors.text = 'Text field is required';
   }
 
-  if (data.tags && data.tags.length > 10) {
+  if (data.tags && data.tags.length > 3) {
     errors.tags = 'Only 10 tags are allowed'
   }
 
