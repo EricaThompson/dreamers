@@ -3,6 +3,7 @@ import * as CommentApiUtil from '../util/comment_api_util';
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
 export const REMOVE_COMMENT = "REMOVE_COMMENT";
+export const CLEAR_COMMENTS = "CLEAR_COMMENTS";
 
 export const receiveComments = (comments) => ({
     type: RECEIVE_COMMENTS, 
@@ -17,6 +18,10 @@ export const receiveComment = (comment) => ({
 export const removeComment = (commentId) => ({
     type: REMOVE_COMMENT, 
     commentId
+})
+
+export const clearComments = () => ({
+    type: CLEAR_COMMENTS,
 })
 
 export const fetchCommentById = (commentId) => dispatch => (

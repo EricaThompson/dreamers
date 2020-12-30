@@ -1,7 +1,8 @@
 import {
     RECEIVE_COMMENTS, 
     RECEIVE_COMMENT, 
-    REMOVE_COMMENT
+    REMOVE_COMMENT,
+    CLEAR_COMMENTS
 } from '../actions/comment_actions';
 
 const CommentReducer = (oldState = {} , action) => {
@@ -19,6 +20,7 @@ const CommentReducer = (oldState = {} , action) => {
         case REMOVE_COMMENT:
             delete newState[action.commentId]
             return newState;
+        case CLEAR_COMMENTS:
         default:
             return oldState; 
     }
