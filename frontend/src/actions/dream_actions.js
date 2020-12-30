@@ -41,7 +41,7 @@ export const fetchDreamsByUser = userId => dispatch => (
 
 export const fetchDreamById = dreamId => dispatch => (
     DreamApiUtils.fetchDreamById(dreamId)
-    .then(dreams => dispatch(receiveNewDream(dreams)))
+    .then(dream => dispatch(receiveNewDream(dream)))
     .catch(err => console.error(err))
 )
 
