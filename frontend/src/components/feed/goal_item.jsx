@@ -27,7 +27,7 @@ const GoalItem = ({ dream, openModal }) => {
                     </p>
                     <p className="feed-goals-info" >{dream.text}</p>
                     <div className="feed-goals-footer" >
-                        <p className="feed-goals-footer-info" >3 <span onClick={() => openModal('comment')} className="feed-goals-footer-comments" >comments</span></p>
+                        <p className="feed-goals-footer-info" >3 <span onClick={() => openModal('commentGoal')} className="feed-goals-footer-comments" >comments</span></p>
                         <p className="feed-goals-footer-info" >3 <span className="feed-goals-footer-likes" >likes</span></p>
                     </div>
                 </Link>

@@ -2,7 +2,7 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import NewDreamContainer from '../dreams/new_dream_container';
-import CommentModal from '../feed/comment_modal';
+import CommentGoalModal from '../feed/comment_modal_goal';
 import CommentDreamModal from '../feed/comment_modal_dream';
 
 const Modal = ({ modal, closeModal }) => {
@@ -14,8 +14,8 @@ const Modal = ({ modal, closeModal }) => {
         case 'newDream':
             component = <NewDreamContainer />;
             break;
-        case 'comment':
-            component = <CommentModal />;
+        case 'commentGoal':
+            component = <CommentGoalModal />;
             break;
         case 'commentDream':
             component = <CommentDreamModal />;
