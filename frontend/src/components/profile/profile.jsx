@@ -27,7 +27,7 @@ class Profile extends React.Component {
                             Edit Profile
                         </button> */}
                         <div className="username">Username</div>
-                        <div className="age">100</div>
+                        <div className="age">Age: 100</div>
                         <div className="about">
                             Here are a few things about me.
                             Here are a few things about me.
@@ -47,13 +47,13 @@ class Profile extends React.Component {
                     <div>Dream</div>
                     <div>Dream</div>
                     <div>Dream</div>
-                    {/* <div>Dream</div>
                     <div>Dream</div>
                     <div>Dream</div>
                     <div>Dream</div>
                     <div>Dream</div>
                     <div>Dream</div>
-                    <div>Dream</div> */}
+                    <div>Dream</div>
+                    <div>Dream</div>
                 </div>
                 
             </div>
