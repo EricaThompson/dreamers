@@ -1,60 +1,85 @@
-.feed-container {
-    width: 80%;
+.feed-outer-container {
+    width: 100%;
     height: 80%;
     background-color: transparent;
-    padding: 20px;
     box-sizing: border-box;
 
-    .feed-search-container {
+    .feed-container {
         display: flex;
-        border: 2px solid $dark-gray;
-        border-radius: 20px;
-        padding: 10px;
-        background-color: $off-white;
-
-        .feed-search-icon {
-            font-size: 15px;
-            padding: 2px 5px 0;
-            color: $dark-gray;
-        }
-
-        .feed-search-form {
-            width: 100%;
-
-            .feed-search-input {
-                font-family: $sans-serif;
-                font-size: 15px;
-                width: 100%;
-                color: $dark-gray;
-                padding-top: 2px;
-            }
-        }
-    }
-
-    .feed-search-container:focus-within {
-        border: 2px solid $magenta;
-    }
-
-    .feed-index-container {
-        padding: 15px 0;
-
-        .feed-header-container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        
+        .feed-search-container {
             display: flex;
-            justify-content: space-around;
-            padding-bottom: 10px;
-            border-bottom: 1px solid $off-white-opaque;
-            box-shadow: 0px 5px 5px -5px $off-white;
-
-            .feed-header {
-                font-family: $sans-serif;
-                font-size: 20px;
-                color: $off-white;
+            border: 2px solid $dark-gray;
+            border-radius: 20px;
+            padding: 10px;
+            background-color: $off-white;
+            width: 80%;
+    
+            .feed-search-icon {
+                font-size: 15px;
+                padding: 2px 5px 0;
+                color: $dark-gray;
+            }
+    
+            .feed-search-form {
+                width: 100%;
+    
+                .feed-search-input {
+                    font-family: $sans-serif;
+                    font-size: 15px;
+                    width: 100%;
+                    color: $dark-gray;
+                    padding-top: 2px;
+                }
             }
         }
+    
+        .feed-search-container:focus-within {
+            border: 2px solid $magenta;
+        }
+    
+        .feed-index-container {
+            padding-top: 15px;
+            padding-bottom: 2px;
+            width: 80%;
 
-        .feed-dreams-outer-container {
+            .feed-header-container {
+                display: flex;
+                justify-content: space-around;
+                border-bottom: 1px solid $off-white-opaque;
+                box-shadow: 0px 5px 10px -5px $off-white;
+                background-color: $off-white-opaque;
+                
+                .feed-header {
+                    font-family: $sans-serif;
+                    font-size: 20px;
+                    color: $off-white;
+                    padding: 10px 0;
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        }
+    }
 
-            .feed-dreams-container {
+    .feed-dreams-outer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: scroll;
+        overflow-x: hidden;
+        width: 100%;
+        height: 100%;
+        padding: 0px 20px 100px;
+
+        .feed-dreams-container {
+            width: 90%;
+
+
+            .feed-dreams-wrapper {
                 padding-top: 20px;
 
                 .feed-dreams {
@@ -118,7 +143,11 @@
                         }
                     }
                 }
-    
+            }
+
+            .feed-goals-wrapper {
+                padding-top: 20px;
+
                 .feed-goals {
                     padding: 10px;
                     border: 2px solid $off-white;
@@ -155,6 +184,216 @@
                         }
                     }
                 }
+            }
+
+        }
+    }
+
+    .feed-dreams-outer-container::-webkit-scrollbar { 
+        display: none;  /* Safari and Chrome */
+    }
+
+}
+
+@media (min-width: 800px) {
+
+    .feed-outer-container {
+
+
+        .feed-container {
+            
+            .feed-search-container {
+                width: 50%;
+
+        
+                // .feed-search-icon {
+
+                // }
+        
+                // .feed-search-form {
+        
+                //     .feed-search-input {
+                //     }
+                // }
+            }
+        
+            // .feed-search-container:focus-within {
+            // }
+        
+            .feed-index-container {
+                display: flex;
+                justify-content: center;
+
+                .feed-header-container {
+                    width: 70%;
+                    
+                    // .feed-header {
+                    // }
+                }
+            }
+        }
+
+        .feed-dreams-outer-container {
+
+            .feed-dreams-container {
+                width: 70%;
+
+
+                // .feed-dreams-wrapper {
+
+                //     .feed-dreams {
+
+                //         .feed-dreams-circle-big {
+                //         }
+
+                //         .feed-dreams-circle-small {
+                //         }
+
+                        
+                //         .feed-dreams-info {
+                //         }
+
+                //         .feed-dreams-footer {
+
+                //             .feed-dreams-footer-info {
+
+                //                 .feed-dreams-footer-comments,
+                //                 .feed-dreams-footer-likes {
+                //                 }
+
+                //                 .feed-dreams-footer-comments:hover,
+                //                 .feed-dreams-footer-likes:hover {
+                //                 }
+                //             }
+                //         }
+                //     }
+                // }
+
+                // .feed-goals-wrapper {
+
+                //     .feed-goals {
+                        
+                //         .feed-goals-info {
+                //         }
+
+                //         .feed-goals-footer {
+
+                //             .feed-goals-footer-info {
+
+                //                 .feed-goals-footer-comments,
+                //                 .feed-goals-footer-likes {
+                //                 }
+
+                //                 .feed-goals-footer-comments:hover,
+                //                 .feed-goals-footer-likes:hover {
+                //                 }
+                //             }
+                //         }
+                //     }
+                // }
+
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .feed-outer-container {
+
+
+        .feed-container {
+            
+            .feed-search-container {
+                width: 40%;
+
+        
+                // .feed-search-icon {
+
+                // }
+        
+                // .feed-search-form {
+        
+                //     .feed-search-input {
+                //     }
+                // }
+            }
+        
+            // .feed-search-container:focus-within {
+            // }
+        
+            .feed-index-container {
+                display: flex;
+                justify-content: center;
+
+                .feed-header-container {
+                    width: 60%;
+                    
+                    // .feed-header {
+                    // }
+                }
+            }
+        }
+
+        .feed-dreams-outer-container {
+
+            .feed-dreams-container {
+                width: 60%;
+
+
+                // .feed-dreams-wrapper {
+
+                    // .feed-dreams {
+
+                        // .feed-dreams-circle-big {
+                        // }
+
+                        // .feed-dreams-circle-small {
+                        // }
+
+                        
+                        // .feed-dreams-info {
+                        // }
+
+                        // .feed-dreams-footer {
+
+                        //     .feed-dreams-footer-info {
+
+                        //         .feed-dreams-footer-comments,
+                        //         .feed-dreams-footer-likes {
+                        //         }
+
+                        //         .feed-dreams-footer-comments:hover,
+                        //         .feed-dreams-footer-likes:hover {
+                        //         }
+                        //     }
+                        // }
+                    // }
+                // }
+
+                // .feed-goals-wrapper {
+
+                //     .feed-goals {
+                        
+                //         .feed-goals-info {
+                //         }
+
+                //         .feed-goals-footer {
+
+                //             .feed-goals-footer-info {
+
+                //                 .feed-goals-footer-comments,
+                //                 .feed-goals-footer-likes {
+                //                 }
+
+                //                 .feed-goals-footer-comments:hover,
+                //                 .feed-goals-footer-likes:hover {
+                //                 }
+                //             }
+                //         }
+                //     }
+                // }
+
             }
         }
     }

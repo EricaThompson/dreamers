@@ -16,6 +16,7 @@ const DreamReducer = (oldState = {all: {}, user: {}, new: undefined}, action) =>
             return newState;
         case RECEIVE_NEW_DREAM:
             newState[action.dream.id] = action.dream
+            return newState;
         case REMOVE_DREAMS:
             delete newState[action.dreamId]
             return newState; 
