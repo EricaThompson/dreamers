@@ -12,7 +12,7 @@ const DreamItem = ({ dream, openModal }) => {
                         <div className="new-dream-tags" >
                             {dream.tags.map((tag, idx) => {
                                 return (
-                                    <Link to="/feed" key={idx} style={{ textDecoration: 'none' }} >
+                                    <Link to={`/tags/${tag}`} key={idx} style={{ textDecoration: 'none' }} >
                                         <div className="new-dream-tags-item-container"                                     >
                                             <div className="new-dream-tags-item-circle" ></div>
                                             <p  className="new-dream-tags-item" >{tag}</p>
