@@ -1,21 +1,20 @@
 import {
-    RECEIVE_ALL_COMMENTS, 
-    RECEIVE_USER_COMMENTS, 
-    RECEIVE_NEW_COMMENT, 
+    RECEIVE_COMMENTS, 
+    RECEIVE_COMMENT, 
     REMOVE_COMMENT
 } from '../actions/comment_actions';
 
-const CommentReducer = (oldState = { all: {}, user: {}, new: undefined }, action) => {
+const CommentReducer = (oldState = {} , action) => {
     Object.freeze(oldState)
     let newState = Object.assign({}, oldState); 
     switch (action.type) {
-        case RECEIVE_ALL_COMMENTS:
-            return action.comments; 
-        case RECEIVE_USER_COMMENTS:
-            newState[action.user.id] = action.user
-            return newState; 
-        case RECEIVE_NEW_COMMENT:
-            newState[action.comment.id] = action.comment
+        case RECEIVE_COMMENTS:
+            action.comments.forEach(comment => {
+                newState[comment._id] = comment
+            })
+            return newState;
+        case RECEIVE_COMMENT:
+            newState[action.comment._id] = action.comment
             return newState;
         case REMOVE_COMMENT:
             delete newState[action.commentId]
