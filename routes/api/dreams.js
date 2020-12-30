@@ -20,6 +20,7 @@ router.post('/',
 
         const newDream = new Dream({
             userId: req.user.id,
+            username: req.user.username,
             text: req.body.text,
             tags: req.body.tags,
             type: req.body.type
@@ -35,14 +36,14 @@ router.get('/', (req, res) => {
     Dream.find()
         .sort({ date: -1})
         .then(dreams => res.json(dreams))
-        .catch(err => res.status(400).json({ nodreamsfound: 'No dreams found'}));
+        .catch(err => res.status(404).json({ nodreamsfound: 'No dreams found'}));
 })
 
 router.get('/type/:type', (req, res) => {
     Dream.find({ type: req.params.type })
         .sort({ date: -1 })
         .then(dreams => res.json(dreams))
-        .catch(err => res.status(400).json({ nodreamsfound: 'No dreams found of that type'}));
+        .catch(err => res.status(404).json({ nodreamsfound: 'No dreams found of that type'}));
 })
 
 router.get('/user/:userId', (req, res) => {
@@ -69,14 +70,14 @@ router.post('/tags', (req, res) => {
         .sort({ date: -1 })
         .then(dreams => res.json(dreams))
         .catch(err =>
-            res.status(400).json({ nodreamsfound: 'No dreams found with all of the specified tags'}
+            res.status(404).json({ nodreamsfound: 'No dreams found with all of the specified tags'}
         )
     );
 })
 
 // update
 
-router.post('/update/:dreamId',
+router.patch('/:dreamId',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
         const { errors, isValid } = validateUpdateDreamInput(req.body);
@@ -128,6 +129,7 @@ router.delete('/:dreamId',
                     })
                 }
             })
+            .catch(err => res.status(400).json(err));
     }
 )
 

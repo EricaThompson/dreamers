@@ -9,6 +9,7 @@ const path = require('path');
 const users = require('./routes/api/users');
 const goals = require('./routes/api/goals');
 const dreams = require('./routes/api/dreams');
+const comments = require('./routes/api/comments');
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));
@@ -37,6 +38,7 @@ app.use(bodyParser.json());
 app.use('/api/users', users);
 app.use('/api/goals', goals);
 app.use('/api/dreams', dreams);
+app.use('/api/comments', comments);
 
 const port = process.env.PORT || 5000; 
 

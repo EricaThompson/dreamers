@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const DreamSchema = new Schema({
+const CommentSchema = new Schema({
   userId: {
     type: Schema.Types.ObjectId,
     ref: 'users'
@@ -10,14 +10,11 @@ const DreamSchema = new Schema({
     type: String,
     required: true
   },
-  text: {
-    type: String,
-    required: true
+  dreamId: {
+    type: Schema.Types.ObjectId,
+    ref: 'dreams'
   },
-  tags: [
-    { type: String }
-  ],
-  type: {
+  comment: {
     type: String,
     required: true
   },
@@ -29,4 +26,4 @@ const DreamSchema = new Schema({
   timestamps: true
 })
 
-module.exports = Dream = mongoose.model('Dream', DreamSchema);
+module.exports = Comment = mongoose.model('Comment', CommentSchema);
