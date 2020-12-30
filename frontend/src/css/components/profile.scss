@@ -1,0 +1,62 @@
+.profile-container {
+    font-family: $sans-serif;
+    // display: flex;
+    text-align: center;
+    background-color: $off-white-opaque;
+    padding: 20px;
+    width: 550px;
+    // height: 1900px;
+    // position: relative;
+    
+
+
+    
+
+    .profile {
+        display: flex;
+        // position: fixed;
+        // top: 200px;
+        justify-content: space-between;
+        border: 1px solid blue;
+        align-items: center;
+        background-color: $off-white-opaque;
+        padding: 20px;
+        
+        .fa-cloud {
+            font-size: 15vw;
+            text-align: center;
+            justify-self: center;
+            // padding-right: 16px;
+            // margin: 50%;
+        }
+
+        .user-info {
+            width: 255px;
+            text-align: left;
+            // border-left: 1px solid $dark-gray;
+            // padding-left: 16px;
+            // margin-left: 16px;
+            
+            div {
+                padding: 8px;
+            }
+        }
+    }
+
+    .profile-dream-feed {
+        margin-top: 25px;
+        // overflow-y: scroll;
+        // display: absolute;
+        // overflow-y: scroll;
+
+        div {
+            border: 1px solid $dark-gray;
+            padding: 10px;
+            margin-bottom: 10px;
+            height: 150px;
+        }
+
+    }
+    
+
+}
