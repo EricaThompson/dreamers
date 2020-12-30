@@ -11,6 +11,14 @@ class NavBar extends React.Component {
         this.logoutUser = this.logoutUser.bind(this);
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.location.pathname !== prevProps.location.pathname && this.state.showDropdown) {
+            this.setState({ showDropdown: false })
+        } else if (this.props.isModalOpen && this.state.showDropdown) {
+            this.setState({ showDropdown: false })
+        }
+    }
+
     logoutUser(e) {
         e.preventDefault();
         this.props.logout();
@@ -52,7 +60,7 @@ class NavBar extends React.Component {
         return (
             <div className="nav-bar">
                 <div className="logo">
-                    <Link to="/feed" style={{ textDecoration: 'none' }} > <h1 className="nav-title">DREAMERS</h1></Link>
+                    <Link to="/feed" style={{ textDecoration: 'none' }} > <h1 className="nav-title">{this.props.location.pathname === "/" ? "" : "DREAMERS"}</h1></Link>
                 </div>
                 {menu}
                 {dropdown}
