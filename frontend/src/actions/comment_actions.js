@@ -50,7 +50,7 @@ export const createComment = (dreamId, comment) => dispatch => (
 
 export const updateComment = (commentId, updatedFields) => dispatch => (
     CommentApiUtil.updateComment(commentId, updatedFields)
-    .then(commentId => dispatch(receiveComment(commentId)))
+    .then(comment => dispatch(receiveComment(comment)))
     .catch(err => console.error(err))
 )
 
