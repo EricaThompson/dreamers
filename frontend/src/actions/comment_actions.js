@@ -26,35 +26,35 @@ export const clearComments = () => ({
 
 export const fetchCommentById = (commentId) => dispatch => (
     CommentApiUtil.fetchCommentById(commentId)
-    .then(comment => dispatch(receiveComment(comment)))
+    .then(comment => dispatch(receiveComment(comment.data)))
     .catch(err => console.error(err))
 )
 
 export const fetchCommentsByDream = (dreamId) => dispatch => (
     CommentApiUtil.fetchCommentsByDream(dreamId)
-    .then(comments => dispatch(receiveComments(comments)))
+    .then(comments => dispatch(receiveComments(comments.data)))
     .catch(err => console.error(err))
 )
 
 export const fetchCommentsByUser = (userId) => dispatch => (
     CommentApiUtil.fetchCommentsByUser(userId)
-    .then(comments => dispatch(receiveComments(comments)))
+    .then(comments => dispatch(receiveComments(comments.data)))
     .catch(err => console.error(err))
 )
 
 export const createComment = (dreamId, comment) => dispatch => (
     CommentApiUtil.createComment(dreamId, comment)
-    .then(comment => dispatch(receiveComment(comment)))
+    .then(comment => dispatch(receiveComment(comment.data)))
     .catch(err => console.error(err))
 )
 
 export const updateComment = (commentId, updatedFields) => dispatch => (
     CommentApiUtil.updateComment(commentId, updatedFields)
-    .then(comment => dispatch(receiveComment(comment)))
+    .then(comment => dispatch(receiveComment(comment.data)))
     .catch(err => console.error(err))
 )
 
 export const deleteComment = (commentId) => dispatch => (
     CommentApiUtil.deleteComment(commentId)
-    .then(() => dispatch(removeComment(commentId)))
+    .then(() => dispatch(removeComment(commentId.data)))
 )
