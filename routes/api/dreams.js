@@ -34,7 +34,7 @@ router.post('/',
 
 router.get('/', (req, res) => {
     Dream.find()
-        .sort({ date: -1})
+        .sort({date: -1})
         .then(dreams => res.json(dreams))
         .catch(err => res.status(404).json({ nodreamsfound: 'No dreams found'}));
 })
