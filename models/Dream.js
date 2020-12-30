@@ -6,6 +6,10 @@ const DreamSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'users'
   },
+  username: {
+    type: String,
+    required: true
+  },
   text: {
     type: String,
     required: true

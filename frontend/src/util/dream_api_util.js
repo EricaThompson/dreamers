@@ -25,7 +25,7 @@ export const fetchDreamsByTags = tags => (
 )
 
 export const updateDream = (dreamId, updatedFields) => (
-  axios.post(`/api/dreams/update/${dreamId}`, updatedFields)
+  axios.patch(`/api/dreams/${dreamId}`, updatedFields)
 )
 
 export const deleteDream = dreamId => (
