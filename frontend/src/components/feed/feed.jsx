@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import DreamItem from './dream_item';
 import GoalItem from './goal_item';
 
@@ -8,15 +8,21 @@ class Feed extends React.Component {
         super(props);
         this.state = {
             searchValue: '',
-            selected: 'feed'
+            selected: 'feed',
+            dreams: null
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSelected = this.handleSelected.bind(this);
     }
 
-    componentDidMount() {
-        this.props.fetchDreams();
-    }
+    // componentDidMount() {
+    //     this.props.fetchDreams();
+    // }
+
+    // componentWillReceiveProps(nextProps){
+    //     nextProps.fetchDreamsByUser(nextProps.userId)
+    //         .then(res => this.setState({dreams: res}))
+    // }
 
     handleChange(e) {
         this.setState({ searchValue: e.target.value })
@@ -30,7 +36,7 @@ class Feed extends React.Component {
 
     render() {
         let { openModal, dreams } = this.props;
-        if ( dreams.length === 0 ) return null;
+        if ( dreams.length === 0 ) console.log("nothing here");
 
         let feed; 
         

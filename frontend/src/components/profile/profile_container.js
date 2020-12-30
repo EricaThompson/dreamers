@@ -1,14 +1,19 @@
 import Profile from './profile';
 import { connect } from 'react-redux';
 import { openModal, closeModal } from '../../actions/modal_actions';
+import { fetchDreamsByUser, fetchDreams } from '../../actions/dream_actions';
+
 
 const mapSTP = state => ({
-
+    currentUser: state.session.user,
+    dreams: Object.values(state.dream)[0],
 })
 
 const mapDTP = dispatch => ({
     openModal: (modal) => dispatch(openModal(modal)),
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    fetchDreams: () => dispatch(fetchDreams()),
+    fetchDreamsByUser: (userId) => dispatch(fetchDreamsByUser(userId)),
 })
 
 export default connect(mapSTP, mapDTP)(Profile);

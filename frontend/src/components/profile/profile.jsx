@@ -1,12 +1,42 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+import Feed from '../feed/feed';
 
 class Profile extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            searchValue: '',
+            selected: 'feed',
+            userDreams: null
+        }
+        // this.handleChange = this.handleChange.bind(this);
+        // this.handleSelected = this.handleSelected.bind(this);
+    }
+
+    componentDidMount() {
+        // this.props.fetchDreamsByUser(this.props.match.params.userId)
+        this.props.fetchDreams()
+        console.log('profile state',this.props.dreams)
+            // .then(res => this.setState({userDreams: res}))
+    }
+
+    // handleChange(e) {
+    //     this.setState({ searchValue: e.target.value })
+    // }
+
+    handleSelected(type) {
+        return (e) => {
+            this.setState({ selected: type })
+        }
     }
 
     render() {
+        console.log('match params id',this.props.match.params.userId)
+        console.log('dreams state', this.props.dreams)
+
         let { openModal } = this.props;
+        // if (this.state.userDreams.length === 0) return null;
         return (
             <div className="profile-container">
                 <div className="profile">
@@ -42,6 +72,27 @@ class Profile extends React.Component {
                     </div>
                 </div>
                 <div className="profile-dream-feed">
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <Feed 
+                        userId={this.props.match.params.userId}
+                        dreams={this.props.dreams}
+                        openModal = {this.props.openModal}
+                        fetchDreamsByUser = {this.props.fetchDreamsByUser}
+                    />
+                    {/* <div>Dream</div>
                     <div>Dream</div>
                     <div>Dream</div>
                     <div>Dream</div>
@@ -52,8 +103,7 @@ class Profile extends React.Component {
                     <div>Dream</div>
                     <div>Dream</div>
                     <div>Dream</div>
-                    <div>Dream</div>
-                    <div>Dream</div>
+                    <div>Dream</div> */}
                 </div>
                 
             </div>
@@ -61,4 +111,4 @@ class Profile extends React.Component {
     }
 }
 
-export default Profile;
+export default withRouter(Profile);

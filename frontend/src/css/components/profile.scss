@@ -33,7 +33,7 @@
         background-color: $off-white;
         padding: 20px;
         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-        
+        z-index: 100;
         
         .fa-cloud {
             font-size: 12vw;
@@ -104,21 +104,21 @@
         }
     }
 
-    .profile-dream-feed {
-        margin-top: 300px;
+    // .profile-dream-feed {
+    //     margin-top: 300px;
         
-        // overflow-y: scroll;
-        // display: absolute;
-        // overflow-y: scroll;
+    //     // overflow-y: scroll;
+    //     // display: absolute;
+    //     // overflow-y: scroll;
 
-        div {
-            border: 1px solid $dark-gray;
-            padding: 10px;
-            margin-bottom: 10px;
-            height: 150px;
-        }
+    //     div {
+    //         border: 1px solid $dark-gray;
+    //         padding: 10px;
+    //         margin-bottom: 10px;
+    //         height: 150px;
+    //     }
 
-    }
+    // }
     
 
 }
