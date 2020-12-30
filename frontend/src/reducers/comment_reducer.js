@@ -21,6 +21,7 @@ const CommentReducer = (oldState = {} , action) => {
             delete newState[action.commentId]
             return newState;
         case CLEAR_COMMENTS:
+            return {};
         default:
             return oldState; 
     }
