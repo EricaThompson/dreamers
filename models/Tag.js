@@ -6,6 +6,10 @@ const TagSchema = new Schema({
     type: String,
     required: true,
     unique: true
+  },
+  lastUsed: {
+    type: Date,
+    default: Date.now
   }
 })
 
