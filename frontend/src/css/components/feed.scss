@@ -59,11 +59,36 @@
                 padding-top: 10px;
 
                 .feed-dreams {
+                    position: relative;
                     padding: 10px;
                     border: 3px solid $off-white;
                     border-radius: 20px;
                     background-color: $dark-purple;
                     box-shadow: 2px 2px 8px $dark-gray;
+
+                    .feed-dreams-circle-big {
+                        position: absolute;
+                        bottom: -7px;
+                        left: -12px;
+                        width: 15px;
+                        height: 15px;
+                        background-color: $dark-purple;
+                        border: 3px solid $off-white;
+                        border-radius: 50%;
+                        z-index: -1;
+                    }
+
+                    .feed-dreams-circle-small {
+                        position: absolute;
+                        bottom: -12px;
+                        left: -19px;
+                        width: 10px;
+                        height: 10px;
+                        background-color: $dark-purple;
+                        border: 3px solid $off-white;
+                        border-radius: 50%;
+                        z-index: -2;
+                    }
 
                     
                     .feed-dreams-info {
@@ -97,14 +122,38 @@
     
                 .feed-goals {
                     padding: 10px;
-                    border: 3px solid $off-white;
+                    border: 2px solid $off-white;
                     // border-radius: 20px;
                     background-color: $logo-yellow;
-                    box-shadow: 2px 2px 8px $dark-gray;
+                    box-shadow: 2px 2px 8px white;
+                    position: relative;
                     
-                    .feed-dreams-info {
+                    .feed-goals-info {
                         color: $dark-gray;
                         font-family: $serif;
+                    }
+
+                    .feed-goals-footer {
+                        display: flex;
+                        justify-content: space-around;
+                        align-items: flex-end;
+                        padding-top: 3px;
+
+                        .feed-goals-footer-info {
+                            color: $dark-gray;
+                            font-family: $serif;
+                            font-size: 13px;
+
+                            .feed-goals-footer-comments,
+                            .feed-goals-footer-likes {
+                                cursor: pointer;
+                            }
+
+                            .feed-goals-footer-comments:hover,
+                            .feed-goals-footer-likes:hover {
+                                color: $magenta;
+                            }
+                        }
                     }
                 }
             }

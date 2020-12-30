@@ -38,6 +38,8 @@ class Feed extends React.Component {
                         <div className="feed-dreams-container" >
                             <div className="feed-dreams" >
                                 <Link to="/feed" style={{ textDecoration: 'none' }} >
+                                    <div className="feed-dreams-circle-big" ></div>
+                                    <div className="feed-dreams-circle-small" ></div>
                                     <p className="feed-dreams-info" >username</p>
                                     <p className="feed-dreams-info" >this is the text of a dream</p>
                                     <div className="feed-dreams-footer" >
@@ -50,11 +52,11 @@ class Feed extends React.Component {
                         <div className="feed-dreams-container" >
                             <div className="feed-goals" >
                                 <Link to="/feed" style={{ textDecoration: 'none' }} >
-                                    <p className="feed-dreams-info" >username</p>
-                                    <p className="feed-dreams-info" >this is the text of a goal</p>
-                                    <div className="feed-dreams-footer" >
-                                        <p className="feed-dreams-footer-info" >3 comments</p>
-                                        <p className="feed-dreams-footer-info" >3 likes</p>
+                                    <p className="feed-goals-info" >username</p>
+                                    <p className="feed-goals-info" >this is the text of a goal</p>
+                                    <div className="feed-goals-footer" >
+                                        <p className="feed-goals-footer-info" >3 <span onClick={() => openModal('comment')} className="feed-goals-footer-comments" >comments</span></p>
+                                        <p className="feed-goals-footer-info" >3 <span className="feed-goals-footer-likes" >likes</span></p>
                                     </div>
                                 </Link>
                             </div>

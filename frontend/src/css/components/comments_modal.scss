@@ -4,16 +4,28 @@
 
     .comment-dreams-container {
 
-
         .comment-dreams {
-            padding: 10px;
-            border: 3px solid $off-white;
             border-radius: 20px;
             background-color: $dark-purple;
+        }
+
+        .comment-goals {
+            background-color: $logo-yellow;
+        }
+
+        .comment-dreams,
+        .comment-goals {
+            padding: 10px;
+            border: 3px solid $off-white;
             box-shadow: 2px 2px 8px $dark-gray;
 
             .comment-dreams-info {
                 color: $off-white;
+                font-family: $serif;
+            }
+
+            .comment-goals-info {
+                color: $dark-gray;
                 font-family: $serif;
             }
 
