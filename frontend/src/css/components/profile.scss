@@ -1,0 +1,119 @@
+.profile-container {
+    font-family: $sans-serif;
+    // display: flex;
+    text-align: center;
+    background-color: $off-white-opaque;
+    padding: 20px;
+    width: 91vw;
+    // height: 1900px;
+    // position: relative;
+    margin-top: 44px;
+    height: 100%;
+    // border: 1px solid yellow;
+    overflow: scroll;
+    
+    
+    
+    .profile {
+        position: fixed;
+        width: 91%;
+        display: flex;
+        margin-top: -20px;
+        margin-left: -20px;
+        // position: fixed;
+        // top: 200px;
+        justify-content: space-between;
+        // border: 1px solid blue;
+        align-items: center;
+        background-color: $off-white;
+        padding: 20px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        
+        
+        .fa-cloud {
+            font-size: 12vw;
+            text-align: center;
+            justify-self: center;
+            margin-top: 6px;
+            color: $off-white-opaque;
+            // padding-right: 16px;
+            // margin: 50%;
+            
+        }
+
+        .profile-pic {
+            width: 15vw;
+            height: 15vw;
+            padding: 20px;
+            border-radius: 55%;
+            margin-left: 2vw;
+            background: linear-gradient(270deg, #5e47fd, #1e9fc4);
+            background-size: 400% 400%;
+
+            // SlowTransition is the identifier variable for @keyframes below
+            -webkit-animation: SlowTransition 30s ease infinite;
+            -moz-animation: SlowTransition 30s ease infinite;
+            animation: SlowTransition 30s ease infinite;
+        }
+        
+        //for Safari, Mail, App Store, and other apps on macOS, iOS, and Linux.
+        @-webkit-keyframes SlowTransition {
+            //first percentage is where in keyframe of the animation
+            //next is the property to animage
+            //third is the value of that property
+            //if only one percentage, the second is 50%
+            //from 0%
+            0%{background-position:0%}
+            //to 100%
+            50%{background-position:100%}
+            //back to 0% for smooth transition
+            100%{background-position:0%}
+        }
+
+        //for Mozilla
+        @-moz-keyframes SlowTransition {
+            0%{background-position:0%}
+            50%{background-position:100%}
+            100%{background-position:0%}
+        }
+
+        //for every other compatible browser
+        @keyframes SlowTransition {
+            0%{background-position:0%}
+            50%{background-position:100%}
+            100%{background-position:0%}
+        }
+
+        .user-info {
+            width: 255px;
+            text-align: left;
+            // border: 1px solid $dark-gray;
+            // padding-left: 16px;
+            // margin-left: 16px;
+            margin-right: 2vw;
+            
+            
+            div {
+                padding: 8px;
+            }
+        }
+    }
+
+    .profile-dream-feed {
+        margin-top: 300px;
+        
+        // overflow-y: scroll;
+        // display: absolute;
+        // overflow-y: scroll;
+
+        div {
+            border: 1px solid $dark-gray;
+            padding: 10px;
+            margin-bottom: 10px;
+            height: 150px;
+        }
+
+    }
+    
+
+}
