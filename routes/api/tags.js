@@ -17,7 +17,7 @@ router.post('/',
         return res.status(400).json(errors);
     }
 
-    var query = {name: req.body.name},
+    var query = { name: req.body.tag },
         update = { lastUsed: new Date() },
         options = { upsert: true, new: true, setDefaultsOnInsert: true }
     Tag.findOneAndUpdate(query, update, options, (err, tag) => {
