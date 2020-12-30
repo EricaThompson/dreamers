@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import '../../css/components/nav_bar.scss';
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -24,6 +23,7 @@ class NavBar extends React.Component {
     render() {
         let dropdown;
         let menu;
+        let { currentUser } = this.props;
 
         if (this.props.loggedIn){
             menu = <div
@@ -34,13 +34,16 @@ class NavBar extends React.Component {
 
             if (this.state.showDropdown) {
                 dropdown = <div className="menu-items">
-                                <Link to={'/signup'}><p>signup</p></Link>
-                                <Link to={'/login'}><p>login</p></Link>
+                                {/* <Link to={'/signup'}><p>signup</p></Link>
+                                <Link to={'/login'}><p>login</p></Link> */}
+                                <Link to={`/users/${currentUser.id}`}><p>profile</p></Link>
+                                <Link to={`/about`}><p>about</p></Link>
                                 <p className="logout" onClick={this.logoutUser} >logout</p>
                             </div>
             }
         } else {
             menu = <div className="session-links">
+                        <Link to={`/about`}><p>about</p></Link>
                         <Link to={'/login'}><p className="session-login-link">login</p></Link>
                         <Link to={'/signup'}><p className="session-signup-link">signup</p></Link>  
                     </div>
