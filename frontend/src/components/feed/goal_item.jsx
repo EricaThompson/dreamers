@@ -6,6 +6,20 @@ const GoalItem = ({ dream, openModal }) => {
         <div className="feed-goals-wrapper" >
             <div className="feed-goals">
                 <Link to="/feed" style={{ textDecoration: 'none' }} >
+                    <div className="new-dream-tags-container" >
+                        <div className="new-dream-tags" >
+                            {dream.tags.map((tag, idx) => {
+                                return (
+                                    <Link to="/feed" style={{ textDecoration: 'none' }} >
+                                        <div className="new-dream-tags-item-container"                                     >
+                                            <div className="new-dream-tags-item-circle" ></div>
+                                            <p key={idx} className="new-dream-tags-item" >{tag}</p>
+                                        </div>
+                                    </Link>
+                                )
+                            })}
+                        </div>
+                    </div>
                     <p className="feed-goals-info" >username</p>
                     <p className="feed-goals-info" >{dream.text}</p>
                     <div className="feed-goals-footer" >
