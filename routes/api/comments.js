@@ -22,6 +22,7 @@ router.post('/:dreamId',
           .then(dream => {
             const newComment = new Comment({
               userId: req.user.id,
+              username: req.user.username,
               dreamId: req.params.dreamId,
               comment: req.body.comment
             })
