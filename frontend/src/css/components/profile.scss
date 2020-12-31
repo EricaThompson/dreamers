@@ -18,7 +18,14 @@
     overflow: scroll;
     animation: fade-in .2s ease-in-out;
     
-    
+    .edit-profile-form {
+        cursor: default;
+        input {
+            // width: 20px;
+            background-color: $lightest-blue;
+            // padding-left: 3px;
+        }
+    }
     
     .profile {
         position: fixed;

@@ -11,11 +11,15 @@ class Profile extends React.Component {
             selected: 'feed',
             userDreams: null,
             currentUser: this.props.currentUser,
-            //!temporary
+            currentUserId: this.props.currentUser.id,
             profileUser: this.props.user,
-            // timestamp: null
+            showEditForm: false,
+            username: this.props.user.username,
+            age: this.props.user.age,
+            bio: this.props.user.bio,
+            location: this.props.user.location,
+            timestamp: null,
         }
-
         // this.handleChange = this.handleChange.bind(this);
         // this.handleSelected = this.handleSelected.bind(this);
     }
@@ -23,7 +27,7 @@ class Profile extends React.Component {
     componentDidMount() {
         this.props.fetchDreamsByUser(this.props.match.params.userId)
         this.props.fetchUserById(this.props.match.params.userId)
-            .then(res => this.setState({ profileUser: res.user, timestamp: res.user.createdAt }, console.log('this user',res.user)))
+            .then(res => this.setState({ profileUser: res.user}))
             // .then(res => console.log(res))
         // this.props.fetchDreams()
             // .then(res => this.setState({userDreams: Object.values(res).data}))
@@ -36,9 +40,20 @@ class Profile extends React.Component {
 
     }
 
-    // handleChange(e) {
-    //     this.setState({ searchValue: e.target.value })
-    // }
+    handleChange(value) {
+        return e => {
+            this.setState({ [value]: e.currentTarget.value })
+        }
+    }
+
+    handleSubmit(){
+        let user = {
+            age: this.state.age,
+            location: this.state.location,
+            bio: this.state.bio,
+        }
+        this.props.updateUser(this.state.currentUserId, user)
+    }
 
     handleSelected(type) {
         return (e) => {
@@ -46,23 +61,20 @@ class Profile extends React.Component {
         }
     }
 
-    // componentDidMount() {
-    //     this.props.closeModal();
-    // }
+    toggleEditForm(){
+        this.setState({showEditForm: !this.state.showEditForm})
+    }
 
     render() {
-        console.log('match params id',this.props.match.params.userId)
-        console.log('dreams state', this.props.dreams)
-        console.log('state dreams', this.state.userDreams)
-        // if (!dreams)
-        
         let editBtn;
         let newDreamBtn;
         let followBtn;
 
         if (this.props.match.params.userId === this.state.currentUser.id){
-            editBtn = <button className="profile-edit-button">
-                        edit profile
+            editBtn = <button 
+                        onClick={()=>this.toggleEditForm()}
+                        className="profile-edit-button">
+                            edit profile
                     </button>
             newDreamBtn = <button
                             className="new-dream-btn"
@@ -80,55 +92,106 @@ class Profile extends React.Component {
                     </button>
         }
 
+        
+
+
+
         let { openModal, dreams, clearDreams } = this.props;
         if (!dreams) return null;
-        console.log('user', this.props.user._id.toString().substring(0, 8))
+        // console.log('user', this.props.user._id.toString().substring(0, 8))
         // console.log(this.state.timestamp.getMonth())
 
-        let timestamp = this.state.profileUser._id.toString().substring(0, 8)
-        let date = new Date(parseInt(timestamp, 16) * 1000)
-        let month = date.getMonth()
+        //!fix user grab
+        // let timestamp = this.state.profileUser._id.toString().substring(0, 8)
+        // let date = new Date(parseInt(timestamp, 16) * 1000)
+        // let month = date.getMonth()
 
-        switch (month) {
-            case 0:
-                month = "Jan"
-                break;
-            case 1:
-                month = "Feb"
-                break;
-            case 2:
-                month = "Mar"
-                break;
-            case 3:
-                month = "Apr"
-                break;
-            case 4:
-                month = "May"
-                break;
-            case 5:
-                month = "Jun"
-                break;
-            case 6:
-                month = "Jul"
-                break;
-            case 7:
-                month = "Aug"
-                break;
-            case 8:
-                month = "Sep"
-                break;
-            case 9:
-                month = "Oct"
-                break;
-            case 10:
-                month = "Nov"
-                break;
-            case 11:
-                month = "Dec"
-                break;
+        // switch (month) {
+        //     case 0:
+        //         month = "Jan"
+        //         break;
+        //     case 1:
+        //         month = "Feb"
+        //         break;
+        //     case 2:
+        //         month = "Mar"
+        //         break;
+        //     case 3:
+        //         month = "Apr"
+        //         break;
+        //     case 4:
+        //         month = "May"
+        //         break;
+        //     case 5:
+        //         month = "Jun"
+        //         break;
+        //     case 6:
+        //         month = "Jul"
+        //         break;
+        //     case 7:
+        //         month = "Aug"
+        //         break;
+        //     case 8:
+        //         month = "Sep"
+        //         break;
+        //     case 9:
+        //         month = "Oct"
+        //         break;
+        //     case 10:
+        //         month = "Nov"
+        //         break;
+        //     case 11:
+        //         month = "Dec"
+        //         break;
 
-            default:
-                break;
+        //     default:
+        //         break;
+        // }
+
+        let profile;
+        let editForm;
+
+        if (this.state.showEditForm) {
+            editForm = <div className="edit-profile-form">
+                            <div className="username">{this.state.profileUser.username}</div>
+                            {/* <div>Dreamer Since: {month} {date.getDate()} {date.getFullYear()}</div> */}
+                            <div 
+                                className="location"> 
+                                Location: 
+                                <input 
+                                    onChange={this.handleChange('location')}
+                                    value={this.state.location} 
+                                />
+                            </div>
+                            <div 
+                                className="age">
+                                Age: 
+                                <input
+                                    onChange={this.handleChange('age')}
+                                    value={this.state.age}
+                                    /> 
+                            </div>
+                            <div 
+                                className="about">
+                                Bio: 
+                                <input
+                                    onChange={this.handleChange('bio')}
+                                    value={this.state.bio} 
+                                />
+                            </div>
+                            <button onClick={()=>this.handleSubmit()}>update</button>
+                        </div>
+        } else {
+            profile = <div>
+                <div className="username">{this.state.profileUser.username}</div>
+                {/* <div>Dreamer Since: {month} {date.getDate()} {date.getFullYear()}</div> */}
+                <div>Location: {this.state.profileUser.location}</div>
+                <div className="age">Age: {this.state.profileUser.age}</div>
+                <div className="about">
+                    Bio: {this.state.profileUser.bio}
+                </div>
+            </div>
+
         }
 
         return (
@@ -141,14 +204,9 @@ class Profile extends React.Component {
                     <div className='user-info'>
                         {editBtn}
                         {newDreamBtn}
+                        {editForm}
+                        {profile}
                         
-                        <div className="username">{this.state.profileUser.username}</div>
-        <div>Dreamer since: {month} {date.getDate()} {date.getFullYear()}</div>
-                        <div>Location: {this.state.profileUser.location}</div>
-                        <div className="age">Age: {this.state.profileUser.age}</div>
-                        <div className="about">
-                            Bio: {this.state.profileUser.bio}
-                        </div>
                         {/* <div>Followers: {this.state.thisUser.followers.length}</div> */}
                         {followBtn}
                     </div>
