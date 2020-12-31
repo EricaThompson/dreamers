@@ -18,6 +18,10 @@ class Feed extends React.Component {
         this.props.fetchDreams();
     }
 
+    componentWillUnmount() {
+        this.props.clearDreams();
+    }
+
     handleChange(e) {
         this.setState({ searchValue: e.target.value })
     }
@@ -28,13 +32,9 @@ class Feed extends React.Component {
         }
     }
 
-    handleOpenModal() {
-
-    }
-
     render() {
         let { openModal, modalInfo, dreams } = this.props;
-        if ( dreams.length === 0 ) return null;
+        if ( !dreams ) return null;
 
         let feed; 
         
