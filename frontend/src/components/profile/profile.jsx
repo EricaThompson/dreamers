@@ -43,6 +43,10 @@ class Profile extends React.Component {
         }
     }
 
+    componentDidMount() {
+        this.props.closeModal();
+    }
+
     render() {
         console.log('match params id',this.props.match.params.userId)
         console.log('dreams state', this.props.dreams)

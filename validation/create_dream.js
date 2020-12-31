@@ -15,7 +15,7 @@ module.exports = function validateCreateDreamInput(data) {
   }
 
   if (data.tags && data.tags.length > 3) {
-    errors.tags = 'Only 10 tags are allowed'
+    errors.tags = 'Only 3 tags are allowed'
   }
 
   if (!Validator.equals(data.type, 'dream') && !Validator.equals(data.type, 'goal')) {

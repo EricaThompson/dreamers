@@ -11,6 +11,8 @@ import Modal from './modal/modal';
 import FeedContainer from './feed/feed_container';
 import ProfileContainer from './profile/profile_container';
 // import NewDreamContainer from './dreams/new_dream_container';
+import TagsContainer from './tags/tags_container';
+// import DreamShowContainer from './dreams/dream_show_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 
@@ -27,8 +29,10 @@ const App = () => (
                 <AuthRoute path={`/signup`} component={SignupFormContainer} />
                 <AuthRoute exact path="/" component={HomePage} />
                 <Route exact path="/about" component={AboutPage} />
-                <ProtectedRoute exact path={`/feed`} component={FeedContainer} />
-                <ProtectedRoute exact path={`/users/:userId`} component={ProfileContainer} />
+                <ProtectedRoute path={`/feed`} component={FeedContainer} />
+                <ProtectedRoute path={`/users/:userId`} component={ProfileContainer} />
+                <ProtectedRoute path={`/tags/:tag`} component={TagsContainer} />
+                {/* <ProtectedRoute path={`/dreams/:dreamId`} component={DreamShowContainer} /> */}
                 <Redirect to="/" />
             </Switch>
         </div>

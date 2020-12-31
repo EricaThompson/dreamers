@@ -26,6 +26,9 @@ class Feed extends React.Component {
     //     nextProps.fetchDreamsByUser(nextProps.userId)
     //         .then(res => this.setState({dreams: res}))
     // }
+    componentWillUnmount() {
+        this.props.clearDreams();
+    }
 
     handleChange(e) {
         this.setState({ searchValue: e.target.value })
@@ -38,29 +41,29 @@ class Feed extends React.Component {
     }
 
     render() {
-        let { openModal, dreams } = this.props;
-        if ( dreams.length === 0 ) console.log("nothing here");
+        let { openModal, modalInfo, dreams } = this.props;
+        if ( !dreams ) return null;
 
         let feed; 
         
         if (this.state.selected === "feed") {
             feed = Object.values(dreams).map((dream, idx) => {
                 if (dream.type === "dream" ) {
-                    return <DreamItem key={idx} dream={dream} openModal={openModal} />
+                    return <DreamItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} />
                 } else {
-                    return <GoalItem key={idx} dream={dream} openModal={openModal} />
+                    return <GoalItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} />
                 }
             })
         } else if (this.state.selected === "dreams") {
             feed = Object.values(dreams).map((dream, idx) => {
                 if (dream.type === "dream") {
-                    return <DreamItem key={idx} dream={dream} openModal={openModal} />
+                    return <DreamItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} />
                 }
             })
         } else if (this.state.selected === "goals") {
             feed = Object.values(dreams).map((dream, idx) => {
                 if (dream.type === "goal") {
-                    return <GoalItem key={idx} dream={dream} openModal={openModal} />
+                    return <GoalItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} />
                 }
             })
         }
@@ -99,6 +102,8 @@ class Feed extends React.Component {
                         </div>
                     </div>
                 </div>
+                <div className="feed-dreams-bottom" ></div>
+                {/* <div className="feed-dreams-blur" ></div> */}
             </div>
         )
     }

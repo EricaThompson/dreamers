@@ -5,16 +5,21 @@
 
 .feed-outer-container {
     width: 100%;
-    height: 80%;
+    height: 100%;
     background-color: transparent;
     box-sizing: border-box;
     animation: fade-in .5s ease-in-out;
+    position: relative;
+    padding-top: 64px;
 
     .feed-container {
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 100%;
+        padding-top: 15px;
+        background-color: $off-white;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
         
         .feed-search-container {
             display: flex;
@@ -55,7 +60,7 @@
             .feed-header-container {
                 display: flex;
                 justify-content: space-around;
-                border-bottom: 1px solid $off-white-opaque;
+                // border-bottom: 1px solid $off-white-opaque;
                 // box-shadow: 0px 5px 10px -5px $off-white;
                 background-color: $off-white;
                 
@@ -84,7 +89,8 @@
         overflow-x: hidden;
         width: 100%;
         height: 100%;
-        padding: 0px 20px 40px;
+        padding: 0px 20px 165px;
+        background-color: $off-white-opaque;
 
         .feed-dreams-container {
             width: 90%;
@@ -99,7 +105,9 @@
                     padding: 10px;
                     border: 3px solid $off-white;
                     border-radius: 20px;
-                    background-color: $dark-purple;
+                    // background-color: $dark-purple;
+                    background-color: $light-purple;
+                    background-color: $pale-blue;
                     box-shadow: 2px 2px 8px $dark-gray;
 
                     .new-dream-tags-container {
@@ -131,7 +139,7 @@
                                     height: 5px;
                                     border-radius: 50%;
                                     border: 2px solid $dark-gray;
-                                    background-color: $dark-purple;
+                                    background-color: $pale-blue;
                                 }
 
                                 .new-dream-tags-item {
@@ -161,6 +169,7 @@
                         width: 15px;
                         height: 15px;
                         background-color: $dark-purple;
+                        background-color: $pale-blue;
                         border: 3px solid $off-white;
                         border-radius: 50%;
                         z-index: -1;
@@ -173,6 +182,7 @@
                         width: 10px;
                         height: 10px;
                         background-color: $dark-purple;
+                        background-color: $pale-blue;
                         border: 3px solid $off-white;
                         border-radius: 50%;
                         z-index: -2;
@@ -180,7 +190,7 @@
 
                     
                     .feed-dreams-info {
-                        color: $off-white;
+                        color: $dark-gray;
                         font-family: $serif;
                     }
 
@@ -191,7 +201,7 @@
                         padding-top: 3px;
 
                         .feed-dreams-footer-info {
-                            color: $off-white;
+                            color: $dark-gray;
                             font-family: $serif;
                             font-size: 13px;
 
@@ -214,9 +224,10 @@
 
                 .feed-goals {
                     padding: 10px;
-                    border: 2px solid $off-white;
+                    border: 3px solid $off-white;
                     // border-radius: 20px;
                     background-color: $logo-yellow;
+                    // background-color: $pale-blue;
                     box-shadow: 2px 2px 8px white;
                     position: relative;
 
@@ -308,6 +319,24 @@
     .feed-dreams-outer-container::-webkit-scrollbar { 
         display: none;  /* Safari and Chrome */
     }
+    
+    .feed-dreams-bottom {
+        position: absolute;
+        bottom: 0px;
+        height: 40px;
+        width: 100%;
+        background-color: $off-white;
+        // background: linear-gradient(to bottom, #2C31811a, $background-blue);
+    }
+
+    // .feed-dreams-blur {
+    //     position: absolute;
+    //     bottom: -44px;
+    //     height: 30px;
+    //     width: 100%;
+    //     // background-color: $background-blue;
+    //     background: linear-gradient(to bottom, #2C31811a, $background-blue);
+    // }
 
 }
 
