@@ -8,6 +8,8 @@ class DreamItem extends React.Component {
     }
 
     handleOpenModal(e) {
+        this.props.clearComments();
+        this.props.fetchCommentsByDream(this.props.dream._id);
         this.props.openModal('commentDream');
         this.props.modalInfo(this.props.dream);
     }
@@ -37,7 +39,7 @@ class DreamItem extends React.Component {
                        </div>
                        
                         <p className="feed-dreams-info" >
-                            <Link to={`/users/${dream.userId}`} className="feed-dreams-info" style={{ textDecoration: 'none' }}>
+                            <Link to={`/users/${dream.userId}`} className="feed-dreams-info-link" style={{ textDecoration: 'none' }}>
                                 {dream.username}
                             </Link>
                         </p>

@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import NewDreamContainer from '../dreams/new_dream_container';
 import CommentGoalModal from '../feed/comment_modal_goal';
 import CommentDreamModal from '../feed/comment_modal_dream';
-import { fetchCommentsByDream } from '../../actions/comment_actions';
+import { fetchCommentsByDream, createComment } from '../../actions/comment_actions';
 
-const Modal = ({ modal, currentUser, closeModal, info, fetchCommentsByDream, comments }) => {
+const Modal = ({ modal, currentUser, closeModal, info, fetchCommentsByDream, comments, createComment }) => {
     if (!modal) {
         return null;
     }
@@ -20,10 +20,10 @@ const Modal = ({ modal, currentUser, closeModal, info, fetchCommentsByDream, com
             />;
             break;
         case 'commentGoal':
-            component = <CommentGoalModal info={info} fetchCommentsByDream={fetchCommentsByDream} comments={comments} />;
+            component = <CommentGoalModal info={info} fetchCommentsByDream={fetchCommentsByDream} comments={comments} createComment={createComment} />;
             break;
         case 'commentDream':
-            component = <CommentDreamModal info={info} fetchCommentsByDream={fetchCommentsByDream} comments={comments} />;
+            component = <CommentDreamModal info={info} fetchCommentsByDream={fetchCommentsByDream} comments={comments} createComment={createComment}  />;
             break;
         default:
             return null;
@@ -39,17 +39,20 @@ const Modal = ({ modal, currentUser, closeModal, info, fetchCommentsByDream, com
     )
 }
 
-const mapSTP = state => ({
+const mapSTP = state => {
+    // debugger;
+    return {
     modal: state.ui.modal,
     currentUser: state.session.user,
     info: state.modalInfo,
-    comments: state.comments
-})
+    comments: state.comment
+}}
 
 const mapDTP = dispatch => ({
     closeModal: () => dispatch(closeModal()),
     createDream: (dream)=> dispatch(createDream(dream)),
     fetchCommentsByDream: (dreamId) => dispatch(fetchCommentsByDream(dreamId)),
+    createComment: (dreamId, comment) => dispatch(createComment(dreamId, comment))
 })
 
 export default connect(mapSTP, mapDTP)(Modal);

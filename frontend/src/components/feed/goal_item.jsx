@@ -8,6 +8,8 @@ class GoalItem extends React.Component {
     }
 
     handleOpenModal(e) {
+        this.props.clearComments();
+        this.props.fetchCommentsByDream(this.props.dream._id);
         this.props.openModal('commentGoal');
         this.props.modalInfo(this.props.dream);
     }
@@ -34,7 +36,7 @@ class GoalItem extends React.Component {
                             </div>
                         </div>
                         <p className="feed-goals-info" >
-                            <Link to={`/users/${dream.userId}`} className="feed-goals-info" style={{ textDecoration: 'none' }}>
+                            <Link to={`/users/${dream.userId}`} className="feed-goals-info-link" style={{ textDecoration: 'none' }}>
                                 {dream.username}
                             </Link>
                         </p>
