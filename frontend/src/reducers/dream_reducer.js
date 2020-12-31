@@ -2,7 +2,8 @@ import {
     RECEIVE_DREAMS,
     RECEIVE_DREAM,
     REMOVE_DREAMS,
-    CLEAR_DREAMS
+    CLEAR_DREAMS,
+    // RECEIVE_NEW_DREAM
 } from '../actions/dream_actions'
 
 const DreamReducer = (oldState = {}, action) => {
@@ -14,8 +15,8 @@ const DreamReducer = (oldState = {}, action) => {
                 newState[dream._id] = dream
             })
             return newState;
-        case RECEIVE_NEW_DREAM:
-            newState[action.dream.id] = action.dream; 
+        // case RECEIVE_NEW_DREAM:
+        //     newState[action.dream.id] = action.dream; 
         case RECEIVE_DREAM:
             newState[action.dream._id] = action.dream; 
             return newState;

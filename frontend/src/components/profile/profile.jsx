@@ -25,12 +25,15 @@ class Profile extends React.Component {
     }
 
     componentDidMount() {
-        // this.props.fetchDreamsByUser(this.props.match.params.userId)
-        this.props.fetchDreams()
-            .then(res => this.setState({userDreams: Object.values(res)[1].data}))
+        this.props.fetchDreamsByUser(this.props.match.params.userId)
+        // this.props.fetchDreams()
+            // .then(res => this.setState({userDreams: Object.values(res).data}))
+        // debugger
         console.log('props dreams',this.props.dreams)
         console.log('state dreams', this.state.userDreams)
             // .then(res => this.setState({userDreams: res}))
+        
+        this.props.closeModal()
     }
 
     // handleChange(e) {
@@ -43,15 +46,15 @@ class Profile extends React.Component {
         }
     }
 
-    componentDidMount() {
-        this.props.closeModal();
-    }
+    // componentDidMount() {
+    //     this.props.closeModal();
+    // }
 
     render() {
         console.log('match params id',this.props.match.params.userId)
         console.log('dreams state', this.props.dreams)
         console.log('state dreams', this.state.userDreams)
-
+        // if (!dreams)
         
         let editBtn;
         let newDreamBtn;
@@ -78,8 +81,9 @@ class Profile extends React.Component {
                     </button>
         }
 
-        let { openModal } = this.props;
-        // if (this.state.userDreams.length === 0) return null;
+        let { openModal, dreams, clearDreams } = this.props;
+        if (!dreams) return null;
+
         return (
             <div className="profile-container">
                 <div className="profile">
@@ -109,17 +113,12 @@ class Profile extends React.Component {
                     <br />
                     <br />
                     <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
+                    
                     <Feed 
                         userId={this.props.match.params.userId}
-                        dreams={this.props.dreams}
-                        openModal = {this.props.openModal}
+                        dreams={dreams}
+                        openModal = {openModal}
+                        clearDreams = {clearDreams}
                         fetchDreamsByUser = {this.props.fetchDreamsByUser}
                     />
                     {/* <div>Dream</div>
