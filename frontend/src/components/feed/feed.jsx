@@ -1,23 +1,31 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import DreamItem from './dream_item';
 import GoalItem from './goal_item';
+import { withRouter } from 'react-router-dom';
+
 
 class Feed extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             searchValue: '',
-            selected: 'feed'
+            selected: 'feed',
+            dreams: null
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSelected = this.handleSelected.bind(this);
     }
 
     componentDidMount() {
+        if (this.props.match.url.includes("feed") )
         this.props.fetchDreams();
     }
 
+    // componentWillReceiveProps(nextProps){
+    //     nextProps.fetchDreamsByUser(nextProps.userId)
+    //         .then(res => this.setState({dreams: res}))
+    // }
     componentWillUnmount() {
         this.props.clearDreams();
     }
@@ -101,4 +109,4 @@ class Feed extends React.Component {
     }
 }
 
-export default Feed;
+export default withRouter(Feed);

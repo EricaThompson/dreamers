@@ -1,19 +1,23 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
+import { createDream } from '../../actions/dream_actions';
 import { connect } from 'react-redux';
 import NewDreamContainer from '../dreams/new_dream_container';
 import CommentGoalModal from '../feed/comment_modal_goal';
 import CommentDreamModal from '../feed/comment_modal_dream';
 import { fetchCommentsByDream } from '../../actions/comment_actions';
 
-const Modal = ({ modal, closeModal, info, fetchCommentsByDream, comments }) => {
+const Modal = ({ modal, currentUser, closeModal, info, fetchCommentsByDream, comments }) => {
     if (!modal) {
         return null;
     }
     let component;
     switch (modal) {
         case 'newDream':
-            component = <NewDreamContainer  />;
+            component = <NewDreamContainer 
+                currentUser={currentUser} 
+                createDream={createDream}
+            />;
             break;
         case 'commentGoal':
             component = <CommentGoalModal info={info} fetchCommentsByDream={fetchCommentsByDream} comments={comments} />;
@@ -44,6 +48,7 @@ const mapSTP = state => ({
 
 const mapDTP = dispatch => ({
     closeModal: () => dispatch(closeModal()),
+    createDream: (dream)=> dispatch(createDream(dream)),
     fetchCommentsByDream: (dreamId) => dispatch(fetchCommentsByDream(dreamId)),
 })
 
