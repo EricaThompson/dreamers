@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CommentItem from './comment_item';
 
 class CommentDreamModal extends React.Component {
     constructor(props) {
@@ -14,7 +15,7 @@ class CommentDreamModal extends React.Component {
 
     componentDidMount() {
         // debugger;
-        this.props.fetchCommentsByDream(this.props.info._id)
+        // this.props.fetchCommentsByDream(this.props.info._id)
     }
 
     handleSubmit(e) {
@@ -24,17 +25,30 @@ class CommentDreamModal extends React.Component {
             username: this.props.info.username,
             userId: this.props.info.userId,
         }
-        this.props.createComment(comment);
+        this.props.createComment(this.props.info._id, comment);
     }
 
     handleChange(e) {
         this.setState({ comment: e.target.value })
+        console.log(this.state.comment)
     }
 
     render() {
         let { info, comments } = this.props;
 
-        // if ( !comments ) return null;
+        let commentFeed;
+
+        if (Object.values(comments).length === 0) {
+            commentFeed = null;
+        } else {
+            commentFeed = (
+                <div>
+                    {Object.values(comments).map((comment, idx) => {
+                        return <CommentItem key={idx} comment={comment} />
+                    })}
+                </div>
+            )
+        }
 
         return (
             <div className="comment-modal-outer-container">
@@ -59,6 +73,7 @@ class CommentDreamModal extends React.Component {
                                 <input className="comment-btn" type="submit" value="Create Comment" onClick={this.handleSubmit} />
                             </div>
                         </form>
+                        <div>{commentFeed}</div>
                     </div>
                 </div>
             </div>

@@ -39,12 +39,14 @@ const Modal = ({ modal, currentUser, closeModal, info, fetchCommentsByDream, com
     )
 }
 
-const mapSTP = state => ({
+const mapSTP = state => {
+    // debugger;
+    return {
     modal: state.ui.modal,
     currentUser: state.session.user,
     info: state.modalInfo,
-    comments: state.comments
-})
+    comments: state.comment
+}}
 
 const mapDTP = dispatch => ({
     closeModal: () => dispatch(closeModal()),

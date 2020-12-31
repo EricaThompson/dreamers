@@ -41,7 +41,7 @@ class Feed extends React.Component {
     }
 
     render() {
-        let { openModal, modalInfo, dreams } = this.props;
+        let { openModal, modalInfo, dreams, fetchCommentsByDream, clearComments } = this.props;
         if ( !dreams ) return null;
 
         let feed; 
@@ -49,21 +49,21 @@ class Feed extends React.Component {
         if (this.state.selected === "feed") {
             feed = Object.values(dreams).map((dream, idx) => {
                 if (dream.type === "dream" ) {
-                    return <DreamItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} />
+                    return <DreamItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} fetchCommentsByDream={fetchCommentsByDream} clearComments={clearComments} />
                 } else {
-                    return <GoalItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} />
+                    return <GoalItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} fetchCommentsByDream={fetchCommentsByDream} clearComments={clearComments} />
                 }
             })
         } else if (this.state.selected === "dreams") {
             feed = Object.values(dreams).map((dream, idx) => {
                 if (dream.type === "dream") {
-                    return <DreamItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} />
+                    return <DreamItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} fetchCommentsByDream={fetchCommentsByDream} clearComments={clearComments} />
                 }
             })
         } else if (this.state.selected === "goals") {
             feed = Object.values(dreams).map((dream, idx) => {
                 if (dream.type === "goal") {
-                    return <GoalItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} />
+                    return <GoalItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} fetchCommentsByDream={fetchCommentsByDream} clearComments={clearComments} />
                 }
             })
         }

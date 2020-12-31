@@ -8,6 +8,8 @@ class GoalItem extends React.Component {
     }
 
     handleOpenModal(e) {
+        this.props.clearComments();
+        this.props.fetchCommentsByDream(this.props.dream._id);
         this.props.openModal('commentGoal');
         this.props.modalInfo(this.props.dream);
     }

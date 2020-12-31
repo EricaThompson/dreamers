@@ -1,0 +1,21 @@
+.comment-item-outer-container {
+    padding-top: 10px;
+
+    .comment-item-container {
+        width: 100%;
+        border: 2px solid $dark-gray;
+        background-color: $off-white;
+        border-radius: 10px;
+
+        .comment-item-text {
+            font-family: $serif;
+            color: $dark-gray;
+            margin: 5px 10px;
+        }
+    
+        .comment-item-text-link {
+            color: $dark-gray;
+            cursor: pointer;
+        }
+    }
+}

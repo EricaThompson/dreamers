@@ -8,6 +8,8 @@ class DreamItem extends React.Component {
     }
 
     handleOpenModal(e) {
+        this.props.clearComments();
+        this.props.fetchCommentsByDream(this.props.dream._id);
         this.props.openModal('commentDream');
         this.props.modalInfo(this.props.dream);
     }
