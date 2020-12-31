@@ -62,7 +62,7 @@ export const createDream = dream => dispatch => (
 
 export const updateDream = (dreamId, updatedFields) => dispatch  => (
     DreamApiUtils.updateDream(dreamId, updatedFields)
-    .then((dreamId, updatedFields)=> dispatch(receiveDream(dreamId, updatedFields)))
+    .then(dream => dispatch(receiveDream(dream)))
     .catch(err => console.error(err))
 )
 
