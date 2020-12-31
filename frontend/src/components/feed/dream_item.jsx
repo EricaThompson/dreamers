@@ -16,7 +16,7 @@ class DreamItem extends React.Component {
 
     render() {
         let { dream } = this.props;
-
+        // debugger;
         return (
            <div className="feed-dreams-wrapper" >
                 <div className="feed-dreams" onClick={this.handleOpenModal} >
@@ -46,7 +46,7 @@ class DreamItem extends React.Component {
                         <p className="feed-dreams-info" >{dream.text}</p>
                    {/* </Link> */}
                     <div className="feed-dreams-footer" >
-                        <p className="feed-dreams-footer-info" >3 <span className="feed-dreams-footer-comments" >comments</span></p>
+                        <p className="feed-dreams-footer-info" >{dream.comments ? dream.comments.length : 0} <span className="feed-dreams-footer-comments" >{dream.comments && dream.comments.length === 1 ? "comment" : "comments"}</span></p>
                         <p className="feed-dreams-footer-info" >3 <span className="feed-dreams-footer-likes" >likes</span></p>
                     </div>
                </div>
