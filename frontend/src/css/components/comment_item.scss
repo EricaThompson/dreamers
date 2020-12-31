@@ -1,8 +1,16 @@
+.comment-feed-container {
+    overflow-y: scroll;
+}
+
+.comment-feed-container::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
 .comment-item-outer-container {
     padding-top: 20px;
 
     .comment-item-container {
-        width: 100%;
+        width: 98%;
         border: 2px solid $dark-gray;
         background-color: $off-white;
         border-radius: 10px;

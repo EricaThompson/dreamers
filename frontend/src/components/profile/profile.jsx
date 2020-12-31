@@ -25,6 +25,7 @@ class Profile extends React.Component {
     }
 
     componentDidMount() {
+        this.props.closeModal();
         this.props.fetchDreamsByUser(this.props.match.params.userId)
         this.props.fetchUserById(this.props.match.params.userId)
             .then(res => this.setState({ thisUser: res.user }, console.log('this user',res.user)))
@@ -85,7 +86,7 @@ class Profile extends React.Component {
                     </button>
         }
 
-        let { openModal, dreams, clearDreams } = this.props;
+        let { openModal, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo } = this.props;
         if (!dreams) return null;
 
         return (
@@ -117,6 +118,9 @@ class Profile extends React.Component {
                         openModal = {openModal}
                         clearDreams = {clearDreams}
                         fetchDreamsByUser = {this.props.fetchDreamsByUser}
+                        clearComments={clearComments}
+                        fetchCommentsByDream={fetchCommentsByDream}
+                        modalInfo={modalInfo}
                     />
                     {/* <div>Dream</div>
                     <div>Dream</div>

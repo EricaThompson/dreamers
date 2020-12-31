@@ -63,7 +63,7 @@ class CommentGoalModal extends React.Component {
                                 <input className="comment-btn" type="submit" value="Create Comment" />
                             </div>
                         </form>
-                        <div>{commentFeed}</div>
+                        <div className="comment-feed-container" >{commentFeed}</div>
                     </div>
                 </div>
             </div>

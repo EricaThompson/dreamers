@@ -73,7 +73,7 @@ class CommentDreamModal extends React.Component {
                                 <input className="comment-btn" type="submit" value="Create Comment" onClick={this.handleSubmit} />
                             </div>
                         </form>
-                        <div>{commentFeed}</div>
+                        <div className="comment-feed-container" >{commentFeed}</div>
                     </div>
                 </div>
             </div>
