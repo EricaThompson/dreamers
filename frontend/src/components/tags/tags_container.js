@@ -5,7 +5,7 @@ import { fetchDreamsByTags } from '../../actions/dream_actions';
 
 const mapSTP = (state, ownProps) => ({
     currentUser: state.session.user,
-    dreams: Object.values(state.dream)[0],
+    dreams: state.dream,
     tagName: ownProps.match.params.tag,
 })
 

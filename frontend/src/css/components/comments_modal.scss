@@ -1,12 +1,12 @@
 .comment-modal-outer-container {
-    height: 20%;
+    min-height: 20%;
     width: 100%;
 
     .comment-dreams-container {
 
         .comment-dreams {
             border-radius: 20px;
-            background-color: $dark-purple;
+            background-color: $pale-blue;
         }
 
         .comment-goals {
@@ -20,7 +20,7 @@
             box-shadow: 2px 2px 8px $dark-gray;
 
             .comment-dreams-info {
-                color: $off-white;
+                color: $dark-gray;
                 font-family: $serif;
             }
 
@@ -38,7 +38,7 @@
 
                     .comment-input {
                         width: 100%;
-                        height: 100px;
+                        height: 20px;
                         border: 2px solid $dark-gray;
                         border-radius: 10px;
                         padding: 10px;

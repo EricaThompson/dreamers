@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import NewDreamContainer from '../dreams/new_dream_container';
 import CommentGoalModal from '../feed/comment_modal_goal';
 import CommentDreamModal from '../feed/comment_modal_dream';
+import { fetchCommentsByDream } from '../../actions/comment_actions';
 
-const Modal = ({ modal, closeModal, info }) => {
+const Modal = ({ modal, closeModal, info, fetchCommentsByDream, comments }) => {
     if (!modal) {
         return null;
     }
@@ -15,10 +16,10 @@ const Modal = ({ modal, closeModal, info }) => {
             component = <NewDreamContainer  />;
             break;
         case 'commentGoal':
-            component = <CommentGoalModal info={info} />;
+            component = <CommentGoalModal info={info} fetchCommentsByDream={fetchCommentsByDream} comments={comments} />;
             break;
         case 'commentDream':
-            component = <CommentDreamModal info={info} />;
+            component = <CommentDreamModal info={info} fetchCommentsByDream={fetchCommentsByDream} comments={comments} />;
             break;
         default:
             return null;
@@ -36,11 +37,14 @@ const Modal = ({ modal, closeModal, info }) => {
 
 const mapSTP = state => ({
     modal: state.ui.modal,
-    info: state.modalInfo
+    currentUser: state.session.user,
+    info: state.modalInfo,
+    comments: state.comments
 })
 
 const mapDTP = dispatch => ({
     closeModal: () => dispatch(closeModal()),
+    fetchCommentsByDream: (dreamId) => dispatch(fetchCommentsByDream(dreamId)),
 })
 
 export default connect(mapSTP, mapDTP)(Modal);

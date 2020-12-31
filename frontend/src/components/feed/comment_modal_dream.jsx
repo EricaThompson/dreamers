@@ -2,8 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class CommentDreamModal extends React.Component {
+    componentDidMount() {
+        // debugger;
+        this.props.fetchCommentsByDream(this.props.info._id)
+    }
+
     render() {
-        let { info } = this.props;
+        let { info, comments } = this.props;
+
+        // if ( !comments ) return null;
 
         return (
             <div className="comment-modal-outer-container">

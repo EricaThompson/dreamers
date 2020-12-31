@@ -6,6 +6,7 @@ class TagsFeed extends React.Component {
     componentDidMount() {
         // debugger;
         this.props.fetchDreamsByTags([this.props.tagName]);
+        this.props.closeModal();
     }
 
     
