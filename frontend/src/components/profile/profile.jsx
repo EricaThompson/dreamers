@@ -54,7 +54,7 @@ class Profile extends React.Component {
         let followBtn;
 
         //! change this when we get getUserById action
-        if (this.state.thisUser.id === this.state.currentUser.id){
+        if (this.props.match.params.userId === this.state.currentUser.id){
             editBtn = <button className="profile-edit-button">
                         edit profile
                     </button>
