@@ -13,9 +13,9 @@ const DreamReducer = (oldState = {}, action) => {
             action.dreams.forEach(dream => {
                 newState[dream._id] = dream
             })
-            return action.dreams;
+            return newState;
         case RECEIVE_DREAM:
-            newState[action.dream.id] = action.dream; 
+            newState[action.dream._id] = action.dream; 
             return newState;
         case REMOVE_DREAMS:
             delete newState[action.dreamId]
