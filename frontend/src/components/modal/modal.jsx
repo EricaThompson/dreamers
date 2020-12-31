@@ -36,7 +36,9 @@ const Modal = ({ modal, closeModal, info }) => {
 
 const mapSTP = state => ({
     modal: state.ui.modal,
-    info: state.modalInfo
+    currentUser: state.session.user,
+    info: state.modalInfo,
+    comments: state.comments
 })
 
 const mapDTP = dispatch => ({

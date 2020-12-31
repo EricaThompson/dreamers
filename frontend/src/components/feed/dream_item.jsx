@@ -17,8 +17,8 @@ class DreamItem extends React.Component {
 
         return (
            <div className="feed-dreams-wrapper" >
-               <div className="feed-dreams" >
-                   <Link to={`/dreams/${dream._id}`} style={{ textDecoration: 'none' }} >
+                <div className="feed-dreams" onClick={this.handleOpenModal} >
+                   {/* <Link to={`/dreams/${dream._id}`} style={{ textDecoration: 'none' }} > */}
                        <div className="feed-dreams-circle-big" ></div>
                        <div className="feed-dreams-circle-small" ></div>
                        <div className="new-dream-tags-container" >
@@ -42,9 +42,9 @@ class DreamItem extends React.Component {
                             </Link>
                         </p>
                         <p className="feed-dreams-info" >{dream.text}</p>
-                   </Link>
+                   {/* </Link> */}
                     <div className="feed-dreams-footer" >
-                        <p className="feed-dreams-footer-info" >3 <span onClick={this.handleOpenModal} className="feed-dreams-footer-comments" >comments</span></p>
+                        <p className="feed-dreams-footer-info" >3 <span className="feed-dreams-footer-comments" >comments</span></p>
                         <p className="feed-dreams-footer-info" >3 <span className="feed-dreams-footer-likes" >likes</span></p>
                     </div>
                </div>
