@@ -1,12 +1,18 @@
-.dream-show-modal-outer-container {
+@keyframes fade-in {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.dream-show-outer-container {
     min-height: 20%;
     width: 90%;
+    animation: fade-in .5s ease-in-out;
 
     .dream-show-dreams-container {
 
         .dream-show-dreams {
             border-radius: 20px;
-            background-color: $dark-purple;
+            background-color: $pale-blue;
         }
 
         .dream-show-goals {
@@ -20,7 +26,7 @@
             box-shadow: 2px 2px 8px $dark-gray;
 
             .dream-show-dreams-info {
-                color: $off-white;
+                color: $dark-gray;
                 font-family: $serif;
             }
 

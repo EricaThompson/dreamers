@@ -4,9 +4,11 @@
         "**/frontend/.eslintcache": true
     },
     "files.watcherExclude": {
-        "**/.eslintcache": true
+        "**/.eslintcache": true,
+        "**frontend/.eslintcache": true
     },
     "search.exclude": {
-        "**/.eslintcache": true
+        "**/.eslintcache": true,
+        "**frontend/.eslintcache": true
     }
 }

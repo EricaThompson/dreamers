@@ -5,11 +5,10 @@ import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
+import { createComment } from './actions/comment_actions';
 
-import {
-  fetchUserById,
-  updateUser
-} from './actions/user_actions';
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -34,13 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore({});
   }
 
-  // testing  
-  window.store = store;
-  window.fetchUserById = fetchUserById;
-  window.updateUser = updateUser;
-  
-
-  // end testing 
 
 
   const root = document.getElementById('root');

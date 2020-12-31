@@ -10,7 +10,7 @@ class NewDream extends React.Component {
             tags: ['KillingIt', 'Love', 'Teeth'],
         }
         this.handleChange = this.handleChange.bind(this);
-        // this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         // this.handleTags = this.handleTags.bind(this);
         this.removeTag = this.removeTag.bind(this);
     }
@@ -21,23 +21,24 @@ class NewDream extends React.Component {
         }
     }
 
-    // handleSubmit(e) {
-    //     e.preventDefault();
-    //     let newDream = {
-    //         user: this.props.currentUser,
-    //         type: this.state.selectedOption,
-    //         text: this.state.dreamText,
-    //         tags: this.state.tags
-    //     }
-    //     debugger;
-    //     this.props.createDream(newDream);
-    // }
+    handleSubmit(e) {
+        e.preventDefault();
+        let newDream = {
+            user: this.props.currentUser,
+            type: this.state.selectedOption,
+            text: this.state.dreamText,
+            tags: this.state.tags
+        }
+        // debugger;
+        console.log('new dream', newDream)
+        this.props.createDream(newDream);
+    }
 
-    // handleTags(e) {
-    //     let newTags = this.state.tags
-    //     newTags.push(e.target.value)
-    //     this.setState({ tags: newTags })
-    // }
+    handleTags(e) {
+        let newTags = this.state.tags
+        newTags.push(e.target.value)
+        this.setState({ tags: newTags })
+    }
 
     removeTag(tag) {
         return (e) => {
@@ -110,7 +111,7 @@ class NewDream extends React.Component {
                     <input className="new-dream-btn" 
                         type="submit" 
                         value="Create Dream"
-                        // onClick={this.handleSubmit} 
+                        onClick={this.handleSubmit} 
                         />
                 </div>
             </div>

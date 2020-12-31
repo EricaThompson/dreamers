@@ -1,13 +1,14 @@
 import Feed from './feed';
 import { connect } from 'react-redux';
 import { openModal, closeModal, modalInfo } from '../../actions/modal_actions';
-import { fetchDreams } from '../../actions/dream_actions';
+import { fetchCommentsByDream, clearComments } from '../../actions/comment_actions';
+import { fetchDreams, clearDreams } from '../../actions/dream_actions';
 
 const mapSTP = state => {
    
     return {
     currentUser: state.session.user,
-    dreams: Object.values(state.dream)[0],
+    dreams: state.dream,
 }}
 
 const mapDTP = dispatch => ({
@@ -15,6 +16,9 @@ const mapDTP = dispatch => ({
     closeModal: () => dispatch(closeModal()),
     modalInfo: (info) => dispatch(modalInfo(info)),
     fetchDreams: () => dispatch(fetchDreams()),
+    clearDreams: () => dispatch(clearDreams()),
+    fetchCommentsByDream: (dreamId) => dispatch(fetchCommentsByDream(dreamId)),
+    clearComments: () => dispatch(clearComments()),
 })
 
 export default connect(mapSTP, mapDTP)(Feed);
