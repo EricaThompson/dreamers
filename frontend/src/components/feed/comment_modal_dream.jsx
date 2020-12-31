@@ -2,6 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class CommentDreamModal extends React.Component {
+    componentDidMount() {
+        // debugger;
+        this.props.fetchCommentsByDream(this.props.info._id)
+    }
+
     render() {
         let { info } = this.props;
 
