@@ -1,5 +1,6 @@
 .comment-feed-container {
     overflow-y: scroll;
+    max-height: 480px;
 }
 
 .comment-feed-container::-webkit-scrollbar { 

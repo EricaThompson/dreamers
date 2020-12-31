@@ -7,7 +7,7 @@ import CommentGoalModal from '../feed/comment_modal_goal';
 import CommentDreamModal from '../feed/comment_modal_dream';
 import { fetchCommentsByDream, createComment } from '../../actions/comment_actions';
 
-const Modal = ({ modal, currentUser, closeModal, info, fetchCommentsByDream, comments }) => {
+const Modal = ({ modal, currentUser, closeModal, info, fetchCommentsByDream, comments, createComment }) => {
     if (!modal) {
         return null;
     }

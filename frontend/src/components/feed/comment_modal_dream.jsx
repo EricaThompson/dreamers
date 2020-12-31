@@ -20,17 +20,18 @@ class CommentDreamModal extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        let comment = {
+        let thisComment = {
             comment: this.state.comment,
-            username: this.props.info.username,
-            userId: this.props.info.userId,
+            // username: this.props.info.username,
+            // userId: this.props.info.userId,
         }
-        this.props.createComment(this.props.info._id, comment);
+        // debugger;
+        this.props.createComment(this.props.info._id, thisComment);
+        this.setState({ comment: '' })
     }
 
     handleChange(e) {
         this.setState({ comment: e.target.value })
-        console.log(this.state.comment)
     }
 
     render() {
