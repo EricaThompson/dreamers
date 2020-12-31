@@ -1,5 +1,5 @@
 .app-container {
-    background-image: url("background-image-resized4.jpg");
+    background-image: url("background-image-resized5.jpg");
     height: 100vh;
     background-repeat: no-repeat;
     background-color: #2C3181;
@@ -9,6 +9,7 @@
         display: flex; 
         justify-content: space-between;
         height: 64px;
+        z-index: 10;
 
         .nav-title {
             margin-top: 10px;
@@ -25,12 +26,13 @@
         .session-links {
             position: absolute;
             display: flex;
+            justify-content: space-around;
             top: 0;
             right: 0;
+            width: 100%;
 
             a {
                 color: $background-blue;
-                padding: 8px;
                 width: 65px;
                 text-align: center;
                 text-decoration: none;
@@ -69,12 +71,17 @@
             padding: 20px 15px;
             border-radius: 4px;
             color: $background-blue;
-            opacity: .8;
+            opacity: .9;
 
             a {
                 font-family: $sans-serif;
                 text-decoration: none;
                 color: $background-blue;
+
+                p {
+                    padding: 5px;
+                    font-size: 20px;
+                }
 
                 &:hover {
                     color: $light-purple;
@@ -84,6 +91,8 @@
 
             .logout {
                 cursor: pointer;
+                padding: 5px;
+                font-size: 20px;
 
                 &:hover {
                     color: $magenta;

@@ -107,7 +107,7 @@ class NewDream extends React.Component {
                     </form>
                 </div>
                 <div className="create-dream-btn" >
-                    <input className="new-dream-btn create-dream-btn" 
+                    <input className="new-dream-btn" 
                         type="submit" 
                         value="Create Dream"
                         // onClick={this.handleSubmit} 

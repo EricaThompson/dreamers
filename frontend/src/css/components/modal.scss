@@ -12,28 +12,29 @@
     background: $off-white-opaque;
     z-index: 10;
     animation: fade-in .5s ease-in-out;
-}
-
-.modal-child {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 80%;
-    width: 80%;
-    background-color: $off-white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .close-modal-btn {
+    
+    .modal-child {
         position: absolute;
-        top: 15px;
-        right: 15px;
-        cursor: pointer;
-        color: $dark-gray;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-height: 80%;
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        .close-modal-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+            color: $dark-gray;
+            z-index: 10;
+        }
     }
 }
+
 
 @media (min-width: 800px) {
     .modal-child {

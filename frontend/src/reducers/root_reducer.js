@@ -4,7 +4,7 @@ import errors from './errors_reducer';
 import dream from './dream_reducer';
 import comment from './comment_reducer';
 import ui from './ui_reducer';
-
+import modalInfo from './modal_info_reducer';
 
 const RootReducer = combineReducers({
     session, 
@@ -12,6 +12,7 @@ const RootReducer = combineReducers({
     ui,
     dream, 
     comment,
+    modalInfo
 });
 
 export default RootReducer;
