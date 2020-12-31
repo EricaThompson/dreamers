@@ -10,12 +10,10 @@ export const receiveComments = (comments) => ({
     comments
 }); 
 
-export const receiveComment = (comment) => {
-    debugger;
-    return {
+export const receiveComment = (comment) => ({
     type: RECEIVE_COMMENT,
     comment
-}}; 
+}); 
 
 export const removeComment = (commentId) => ({
     type: REMOVE_COMMENT, 

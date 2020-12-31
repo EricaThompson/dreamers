@@ -15,17 +15,18 @@ class CommentGoalModal extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        let comment = {
+        let thisComment = {
             comment: this.state.comment,
-            username: this.props.info.username,
-            userId: this.props.info.userId,
+            // username: this.props.info.username,
+            // userId: this.props.info.userId,
         }
-        this.props.createComment(this.props.info._id, comment);
+        // debugger;
+        this.props.createComment(this.props.info._id, thisComment);
+        this.setState({ comment: '' })
     }
 
     handleChange(e) {
         this.setState({ comment: e.target.value })
-        console.log(this.state.comment)
     }
 
     render() {
@@ -55,12 +56,17 @@ class CommentGoalModal extends React.Component {
                             </Link>
                         </p>
                         <p className="comment-goals-info" >{info.text}</p>
-                        <form className="comment-form" >
+                        <form className="comment-form" onSubmit={this.handleSubmit} >
                             <label className="comment-label" >
-                                <textarea className="comment-input" type="text" placeholder="Leave your comment here" />
+                                <textarea className="comment-input"
+                                    type="text"
+                                    placeholder="Leave your comment here"
+                                    value={this.state.comment}
+                                    onChange={this.handleChange}
+                                />
                             </label>
                             <div className="comment-btn-container">
-                                <input className="comment-btn" type="submit" value="Create Comment" />
+                                <input className="comment-btn" type="submit" value="Create Comment" onClick={this.handleSubmit} />
                             </div>
                         </form>
                         <div className="comment-feed-container" >{commentFeed}</div>
