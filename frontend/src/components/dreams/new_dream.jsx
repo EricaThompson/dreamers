@@ -11,7 +11,7 @@ class NewDream extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        // this.handleTags = this.handleTags.bind(this);
+        this.handleTags = this.handleTags.bind(this);
         this.removeTag = this.removeTag.bind(this);
     }
 
