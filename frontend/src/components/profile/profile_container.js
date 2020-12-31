@@ -13,7 +13,7 @@ const mapSTP = state => ({
 
 const mapDTP = dispatch => ({
     fetchUserById: (userId) => dispatch(fetchUserById(userId)),
-    updateUser: (user) => dispatch(updateUser(user)),
+    updateUser: (userId, user) => dispatch(updateUser(userId, user)),
     openModal: (modal) => dispatch(openModal(modal)),
     closeModal: () => dispatch(closeModal()),
     modalInfo: (info) => dispatch(modalInfo(info)),

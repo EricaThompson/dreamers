@@ -47,12 +47,14 @@ class Profile extends React.Component {
     }
 
     handleSubmit(){
+        // debugger
         let user = {
             age: this.state.age,
             location: this.state.location,
             bio: this.state.bio,
         }
         this.props.updateUser(this.state.currentUserId, user)
+            
     }
 
     handleSelected(type) {
@@ -153,6 +155,7 @@ class Profile extends React.Component {
 
         if (this.state.showEditForm) {
             editForm = <div className="edit-profile-form">
+                            
                             <div className="username">{this.state.profileUser.username}</div>
                             {/* <div>Dreamer Since: {month} {date.getDate()} {date.getFullYear()}</div> */}
                             <div 
@@ -179,8 +182,8 @@ class Profile extends React.Component {
                                     value={this.state.bio} 
                                 />
                             </div>
-                            <button onClick={()=>this.handleSubmit()}>update</button>
-                        </div>
+                                <button onClick={() => this.handleSubmit()}>update</button>
+                            </div>
         } else {
             profile = <div>
                 <div className="username">{this.state.profileUser.username}</div>
