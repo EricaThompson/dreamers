@@ -12,14 +12,10 @@ class Profile extends React.Component {
             userDreams: null,
             currentUser: this.props.currentUser,
             //!temporary
-            thisUser: {
-                id: 2385280, 
-                username: 'tester', 
-                location: 'the cloud', 
-                age: 100, 
-                followers: [1,2,3,4,5],
-                bio: 'Here are a few things about me. Here are a few things about me. Here are a few things about me.'}
+            profileUser: this.props.user,
+            // timestamp: null
         }
+
         // this.handleChange = this.handleChange.bind(this);
         // this.handleSelected = this.handleSelected.bind(this);
     }
@@ -27,7 +23,7 @@ class Profile extends React.Component {
     componentDidMount() {
         this.props.fetchDreamsByUser(this.props.match.params.userId)
         this.props.fetchUserById(this.props.match.params.userId)
-            .then(res => this.setState({ thisUser: res.user }, console.log('this user',res.user)))
+            .then(res => this.setState({ profileUser: res.user, timestamp: res.user.createdAt }, console.log('this user',res.user)))
             // .then(res => console.log(res))
         // this.props.fetchDreams()
             // .then(res => this.setState({userDreams: Object.values(res).data}))
@@ -64,7 +60,6 @@ class Profile extends React.Component {
         let newDreamBtn;
         let followBtn;
 
-        //! change this when we get getUserById action
         if (this.props.match.params.userId === this.state.currentUser.id){
             editBtn = <button className="profile-edit-button">
                         edit profile
@@ -87,6 +82,54 @@ class Profile extends React.Component {
 
         let { openModal, dreams, clearDreams } = this.props;
         if (!dreams) return null;
+        console.log('user', this.props.user._id.toString().substring(0, 8))
+        // console.log(this.state.timestamp.getMonth())
+
+        let timestamp = this.state.profileUser._id.toString().substring(0, 8)
+        let date = new Date(parseInt(timestamp, 16) * 1000)
+        let month = date.getMonth()
+
+        switch (month) {
+            case 0:
+                month = "Jan"
+                break;
+            case 1:
+                month = "Feb"
+                break;
+            case 2:
+                month = "Mar"
+                break;
+            case 3:
+                month = "Apr"
+                break;
+            case 4:
+                month = "May"
+                break;
+            case 5:
+                month = "Jun"
+                break;
+            case 6:
+                month = "Jul"
+                break;
+            case 7:
+                month = "Aug"
+                break;
+            case 8:
+                month = "Sep"
+                break;
+            case 9:
+                month = "Oct"
+                break;
+            case 10:
+                month = "Nov"
+                break;
+            case 11:
+                month = "Dec"
+                break;
+
+            default:
+                break;
+        }
 
         return (
             <div className="profile-container">
@@ -99,12 +142,12 @@ class Profile extends React.Component {
                         {editBtn}
                         {newDreamBtn}
                         
-                        <div className="username">{this.state.thisUser.username}</div>
-                        <div>Dreamer since: {this.state.thisUser.createdAt}</div>
-                        <div>Location: {this.state.thisUser.location}</div>
-                        <div className="age">Age: {this.state.thisUser.age}</div>
+                        <div className="username">{this.state.profileUser.username}</div>
+        <div>Dreamer since: {month} {date.getDate()} {date.getFullYear()}</div>
+                        <div>Location: {this.state.profileUser.location}</div>
+                        <div className="age">Age: {this.state.profileUser.age}</div>
                         <div className="about">
-                            Bio: {this.state.thisUser.bio}
+                            Bio: {this.state.profileUser.bio}
                         </div>
                         {/* <div>Followers: {this.state.thisUser.followers.length}</div> */}
                         {followBtn}

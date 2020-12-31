@@ -8,6 +8,7 @@ import { fetchUserById, updateUser } from '../../actions/user_actions';
 const mapSTP = state => ({
     currentUser: state.session.user,
     dreams: state.dream,
+    user: state.user
 })
 
 const mapDTP = dispatch => ({
