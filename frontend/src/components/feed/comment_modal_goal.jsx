@@ -50,7 +50,7 @@ class CommentGoalModal extends React.Component {
                 <div className="comment-dreams-container" >
                     <div className="comment-goals" >
                         <p className="comment-goals-info" >
-                            <Link to={`/users/${info.userId}`} className="comment-goals-info" style={{ textDecoration: 'none' }}>
+                            <Link to={`/users/${info.userId}`} className="comment-goals-info-link" style={{ textDecoration: 'none' }}>
                                 {info.username}
                             </Link>
                         </p>

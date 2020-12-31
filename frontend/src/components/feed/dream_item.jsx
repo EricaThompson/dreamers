@@ -39,7 +39,7 @@ class DreamItem extends React.Component {
                        </div>
                        
                         <p className="feed-dreams-info" >
-                            <Link to={`/users/${dream.userId}`} className="feed-dreams-info" style={{ textDecoration: 'none' }}>
+                            <Link to={`/users/${dream.userId}`} className="feed-dreams-info-link" style={{ textDecoration: 'none' }}>
                                 {dream.username}
                             </Link>
                         </p>

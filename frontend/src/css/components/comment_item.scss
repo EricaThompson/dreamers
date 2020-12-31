@@ -1,5 +1,5 @@
 .comment-item-outer-container {
-    padding-top: 10px;
+    padding-top: 20px;
 
     .comment-item-container {
         width: 100%;
@@ -15,6 +15,7 @@
     
         .comment-item-text-link {
             color: $dark-gray;
+            font-weight: 700;
             cursor: pointer;
         }
     }

@@ -36,7 +36,7 @@ class GoalItem extends React.Component {
                             </div>
                         </div>
                         <p className="feed-goals-info" >
-                            <Link to={`/users/${dream.userId}`} className="feed-goals-info" style={{ textDecoration: 'none' }}>
+                            <Link to={`/users/${dream.userId}`} className="feed-goals-info-link" style={{ textDecoration: 'none' }}>
                                 {dream.username}
                             </Link>
                         </p>

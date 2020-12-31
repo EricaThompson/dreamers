@@ -55,7 +55,7 @@ class CommentDreamModal extends React.Component {
                 <div className="comment-dreams-container" >
                     <div className="comment-dreams" >
                         <p className="comment-dreams-info" >
-                            <Link to={`/users/${info.userId}`} className="comment-dreams-info" style={{ textDecoration: 'none' }}>
+                            <Link to={`/users/${info.userId}`} className="comment-dreams-info-link" style={{ textDecoration: 'none' }}>
                                 {info.username}
                             </Link>
                         </p>

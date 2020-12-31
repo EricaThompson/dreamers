@@ -192,6 +192,11 @@
                     .feed-dreams-info {
                         color: $dark-gray;
                         font-family: $serif;
+
+                        .feed-dreams-info-link {
+                            font-weight: 700;
+                            color: $dark-gray;
+                        }
                     }
 
                     .feed-dreams-footer {
@@ -286,6 +291,11 @@
                     .feed-goals-info {
                         color: $dark-gray;
                         font-family: $serif;
+                        
+                        .feed-goals-info-link {
+                            font-weight: 700;
+                            color: $dark-gray;
+                        }
                     }
 
                     .feed-goals-footer {
