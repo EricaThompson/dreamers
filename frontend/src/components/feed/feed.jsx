@@ -1,61 +1,101 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import DreamItem from './dream_item';
+import GoalItem from './goal_item';
 
 class Feed extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             searchValue: '',
+            selected: 'feed'
         }
         this.handleChange = this.handleChange.bind(this);
+        this.handleSelected = this.handleSelected.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.fetchDreams();
     }
 
     handleChange(e) {
         this.setState({ searchValue: e.target.value })
     }
 
+    handleSelected(type) {
+        return (e) => {
+            this.setState({ selected: type })
+        }
+    }
+
+    handleOpenModal() {
+
+    }
+
     render() {
+        let { openModal, modalInfo, dreams } = this.props;
+        if ( dreams.length === 0 ) return null;
+
+        let feed; 
+        
+        if (this.state.selected === "feed") {
+            feed = Object.values(dreams).map((dream, idx) => {
+                if (dream.type === "dream" ) {
+                    return <DreamItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} />
+                } else {
+                    return <GoalItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} />
+                }
+            })
+        } else if (this.state.selected === "dreams") {
+            feed = Object.values(dreams).map((dream, idx) => {
+                if (dream.type === "dream") {
+                    return <DreamItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} />
+                }
+            })
+        } else if (this.state.selected === "goals") {
+            feed = Object.values(dreams).map((dream, idx) => {
+                if (dream.type === "goal") {
+                    return <GoalItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} />
+                }
+            })
+        }
+
         return (
-            <div className="feed-container" >
-                <div className="feed-search-container" >
-                    <i className="fas fa-search feed-search-icon"></i>
-                    <form className="feed-search-form" >
-                        <input type="text" 
-                            placeholder="Search tags, users, etc..."
-                            value={this.state.searchValue}
-                            onChange={this.handleChange}
-                            className="feed-search-input" />
-                    </form>
-                </div>
-                <div className="feed-index-container" >
-                    <div className="feed-header-container">
-                        <h1 className="feed-header feed-header-feed" >Feed</h1>
-                        <h1 className="feed-header feed-header-dreams" >Dreams</h1>
-                        <h1 className="feed-header feed-header-goals" >Goals</h1>
+            <div className="feed-outer-container" >
+                <div className="feed-container">
+                    <div className="feed-search-container" >
+                        <i className="fas fa-search feed-search-icon"></i>
+                        <form className="feed-search-form" >
+                            <input type="text" 
+                                placeholder="Search tags, users, etc..."
+                                value={this.state.searchValue}
+                                onChange={this.handleChange}
+                                className="feed-search-input" />
+                        </form>
                     </div>
-                    <div className="feed-dreams-outer-container" >
-                        <div className="feed-dreams-container" >
-                            <div className="feed-dreams" >
-                                <Link style={{ textDecoration: 'none' }} >
-                                    <p className="feed-dreams-info" >username</p>
-                                    <p className="feed-dreams-info" >this is the text of a dream</p>
-                                    <p className="feed-dreams-info" >3 comments</p>
-                                    <p className="feed-dreams-info" >3 likes</p>
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="feed-dreams-container" >
-                            <div className="feed-goals" >
-                                <Link style={{ textDecoration: 'none' }} >
-                                    <p className="feed-dreams-info" >username</p>
-                                    <p className="feed-dreams-info" >this is the text of a goal</p>
-                                    <p className="feed-dreams-info" >3 comments</p>
-                                    <p className="feed-dreams-info" >3 likes</p>
-                                </Link>
-                            </div>
+                    <div className="feed-index-container" >
+                        <div className="feed-header-container">
+                            <h1 className={this.state.selected === 'feed' ? "feed-header feed-header-selected" : "feed-header"} 
+                                onClick={this.handleSelected('feed')}
+                            >Feed</h1>
+                            <h1 className={this.state.selected === 'dreams' ? "feed-header feed-header-selected" : "feed-header"} 
+                                onClick={this.handleSelected('dreams')}
+                            >Dreams</h1>
+                            <h1 className={this.state.selected === 'goals' ? "feed-header feed-header-selected" : "feed-header"} 
+                                onClick={this.handleSelected('goals')}
+                            >Goals</h1>
                         </div>
                     </div>
                 </div>
+                <div className="feed-dreams-outer-container" >
+                    <div className="feed-dreams-container" >
+                        <div>
+                            {feed}
+                        </div>
+                    </div>
+                </div>
+                <div className="feed-dreams-bottom" ></div>
+                {/* <div className="feed-dreams-blur" ></div> */}
             </div>
         )
     }

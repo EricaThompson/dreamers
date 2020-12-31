@@ -1,0 +1,82 @@
+.comment-modal-outer-container {
+    height: 20%;
+    width: 100%;
+
+    .comment-dreams-container {
+
+        .comment-dreams {
+            border-radius: 20px;
+            background-color: $dark-purple;
+        }
+
+        .comment-goals {
+            background-color: $logo-yellow;
+        }
+
+        .comment-dreams,
+        .comment-goals {
+            padding: 10px;
+            border: 3px solid $off-white;
+            box-shadow: 2px 2px 8px $dark-gray;
+
+            .comment-dreams-info {
+                color: $off-white;
+                font-family: $serif;
+            }
+
+            .comment-goals-info {
+                color: $dark-gray;
+                font-family: $serif;
+            }
+
+            .comment-form {
+                .comment-label {
+                    padding: 20px 0px 0px 0px;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+
+                    .comment-input {
+                        width: 100%;
+                        height: 100px;
+                        border: 2px solid $dark-gray;
+                        border-radius: 10px;
+                        padding: 10px;
+                        font-family: $serif;
+                        color: $dark-gray;
+                        font-size: 15px;
+                        background-color: $off-white;
+                        resize: none;
+                    }
+
+                    .comment-input:focus {
+                        outline: none;
+                        border: 2px solid $magenta;
+                    }
+                }
+
+                .comment-btn-container {
+                    padding-top: 20px;
+                    display: flex;
+                    justify-content: center;
+                    
+                    .comment-btn {
+                        color: $dark-gray;
+                        font-family: $sans-serif;
+                        font-size: 20px;
+                        border: 1px solid $dark-gray;
+                        border-radius: 5px;
+                        padding: 9px 10px 7px;
+                        box-shadow: 1px 1px 8px $dark-gray;
+                        background-color: $off-white;
+                        cursor: pointer;
+                    }
+
+                    .comment-btn:hover {
+                        background-color: $logo-yellow;
+                    }
+                }
+            }
+        }
+    }
+}

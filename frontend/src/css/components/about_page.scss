@@ -27,5 +27,16 @@
             
         }
     }
+
+    .background-link {
+        font-family: $sans-serif;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        color: $dark-gray;
+        text-align: center;
+        font-size: 5vw;
+        padding-top: 10px;
+    }
     
 }

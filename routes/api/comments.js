@@ -69,21 +69,22 @@ router.patch('/:commentId',
         return res.status(400).json(errors);
     }
     
-    var query = { _id: req.params.commentId }
+    var query = { _id: req.params.commentId },
+        update = { comment: req.body.comment },
+        options = { new: true }
+
     Comment.findOne(query)
       .then(comment => {
         
         if (comment.userId != req.user.id ) {
           res.status(400).json({ userauth: 'You can only edit your own comments'})
         } else {
-          Comment.update(query, { $set: { comment: req.body.comment } }, (err) => {
-            
+          Comment.findOneAndUpdate(query, update, options, (err, comment) => {
             if (err) {
               res.status(400).json(err);
             } else {
-              res.json(req.params.commentId);
+              res.json(comment);
             }
-
           })
         }
 

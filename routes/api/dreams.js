@@ -34,7 +34,7 @@ router.post('/',
 
 router.get('/', (req, res) => {
     Dream.find()
-        .sort({ date: -1})
+        .sort({date: -1})
         .then(dreams => res.json(dreams))
         .catch(err => res.status(404).json({ nodreamsfound: 'No dreams found'}));
 })
@@ -86,7 +86,10 @@ router.patch('/:dreamId',
             return res.json.status(400).json(errors);
         }
 
-        var query = { _id: req.params.dreamId }
+        var query = { _id: req.params.dreamId },
+            update = { $set: req.body },
+            options = { new: true }
+
         Dream.findOne(query)
             .then(dream => {
                 if (dream.userId != req.user.id) {
@@ -95,11 +98,11 @@ router.patch('/:dreamId',
                     if (req.body.text.length === 0) {
                         delete req.body.text;
                     }
-                    Dream.update(query, { $set: req.body }, function(err) {
+                    Dream.findOneAndUpdate(query, update, options, (err, dream) => {
                         if(err) {
                             res.status(400).json(err);
                         } else {
-                            res.json(req.params.dreamId);
+                            res.json(dream);
                         }
                     })
                 }
