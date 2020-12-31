@@ -4,6 +4,7 @@ export const RECEIVE_DREAMS = 'RECEIVE_DREAMS';
 export const RECEIVE_DREAM = 'RECEIVE_DREAM';
 export const REMOVE_DREAMS = 'REMOVE_DREAMS';
 export const CLEAR_DREAMS = 'CLEAR_DREAMS';
+// export const RECEIVE_NEW_DREAM = 'RECEIVE_NEW_DREAM';
 
 export const receiveDreams = (dreams) => ({
     type: RECEIVE_DREAMS, 
