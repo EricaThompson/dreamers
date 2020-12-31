@@ -22,7 +22,7 @@
     
     .profile {
         position: fixed;
-        width: 91%;
+        width: 100%;
         display: flex;
         margin-top: -20px;
         // margin-left: -20px;
@@ -109,7 +109,7 @@
     .profile-dream-feed {
         margin-top: 130px;
         width: 101%;
-        height: 74%;
+        height: calc(100vh - 130px);
         
         // overflow: scroll;
         // display: absolute;
