@@ -33,12 +33,13 @@ class Profile extends React.Component {
         // this.props.fetchDreams()
             // .then(res => this.setState({userDreams: Object.values(res).data}))
         // debugger
-        console.log('props dreams',this.props.dreams)
-        console.log('state dreams', this.state.userDreams)
+        // console.log('props dreams',this.props.dreams)
+        // console.log('state dreams', this.state.userDreams)
             // .then(res => this.setState({userDreams: res}))
-        
-        this.props.closeModal()
+    }
 
+    componentWillUnmount() {
+        this.props.clearDreams();
     }
 
     handleChange(value) {
