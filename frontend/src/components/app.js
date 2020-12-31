@@ -1,5 +1,6 @@
 import React from 'react';
 import NavBarContainer from './nav/navbar_container';
+// import HomePageContainer from './home_page/home_page_container';
 import HomePage from './home_page/home_page';
 import AboutPage from './about_page/about_page';
 import "../App.scss";
@@ -24,10 +25,10 @@ const App = () => (
             <Switch>
                 <AuthRoute path={`/login`} component={LoginFormContainer} />
                 <AuthRoute path={`/signup`} component={SignupFormContainer} />
-                <Route exact path="/" component={HomePage} />
+                <AuthRoute exact path="/" component={HomePage} />
                 <Route exact path="/about" component={AboutPage} />
-                <ProtectedRoute path={`/feed`} component={FeedContainer} />
-                <ProtectedRoute path={`/users/:userId`} component={ProfileContainer} />
+                <ProtectedRoute exact path={`/feed`} component={FeedContainer} />
+                <ProtectedRoute exact path={`/users/:userId`} component={ProfileContainer} />
                 <Redirect to="/" />
             </Switch>
         </div>

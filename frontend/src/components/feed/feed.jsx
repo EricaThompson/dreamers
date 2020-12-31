@@ -2,6 +2,8 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 import DreamItem from './dream_item';
 import GoalItem from './goal_item';
+import { withRouter } from 'react-router-dom';
+
 
 class Feed extends React.Component {
     constructor(props) {
@@ -15,9 +17,10 @@ class Feed extends React.Component {
         this.handleSelected = this.handleSelected.bind(this);
     }
 
-    // componentDidMount() {
-    //     this.props.fetchDreams();
-    // }
+    componentDidMount() {
+        if (this.props.match.url.includes("feed") )
+        this.props.fetchDreams();
+    }
 
     // componentWillReceiveProps(nextProps){
     //     nextProps.fetchDreamsByUser(nextProps.userId)
@@ -101,4 +104,4 @@ class Feed extends React.Component {
     }
 }
 
-export default Feed;
+export default withRouter(Feed);

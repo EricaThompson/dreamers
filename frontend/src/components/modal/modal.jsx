@@ -13,7 +13,10 @@ const Modal = ({ modal, closeModal, currentUser }) => {
     let component;
     switch (modal) {
         case 'newDream':
-            component = <NewDreamContainer currentUser={currentUser} createDream={createDream}/>;
+            component = <NewDreamContainer 
+                currentUser={currentUser} 
+                createDream={createDream}
+            />;
             break;
         case 'commentGoal':
             component = <CommentGoalModal />;
