@@ -111,14 +111,6 @@ class Profile extends React.Component {
                     </div>
                 </div>
                 <div className="profile-dream-feed">
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    
                     <Feed 
                         userId={this.props.match.params.userId}
                         dreams={dreams}
