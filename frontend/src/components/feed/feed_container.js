@@ -4,7 +4,7 @@ import { openModal, closeModal, modalInfo } from '../../actions/modal_actions';
 import { fetchDreams } from '../../actions/dream_actions';
 
 const mapSTP = state => {
-    // debugger;
+   
     return {
     currentUser: state.session.user,
     dreams: Object.values(state.dream)[0],

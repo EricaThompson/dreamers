@@ -6,6 +6,11 @@ import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
 
+import {
+  fetchUserById,
+  updateUser
+} from './actions/user_actions';
+
 document.addEventListener('DOMContentLoaded', () => {
   let store;
 
@@ -28,6 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore({});
   }
+
+  // testing  
+  window.store = store;
+  window.fetchUserById = fetchUserById;
+  window.updateUser = updateUser;
+  
+
+  // end testing 
+
 
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);

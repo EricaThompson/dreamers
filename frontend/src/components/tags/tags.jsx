@@ -4,7 +4,7 @@ import GoalItem from '../feed/goal_item';
 
 class TagsFeed extends React.Component {
     componentDidMount() {
-        // debugger;
+        
         this.props.fetchDreamsByTags([this.props.tagName]);
     }
 
