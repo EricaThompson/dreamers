@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 class CommentDreamModal extends React.Component {
     componentDidMount() {
-        debugger;
+        // debugger;
         this.props.fetchCommentsByDream(this.props.info._id)
     }
 
