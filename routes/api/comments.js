@@ -113,24 +113,39 @@ router.patch('/:commentId',
 router.delete('/:commentId',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    var query = { _id: req.params.commentId }
-    Comment.findOne(query)
+    Comment.findOne({ _id: req.params.commentId })
       .then(comment => {
         
-        if (comment.userId != req.user.id ) {
+        if (comment.userId != req.user.id) {
           res.status(400).json({ userauth: 'You can only delete your own comments'})
         } else {
-          Comment.deleteOne(query, (err) => {
-            
+
+          Comment.deleteOne({ _id: req.params.commentId }, (err) => {
             if (err) {
-              res.status(400).json(err);
-            } else {
-              res.json(req.params.commentId);
+              res.status(404).json({err}) 
             }
+          })
+          .then(() => {
+            var query = { _id: comment.dreamId },
+              update = { $pull: { comments: req.params.commentId } },
+              options = { new: true }
+            
+            Dream.findOneAndUpdate(query, update, options, (err, dream) => {
+              
+              if (err) {
+                res.status(404).json({err});
+              } else {
+                res.json({
+                  commentId: req.params.commentId,
+                  dream: dream
+                })
+              }
+
+            })
 
           })
-        }
 
+        }
       })
       .catch(err => res.status(400).json(err))
   }
