@@ -5,5 +5,5 @@ export const fetchUserById = userId => (
 );
 
 export const updateUser = (userId, updatedFields) => (
-  axios.patch(`/api/users/${userId}`)
+  axios.patch(`/api/users/${userId}`, updatedFields)
 );
