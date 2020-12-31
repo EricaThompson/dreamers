@@ -28,8 +28,12 @@ class Feed extends React.Component {
         }
     }
 
+    handleOpenModal() {
+
+    }
+
     render() {
-        let { openModal, dreams } = this.props;
+        let { openModal, modalInfo, dreams } = this.props;
         if ( dreams.length === 0 ) return null;
 
         let feed; 
@@ -37,21 +41,21 @@ class Feed extends React.Component {
         if (this.state.selected === "feed") {
             feed = Object.values(dreams).map((dream, idx) => {
                 if (dream.type === "dream" ) {
-                    return <DreamItem key={idx} dream={dream} openModal={openModal} />
+                    return <DreamItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} />
                 } else {
-                    return <GoalItem key={idx} dream={dream} openModal={openModal} />
+                    return <GoalItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} />
                 }
             })
         } else if (this.state.selected === "dreams") {
             feed = Object.values(dreams).map((dream, idx) => {
                 if (dream.type === "dream") {
-                    return <DreamItem key={idx} dream={dream} openModal={openModal} />
+                    return <DreamItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} />
                 }
             })
         } else if (this.state.selected === "goals") {
             feed = Object.values(dreams).map((dream, idx) => {
                 if (dream.type === "goal") {
-                    return <GoalItem key={idx} dream={dream} openModal={openModal} />
+                    return <GoalItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} />
                 }
             })
         }

@@ -57,10 +57,9 @@
 
                 .comment-btn-container {
                     padding-top: 20px;
-                    cursor: pointer;
                     display: flex;
                     justify-content: center;
-
+                    
                     .comment-btn {
                         color: $dark-gray;
                         font-family: $sans-serif;
@@ -70,6 +69,7 @@
                         padding: 9px 10px 7px;
                         box-shadow: 1px 1px 8px $dark-gray;
                         background-color: $off-white;
+                        cursor: pointer;
                     }
 
                     .comment-btn:hover {

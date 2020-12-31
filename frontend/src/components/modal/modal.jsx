@@ -5,20 +5,20 @@ import NewDreamContainer from '../dreams/new_dream_container';
 import CommentGoalModal from '../feed/comment_modal_goal';
 import CommentDreamModal from '../feed/comment_modal_dream';
 
-const Modal = ({ modal, closeModal }) => {
+const Modal = ({ modal, closeModal, info }) => {
     if (!modal) {
         return null;
     }
     let component;
     switch (modal) {
         case 'newDream':
-            component = <NewDreamContainer />;
+            component = <NewDreamContainer  />;
             break;
         case 'commentGoal':
-            component = <CommentGoalModal />;
+            component = <CommentGoalModal info={info} />;
             break;
         case 'commentDream':
-            component = <CommentDreamModal />;
+            component = <CommentDreamModal info={info} />;
             break;
         default:
             return null;
@@ -36,6 +36,7 @@ const Modal = ({ modal, closeModal }) => {
 
 const mapSTP = state => ({
     modal: state.ui.modal,
+    info: state.modalInfo
 })
 
 const mapDTP = dispatch => ({

@@ -5,6 +5,10 @@ class Profile extends React.Component {
         super(props);
     }
 
+    componentDidMount() {
+        this.props.closeModal();
+    }
+
     render() {
         let { openModal } = this.props;
         return (
