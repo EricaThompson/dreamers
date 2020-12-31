@@ -10,7 +10,7 @@ class NewDream extends React.Component {
             tags: ['KillingIt', 'Love', 'Teeth'],
         }
         this.handleChange = this.handleChange.bind(this);
-        // this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         // this.handleTags = this.handleTags.bind(this);
         this.removeTag = this.removeTag.bind(this);
     }
@@ -29,7 +29,8 @@ class NewDream extends React.Component {
             text: this.state.dreamText,
             tags: this.state.tags
         }
-        debugger;
+        // debugger;
+        console.log('new dream', newDream)
         this.props.createDream(newDream);
     }
 

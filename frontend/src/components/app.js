@@ -9,6 +9,7 @@ import SignupFormContainer from './session/signup_form_container';
 import Modal from './modal/modal';
 import FeedContainer from './feed/feed_container';
 import ProfileContainer from './profile/profile_container';
+// import NewDreamContainer from './dreams/new_dream_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 
@@ -19,6 +20,7 @@ const App = () => (
         </div>    
         <div className="main-app" >
             <Modal />
+            {/* <NewDreamContainer /> */}
             <Switch>
                 <AuthRoute path={`/login`} component={LoginFormContainer} />
                 <AuthRoute path={`/signup`} component={SignupFormContainer} />
