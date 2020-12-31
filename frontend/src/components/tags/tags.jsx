@@ -11,7 +11,7 @@ class TagsFeed extends React.Component {
     
     render() {
         let { tagName, dreams, openModal } = this.props;
-        
+
         let feed = Object.values(dreams).map((dream, idx) => {
             if (dream.type === "dream") {
                 return <DreamItem key={idx} dream={dream} openModal={openModal} />
@@ -21,8 +21,11 @@ class TagsFeed extends React.Component {
         })
 
         return (
-             <div>
-                 <h1>{tagName}</h1>
+             <div className="tag-page-outer-container" >
+                <div className="tag-page-tag-container" >
+                        <div className="tag-page-circle" ></div>
+                        <h1 className="tag-page-name" >{tagName}</h1>
+                 </div>
                 <div className="new-dream-tags" >
                     {feed}
                 </div>
