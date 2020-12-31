@@ -36,17 +36,17 @@ class DreamItem extends React.Component {
                            </div>
                        </div>
                        
-                       <p className="feed-dreams-info" >
-                           <Link to={`/users/${dream.userId}`} className="feed-dreams-info" style={{ textDecoration: 'none' }}>
-                               {dream.username}
-                           </Link>
-                       </p>
-                       <p className="feed-dreams-info" >{dream.text}</p>
-                       <div className="feed-dreams-footer" >
-                           <p className="feed-dreams-footer-info" >3 <span onClick={this.handleOpenModal} className="feed-dreams-footer-comments" >comments</span></p>
-                           <p className="feed-dreams-footer-info" >3 <span className="feed-dreams-footer-likes" >likes</span></p>
-                       </div>
+                        <p className="feed-dreams-info" >
+                            <Link to={`/users/${dream.userId}`} className="feed-dreams-info" style={{ textDecoration: 'none' }}>
+                                {dream.username}
+                            </Link>
+                        </p>
+                        <p className="feed-dreams-info" >{dream.text}</p>
                    </Link>
+                    <div className="feed-dreams-footer" >
+                        <p className="feed-dreams-footer-info" >3 <span onClick={this.handleOpenModal} className="feed-dreams-footer-comments" >comments</span></p>
+                        <p className="feed-dreams-footer-info" >3 <span className="feed-dreams-footer-likes" >likes</span></p>
+                    </div>
                </div>
            </div>
        )

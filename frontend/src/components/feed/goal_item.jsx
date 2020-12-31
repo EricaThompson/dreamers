@@ -14,7 +14,7 @@ class GoalItem extends React.Component {
 
     render() {
         let { dream } = this.props;
-        
+
         return (
             <div className="feed-goals-wrapper" >
                 <div className="feed-goals">
@@ -39,11 +39,11 @@ class GoalItem extends React.Component {
                             </Link>
                         </p>
                         <p className="feed-goals-info" >{dream.text}</p>
-                        <div className="feed-goals-footer" >
-                            <p className="feed-goals-footer-info" >3 <span onClick={this.handleOpenModal} className="feed-goals-footer-comments" >comments</span></p>
-                            <p className="feed-goals-footer-info" >3 <span className="feed-goals-footer-likes" >likes</span></p>
-                        </div>
                     </Link>
+                    <div className="feed-goals-footer" >
+                        <p className="feed-goals-footer-info" >3 <span onClick={this.handleOpenModal} className="feed-goals-footer-comments" >comments</span></p>
+                        <p className="feed-goals-footer-info" >3 <span className="feed-goals-footer-likes" >likes</span></p>
+                    </div>
                 </div>
             </div>
         )

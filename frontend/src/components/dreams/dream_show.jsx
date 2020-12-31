@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 class DreamShow extends React.Component {
     componentDidMount() {
         this.props.fetchDreamById(this.props.match.params.dreamId);
+        this.props.closeModal();
     }
 
     render() {
