@@ -18,7 +18,20 @@
     // overflow: scroll;
     animation: fade-in .2s ease-in-out;
     
-    
+    .edit-profile-form {
+        width: 234px;
+        // display: flex;
+
+        cursor: default;
+        input {
+            // text-align: right;
+            // justify-self: flex-end;
+            // width: 20px;
+            width: 70%;
+            background-color: $lightest-blue;
+            // padding-left: 3px;
+        }
+    }
     
     .profile {
         position: fixed;

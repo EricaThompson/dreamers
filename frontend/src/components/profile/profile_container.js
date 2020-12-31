@@ -8,13 +8,15 @@ import { fetchCommentsByDream, clearComments } from '../../actions/comment_actio
 const mapSTP = state => ({
     currentUser: state.session.user,
     dreams: state.dream,
+    user: state.user
 })
 
 const mapDTP = dispatch => ({
     fetchUserById: (userId) => dispatch(fetchUserById(userId)),
-    updateUser: (user) => dispatch(updateUser(user)),
+    updateUser: (userId, user) => dispatch(updateUser(userId, user)),
     openModal: (modal) => dispatch(openModal(modal)),
     closeModal: () => dispatch(closeModal()),
+    modalInfo: (info) => dispatch(modalInfo(info)),
     createDream: (dream) => dispatch(createDream(dream)),
     fetchDreams: () => dispatch(fetchDreams()),
     fetchDreamsByUser: (userId) => dispatch(fetchDreamsByUser(userId)),
