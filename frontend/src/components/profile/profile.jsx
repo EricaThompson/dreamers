@@ -17,6 +17,7 @@ class Profile extends React.Component {
                 username: 'tester', 
                 location: 'the cloud', 
                 age: 100, 
+                followers: [1,2,3,4,5],
                 bio: 'Here are a few things about me. Here are a few things about me. Here are a few things about me.'}
         }
         // this.handleChange = this.handleChange.bind(this);
@@ -47,13 +48,22 @@ class Profile extends React.Component {
         console.log('dreams state', this.props.dreams)
         console.log('state dreams', this.state.userDreams)
 
+        
         let editBtn;
+        let newDreamBtn;
         let followBtn;
+
         //! change this when we get getUserById action
         if (this.state.thisUser.id === this.state.currentUser.id){
             editBtn = <button className="profile-edit-button">
                         edit profile
                     </button>
+            newDreamBtn = <button
+                            className="new-dream-btn"
+                            onClick={() => openModal('newDream')}
+                        >
+                            Create new dream
+                        </button>
             
         } else {
             followBtn = <button
@@ -75,18 +85,15 @@ class Profile extends React.Component {
                     </div>
                     <div className='user-info'>
                         {editBtn}
-                        <button
-                            className="new-dream-btn"
-                            onClick={() => openModal('newDream')} 
-                        >
-                            Create new dream
-                        </button>
+                        {newDreamBtn}
+                        
                         <div className="username">@{this.state.thisUser.username}</div>
                         <div>Location: {this.state.thisUser.location}</div>
                         <div className="age">Age: {this.state.thisUser.age}</div>
                         <div className="about">
                             {this.state.thisUser.bio}
                         </div>
+                        <div>Followers: {this.state.thisUser.followers.length}</div>
                         {followBtn}
                     </div>
                 </div>
