@@ -94,8 +94,8 @@ class Feed extends React.Component {
                         </div>
                     </div>
                 </div>
-                {/* <div className="feed-dreams-bottom" ></div>
-                <div className="feed-dreams-blur" ></div> */}
+                <div className="feed-dreams-bottom" ></div>
+                {/* <div className="feed-dreams-blur" ></div> */}
             </div>
         )
     }
