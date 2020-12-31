@@ -18,7 +18,9 @@ router.post('/:dreamId',
             return res.status(400).json(errors);
         }
 
-        Dream.find({_id: req.params.id})
+        var query = {_id: req.params.dreamId}
+
+        Dream.findOne(query)
           .then(dream => {
             const newComment = new Comment({
               userId: req.user.id,
@@ -27,7 +29,20 @@ router.post('/:dreamId',
               comment: req.body.comment
             })
 
-            newComment.save().then(comment => res.json(comment));
+            newComment.save().then(comment => {
+              var update = { $push: { comments: comment._id } },
+                  options = { new: true }
+              Dream.findOneAndUpdate(query, update, options, (err, dream) => {
+                if (err) {
+                  res.status(400).json(err)
+                } else {
+                  res.json({
+                    dream,
+                    comment
+                  })
+                }
+              })
+            })
           })
           .catch(err => 
             res.status(404).json({err})
