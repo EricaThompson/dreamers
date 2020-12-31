@@ -18,7 +18,7 @@ class DreamItem extends React.Component {
         return (
            <div className="feed-dreams-wrapper" >
                <div className="feed-dreams" >
-                   <Link to="/feed" style={{ textDecoration: 'none' }} >
+                   <Link to={`/dreams/${dream._id}`} style={{ textDecoration: 'none' }} >
                        <div className="feed-dreams-circle-big" ></div>
                        <div className="feed-dreams-circle-small" ></div>
                        <div className="new-dream-tags-container" >

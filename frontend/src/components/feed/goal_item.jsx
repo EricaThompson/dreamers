@@ -14,10 +14,11 @@ class GoalItem extends React.Component {
 
     render() {
         let { dream } = this.props;
+        
         return (
             <div className="feed-goals-wrapper" >
                 <div className="feed-goals">
-                    <Link to="/feed" style={{ textDecoration: 'none' }} >
+                    <Link to={`/dreams/${dream._id}`} style={{ textDecoration: 'none' }} >
                         <div className="new-dream-tags-container" >
                             <div className="new-dream-tags" >
                                 {dream.tags.map((tag, idx) => {
