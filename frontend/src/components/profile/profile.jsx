@@ -26,6 +26,9 @@ class Profile extends React.Component {
 
     componentDidMount() {
         this.props.fetchDreamsByUser(this.props.match.params.userId)
+        this.props.fetchUserById(this.props.match.params.userId)
+            .then(res => this.setState({ thisUser: res.user }, console.log('this user',res.user)))
+            // .then(res => console.log(res))
         // this.props.fetchDreams()
             // .then(res => this.setState({userDreams: Object.values(res).data}))
         // debugger
@@ -34,6 +37,7 @@ class Profile extends React.Component {
             // .then(res => this.setState({userDreams: res}))
         
         this.props.closeModal()
+
     }
 
     // handleChange(e) {
@@ -95,13 +99,14 @@ class Profile extends React.Component {
                         {editBtn}
                         {newDreamBtn}
                         
-                        <div className="username">@{this.state.thisUser.username}</div>
+                        <div className="username">{this.state.thisUser.username}</div>
+                        <div>Dreamer since: {this.state.thisUser.createdAt}</div>
                         <div>Location: {this.state.thisUser.location}</div>
                         <div className="age">Age: {this.state.thisUser.age}</div>
                         <div className="about">
-                            {this.state.thisUser.bio}
+                            Bio: {this.state.thisUser.bio}
                         </div>
-                        <div>Followers: {this.state.thisUser.followers.length}</div>
+                        {/* <div>Followers: {this.state.thisUser.followers.length}</div> */}
                         {followBtn}
                     </div>
                 </div>

@@ -6,6 +6,49 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
 
+// user profile
+
+const validateUpdateUserInput = require('../../validation/update_dream');
+
+router.get('/user/:userId', (req, res) => {
+  User.findOne({ _id: req.params.userId })
+    .then(user => res.json(user))
+    .catch(err => res.status(404).json({ nouserfound: 'No user found with specified id'}))
+})
+
+router.patch('/:userId',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    const { errors, isValid } = validateUpdateUserInput(req.body);
+
+    if (!isValid) {
+      return res.json.status(400).json(errors);
+    }
+
+    var query = { _id: req.params.userId },
+        update = { $set: req.body },
+        options = { new: true }
+
+    User.findOne(query)
+      .then(user => {
+        if (user._id != req.user.id) {
+          res.status(400).json({ userauth: 'You can only update your own user information'})
+        } else {
+          User.findOneAndUpdate(query, update, options, (err, user) => {
+            if (err) {
+              res.status(400).json(err);
+            } else {
+              res.json(user);
+            }
+          })
+        }
+      })
+      .catch(err => res.status(404).json({ nouserfound: 'No user found with that ID' }))
+  }
+)
+
+// uauth
+
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
