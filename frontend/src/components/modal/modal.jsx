@@ -3,8 +3,8 @@ import { closeModal } from '../../actions/modal_actions';
 import { createDream } from '../../actions/dream_actions';
 import { connect } from 'react-redux';
 import NewDreamContainer from '../dreams/new_dream_container';
-import CommentGoalModal from '../feed/comment_modal_goal';
-import CommentDreamModal from '../feed/comment_modal_dream';
+import CommentGoalModal from '../feed/comment_goal_modal';
+import CommentDreamModal from '../feed/comment_dream_modal';
 import { fetchCommentsByDream, createComment } from '../../actions/comment_actions';
 
 const Modal = ({ modal, currentUser, closeModal, info, fetchCommentsByDream, comments, createComment }) => {
@@ -20,10 +20,22 @@ const Modal = ({ modal, currentUser, closeModal, info, fetchCommentsByDream, com
             />;
             break;
         case 'commentGoal':
-            component = <CommentGoalModal info={info} fetchCommentsByDream={fetchCommentsByDream} comments={comments} createComment={createComment} />;
+            component = <CommentGoalModal
+                currentUser={currentUser}
+                info={info} 
+                fetchCommentsByDream={fetchCommentsByDream} 
+                comments={comments} 
+                createComment={createComment} 
+            />;
             break;
         case 'commentDream':
-            component = <CommentDreamModal info={info} fetchCommentsByDream={fetchCommentsByDream} comments={comments} createComment={createComment}  />;
+            component = <CommentDreamModal
+                currentUser={currentUser}
+                info={info} 
+                fetchCommentsByDream={fetchCommentsByDream} 
+                comments={comments} 
+                createComment={createComment}  
+            />;
             break;
         default:
             return null;
