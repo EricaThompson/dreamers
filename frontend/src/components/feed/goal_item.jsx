@@ -25,12 +25,12 @@ class GoalItem extends React.Component {
 
         return (
             <div className="feed-goals-wrapper" >
-                <div className="feed-dreams-edit-pencil" >
+                <div className="feed-dreams-edit-pencil" onClick={this.handleOpenEditModal} >
                     {currentUser.id === dream.userId ?
                         <i class="fas fa-pencil-alt"></i>
                         : ""}
                 </div>
-                <div className="feed-goals" onClick={this.handleOpenModal} onClick={this.handleOpenEditModal} >
+                <div className="feed-goals" onClick={this.handleOpenModal} >
                     {/* <Link to={`/dreams/${dream._id}`} style={{ textDecoration: 'none' }} > */}
                         <div className="new-dream-tags-container" >
                             <div className="new-dream-tags" >

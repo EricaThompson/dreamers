@@ -107,7 +107,7 @@
                     right: 12px;
                     color: $dark-gray;
                     cursor: pointer;
-                    z-index: 10;
+                    z-index: 1;
                 }
 
                 .feed-dreams {
@@ -244,9 +244,9 @@
                     right: 12px;
                     color: $dark-gray;
                     cursor: pointer;
-                    z-index: 10;
+                    z-index: 1;
                 }
-                
+
                 .feed-goals {
                     padding: 10px;
                     border: 3px solid $off-white;
@@ -356,6 +356,7 @@
         height: 40px;
         width: 100%;
         background-color: $off-white;
+        z-index: 2;
         // background: linear-gradient(to bottom, #2C31811a, $background-blue);
     }
 
