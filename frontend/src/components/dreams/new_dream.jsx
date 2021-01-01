@@ -12,7 +12,7 @@ class NewDream extends React.Component {
                 tags: ['KillingIt', 'Love', 'Teeth'],
             }
         } else {
-            // debugger;
+            debugger;
             this.state = {
                 selectedOption: this.props.info.type,
                 dreamText: this.props.info.text,
@@ -35,7 +35,8 @@ class NewDream extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         let newDream = {
-            user: this.props.currentUser,
+            username: this.props.currentUser.username,
+            userId: this.props.currentUser.id,
             type: this.state.selectedOption,
             text: this.state.dreamText,
             tags: this.state.tags
@@ -43,10 +44,10 @@ class NewDream extends React.Component {
         // debugger;
         if (this.props.info.userId) {
             this.props.updateDream(this.props.info._id, newDream);
-            console.log('update dream', newDream)
+            console.log('update dream', { dream: newDream })
         } else {
             console.log('new dream', newDream)
-            this.props.createDream(newDream);
+            this.props.createDream({dream: newDream});
         }
     }
 
