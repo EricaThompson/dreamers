@@ -59,12 +59,16 @@ class Feed extends React.Component {
             feed = Object.values(dreams).map((dream, idx) => {
                 if (dream.type === "dream") {
                     return <DreamItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} fetchCommentsByDream={fetchCommentsByDream} clearComments={clearComments} currentUser={currentUser} />
+                } else {
+                    return ""
                 }
             })
         } else if (this.state.selected === "goals") {
             feed = Object.values(dreams).map((dream, idx) => {
                 if (dream.type === "goal") {
                     return <GoalItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} fetchCommentsByDream={fetchCommentsByDream} clearComments={clearComments} currentUser={currentUser} />
+                } else {
+                    return ""
                 }
             })
         }

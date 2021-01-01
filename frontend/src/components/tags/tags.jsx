@@ -5,7 +5,7 @@ import Feed from '../feed/feed';
 
 class TagsFeed extends React.Component {
     componentDidMount() {
-
+        this.props.fetchDreamsByTags([this.props.tagName]);
         this.props.closeModal();
     }
 
@@ -15,7 +15,7 @@ class TagsFeed extends React.Component {
     
     render() {
         let { tagName, openModal, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo, currentUser } = this.props;
-
+        // debugger
         // let feed = Object.values(dreams).map((dream, idx) => {
         //     if (dream.type === "dream") {
         //         return <DreamItem key={idx} dream={dream} openModal={openModal} />

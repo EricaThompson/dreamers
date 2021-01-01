@@ -19,7 +19,7 @@ class Modal extends React.Component {
     }
 
     render() {
-        let { modal, currentUser, closeModal, info, fetchCommentsByDream, comments, createComment, clearModalInfo } = this.props;
+        let { modal, currentUser, info, fetchCommentsByDream, comments, createComment, clearModalInfo } = this.props;
         if (!modal) {
             return null;
         }

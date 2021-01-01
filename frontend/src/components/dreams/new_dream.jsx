@@ -94,9 +94,9 @@ class NewDream extends React.Component {
                     <div className="new-dream-tags" >
                         {this.state.tags.map((tag, idx) => {
                             return (
-                                <div className="new-dream-tags-item-container" onClick={this.removeTag(tag)}>
+                                <div key={idx} className="new-dream-tags-item-container" onClick={this.removeTag(tag)}>
                                     <div className="new-dream-tags-item-circle" ></div>
-                                    <p key={idx} className="new-dream-tags-item" >{tag}</p>
+                                    <p className="new-dream-tags-item" >{tag}</p>
                                 </div>
                             )
                         })}

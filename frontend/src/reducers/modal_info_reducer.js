@@ -1,6 +1,6 @@
 import { MODAL_INFO, CLEAR_MODAL_INFO } from '../actions/modal_actions';
 
-export default (oldState = null, action) => {
+const ModalInfoReducer = (oldState = null, action) => {
     Object.freeze(oldState);
 
     switch (action.type) {
@@ -12,3 +12,5 @@ export default (oldState = null, action) => {
             return oldState;
     }
 }
+
+export default ModalInfoReducer;
