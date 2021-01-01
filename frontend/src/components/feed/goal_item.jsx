@@ -27,7 +27,7 @@ class GoalItem extends React.Component {
             <div className="feed-goals-wrapper" >
                 <div className="feed-dreams-edit-pencil" onClick={this.handleOpenEditModal} >
                     {currentUser.id === dream.userId ?
-                        <i class="fas fa-pencil-alt"></i>
+                        <i className="fas fa-pencil-alt"></i>
                         : ""}
                 </div>
                 <div className="feed-goals" onClick={this.handleOpenModal} >

@@ -11,10 +11,12 @@ export const receiveDreams = (dreams) => ({
     dreams
 });
 
-export const receiveDream = (dream) => ({
+export const receiveDream = (dream) => {
+    debugger;
+    return {
     type: RECEIVE_DREAM,
     dream
-});
+}};
 
 export const removeDreams = (dreamId) => ({
     type: REMOVE_DREAMS,

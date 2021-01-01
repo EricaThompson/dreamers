@@ -18,6 +18,10 @@ class CommentDreamModal extends React.Component {
         // this.props.fetchCommentsByDream(this.props.info._id)
     }
 
+    componentWillUnmount() {
+        this.props.clearModalInfo();
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         let thisComment = {

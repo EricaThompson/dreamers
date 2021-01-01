@@ -26,6 +26,7 @@ class Profile extends React.Component {
 
     componentDidMount() {
         this.props.closeModal();
+        this.props.clearModalInfo();
         this.props.fetchDreamsByUser(this.props.match.params.userId)
         this.props.fetchUserById(this.props.match.params.userId)
             .then(res => this.setState({ profileUser: res.user}))
@@ -40,6 +41,7 @@ class Profile extends React.Component {
 
     componentWillUnmount() {
         this.props.clearDreams();
+        this.props.clearModalInfo();
     }
 
     handleChange(value) {

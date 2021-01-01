@@ -3,11 +3,22 @@ import React from 'react';
 class NewDream extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            selectedOption: this.props.info.type || 'dream',
-            dreamText: this.props.info.text || '',
-            searchValue: '',
-            tags: this.props.info.tags || ['KillingIt', 'Love', 'Teeth'],
+        if (Object.values(this.props.info).length === 0) {
+            // debugger;
+            this.state = {
+                selectedOption: 'dream',
+                dreamText: '',
+                searchValue: '',
+                tags: ['KillingIt', 'Love', 'Teeth'],
+            }
+        } else {
+            // debugger;
+            this.state = {
+                selectedOption: this.props.info.type,
+                dreamText: this.props.info.text,
+                searchValue: '',
+                tags: this.props.info.tags,
+            }
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -57,7 +68,7 @@ class NewDream extends React.Component {
     render() {
         return (
             <div className="new-dream-container" onClick={e => e.stopPropagation()} >
-                <h1 className="new-dream-header" >{this.props.info.userId ? "Edit Dream" : "New Dream"}</h1>
+                <h1 className="new-dream-header" >{Object.values(this.props.info).length === 0 ? "New Dream" : "Edit Dream"}</h1>
                 <form className="new-dream-radio">
                     <label className="new-dream-radio-btn" >
                         <h1 className={this.state.selectedOption === 'dream' ? "new-dream-radio-btn-header-checked" : "new-dream-radio-btn-header"} >Dream</h1>
@@ -115,7 +126,7 @@ class NewDream extends React.Component {
                 <div className="create-dream-btn" >
                     <input className="new-dream-btn" 
                         type="submit" 
-                        value={this.props.info.userId ? "Edit Dream" : "Create Dream"}
+                        value={Object.values(this.props.info).length === 0 ? "Create Dream" : "Edit Dream"}
                         onClick={this.handleSubmit} 
                         />
                 </div>
