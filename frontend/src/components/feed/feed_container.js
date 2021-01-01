@@ -4,8 +4,8 @@ import { openModal, closeModal, modalInfo } from '../../actions/modal_actions';
 import { fetchCommentsByDream, clearComments } from '../../actions/comment_actions';
 import { fetchDreams, clearDreams } from '../../actions/dream_actions';
 
-const mapSTP = (state, ownProps) => {
-    // debugger;
+const mapSTP = state => {
+   
     return {
     currentUser: state.session.user,
     dreams: state.dream,
