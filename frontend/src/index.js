@@ -5,8 +5,6 @@ import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
-import { createComment } from './actions/comment_actions';
-
 
 
 
@@ -32,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore({});
   }
-
 
 
   const root = document.getElementById('root');
