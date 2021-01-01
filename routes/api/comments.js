@@ -127,9 +127,9 @@ router.delete('/:commentId',
           })
           .then(() => {
             var query = { _id: comment.dreamId },
-              update = { $pull: { comments: req.params.commentId } },
+              update = { $pull: { comments: mongoose.Types.ObjectId(req.params.commentId) } },
               options = { new: true }
-            
+
             Dream.findOneAndUpdate(query, update, options, (err, dream) => {
               
               if (err) {
