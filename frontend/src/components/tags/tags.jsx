@@ -15,7 +15,7 @@ class TagsFeed extends React.Component {
     }
     
     render() {
-        let { tagName, openModal, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo } = this.props;
+        let { tagName, openModal, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo, currentUser } = this.props;
 
         // let feed = Object.values(dreams).map((dream, idx) => {
         //     if (dream.type === "dream") {
@@ -38,6 +38,7 @@ class TagsFeed extends React.Component {
                 </div>
                 <div className="profile-dream-feed">
                     <Feed
+                        currentUser={currentUser}
                         userId={this.props.match.params.userId}
                         dreams={dreams}
                         openModal={openModal}

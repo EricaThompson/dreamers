@@ -4,10 +4,10 @@ class NewDream extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedOption: 'dream',
-            dreamText: '',
+            selectedOption: this.props.info.type || 'dream',
+            dreamText: this.props.info.text || '',
             searchValue: '',
-            tags: ['KillingIt', 'Love', 'Teeth'],
+            tags: this.props.info.tags || ['KillingIt', 'Love', 'Teeth'],
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,8 +30,13 @@ class NewDream extends React.Component {
             tags: this.state.tags
         }
         // debugger;
-        console.log('new dream', newDream)
-        this.props.createDream(newDream);
+        if (this.props.info.userId) {
+            this.props.updateDream(this.props.info._id, newDream);
+            console.log('update dream', newDream)
+        } else {
+            console.log('new dream', newDream)
+            this.props.createDream(newDream);
+        }
     }
 
     handleTags(e) {
@@ -52,7 +57,7 @@ class NewDream extends React.Component {
     render() {
         return (
             <div className="new-dream-container" onClick={e => e.stopPropagation()} >
-                <h1 className="new-dream-header" >New Dream</h1>
+                <h1 className="new-dream-header" >{this.props.info.userId ? "Edit Dream" : "New Dream"}</h1>
                 <form className="new-dream-radio">
                     <label className="new-dream-radio-btn" >
                         <h1 className={this.state.selectedOption === 'dream' ? "new-dream-radio-btn-header-checked" : "new-dream-radio-btn-header"} >Dream</h1>
@@ -110,7 +115,7 @@ class NewDream extends React.Component {
                 <div className="create-dream-btn" >
                     <input className="new-dream-btn" 
                         type="submit" 
-                        value="Create Dream"
+                        value={this.props.info.userId ? "Edit Dream" : "Create Dream"}
                         onClick={this.handleSubmit} 
                         />
                 </div>

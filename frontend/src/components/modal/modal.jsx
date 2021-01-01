@@ -1,6 +1,6 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
-import { createDream } from '../../actions/dream_actions';
+import { createDream, updateDream } from '../../actions/dream_actions';
 import { connect } from 'react-redux';
 import NewDreamContainer from '../dreams/new_dream_container';
 import CommentGoalModal from '../feed/comment_modal_goal';
@@ -17,6 +17,8 @@ const Modal = ({ modal, currentUser, closeModal, info, fetchCommentsByDream, com
             component = <NewDreamContainer 
                 currentUser={currentUser} 
                 createDream={createDream}
+                updateDream={updateDream}
+                info={info}
             />;
             break;
         case 'commentGoal':
@@ -51,6 +53,7 @@ const mapSTP = state => {
 const mapDTP = dispatch => ({
     closeModal: () => dispatch(closeModal()),
     createDream: (dream)=> dispatch(createDream(dream)),
+    updateDream: (dreamId, dream) => dispatch(updateDream(dreamId, dream)),
     fetchCommentsByDream: (dreamId) => dispatch(fetchCommentsByDream(dreamId)),
     createComment: (dreamId, comment) => dispatch(createComment(dreamId, comment))
 })

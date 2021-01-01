@@ -99,6 +99,16 @@
 
             .feed-dreams-wrapper {
                 padding-top: 20px;
+                position: relative;
+
+                .feed-dreams-edit-pencil {
+                    position: absolute;
+                    bottom: 12px;
+                    right: 12px;
+                    color: $dark-gray;
+                    cursor: pointer;
+                    z-index: 10;
+                }
 
                 .feed-dreams {
                     position: relative;
@@ -226,7 +236,17 @@
 
             .feed-goals-wrapper {
                 padding-top: 20px;
+                position: relative;
 
+                .feed-dreams-edit-pencil {
+                    position: absolute;
+                    bottom: 12px;
+                    right: 12px;
+                    color: $dark-gray;
+                    cursor: pointer;
+                    z-index: 10;
+                }
+                
                 .feed-goals {
                     padding: 10px;
                     border: 3px solid $off-white;

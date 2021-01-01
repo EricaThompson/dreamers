@@ -5,6 +5,7 @@ class DreamItem extends React.Component {
     constructor(props) {
         super(props);
         this.handleOpenModal = this.handleOpenModal.bind(this);
+        this.handleOpenEditModal = this.handleOpenEditModal.bind(this);
     }
 
     handleOpenModal(e) {
@@ -14,11 +15,21 @@ class DreamItem extends React.Component {
         this.props.modalInfo(this.props.dream);
     }
 
+    handleOpenEditModal(e) {
+        this.props.openModal('newDream');
+        this.props.modalInfo(this.props.dream);
+    }
+
     render() {
-        let { dream } = this.props;
+        let { dream, currentUser } = this.props;
         // debugger;
         return (
            <div className="feed-dreams-wrapper" >
+                <div className="feed-dreams-edit-pencil" onClick={this.handleOpenEditModal} >
+                    {currentUser.id === dream.userId ?
+                    <i class="fas fa-pencil-alt"></i>
+                    : ""}
+                </div>
                 <div className="feed-dreams" onClick={this.handleOpenModal} >
                    {/* <Link to={`/dreams/${dream._id}`} style={{ textDecoration: 'none' }} > */}
                        <div className="feed-dreams-circle-big" ></div>

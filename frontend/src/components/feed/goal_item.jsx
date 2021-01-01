@@ -5,6 +5,7 @@ class GoalItem extends React.Component {
     constructor(props) {
         super(props);
         this.handleOpenModal = this.handleOpenModal.bind(this);
+        this.handleOpenEditModal = this.handleOpenEditModal.bind(this);
     }
 
     handleOpenModal(e) {
@@ -14,12 +15,22 @@ class GoalItem extends React.Component {
         this.props.modalInfo(this.props.dream);
     }
 
+    handleOpenEditModal(e) {
+        this.props.openModal('newDream');
+        this.props.modalInfo(this.props.dream);
+    }
+
     render() {
-        let { dream } = this.props;
+        let { dream, currentUser } = this.props;
 
         return (
             <div className="feed-goals-wrapper" >
-                <div className="feed-goals" onClick={this.handleOpenModal} >
+                <div className="feed-dreams-edit-pencil" >
+                    {currentUser.id === dream.userId ?
+                        <i class="fas fa-pencil-alt"></i>
+                        : ""}
+                </div>
+                <div className="feed-goals" onClick={this.handleOpenModal} onClick={this.handleOpenEditModal} >
                     {/* <Link to={`/dreams/${dream._id}`} style={{ textDecoration: 'none' }} > */}
                         <div className="new-dream-tags-container" >
                             <div className="new-dream-tags" >

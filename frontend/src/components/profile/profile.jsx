@@ -96,7 +96,7 @@ class Profile extends React.Component {
                     </button>
         }
 
-        let { openModal, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo } = this.props;
+        let { openModal, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo, currentUser } = this.props;
         if (!dreams) return null;
         // console.log('user', this.props.user._id.toString().substring(0, 8))
         // console.log(this.state.timestamp.getMonth())
@@ -214,6 +214,7 @@ class Profile extends React.Component {
                 </div>
                 <div className="profile-dream-feed">
                     <Feed 
+                        currentUser={currentUser}
                         userId={this.props.match.params.userId}
                         dreams={dreams}
                         openModal = {openModal}
