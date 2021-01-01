@@ -45,7 +45,7 @@ export const fetchExactTag = (tag) => dispatch => (
 
 export const deleteTag = (tag) => dispatch => (
     TagApiUtil.deleteTag(tag)
-    .then(tag => dispatch(receiveTag(tag)))
+    .then(()=> dispatch(removeTag(tag)))
 )
 
 
