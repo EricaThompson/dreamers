@@ -6,8 +6,10 @@ import NewDreamContainer from '../dreams/new_dream_container';
 import CommentGoalModal from '../feed/comment_goal_modal';
 import CommentDreamModal from '../feed/comment_dream_modal';
 import { fetchCommentsByDream, createComment } from '../../actions/comment_actions';
+import { updateComment } from '../../actions/comment_actions';
 
-const Modal = ({ modal, currentUser, closeModal, info, fetchCommentsByDream, comments, createComment }) => {
+
+const Modal = ({ modal, currentUser, closeModal, info, fetchCommentsByDream, comments, createComment, updateComment }) => {
     if (!modal) {
         return null;
     }
@@ -25,7 +27,8 @@ const Modal = ({ modal, currentUser, closeModal, info, fetchCommentsByDream, com
                 info={info} 
                 fetchCommentsByDream={fetchCommentsByDream} 
                 comments={comments} 
-                createComment={createComment} 
+                createComment={createComment}
+                updateComment={updateComment} 
             />;
             break;
         case 'commentDream':
@@ -34,7 +37,8 @@ const Modal = ({ modal, currentUser, closeModal, info, fetchCommentsByDream, com
                 info={info} 
                 fetchCommentsByDream={fetchCommentsByDream} 
                 comments={comments} 
-                createComment={createComment}  
+                createComment={createComment}
+                updateComment={updateComment}   
             />;
             break;
         default:
@@ -64,7 +68,8 @@ const mapDTP = dispatch => ({
     closeModal: () => dispatch(closeModal()),
     createDream: (dream)=> dispatch(createDream(dream)),
     fetchCommentsByDream: (dreamId) => dispatch(fetchCommentsByDream(dreamId)),
-    createComment: (dreamId, comment) => dispatch(createComment(dreamId, comment))
+    createComment: (dreamId, comment) => dispatch(createComment(dreamId, comment)),
+    updateComment: (commentId, comment) => dispatch(updateComment(commentId, comment))
 })
 
 export default connect(mapSTP, mapDTP)(Modal);
