@@ -12,7 +12,7 @@ export const receiveDreams = (dreams) => ({
 });
 
 export const receiveDream = (dream) => {
-    debugger;
+    // debugger;
     return {
     type: RECEIVE_DREAM,
     dream
