@@ -371,13 +371,14 @@
 
 }
 
-@media (min-width: 800px) {
+@media (min-width: 700px) {
 
     .feed-outer-container {
 
 
         .feed-container {
-            
+            width: 100%;
+
             .feed-search-container {
                 width: 50%;
 

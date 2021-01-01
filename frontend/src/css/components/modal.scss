@@ -37,7 +37,13 @@
 
 
 @media (min-width: 800px) {
-    .modal-child {
-        width: 450px;
+    .modal-background {
+        display: flex;
+        justify-content: center;
+
+        .modal-child {
+            width: 500px;
+            left: 50.7%;
+        }
     }
 }

@@ -116,7 +116,7 @@
             .profile-edit-button {
                 padding-bottom: 4px;
             }
-            
+
             div {
                 padding: 4px 4px 4px 0px;
             }
@@ -142,4 +142,31 @@
     }
     
 
+}
+
+@media (min-width: 800px) {
+    .profile-container {
+        .profile {
+            width: 707px;
+            padding-left: 50px;
+            box-sizing: border-box;
+            
+            .fa-cloud {
+                font-size: 105px;
+                text-align: center;
+                justify-self: center;
+                margin-top: 6px;
+                color: $off-white-opaque;
+                // padding-right: 16px;
+                // margin: 50%;
+                
+            }
+
+            .profile-pic {
+                width: 170px;
+                height: 170px;
+                padding-left: 20px;
+            }
+        }
+    }
 }
