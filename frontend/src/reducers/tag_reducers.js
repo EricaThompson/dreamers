@@ -13,6 +13,7 @@ const TagReducer = (oldState = {}, action) => {
             return action.tags;
         case RECEIVE_TAG:
             newState[action.tag.id] = action.tag
+            return newState
         case REMOVE_TAG:
             delete newState[action.tag]
             return newState
