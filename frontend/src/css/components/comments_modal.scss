@@ -1,12 +1,13 @@
 .comment-modal-outer-container {
-    height: 20%;
+    min-height: 20%;
+    max-height: 80%;
     width: 100%;
 
     .comment-dreams-container {
 
         .comment-dreams {
             border-radius: 20px;
-            background-color: $dark-purple;
+            background-color: $pale-blue;
         }
 
         .comment-goals {
@@ -20,13 +21,23 @@
             box-shadow: 2px 2px 8px $dark-gray;
 
             .comment-dreams-info {
-                color: $off-white;
+                color: $dark-gray;
                 font-family: $serif;
+
+                .comment-dreams-info-link {
+                    font-weight: 700;
+                    color: $dark-gray;
+                }
             }
 
             .comment-goals-info {
                 color: $dark-gray;
                 font-family: $serif;
+
+                .comment-goals-info-link {
+                    font-weight: 700;
+                    color: $dark-gray;
+                }
             }
 
             .comment-form {
@@ -38,7 +49,7 @@
 
                     .comment-input {
                         width: 100%;
-                        height: 100px;
+                        height: 20px;
                         border: 2px solid $dark-gray;
                         border-radius: 10px;
                         padding: 10px;
@@ -56,7 +67,7 @@
                 }
 
                 .comment-btn-container {
-                    padding-top: 20px;
+                    padding-top: 10px;
                     display: flex;
                     justify-content: center;
                     

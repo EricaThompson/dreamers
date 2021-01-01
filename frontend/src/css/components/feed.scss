@@ -19,6 +19,7 @@
         width: 100%;
         padding-top: 15px;
         background-color: $off-white;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
         
         .feed-search-container {
             display: flex;
@@ -53,7 +54,7 @@
     
         .feed-index-container {
             padding-top: 15px;
-            // padding-bottom: 2px;
+            
             width: 100%;
 
             .feed-header-container {
@@ -88,11 +89,12 @@
         overflow-x: hidden;
         width: 100%;
         height: 100%;
-        padding: 0px 20px 165px;
+        padding: 0px 20px 70px;
         background-color: $off-white-opaque;
 
         .feed-dreams-container {
             width: 90%;
+            padding-bottom: 100px;
 
 
             .feed-dreams-wrapper {
@@ -103,8 +105,9 @@
                     padding: 10px;
                     border: 3px solid $off-white;
                     border-radius: 20px;
-                    background-color: $dark-purple;
-                    // background-color: $light-purple;
+                    // background-color: $dark-purple;
+                    background-color: $light-purple;
+                    background-color: $pale-blue;
                     box-shadow: 2px 2px 8px $dark-gray;
 
                     .new-dream-tags-container {
@@ -136,7 +139,7 @@
                                     height: 5px;
                                     border-radius: 50%;
                                     border: 2px solid $dark-gray;
-                                    background-color: $dark-purple;
+                                    background-color: $pale-blue;
                                 }
 
                                 .new-dream-tags-item {
@@ -166,6 +169,7 @@
                         width: 15px;
                         height: 15px;
                         background-color: $dark-purple;
+                        background-color: $pale-blue;
                         border: 3px solid $off-white;
                         border-radius: 50%;
                         z-index: -1;
@@ -178,6 +182,7 @@
                         width: 10px;
                         height: 10px;
                         background-color: $dark-purple;
+                        background-color: $pale-blue;
                         border: 3px solid $off-white;
                         border-radius: 50%;
                         z-index: -2;
@@ -185,8 +190,13 @@
 
                     
                     .feed-dreams-info {
-                        color: $off-white;
+                        color: $dark-gray;
                         font-family: $serif;
+
+                        .feed-dreams-info-link {
+                            font-weight: 700;
+                            color: $dark-gray;
+                        }
                     }
 
                     .feed-dreams-footer {
@@ -196,7 +206,7 @@
                         padding-top: 3px;
 
                         .feed-dreams-footer-info {
-                            color: $off-white;
+                            color: $dark-gray;
                             font-family: $serif;
                             font-size: 13px;
 
@@ -219,7 +229,7 @@
 
                 .feed-goals {
                     padding: 10px;
-                    border: 2px solid $off-white;
+                    border: 3px solid $off-white;
                     // border-radius: 20px;
                     background-color: $logo-yellow;
                     // background-color: $pale-blue;
@@ -281,6 +291,11 @@
                     .feed-goals-info {
                         color: $dark-gray;
                         font-family: $serif;
+                        
+                        .feed-goals-info-link {
+                            font-weight: 700;
+                            color: $dark-gray;
+                        }
                     }
 
                     .feed-goals-footer {

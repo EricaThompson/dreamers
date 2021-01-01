@@ -1,21 +1,34 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import DreamItem from './dream_item';
 import GoalItem from './goal_item';
+import { withRouter } from 'react-router-dom';
+
 
 class Feed extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             searchValue: '',
-            selected: 'feed'
+            selected: 'feed',
+            dreams: null
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSelected = this.handleSelected.bind(this);
     }
 
     componentDidMount() {
+        // this.props.closeModal();
+        if (this.props.match.url.includes("feed") )
         this.props.fetchDreams();
+    }
+
+    // componentWillReceiveProps(nextProps){
+    //     nextProps.fetchDreamsByUser(nextProps.userId)
+    //         .then(res => this.setState({dreams: res}))
+    // }
+    componentWillUnmount() {
+        this.props.clearDreams();
     }
 
     handleChange(e) {
@@ -28,34 +41,30 @@ class Feed extends React.Component {
         }
     }
 
-    handleOpenModal() {
-
-    }
-
     render() {
-        let { openModal, modalInfo, dreams } = this.props;
-        if ( dreams.length === 0 ) return null;
+        let { openModal, modalInfo, dreams, fetchCommentsByDream, clearComments } = this.props;
+        if ( !dreams ) return null;
 
         let feed; 
         
         if (this.state.selected === "feed") {
             feed = Object.values(dreams).map((dream, idx) => {
                 if (dream.type === "dream" ) {
-                    return <DreamItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} />
+                    return <DreamItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} fetchCommentsByDream={fetchCommentsByDream} clearComments={clearComments} />
                 } else {
-                    return <GoalItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} />
+                    return <GoalItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} fetchCommentsByDream={fetchCommentsByDream} clearComments={clearComments} />
                 }
             })
         } else if (this.state.selected === "dreams") {
             feed = Object.values(dreams).map((dream, idx) => {
                 if (dream.type === "dream") {
-                    return <DreamItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} />
+                    return <DreamItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} fetchCommentsByDream={fetchCommentsByDream} clearComments={clearComments} />
                 }
             })
         } else if (this.state.selected === "goals") {
             feed = Object.values(dreams).map((dream, idx) => {
                 if (dream.type === "goal") {
-                    return <GoalItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} />
+                    return <GoalItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} fetchCommentsByDream={fetchCommentsByDream} clearComments={clearComments} />
                 }
             })
         }
@@ -101,4 +110,4 @@ class Feed extends React.Component {
     }
 }
 
-export default Feed;
+export default withRouter(Feed);

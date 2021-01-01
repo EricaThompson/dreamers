@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 class DreamShow extends React.Component {
     componentDidMount() {
         this.props.fetchDreamById(this.props.match.params.dreamId);
+        this.props.closeModal();
     }
 
     render() {
         return (
-            <div className="dream-show-modal-outer-container">
+            <div className="dream-show-outer-container">
                 <div className="dream-show-dreams-container" >
                     <div className="dream-show-dreams" >
                         <p className="dream-show-dreams-info" >
