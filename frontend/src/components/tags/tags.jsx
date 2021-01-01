@@ -5,7 +5,7 @@ import Feed from '../feed/feed';
 
 class TagsFeed extends React.Component {
     componentDidMount() {
-        this.props.fetchDreamsByTags([this.props.tagName]);
+        this.props.fetchDreamsByTags({ tags: [this.props.tagName] });
         this.props.closeModal();
     }
 
