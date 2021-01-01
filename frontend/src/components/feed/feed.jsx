@@ -18,7 +18,8 @@ class Feed extends React.Component {
     }
 
     componentDidMount() {
-        // this.props.closeModal();
+        // debugger;
+        this.props.closeModal();
         if (this.props.match.url.includes("feed") )
         this.props.fetchDreams();
     }

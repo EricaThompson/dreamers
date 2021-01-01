@@ -39,7 +39,7 @@ class DreamItem extends React.Component {
                                {dream.tags.map((tag, idx) => {
                                    return (
                                        <Link to={`/tags/${tag}`} key={idx} style={{ textDecoration: 'none' }} >
-                                           <div className="new-dream-tags-item-container"                                     >
+                                           <div className="new-dream-tags-item-container" onClick={e => e.stopPropagation()} >
                                                <div className="new-dream-tags-item-circle" ></div>
                                                <p  className="new-dream-tags-item" >{tag}</p>
                                            </div>
