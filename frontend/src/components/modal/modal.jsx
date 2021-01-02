@@ -20,7 +20,7 @@ class Modal extends React.Component {
     }
 
     render() {
-        let { modal, currentUser, info, fetchCommentsByDream, comments, createComment, clearModalInfo } = this.props;
+        let { modal, currentUser, info, fetchCommentsByDream, comments, createComment, clearModalInfo, updateComment } = this.props;
         if (!modal) {
             return null;
         }
@@ -41,6 +41,8 @@ class Modal extends React.Component {
                     comments={comments} 
                     createComment={createComment}
                     clearModalInfo={clearModalInfo}
+                    currentUser={currentUser}
+                    updateComment={updateComment}
                 />;
                 break;
             case 'commentDream':
@@ -50,6 +52,8 @@ class Modal extends React.Component {
                     comments={comments} 
                     createComment={createComment} 
                     clearModalInfo={clearModalInfo}
+                    currentUser={currentUser}
+                    updateComment={updateComment}
                 />;
                 break;
             default:
