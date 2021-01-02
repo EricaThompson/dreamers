@@ -85,12 +85,14 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        overflow: scroll;
-        overflow-x: hidden;
         width: 100%;
-        height: 100%;
+        height: 90%;
         padding: 0px 20px 70px;
         background-color: $off-white-opaque;
+        // position: relative;
+        z-index: -3;
+        overflow: scroll;
+        overflow-x: hidden;
 
         .feed-dreams-container {
             width: 90%;
@@ -100,6 +102,71 @@
             .feed-dreams-wrapper {
                 padding-top: 20px;
                 position: relative;
+
+                .comment-options {
+                    position: absolute;
+                    z-index: 5;
+                    top: 30px;
+                    right: 15px;
+                    cursor: pointer;
+                    //! switch to light gray
+                    color: rgb(161, 160, 160);
+
+                    .available-options {
+                        // background-color: $off-white;
+
+                        
+                        i {
+                            position: absolute;
+                            // top: -38px;
+                            // right: 10px;
+                            
+                            background-color: $pale-purple;
+                            border-radius: 55%;
+                            padding: 12px;
+                            color: $dark-gray;
+                            margin: 5px;
+
+                            
+                            &:hover {
+                                color: $off-white;
+                            }
+                        }
+
+                        
+
+                        .icon:nth-child(1){
+                            position: absolute;
+                            // z-index: 100000000000000;
+                            top: 17px;
+                            right: 70px;
+                        }
+
+                        .icon:nth-child(2){
+                            position: absolute;
+                            top: 17px;
+                            right: 23px;
+                        }
+
+
+                        .fa-trash-alt:hover {
+                            
+                            background-color: red;
+                            color: $off-white;
+                        }
+
+                        .fa-user-plus {
+                            width: 19px;
+                            padding-right: 16px;
+                            padding-left: 10px;
+                        }
+
+                        .fa-flag {
+                            padding-right: 14px;
+                            padding-left: 10px;
+                        }
+                    }
+                }
 
                 .feed-dreams-edit-pencil {
                     position: absolute;
@@ -176,13 +243,16 @@
                         position: absolute;
                         bottom: -5px;
                         left: -10px;
+                        //!arch here
+                        // bottom: -5px;
+                        // left: -9px;
                         width: 15px;
                         height: 15px;
                         background-color: $dark-purple;
                         background-color: $pale-blue;
                         border: 3px solid $off-white;
                         border-radius: 50%;
-                        z-index: -1;
+                        z-index: 1;
                     }
 
                     .feed-dreams-circle-small {
@@ -190,12 +260,15 @@
                         bottom: -8px;
                         left: -15px;
                         width: 10px;
+                        //!arch here
+                        // bottom: -11px;
+                        // left: -10px;
                         height: 10px;
                         background-color: $dark-purple;
                         background-color: $pale-blue;
                         border: 3px solid $off-white;
                         border-radius: 50%;
-                        z-index: -2;
+                        z-index: 0;
                     }
 
                     
@@ -237,6 +310,72 @@
             .feed-goals-wrapper {
                 padding-top: 20px;
                 position: relative;
+
+                .comment-options {
+                    position: absolute;
+                    z-index: 5;
+                    top: 30px;
+                    right: 15px;
+                    cursor: pointer;
+                    //! switch to light gray
+                    color: rgb(161, 160, 160);
+
+                    .available-options {
+                        // background-color: $off-white;
+
+                        
+                        i {
+                            position: absolute;
+                            // top: -38px;
+                            // right: 10px;
+                            
+                            background-color: $pale-purple;
+                            border-radius: 55%;
+                            padding: 12px;
+                            color: $dark-gray;
+                            margin: 5px;
+
+                            
+                            &:hover {
+                                color: $off-white;
+                            }
+                        }
+
+                        
+
+                        .icon:nth-child(1){
+                            position: absolute;
+                            // z-index: 100000000000000;
+                            top: 17px;
+                            right: 70px;
+                        }
+
+                        .icon:nth-child(2){
+                            position: absolute;
+                            top: 17px;
+                            right: 23px;
+                        }
+
+
+                        .fa-trash-alt:hover {
+                            
+                            background-color: red;
+                            color: $off-white;
+                        }
+
+                        .fa-user-plus {
+                            width: 19px;
+                            padding-right: 16px;
+                            padding-left: 10px;
+                        }
+
+                        .fa-flag {
+                            padding-right: 14px;
+                            padding-left: 10px;
+                        }
+                    }
+                }
+
 
                 .feed-dreams-edit-pencil {
                     position: absolute;

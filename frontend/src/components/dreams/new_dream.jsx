@@ -10,9 +10,10 @@ class NewDream extends React.Component {
                 dreamText: '',
                 searchValue: '',
                 tags: ['KillingIt', 'Love', 'Teeth'],
+                // newTags: this.props.tags
             }
         } else {
-            // debugger;
+            //debugger;
             this.state = {
                 selectedOption: this.props.info.type,
                 dreamText: this.props.info.text,
@@ -44,18 +45,26 @@ class NewDream extends React.Component {
         // debugger;
         if (this.props.info.userId) {
             this.props.updateDream(this.props.info._id, newDream);
-            console.log('update dream', { dream: newDream })
+            // console.log('update dream', { dream: newDream })
         } else {
             console.log('new dream', newDream)
-            this.props.createDream({dream: newDream});
+            // this.props.createDream({dream: newDream});
+            this.props.createDream(newDream);
         }
-        this.props.closeModal();
+
+        this.props.closeModal()
+        
+        //!needs to be fixed 
+        window.location.reload();
+        // console.log('new dream', newDream)
+        // this.props.closeModal();
     }
 
-    handleTags(e) {
+    handleTags() {
         let newTags = this.state.tags
-        newTags.push(e.target.value)
+        newTags.push(this.state.searchValue)
         this.setState({ tags: newTags })
+        
     }
 
     removeTag(tag) {
@@ -69,6 +78,24 @@ class NewDream extends React.Component {
     }
 
     render() {
+        let tags;
+
+        if (this.state.tags){
+            tags = 
+                this.state.tags.map((tag, idx) => {
+                    if (tag != null) {
+                        return (
+                            <div key={idx} className="new-dream-tags-item-container" onClick={this.removeTag(tag)}>
+                                <div className="new-dream-tags-item-circle" ></div>
+                                <p className="new-dream-tags-item" >{tag}</p>
+                            </div>
+                        )
+                    }
+                })
+            
+        }
+
+
         return (
             <div className="new-dream-container" onClick={e => e.stopPropagation()} >
                 <h1 className="new-dream-header" >{Object.values(this.props.info).length === 0 ? "New Dream" : "Edit Dream"}</h1>
@@ -95,25 +122,22 @@ class NewDream extends React.Component {
                 <div className="new-dream-tags-container" >
                     <h1 className="new-dream-tags-header" >Tags:</h1>
                     <div className="new-dream-tags" >
-                        {this.state.tags.map((tag, idx) => {
-                            return (
-                                <div key={idx} className="new-dream-tags-item-container" onClick={this.removeTag(tag)}>
-                                    <div className="new-dream-tags-item-circle" ></div>
-                                    <p className="new-dream-tags-item" >{tag}</p>
-                                </div>
-                            )
-                        })}
+                        {tags}
                     </div>
                 </div>
                 <div className="create-dream-container" >
                     <div className="create-dream-search-container" >
                         <i className="fas fa-search dream-search-icon"></i>
-                        <form className="create-dream-search-form" >
-                            <input type="text"
-                                placeholder="Add tags or create a new one..."
-                                value={this.state.searchValue}
-                                onChange={this.handleChange('searchValue')}
-                                className="create-dream-search-input" />
+                        <form 
+                            className="create-dream-search-form" 
+                            onSubmit={()=>this.handleTags()}
+                        >
+                                <input type="text"
+                                    placeholder="Search tags or create a new one..."
+                                    value={this.state.searchValue}
+                                    onChange={this.handleChange('searchValue')}
+                                    className="create-dream-search-input" 
+                                />
                         </form>
                     </div>
                 </div>

@@ -4,8 +4,24 @@ import { Link } from 'react-router-dom';
 class GoalItem extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            tags: this.props.tags,
+            showMenu: false,
+        }
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleOpenEditModal = this.handleOpenEditModal.bind(this);
+    }
+
+    toggleEdit() {
+        this.setState({ showEditForm: !this.state.showEditForm })
+    }
+
+    toggleMenu() {
+        this.setState({ showMenu: !this.state.showMenu })
+    }
+
+    closeMenu() {
+        this.setState({ showMenu: false })
     }
 
     handleOpenModal(e) {
@@ -22,28 +38,86 @@ class GoalItem extends React.Component {
 
     render() {
         let { dream, currentUser } = this.props;
+        let tags;
+
+        if (this.state.tags){
+            tags = 
+                this.state.tags.map((tag, idx) => {
+                    if (tag != null){
+                        return (
+                            <Link to={`/tags/${tag}`} key={idx} style={{ textDecoration: 'none' }} >
+
+                                <div className="new-dream-tags-item-container" onClick={e => e.stopPropagation()} >
+                                    <div className="new-dream-tags-item-circle" ></div>
+                                    <p className="new-dream-tags-item" >{tag}</p>
+                                </div>
+                            </Link>
+                        )
+                    }
+                    
+                })
+        } else {
+            tags = null
+        }
+
+        let followIcon;
+        let editIcon;
+        let deleteIcon;
+        let flagIcon;
+        let menuOptions;
+        let optionsIcon;
+
+        if (dream.username === currentUser.username) {
+            editIcon = <div
+                className="icon"
+                onClick={this.handleOpenEditModal}
+            >
+                <i className="fas fa-pencil-alt"></i>
+            </div>
+            deleteIcon = <div
+                className='icon'
+                onClick={() => this.deleteComment()}
+            >
+                <i className="fas fa-trash-alt"></i>
+            </div>
+        } else {
+            //!if (!comment.author.followers.includes(currentUser))
+            followIcon = <div className="icon">
+                <i className="fas fa-user-plus"></i>
+            </div>
+            flagIcon = <div className="icon">
+                <i className="fas fa-flag"></i>
+            </div>
+        }
+
+        if (this.state.showMenu) {
+            optionsIcon = <p onClick={() => this.toggleMenu()}>✕</p>
+            menuOptions = <div className='available-options'>
+                {editIcon}
+                {deleteIcon}
+                {followIcon}
+                {/* maybe links to a contact form with their username?*/}
+                {flagIcon}
+            </div>
+        } else {
+            optionsIcon = <i
+                className="fas fa-ellipsis-h"
+                onClick={() => this.toggleMenu()}>
+            </i>
+        }
+
 
         return (
             <div className="feed-goals-wrapper" >
-                <div className="feed-dreams-edit-pencil" onClick={this.handleOpenEditModal} >
-                    {currentUser.id === dream.userId ?
-                        <i className="fas fa-pencil-alt"></i>
-                        : ""}
+                <div className="comment-options" onClick={()=>this.toggleMenu()} >
+                    {optionsIcon}
+                    {menuOptions}
                 </div>
                 <div className="feed-goals" onClick={this.handleOpenModal} >
                     {/* <Link to={`/dreams/${dream._id}`} style={{ textDecoration: 'none' }} > */}
                         <div className="new-dream-tags-container" >
                             <div className="new-dream-tags" >
-                                {dream.tags.map((tag, idx) => {
-                                    return (
-                                        <Link to={`/tags/${tag}`} key={idx} style={{ textDecoration: 'none' }} >
-                                            <div className="new-dream-tags-item-container" onClick={e => e.stopPropagation()} >
-                                                <div className="new-dream-tags-item-circle" ></div>
-                                                <p className="new-dream-tags-item" >{tag}</p>
-                                            </div>
-                                        </Link>
-                                    )
-                                })}
+                                {tags}
                             </div>
                         </div>
                         <p className="feed-goals-info" >
