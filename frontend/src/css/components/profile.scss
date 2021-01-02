@@ -167,6 +167,30 @@
                 height: 170px;
                 padding-left: 20px;
             }
+
+            .location, .age, .bio {
+                input {
+                    padding-left: 5px;
+                }
+            }
+
+            .location {
+                input {
+                    width: 168px;
+                }
+            }
+
+            .age {
+                input {
+                    width: 197px;
+                }
+            }
+
+            .bio {
+                input {
+                    width: 203px;
+                }                
+            }
         }
     }
 }

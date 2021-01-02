@@ -174,7 +174,7 @@ class Profile extends React.Component {
                                     /> 
                             </div>
                             <div 
-                                className="about">
+                                className="bio">
                                 Bio: 
                                 <input
                                     onChange={this.handleChange('bio')}
