@@ -1,6 +1,6 @@
 import React from 'react';
 // import "../../App.scss";
-import Feed from '../feed/feed';
+// import Feed from '../feed/feed';
 
 class HomePage extends React.Component {
 

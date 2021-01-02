@@ -3,7 +3,7 @@ import { closeModal, clearModalInfo } from '../../actions/modal_actions';
 import { createDream, updateDream } from '../../actions/dream_actions';
 import { connect } from 'react-redux';
 import NewDreamContainer from '../dreams/new_dream_container';
-import CommentGoalModal from '../feed/comment_goal_modal';
+// import CommentGoalModal from '../feed/comment_goal_modal';
 import CommentDreamModal from '../feed/comment_dream_modal';
 import { fetchCommentsByDream, createComment, deleteComment } from '../../actions/comment_actions';
 import { updateComment } from '../../actions/comment_actions';
@@ -34,17 +34,17 @@ class Modal extends React.Component {
                     info={info}
                 />;
                 break;
-            case 'commentGoal':
-                component = <CommentGoalModal
-                    info={info}
-                    fetchCommentsByDream={fetchCommentsByDream}
-                    comments={comments}
-                    createComment={createComment}
-                    clearModalInfo={clearModalInfo}
-                    currentUser={currentUser}
-                    updateComment={updateComment}
-                />;
-                break;
+            // case 'commentGoal':
+            //     component = <CommentGoalModal
+            //         info={info}
+            //         fetchCommentsByDream={fetchCommentsByDream}
+            //         comments={comments}
+            //         createComment={createComment}
+            //         clearModalInfo={clearModalInfo}
+            //         currentUser={currentUser}
+            //         updateComment={updateComment}
+            //     />;
+            //     break;
             case 'commentDream':
                 component = <CommentDreamModal
                     info={info}

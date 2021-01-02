@@ -90,6 +90,8 @@ class NewDream extends React.Component {
                                 <p className="new-dream-tags-item" >{tag}</p>
                             </div>
                         )
+                    } else {
+                        return null;
                     }
                 })
             
