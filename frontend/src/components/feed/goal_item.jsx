@@ -43,6 +43,9 @@ class GoalItem extends React.Component {
                     }
                     
                 })
+
+            
+            
             
         } else {
             tags = null

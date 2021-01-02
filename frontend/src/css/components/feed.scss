@@ -91,6 +91,8 @@
         height: 100%;
         padding: 0px 20px 70px;
         background-color: $off-white-opaque;
+        position: absolute;
+        z-index: -3;
 
         .feed-dreams-container {
             width: 90%;
@@ -176,6 +178,9 @@
                         position: absolute;
                         bottom: -5px;
                         left: -10px;
+                        //!arch here
+                        // bottom: -5px;
+                        // left: -9px;
                         width: 15px;
                         height: 15px;
                         background-color: $dark-purple;
@@ -190,6 +195,9 @@
                         bottom: -8px;
                         left: -15px;
                         width: 10px;
+                        //!arch here
+                        // bottom: -11px;
+                        // left: -10px;
                         height: 10px;
                         background-color: $dark-purple;
                         background-color: $pale-blue;
