@@ -21,6 +21,11 @@ const DreamSchema = new Schema({
     type: String,
     required: true
   },
+  likes: [{
+    type: Schema.Types.ObjectId, //
+    ref: 'users'
+  }],
+  
   date: {
     type: Date,
     default: Date.now
