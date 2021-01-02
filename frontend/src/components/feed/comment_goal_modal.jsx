@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CommentItem from './comment_item';
 
-class CommentDreamModal extends React.Component {
+class CommentGoalModal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,11 +11,6 @@ class CommentDreamModal extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    componentDidMount() {
-        // debugger;
-        // this.props.fetchCommentsByDream(this.props.info._id)
     }
 
     handleSubmit(e) {
@@ -45,7 +40,13 @@ class CommentDreamModal extends React.Component {
             commentFeed = (
                 <div>
                     {Object.values(comments).map((comment, idx) => {
-                        return <CommentItem key={idx} comment={comment} />
+                        return <CommentItem 
+                                    key={idx} 
+                                    comment={comment} 
+                                    updateComment={this.props.updateComment}
+                                    currentUser={this.props.currentUser}
+                                    deleteComment={this.props.deleteComment}
+                                />
                     })}
                 </div>
             )
@@ -54,21 +55,21 @@ class CommentDreamModal extends React.Component {
         return (
             <div className="comment-modal-outer-container">
                 <div className="comment-dreams-container" >
-                    <div className="comment-dreams" >
-                        <p className="comment-dreams-info" >
-                            <Link to={`/users/${info.userId}`} className="comment-dreams-info-link" style={{ textDecoration: 'none' }}>
+                    <div className="comment-goals" >
+                        <p className="comment-goals-info" >
+                            <Link to={`/users/${info.userId}`} className="comment-goals-info-link" style={{ textDecoration: 'none' }}>
                                 {info.username}
                             </Link>
                         </p>
-                        <p className="comment-dreams-info" >{info.text}</p>
+                        <p className="comment-goals-info" >{info.text}</p>
                         <form className="comment-form" onSubmit={this.handleSubmit} >
                             <label className="comment-label" >
-                                <textarea className="comment-input" 
-                                    type="text" 
+                                <textarea className="comment-input"
+                                    type="text"
                                     placeholder="Leave your comment here"
                                     value={this.state.comment}
                                     onChange={this.handleChange}
-                                    />
+                                />
                             </label>
                             <div className="comment-btn-container">
                                 <input className="comment-btn" type="submit" value="Create Comment" onClick={this.handleSubmit} />
@@ -82,4 +83,4 @@ class CommentDreamModal extends React.Component {
     }
 }
 
-export default CommentDreamModal;
+export default CommentGoalModal;
