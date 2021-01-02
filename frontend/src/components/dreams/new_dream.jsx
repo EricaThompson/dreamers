@@ -10,7 +10,7 @@ class NewDream extends React.Component {
                 dreamText: '',
                 searchValue: '',
                 tags: ['KillingIt', 'Love', 'Teeth'],
-                // tags: this.props.tags
+                // newTags: this.props.tags
             }
         } else {
             //debugger;
@@ -52,6 +52,9 @@ class NewDream extends React.Component {
         }
 
         this.props.closeModal()
+        
+        //!needs to be fixed 
+        window.location.reload();
     }
 
     handleTags() {
