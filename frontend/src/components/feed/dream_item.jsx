@@ -5,10 +5,23 @@ class DreamItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            tags: this.props.tags
+            tags: this.props.tags,
+            showMenu: false,
         }
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleOpenEditModal = this.handleOpenEditModal.bind(this);
+    }
+
+    toggleEdit() {
+        this.setState({ showEditForm: !this.state.showEditForm })
+    }
+
+    toggleMenu() {
+        this.setState({ showMenu: !this.state.showMenu })
+    }
+
+    closeMenu() {
+        this.setState({ showMenu: false })
     }
 
     handleOpenModal(e) {
@@ -47,12 +60,75 @@ class DreamItem extends React.Component {
             tags = null
         }
 
+        let followIcon;
+        let editIcon;
+        let editHide;
+        let commentHide;
+        let checkMark;
+        let deleteIcon;
+        let flagIcon;
+        let menuOptions;
+        let optionsIcon;
+        // let optionsHide;
+
+        if (dream.username === this.props.currentUser.username) {
+            editIcon = <div
+                className="icon"
+                onClick={this.handleOpenEditModal}
+            >
+                <i className="fas fa-pencil-alt"></i>
+            </div>
+            deleteIcon = <div
+                className='icon'
+                onClick={() => this.deleteComment()}
+            >
+                <i className="fas fa-trash-alt"></i>
+            </div>
+        } else {
+            //!if (!comment.author.followers.includes(currentUser))
+            followIcon = <div className="icon">
+                <i className="fas fa-user-plus"></i>
+            </div>
+            flagIcon = <div className="icon">
+                <i className="fas fa-flag"></i>
+            </div>
+        }
+
+        if (this.state.showEditForm) {
+            editHide = false;
+            checkMark = <i className="fas fa-check"></i>
+            commentHide = true;
+        } else {
+            commentHide = false;
+            editHide = true;
+        }
+
+        if (this.state.showMenu) {
+            optionsIcon = <p onClick={() => this.toggleMenu()}>✕</p>
+            menuOptions = <div className='available-options'>
+                {editIcon}
+                {deleteIcon}
+                {followIcon}
+                {/* maybe links to a contact form with their username?*/}
+                {flagIcon}
+            </div>
+        } else {
+            optionsIcon = <i
+                className="fas fa-ellipsis-h"
+                onClick={() => this.toggleMenu()}>
+            </i>
+        }
+
+        console.log('currentUser', currentUser)
+        console.log('dream', dream)
         return (
-           <div className="feed-dreams-wrapper" >
-                <div className="feed-dreams-edit-pencil" onClick={this.handleOpenEditModal} >
-                    {currentUser.id === dream.userId ?
+            <div className="feed-dreams-wrapper" >
+                <div className="feed-dreams-edit-pencil"  >
+                    {/* {currentUser.id === dream.userId ?
                     <i className="fas fa-pencil-alt"></i>
-                    : ""}
+                    : ""} */}
+                    {optionsIcon}
+                    {menuOptions}
                 </div>
                 <div className="feed-dreams" onClick={this.handleOpenModal} >
                    {/* <Link to={`/dreams/${dream._id}`} style={{ textDecoration: 'none' }} > */}
