@@ -1,42 +1,59 @@
-.about-container {
-    background-color: $off-white;
-    opacity: .95;
-    border-radius: 4px;
-    padding: 20px;
-    
-    .about-title {
-        font-family: $sans-serif;
-        font-weight: bolder;
-        font-size: 6vw;
-        color: $dark-gray;
-        letter-spacing: 2px;
-        padding-bottom: 30px;
-        text-align: center;
-    }
+.about-outer-container {
+    // padding-top: 50px;
+    overflow-y: scroll;
+    height: 100%;
 
-    .team-member {
-        font-family: $sans-serif;
-        text-align: center;
-        font-size: 5vw;
-        color: $dark-gray;
-
-        a {
-            //darkened $logo-yellow for readability
-            color: #d6b40b;
-            text-decoration: none;
-            
+    .about-container {
+        background-color: $off-white;
+        opacity: .95;
+        border-radius: 4px;
+        padding: 20px;
+        width: 80vw;
+        
+        .about-title {
+            font-family: $sans-serif;
+            font-weight: bolder;
+            font-size: 6vw;
+            color: $dark-gray;
+            letter-spacing: 2px;
+            padding-bottom: 30px;
+            text-align: center;
         }
+
+        .team-member {
+            font-family: $sans-serif;
+            text-align: center;
+            font-size: 5vw;
+            color: $dark-gray;
+
+            a {
+                //darkened $logo-yellow for readability
+                color: #d6b40b;
+                text-decoration: none;
+                
+            }
+        }
+
+        .background-link {
+            font-family: $sans-serif;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            color: $dark-gray;
+            text-align: center;
+            font-size: 5vw;
+            padding-top: 10px;
+        }
+        
+    }
+}
+
+
+@media (min-width: 800px) {
+    .about-outer-container{
+        // background-color: blue;
+        padding-top: 250px;
     }
 
-    .background-link {
-        font-family: $sans-serif;
-        text-align: center;
-        text-decoration: none;
-        cursor: pointer;
-        color: $dark-gray;
-        text-align: center;
-        font-size: 5vw;
-        padding-top: 10px;
-    }
-    
 }
+
