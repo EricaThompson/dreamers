@@ -14,9 +14,9 @@ class CommentItem extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    componentDidMount(){
-        console.log('comment: ',this.props.comment)
-    }
+    // componentDidMount(){
+    //     console.log('comment: ',this.props.comment)
+    // }
 
     toggleEdit() {
         this.setState({ showEditForm: !this.state.showEditForm })
@@ -50,6 +50,12 @@ class CommentItem extends React.Component {
 
     }
 
+    deleteComment(){
+        console.log('deleted?')
+        this.props.deleteComment(this.props.comment._id)
+            .then(res => console.log(res))
+    }
+
     render() {
         let { comment } = this.props;
 
@@ -61,6 +67,7 @@ class CommentItem extends React.Component {
         let deleteIcon;
         let flagIcon;
         let menuOptions;
+        let optionsIcon;
         // let optionsHide;
 
         if (comment.username === this.props.currentUser.username){
@@ -72,6 +79,7 @@ class CommentItem extends React.Component {
                         </div>
             deleteIcon = <div
                             className='icon'
+                            onClick={()=>this.deleteComment()}
                         >
                             <i className="fas fa-trash-alt"></i>
                         </div>
@@ -95,6 +103,7 @@ class CommentItem extends React.Component {
         }
 
         if (this.state.showMenu){
+            optionsIcon = <p onClick={() => this.toggleMenu()}>✕</p>
             menuOptions = <div className='available-options'>
                             {editIcon}
                             {deleteIcon}
@@ -102,13 +111,18 @@ class CommentItem extends React.Component {
                             {/* maybe links to a contact form with their username?*/}
                             {flagIcon}
                         </div>
+        } else {
+            optionsIcon = <i
+                            className="fas fa-ellipsis-h"
+                            onClick={() => this.toggleMenu()}>
+                        </i>
         }
 
-        console.log('comment', comment)
-        console.log('currentUser', this.props.currentUser)
-        if (comment.username === this.props.currentUser.username){
-            console.log('same person')
-        }
+        // console.log('comment', comment)
+        // console.log('currentUser', this.props.currentUser)
+        // if (comment.username === this.props.currentUser.username){
+        //     console.log('same person')
+        // }
 
         return (
             <div className="comment-item-outer-container" >
@@ -123,10 +137,7 @@ class CommentItem extends React.Component {
                                 {comment.username}
                         </Link>
                         <div className='comment-options'>
-                            <i 
-                                className="fas fa-ellipsis-h"
-                                onClick={()=>this.toggleMenu()}>
-                            </i>
+                                {optionsIcon}
                                 {menuOptions}
                         </div>
                     </p>

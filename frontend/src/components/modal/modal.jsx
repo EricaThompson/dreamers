@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 import NewDreamContainer from '../dreams/new_dream_container';
 import CommentGoalModal from '../feed/comment_goal_modal';
 import CommentDreamModal from '../feed/comment_dream_modal';
-import { fetchCommentsByDream, createComment } from '../../actions/comment_actions';
+import { fetchCommentsByDream, createComment, deleteComment } from '../../actions/comment_actions';
 import { updateComment } from '../../actions/comment_actions';
 
 
-const Modal = ({ modal, currentUser, closeModal, info, fetchCommentsByDream, comments, createComment, updateComment }) => {
+const Modal = ({ modal, currentUser, closeModal, info, fetchCommentsByDream, comments, createComment, updateComment, deleteComment }) => {
     if (!modal) {
         return null;
     }
@@ -28,7 +28,8 @@ const Modal = ({ modal, currentUser, closeModal, info, fetchCommentsByDream, com
                 fetchCommentsByDream={fetchCommentsByDream} 
                 comments={comments} 
                 createComment={createComment}
-                updateComment={updateComment} 
+                updateComment={updateComment}
+                deleteComment={deleteComment} 
             />;
             break;
         case 'commentDream':
@@ -38,7 +39,8 @@ const Modal = ({ modal, currentUser, closeModal, info, fetchCommentsByDream, com
                 fetchCommentsByDream={fetchCommentsByDream} 
                 comments={comments} 
                 createComment={createComment}
-                updateComment={updateComment}   
+                updateComment={updateComment}
+                deleteComment={deleteComment}   
             />;
             break;
         default:
@@ -69,7 +71,8 @@ const mapDTP = dispatch => ({
     createDream: (dream)=> dispatch(createDream(dream)),
     fetchCommentsByDream: (dreamId) => dispatch(fetchCommentsByDream(dreamId)),
     createComment: (dreamId, comment) => dispatch(createComment(dreamId, comment)),
-    updateComment: (commentId, comment) => dispatch(updateComment(commentId, comment))
+    updateComment: (commentId, comment) => dispatch(updateComment(commentId, comment)),
+    deleteComment: (commentId) => dispatch(deleteComment(commentId))
 })
 
 export default connect(mapSTP, mapDTP)(Modal);

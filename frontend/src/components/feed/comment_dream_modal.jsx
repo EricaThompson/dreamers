@@ -55,6 +55,7 @@ class CommentDreamModal extends React.Component {
                                     comment={comment} 
                                     updateComment={this.props.updateComment}
                                     currentUser={this.props.currentUser}
+                                    deleteComment={this.props.deleteComment}
                                 />
                     })}
                 </div>
