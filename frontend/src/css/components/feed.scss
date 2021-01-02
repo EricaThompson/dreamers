@@ -106,46 +106,35 @@
                 .comment-options {
                     position: absolute;
                     z-index: 5;
-                    top: 30px;
+                    bottom: 10px;
                     right: 15px;
                     cursor: pointer;
                     //! switch to light gray
                     color: rgb(161, 160, 160);
 
                     .available-options {
-                        // background-color: $off-white;
-
-                        
                         i {
                             position: absolute;
-                            // top: -38px;
-                            // right: 10px;
-                            
                             background-color: $pale-purple;
                             border-radius: 55%;
                             padding: 12px;
                             color: $dark-gray;
-                            margin: 5px;
-
-                            
+                            margin: 5px;                           
                             &:hover {
                                 color: $off-white;
                             }
                         }
 
-                        
-
                         .icon:nth-child(1){
                             position: absolute;
-                            // z-index: 100000000000000;
                             top: 17px;
-                            right: 70px;
+                            right: 80px;
                         }
 
                         .icon:nth-child(2){
                             position: absolute;
                             top: 17px;
-                            right: 23px;
+                            right: 33px;
                         }
 
 
