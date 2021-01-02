@@ -12,7 +12,7 @@ class NewDream extends React.Component {
                 tags: ['KillingIt', 'Love', 'Teeth'],
             }
         } else {
-            debugger;
+            //debugger;
             this.state = {
                 selectedOption: this.props.info.type,
                 dreamText: this.props.info.text,
