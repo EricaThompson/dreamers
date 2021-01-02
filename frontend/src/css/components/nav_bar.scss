@@ -107,12 +107,12 @@
     }
 }
 
-// @media (min-width: 700px) {
+@media (min-width: 1200px) {
 
-//     .app-container {
-//         .nav-bar {
-//             padding-left: calc(50% - 346px);
-//             width: 707px;
-//         }
-//     }
-// }
+    .app-container {
+        .nav-bar {
+            padding-left: calc(50% - 600px);
+            width: 1200px;
+        }
+    }
+}
