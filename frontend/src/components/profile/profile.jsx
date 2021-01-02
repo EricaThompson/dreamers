@@ -1,4 +1,3 @@
-import { set } from 'mongoose';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Feed from '../feed/feed';
@@ -14,10 +13,10 @@ class Profile extends React.Component {
             currentUserId: this.props.currentUser.id,
             profileUser: this.props.user,
             showEditForm: false,
-            username: this.props.user.username,
-            age: this.props.user.age,
-            bio: this.props.user.bio,
-            location: this.props.user.location,
+            username: null,
+            age: null,
+            bio: null,
+            location: null,
             timestamp: null,
         }
         // this.handleChange = this.handleChange.bind(this);
@@ -26,9 +25,18 @@ class Profile extends React.Component {
 
     componentDidMount() {
         this.props.closeModal();
+        this.props.clearModalInfo();
         this.props.fetchDreamsByUser(this.props.match.params.userId)
         this.props.fetchUserById(this.props.match.params.userId)
-            .then(res => this.setState({ profileUser: res.user}))
+            .then(res => this.setState({ 
+                profileUser: res.user, 
+                timestamp: res.user._id.toString().substring(0, 8),
+                username: res.user.username,
+                age: res.user.age,
+                location: res.user.location,
+                bio: res.user.bio
+            }))
+            // .then(res => this.setState({ }))
             // .then(res => console.log(res))
         // this.props.fetchDreams()
             // .then(res => this.setState({userDreams: Object.values(res).data}))
@@ -40,6 +48,7 @@ class Profile extends React.Component {
 
     componentWillUnmount() {
         this.props.clearDreams();
+        this.props.clearModalInfo();
     }
 
     handleChange(value) {
@@ -96,57 +105,57 @@ class Profile extends React.Component {
                     </button>
         }
 
-        let { openModal, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo } = this.props;
+        let { openModal, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo, currentUser, closeModal } = this.props;
         if (!dreams) return null;
         // console.log('user', this.props.user._id.toString().substring(0, 8))
         // console.log(this.state.timestamp.getMonth())
 
         //!fix user grab
         // let timestamp = this.state.profileUser._id.toString().substring(0, 8)
-        // let date = new Date(parseInt(timestamp, 16) * 1000)
-        // let month = date.getMonth()
+        let date = new Date(parseInt(this.state.timestamp, 16) * 1000)
+        let month = date.getMonth()
 
-        // switch (month) {
-        //     case 0:
-        //         month = "Jan"
-        //         break;
-        //     case 1:
-        //         month = "Feb"
-        //         break;
-        //     case 2:
-        //         month = "Mar"
-        //         break;
-        //     case 3:
-        //         month = "Apr"
-        //         break;
-        //     case 4:
-        //         month = "May"
-        //         break;
-        //     case 5:
-        //         month = "Jun"
-        //         break;
-        //     case 6:
-        //         month = "Jul"
-        //         break;
-        //     case 7:
-        //         month = "Aug"
-        //         break;
-        //     case 8:
-        //         month = "Sep"
-        //         break;
-        //     case 9:
-        //         month = "Oct"
-        //         break;
-        //     case 10:
-        //         month = "Nov"
-        //         break;
-        //     case 11:
-        //         month = "Dec"
-        //         break;
+        switch (month) {
+            case 0:
+                month = "Jan"
+                break;
+            case 1:
+                month = "Feb"
+                break;
+            case 2:
+                month = "Mar"
+                break;
+            case 3:
+                month = "Apr"
+                break;
+            case 4:
+                month = "May"
+                break;
+            case 5:
+                month = "Jun"
+                break;
+            case 6:
+                month = "Jul"
+                break;
+            case 7:
+                month = "Aug"
+                break;
+            case 8:
+                month = "Sep"
+                break;
+            case 9:
+                month = "Oct"
+                break;
+            case 10:
+                month = "Nov"
+                break;
+            case 11:
+                month = "Dec"
+                break;
 
-        //     default:
-        //         break;
-        // }
+            default:
+                break;
+        }
 
         let profile;
         let editForm;
@@ -155,7 +164,7 @@ class Profile extends React.Component {
             editForm = <div className="edit-profile-form">
                             
                             <div className="username">{this.state.profileUser.username}</div>
-                            {/* <div>Dreamer Since: {month} {date.getDate()} {date.getFullYear()}</div> */}
+                            <div>Dreamer Since: {month} {date.getDate()} {date.getFullYear()}</div>
                             <div 
                                 className="location"> 
                                 Location: 
@@ -173,7 +182,7 @@ class Profile extends React.Component {
                                     /> 
                             </div>
                             <div 
-                                className="about">
+                                className="bio">
                                 Bio: 
                                 <input
                                     onChange={this.handleChange('bio')}
@@ -185,7 +194,7 @@ class Profile extends React.Component {
         } else {
             profile = <div>
                 <div className="username">{this.state.profileUser.username}</div>
-                {/* <div>Dreamer Since: {month} {date.getDate()} {date.getFullYear()}</div> */}
+                <div>Dreamer Since: {month} {date.getDate()} {date.getFullYear()}</div>
                 <div>Location: {this.state.profileUser.location}</div>
                 <div className="age">Age: {this.state.profileUser.age}</div>
                 <div className="about">
@@ -214,6 +223,7 @@ class Profile extends React.Component {
                 </div>
                 <div className="profile-dream-feed">
                     <Feed 
+                        currentUser={currentUser}
                         userId={this.props.match.params.userId}
                         dreams={dreams}
                         openModal = {openModal}
@@ -222,6 +232,7 @@ class Profile extends React.Component {
                         clearComments={clearComments}
                         fetchCommentsByDream={fetchCommentsByDream}
                         modalInfo={modalInfo}
+                        closeModal={closeModal}
                     />
                     {/* <div>Dream</div>
                     <div>Dream</div>

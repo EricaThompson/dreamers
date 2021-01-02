@@ -6,7 +6,8 @@ class CommentDreamModal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            comment: ''
+            comment: '',
+            
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -16,6 +17,10 @@ class CommentDreamModal extends React.Component {
     componentDidMount() {
         // debugger;
         // this.props.fetchCommentsByDream(this.props.info._id)
+    }
+
+    componentWillUnmount() {
+        this.props.clearModalInfo();
     }
 
     handleSubmit(e) {
@@ -37,6 +42,8 @@ class CommentDreamModal extends React.Component {
     render() {
         let { info, comments } = this.props;
 
+        
+
         let commentFeed;
 
         if (Object.values(comments).length === 0) {
@@ -45,11 +52,19 @@ class CommentDreamModal extends React.Component {
             commentFeed = (
                 <div>
                     {Object.values(comments).map((comment, idx) => {
-                        return <CommentItem key={idx} comment={comment} />
+                        return <CommentItem 
+                                    key={idx} 
+                                    comment={comment} 
+                                    updateComment={this.props.updateComment}
+                                    currentUser={this.props.currentUser}
+                                    deleteComment={this.props.deleteComment}
+                                />
                     })}
                 </div>
             )
         }
+
+        
 
         return (
             <div className="comment-modal-outer-container">

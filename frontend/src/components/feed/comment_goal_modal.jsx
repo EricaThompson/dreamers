@@ -13,6 +13,10 @@ class CommentGoalModal extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentWillUnmount() {
+        this.props.clearModalInfo();
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         let thisComment = {
@@ -40,7 +44,13 @@ class CommentGoalModal extends React.Component {
             commentFeed = (
                 <div>
                     {Object.values(comments).map((comment, idx) => {
-                        return <CommentItem key={idx} comment={comment} />
+                        return <CommentItem 
+                                    key={idx} 
+                                    comment={comment} 
+                                    updateComment={this.props.updateComment}
+                                    currentUser={this.props.currentUser}
+                                    deleteComment={this.props.deleteComment}
+                                />
                     })}
                 </div>
             )

@@ -5,8 +5,7 @@ import Feed from '../feed/feed';
 
 class TagsFeed extends React.Component {
     componentDidMount() {
-        // debugger;
-        this.props.fetchDreamsByTags({tags: [this.props.tagName]});
+        this.props.fetchDreamsByTags({ tags: [this.props.tagName] });
         this.props.closeModal();
     }
 
@@ -15,8 +14,8 @@ class TagsFeed extends React.Component {
     }
     
     render() {
-        let { tagName, openModal, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo } = this.props;
-
+        let { tagName, openModal, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo, currentUser, closeModal } = this.props;
+        // debugger
         // let feed = Object.values(dreams).map((dream, idx) => {
         //     if (dream.type === "dream") {
         //         return <DreamItem key={idx} dream={dream} openModal={openModal} />
@@ -38,6 +37,7 @@ class TagsFeed extends React.Component {
                 </div>
                 <div className="profile-dream-feed">
                     <Feed
+                        currentUser={currentUser}
                         userId={this.props.match.params.userId}
                         dreams={dreams}
                         openModal={openModal}
@@ -46,6 +46,7 @@ class TagsFeed extends React.Component {
                         clearComments={clearComments}
                         fetchCommentsByDream={fetchCommentsByDream}
                         modalInfo={modalInfo}
+                        closeModal={closeModal}
                     />
                 </div>
             </div>

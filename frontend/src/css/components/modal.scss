@@ -10,7 +10,7 @@
     right: 0;
     left: 0;
     background: $off-white-opaque;
-    z-index: 10;
+    z-index: 11;
     animation: fade-in .5s ease-in-out;
     
     .modal-child {
@@ -30,14 +30,20 @@
             right: 15px;
             cursor: pointer;
             color: $dark-gray;
-            z-index: 10;
+            z-index: 11;
         }
     }
 }
 
 
 @media (min-width: 800px) {
-    .modal-child {
-        width: 450px;
+    .modal-background {
+        display: flex;
+        justify-content: center;
+
+        .modal-child {
+            width: 500px;
+            left: 50.7%;
+        }
     }
 }

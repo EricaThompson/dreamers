@@ -8,8 +8,30 @@
             margin-top: -64px;
             height: 100%;
             width: 100%;
+            // padding-left: calc(50% - 400px);
+            // padding-right: 25%;
             // background-repeat: no-repeat;
             // background-color:$background-blue;
             background: transparent;
+    }
+}
+
+@media (min-width: 700px) {
+    .app-container {
+
+        .main-app {
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: -64px;
+            height: 100%;
+            width: 700px;
+            padding-left: calc(50% - 346px);
+            padding-right: 25%;
+            // background-repeat: no-repeat;
+            // background-color:$background-blue;
+            background: transparent;
+        }  
     }
 }
