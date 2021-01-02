@@ -44,6 +44,7 @@ class NavBar extends React.Component {
                 dropdown = <div className="menu-items">
                                 {/* <Link to={'/signup'}><p>signup</p></Link>
                                 <Link to={'/login'}><p>login</p></Link> */}
+                                <Link onClick={() => this.props.openModal('newDream')}><p>create</p></Link>
                                 <Link to={`/users/${currentUser.id}`}><p>profile</p></Link>
                                 <Link to={`/about`}><p>about</p></Link>
                                 <p className="logout" onClick={this.logoutUser} >logout</p>
