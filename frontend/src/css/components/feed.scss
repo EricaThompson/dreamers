@@ -103,6 +103,71 @@
                 padding-top: 20px;
                 position: relative;
 
+                .comment-options {
+                    position: absolute;
+                    z-index: 5;
+                    top: 30px;
+                    right: 15px;
+                    cursor: pointer;
+                    //! switch to light gray
+                    color: rgb(161, 160, 160);
+
+                    .available-options {
+                        // background-color: $off-white;
+
+                        
+                        i {
+                            position: absolute;
+                            // top: -38px;
+                            // right: 10px;
+                            
+                            background-color: $pale-purple;
+                            border-radius: 55%;
+                            padding: 12px;
+                            color: $dark-gray;
+                            margin: 5px;
+
+                            
+                            &:hover {
+                                color: $off-white;
+                            }
+                        }
+
+                        
+
+                        .icon:nth-child(1){
+                            position: absolute;
+                            // z-index: 100000000000000;
+                            top: 17px;
+                            right: 70px;
+                        }
+
+                        .icon:nth-child(2){
+                            position: absolute;
+                            top: 17px;
+                            right: 23px;
+                        }
+
+
+                        .fa-trash-alt:hover {
+                            
+                            background-color: red;
+                            color: $off-white;
+                        }
+
+                        .fa-user-plus {
+                            width: 19px;
+                            padding-right: 16px;
+                            padding-left: 10px;
+                        }
+
+                        .fa-flag {
+                            padding-right: 14px;
+                            padding-left: 10px;
+                        }
+                    }
+                }
+
                 .feed-dreams-edit-pencil {
                     position: absolute;
                     bottom: 12px;
@@ -245,6 +310,72 @@
             .feed-goals-wrapper {
                 padding-top: 20px;
                 position: relative;
+
+                .comment-options {
+                    position: absolute;
+                    z-index: 5;
+                    top: 30px;
+                    right: 15px;
+                    cursor: pointer;
+                    //! switch to light gray
+                    color: rgb(161, 160, 160);
+
+                    .available-options {
+                        // background-color: $off-white;
+
+                        
+                        i {
+                            position: absolute;
+                            // top: -38px;
+                            // right: 10px;
+                            
+                            background-color: $pale-purple;
+                            border-radius: 55%;
+                            padding: 12px;
+                            color: $dark-gray;
+                            margin: 5px;
+
+                            
+                            &:hover {
+                                color: $off-white;
+                            }
+                        }
+
+                        
+
+                        .icon:nth-child(1){
+                            position: absolute;
+                            // z-index: 100000000000000;
+                            top: 17px;
+                            right: 70px;
+                        }
+
+                        .icon:nth-child(2){
+                            position: absolute;
+                            top: 17px;
+                            right: 23px;
+                        }
+
+
+                        .fa-trash-alt:hover {
+                            
+                            background-color: red;
+                            color: $off-white;
+                        }
+
+                        .fa-user-plus {
+                            width: 19px;
+                            padding-right: 16px;
+                            padding-left: 10px;
+                        }
+
+                        .fa-flag {
+                            padding-right: 14px;
+                            padding-left: 10px;
+                        }
+                    }
+                }
+
 
                 .feed-dreams-edit-pencil {
                     position: absolute;

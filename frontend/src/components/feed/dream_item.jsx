@@ -32,6 +32,7 @@ class DreamItem extends React.Component {
     }
 
     handleOpenEditModal(e) {
+        this.setState({showMenu: false})
         this.props.openModal('newDream');
         this.props.modalInfo(this.props.dream);
     }
@@ -62,45 +63,33 @@ class DreamItem extends React.Component {
 
         let followIcon;
         let editIcon;
-        let editHide;
-        let commentHide;
-        let checkMark;
         let deleteIcon;
         let flagIcon;
         let menuOptions;
         let optionsIcon;
-        // let optionsHide;
 
-        if (dream.username === this.props.currentUser.username) {
+        console.log('current', dream.username, currentUser.username)
+        if (dream.username === currentUser.username) {
             editIcon = <div
-                className="icon"
-                onClick={this.handleOpenEditModal}
-            >
-                <i className="fas fa-pencil-alt"></i>
-            </div>
+                            className="icon"
+                            onClick={this.handleOpenEditModal}
+                        >
+                            <i className="fas fa-pencil-alt"></i>
+                    </div>
             deleteIcon = <div
-                className='icon'
-                onClick={() => this.deleteComment()}
-            >
-                <i className="fas fa-trash-alt"></i>
-            </div>
+                            className='icon'
+                            onClick={() => this.deleteComment()}
+                        >
+                            <i className="fas fa-trash-alt"></i>
+                        </div>
         } else {
             //!if (!comment.author.followers.includes(currentUser))
             followIcon = <div className="icon">
-                <i className="fas fa-user-plus"></i>
-            </div>
+                            <i className="fas fa-user-plus"></i>
+                        </div>
             flagIcon = <div className="icon">
-                <i className="fas fa-flag"></i>
-            </div>
-        }
-
-        if (this.state.showEditForm) {
-            editHide = false;
-            checkMark = <i className="fas fa-check"></i>
-            commentHide = true;
-        } else {
-            commentHide = false;
-            editHide = true;
+                            <i className="fas fa-flag"></i>
+                        </div>
         }
 
         if (this.state.showMenu) {
@@ -119,14 +108,9 @@ class DreamItem extends React.Component {
             </i>
         }
 
-        console.log('currentUser', currentUser)
-        console.log('dream', dream)
         return (
             <div className="feed-dreams-wrapper" >
-                <div className="feed-dreams-edit-pencil"  >
-                    {/* {currentUser.id === dream.userId ?
-                    <i className="fas fa-pencil-alt"></i>
-                    : ""} */}
+                <div className="comment-options" onClick={()=>this.toggleMenu()} >
                     {optionsIcon}
                     {menuOptions}
                 </div>
