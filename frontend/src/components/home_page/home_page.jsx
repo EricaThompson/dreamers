@@ -9,7 +9,7 @@ class HomePage extends React.Component {
     // }
 
     render() {
-        console.log('homepage props', this.props)
+        // console.log('homepage props', this.props)
         return (
             <div className="logo" >
                 {/* <i class="fas fa-cloud logo-icon"></i> */}

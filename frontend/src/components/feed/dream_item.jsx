@@ -70,7 +70,7 @@ class DreamItem extends React.Component {
         let menuOptions;
         let optionsIcon;
 
-        console.log('current', dream.username, currentUser.username)
+        // console.log('current', dream.username, currentUser.username)
         if (dream.username === currentUser.username) {
             editIcon = <div
                             className="icon"

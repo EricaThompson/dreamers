@@ -24,7 +24,7 @@
 //             // username: this.props.info.username,
 //             // userId: this.props.info.userId,
 //         }
-//         // debugger;
+//         debugger;
 //         this.props.createComment(this.props.info._id, thisComment);
 //         this.setState({ comment: '' })
 //     }

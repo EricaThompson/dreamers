@@ -47,7 +47,7 @@ class NewDream extends React.Component {
             this.props.updateDream(this.props.info._id, newDream);
             // console.log('update dream', { dream: newDream })
         } else {
-            console.log('new dream', newDream)
+            // console.log('new dream', newDream)
             // this.props.createDream({dream: newDream});
             this.props.createDream(newDream);
         }
