@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 class GoalItem extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            tags: this.props.tags
+        }
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleOpenEditModal = this.handleOpenEditModal.bind(this);
     }
@@ -22,6 +25,28 @@ class GoalItem extends React.Component {
 
     render() {
         let { dream, currentUser } = this.props;
+        let tags;
+
+        if (this.state.tags){
+            tags = 
+                this.state.tags.map((tag, idx) => {
+                    if (tag != null){
+                        return (
+                            <Link to={`/tags/${tag}`} key={idx} style={{ textDecoration: 'none' }} >
+
+                                <div className="new-dream-tags-item-container" onClick={e => e.stopPropagation()} >
+                                    <div className="new-dream-tags-item-circle" ></div>
+                                    <p className="new-dream-tags-item" >{tag}</p>
+                                </div>
+                            </Link>
+                        )
+                    }
+                    
+                })
+            
+        } else {
+            tags = null
+        }
 
         return (
             <div className="feed-goals-wrapper" >
@@ -34,16 +59,7 @@ class GoalItem extends React.Component {
                     {/* <Link to={`/dreams/${dream._id}`} style={{ textDecoration: 'none' }} > */}
                         <div className="new-dream-tags-container" >
                             <div className="new-dream-tags" >
-                                {dream.tags.map((tag, idx) => {
-                                    return (
-                                        <Link to={`/tags/${tag}`} key={idx} style={{ textDecoration: 'none' }} >
-                                            <div className="new-dream-tags-item-container" onClick={e => e.stopPropagation()} >
-                                                <div className="new-dream-tags-item-circle" ></div>
-                                                <p className="new-dream-tags-item" >{tag}</p>
-                                            </div>
-                                        </Link>
-                                    )
-                                })}
+                                {tags}
                             </div>
                         </div>
                         <p className="feed-goals-info" >

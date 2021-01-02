@@ -5,6 +5,8 @@ import { createDream, updateDream } from '../../actions/dream_actions';
 
 const mapSTP = state => ({
     currentUser: state.session.user,
+    // info: [1,2],
+    // tags: ['tag1', 'tag2']
 })
 
 const mapDTP = dispatch => ({
