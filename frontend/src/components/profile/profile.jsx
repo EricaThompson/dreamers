@@ -25,6 +25,7 @@ class Profile extends React.Component {
 
     componentDidMount() {
         this.props.closeModal();
+        this.props.clearModalInfo();
         this.props.fetchDreamsByUser(this.props.match.params.userId)
         this.props.fetchUserById(this.props.match.params.userId)
             .then(res => this.setState({ 
@@ -47,6 +48,7 @@ class Profile extends React.Component {
 
     componentWillUnmount() {
         this.props.clearDreams();
+        this.props.clearModalInfo();
     }
 
     handleChange(value) {
@@ -103,7 +105,7 @@ class Profile extends React.Component {
                     </button>
         }
 
-        let { openModal, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo } = this.props;
+        let { openModal, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo, currentUser, closeModal } = this.props;
         if (!dreams) return null;
         // console.log('user', this.props.user._id.toString().substring(0, 8))
         // console.log(this.state.timestamp.getMonth())
@@ -180,7 +182,7 @@ class Profile extends React.Component {
                                     /> 
                             </div>
                             <div 
-                                className="about">
+                                className="bio">
                                 Bio: 
                                 <input
                                     onChange={this.handleChange('bio')}
@@ -221,6 +223,7 @@ class Profile extends React.Component {
                 </div>
                 <div className="profile-dream-feed">
                     <Feed 
+                        currentUser={currentUser}
                         userId={this.props.match.params.userId}
                         dreams={dreams}
                         openModal = {openModal}
@@ -229,6 +232,7 @@ class Profile extends React.Component {
                         clearComments={clearComments}
                         fetchCommentsByDream={fetchCommentsByDream}
                         modalInfo={modalInfo}
+                        closeModal={closeModal}
                     />
                     {/* <div>Dream</div>
                     <div>Dream</div>

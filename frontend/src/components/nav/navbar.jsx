@@ -31,7 +31,7 @@ class NavBar extends React.Component {
     render() {
         let dropdown;
         let menu;
-        let { currentUser } = this.props;
+        let { currentUser, isModalOpen } = this.props;
 
         if (this.props.loggedIn){
             menu = <div
@@ -58,7 +58,7 @@ class NavBar extends React.Component {
         }
 
         return (
-            <div className="nav-bar">
+            <div className={isModalOpen ? "nav-bar nav-bar-modal" : "nav-bar" }>
                 <div className="logo">
                     <Link to="/feed" style={{ textDecoration: 'none' }} > <h1 className="nav-title">{this.props.location.pathname === "/" ? "" : "DREAMERS"}</h1></Link>
                 </div>

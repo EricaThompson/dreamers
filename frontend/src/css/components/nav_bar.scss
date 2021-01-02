@@ -41,6 +41,7 @@
                 background-color: $off-white;
                 margin: 15px;
                 border-radius: 4px;
+                padding-top: 2px;
 
                 &:hover {
                     color: $light-purple;
@@ -100,4 +101,18 @@
             }
         }
     }
+
+    .nav-bar-modal {
+        z-index: 0;
+    }
 }
+
+// @media (min-width: 700px) {
+
+//     .app-container {
+//         .nav-bar {
+//             padding-left: calc(50% - 346px);
+//             width: 707px;
+//         }
+//     }
+// }

@@ -13,6 +13,10 @@ class CommentGoalModal extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentWillUnmount() {
+        this.props.clearModalInfo();
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         let thisComment = {
