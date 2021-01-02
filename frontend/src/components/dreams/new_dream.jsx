@@ -32,6 +32,7 @@ class NewDream extends React.Component {
         // debugger;
         console.log('new dream', newDream)
         this.props.createDream(newDream);
+        this.props.closeModal();
     }
 
     handleTags(e) {
