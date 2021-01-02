@@ -68,7 +68,8 @@ class Feed extends React.Component {
                         modalInfo={modalInfo} 
                         fetchCommentsByDream={fetchCommentsByDream} 
                         clearComments={clearComments} 
-                        currentUser={currentUser} 
+                        currentUser={currentUser}
+                        deleteDream={this.props.deleteDream}
                     />
                 } else {
                     return <GoalItem 
@@ -79,7 +80,8 @@ class Feed extends React.Component {
                         modalInfo={modalInfo} 
                         fetchCommentsByDream={fetchCommentsByDream} 
                         clearComments={clearComments} 
-                        currentUser={currentUser} 
+                        currentUser={currentUser}
+                        deleteDream={this.props.deleteDream} 
                     />
                 }
             })
@@ -94,7 +96,8 @@ class Feed extends React.Component {
                         modalInfo={modalInfo} 
                         fetchCommentsByDream={fetchCommentsByDream} 
                         clearComments={clearComments} 
-                        currentUser={currentUser} 
+                        currentUser={currentUser}
+                        deleteDream={this.props.deleteDream}
                     />
                 } else {
                     return ""
@@ -111,7 +114,9 @@ class Feed extends React.Component {
                         modalInfo={modalInfo} 
                         fetchCommentsByDream={fetchCommentsByDream} 
                         clearComments={clearComments} 
-                        currentUser={currentUser} />
+                        currentUser={currentUser}
+                        deleteDream={this.props.deleteDream} 
+                        />
                 } else {
                     return ""
                 }

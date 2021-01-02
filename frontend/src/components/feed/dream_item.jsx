@@ -78,7 +78,7 @@ class DreamItem extends React.Component {
                     </div>
             deleteIcon = <div
                             className='icon'
-                            onClick={() => this.deleteComment()}
+                            onClick={() => this.props.deleteDream(dream._id)}
                         >
                             <i className="fas fa-trash-alt"></i>
                         </div>
