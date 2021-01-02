@@ -29,7 +29,7 @@ class Feed extends React.Component {
     //         .then(res => this.setState({dreams: res}))
     // }
     componentWillUnmount() {
-        // this.props.clearDreams();
+        this.props.clearDreams();
     }
 
     handleChange(e) {

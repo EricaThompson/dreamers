@@ -47,7 +47,7 @@ class Profile extends React.Component {
     }
 
     componentWillUnmount() {
-        // this.props.clearDreams();
+        this.props.clearDreams();
         this.props.clearModalInfo();
     }
 

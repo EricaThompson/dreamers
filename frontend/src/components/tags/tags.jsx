@@ -10,7 +10,7 @@ class TagsFeed extends React.Component {
     }
 
     componentWillUnmount() {
-        // this.props.clearDreams();
+        this.props.clearDreams();
     }
     
     render() {
