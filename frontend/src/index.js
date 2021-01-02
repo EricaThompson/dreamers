@@ -5,7 +5,7 @@ import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
-import { createComment } from './actions/comment_actions';
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -31,8 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore({});
   }
 
-  window.store = store;
-  window.createComment = createComment;
 
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
