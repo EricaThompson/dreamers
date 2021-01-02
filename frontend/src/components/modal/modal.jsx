@@ -26,28 +26,28 @@ class Modal extends React.Component {
         let component;
         switch (modal) {
             case 'newDream':
-                component = <NewDreamContainer 
-                    currentUser={currentUser} 
+                component = <NewDreamContainer
+                    currentUser={currentUser}
                     createDream={createDream}
                     updateDream={updateDream}
                     info={info}
                 />;
                 break;
             case 'commentGoal':
-                component = <CommentGoalModal 
-                    info={info} 
-                    fetchCommentsByDream={fetchCommentsByDream} 
-                    comments={comments} 
+                component = <CommentGoalModal
+                    info={info}
+                    fetchCommentsByDream={fetchCommentsByDream}
+                    comments={comments}
                     createComment={createComment}
                     clearModalInfo={clearModalInfo}
                 />;
                 break;
             case 'commentDream':
-                component = <CommentDreamModal 
-                    info={info} 
-                    fetchCommentsByDream={fetchCommentsByDream} 
-                    comments={comments} 
-                    createComment={createComment} 
+                component = <CommentDreamModal
+                    info={info}
+                    fetchCommentsByDream={fetchCommentsByDream}
+                    comments={comments}
+                    createComment={createComment}
                     clearModalInfo={clearModalInfo}
                 />;
                 break;
@@ -58,7 +58,7 @@ class Modal extends React.Component {
             <div className="modal-background" onClick={this.handleCloseModal} >
                 <div className="modal-child" onClick={e => e.stopPropagation()} >
                     <span onClick={this.handleCloseModal} className="close-modal-btn">&#x2715;</span>
-                    { component }
+                    {component}
                     {/* <NewDreamContainer /> */}
                 </div>
             </div>
@@ -69,15 +69,16 @@ class Modal extends React.Component {
 const mapSTP = state => {
     // debugger;
     return {
-    modal: state.ui.modal,
-    currentUser: state.session.user,
-    info: state.modalInfo,
-    comments: state.comment
-}}
+        modal: state.ui.modal,
+        currentUser: state.session.user,
+        info: state.modalInfo,
+        comments: state.comment
+    }
+}
 
 const mapDTP = dispatch => ({
     closeModal: () => dispatch(closeModal()),
-    createDream: (dream)=> dispatch(createDream(dream)),
+    createDream: (dream) => dispatch(createDream(dream)),
     updateDream: (dreamId, dream) => dispatch(updateDream(dreamId, dream)),
     fetchCommentsByDream: (dreamId) => dispatch(fetchCommentsByDream(dreamId)),
     createComment: (dreamId, comment) => dispatch(createComment(dreamId, comment)),
