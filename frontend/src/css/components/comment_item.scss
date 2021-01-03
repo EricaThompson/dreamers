@@ -11,21 +11,115 @@
     padding-top: 20px;
 
     .comment-item-container {
-        width: 98%;
+        width: 99%;
         border: 2px solid $dark-gray;
         background-color: $off-white;
         border-radius: 10px;
+
+        .fa-ellipsis-h {
+            color: $light-gray;
+        }
 
         .comment-item-text {
             font-family: $serif;
             color: $dark-gray;
             margin: 5px 10px;
+            position: relative;
+
+            textarea {
+                background-color: $lightest-blue;
+                resize: none;
+                width: 95%;
+                height: 100%;
+                border-radius: 4px;
+                margin-top: 10px;
+                margin-bottom: 20px;
+                padding: 7px;
+            }
+
+            .fa-check {
+                position: absolute;
+                right: 10px;
+                bottom: 0;
+                color: $off-white;
+                background-color: $green;
+                padding: 10px;
+                border-radius: 55%;
+                cursor: pointer;
+                // box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+            }
+
+            .comment-options {
+                position: absolute;
+                top: 15px;
+                right: 5px;
+                cursor: pointer;
+
+                
+                
+
+                .available-options {
+                    // background-color: $off-white;
+
+                    
+                    i {
+                        position: absolute;
+                        // top: -38px;
+                        // right: 10px;
+                        
+                        background-color: $pale-purple;
+                        border-radius: 55%;
+                        padding: 12px;
+                        color: $dark-gray;
+                        margin: 5px;
+
+                        
+                        &:hover {
+                            color: $off-white;
+                        }
+                    }
+
+                    
+
+                    .icon:nth-child(1){
+                        position: absolute;
+                        // z-index: 100000000000000;
+                        top: -47px;
+                        right: 82px;
+                    }
+
+                    .icon:nth-child(2){
+                        position: absolute;
+                        top: -47px;
+                        right: 34px;
+                    }
+
+
+                    .fa-trash-alt:hover {
+                        
+                        background-color: red;
+                        color: $off-white;
+                    }
+
+                    .fa-user-plus {
+                        width: 19px;
+                        padding-right: 16px;
+                        padding-left: 10px;
+                    }
+
+                    .fa-flag {
+                        padding-right: 14px;
+                        padding-left: 10px;
+                    }
+                }
+            }
         }
-    
+
         .comment-item-text-link {
             color: $dark-gray;
             font-weight: 700;
             cursor: pointer;
         }
+
     }
 }

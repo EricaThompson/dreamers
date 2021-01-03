@@ -5,6 +5,7 @@
     background-color: #2C3181;
 
     .nav-bar {
+        position: relative;
         width: 100%;
         display: flex; 
         justify-content: space-between;
@@ -41,6 +42,7 @@
                 background-color: $off-white;
                 margin: 15px;
                 border-radius: 4px;
+                padding-top: 2px;
 
                 &:hover {
                     color: $light-purple;
@@ -98,6 +100,20 @@
                     color: $magenta;
                 }
             }
+        }
+    }
+
+    .nav-bar-modal {
+        z-index: 0;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .app-container {
+        .nav-bar {
+            padding-left: calc(50% - 600px);
+            width: 1200px;
         }
     }
 }

@@ -27,8 +27,11 @@ const DreamSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'likes'
     }, 
-    username: String, 
-  
+    username: {
+      type: String, 
+      required: true, 
+      unique: true
+    }
   }],
 
   date: {

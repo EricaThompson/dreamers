@@ -31,7 +31,7 @@ class NavBar extends React.Component {
     render() {
         let dropdown;
         let menu;
-        let { currentUser } = this.props;
+        let { currentUser, isModalOpen } = this.props;
 
         if (this.props.loggedIn){
             menu = <div
@@ -44,10 +44,25 @@ class NavBar extends React.Component {
                 dropdown = <div className="menu-items">
                                 {/* <Link to={'/signup'}><p>signup</p></Link>
                                 <Link to={'/login'}><p>login</p></Link> */}
+                                <Link onClick={() => this.props.openModal('newDream')}><p>create</p></Link>
                                 <Link to={`/users/${currentUser.id}`}><p>profile</p></Link>
                                 <Link to={`/about`}><p>about</p></Link>
                                 <p className="logout" onClick={this.logoutUser} >logout</p>
                             </div>
+            }
+        } else if (this.props.location.pathname !== "/") {
+            menu = <div
+                onClick={() => this.dropdownToggle()}
+                className='menu'>
+                <i className="fas fa-bars"></i>
+            </div>
+
+            if (this.state.showDropdown) {
+                dropdown = <div className="menu-items">
+                    <Link to={`/about`}><p>about</p></Link>
+                    <Link to={'/login'}><p className="session-login-link">login</p></Link>
+                    <Link to={'/signup'}><p className="session-signup-link">signup</p></Link>
+                </div>
             }
         } else {
             menu = <div className="session-links">
@@ -58,9 +73,11 @@ class NavBar extends React.Component {
         }
 
         return (
-            <div className="nav-bar">
+            <div className={isModalOpen ? "nav-bar nav-bar-modal" : "nav-bar" }>
                 <div className="logo">
-                    <Link to="/feed" style={{ textDecoration: 'none' }} > <h1 className="nav-title">{this.props.location.pathname === "/" ? "" : "DREAMERS"}</h1></Link>
+                    <Link to="/"
+                    // to={this.props.loggedIn ? "/" : "/feed"} 
+                    style={{ textDecoration: 'none' }} > <h1 className="nav-title">{this.props.location.pathname === "/" ? "" : "DREAMERS"}</h1></Link>
                 </div>
                 {menu}
                 {dropdown}

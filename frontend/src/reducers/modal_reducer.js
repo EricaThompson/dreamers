@@ -1,7 +1,7 @@
 import { OPEN_MODAL, CLOSE_MODAL } from '../actions/modal_actions';
 
 
-export default (oldState = null, action) => {
+const ModalReducer = (oldState = null, action) => {
     Object.freeze(oldState);
 
     switch (action.type) {
@@ -13,3 +13,5 @@ export default (oldState = null, action) => {
             return oldState;
     }
 }
+
+export default ModalReducer;

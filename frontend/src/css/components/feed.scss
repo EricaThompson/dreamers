@@ -16,7 +16,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 100%;
+        width: 101%;
         padding-top: 15px;
         background-color: $off-white;
         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
@@ -85,30 +85,104 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 100%;
+        height: 90%;
+        padding: 0px 20px 10px;
+        background-color: $off-white-opaque;
+        // position: relative;
+        z-index: -3;
         overflow: scroll;
         overflow-x: hidden;
-        width: 100%;
-        height: 100%;
-        padding: 0px 20px 70px;
-        background-color: $off-white-opaque;
 
         .feed-dreams-container {
             width: 90%;
             padding-bottom: 100px;
 
-
-            .feed-dreams-wrapper {
+            .feed-dreams-wrapper,
+            .feed-goals-wrapper {
                 padding-top: 20px;
+                position: relative;
 
+                .comment-options {
+                    position: absolute;
+                    z-index: 2;
+                    bottom: 10px;
+                    right: 15px;
+                    cursor: pointer;
+                    //! switch to light gray
+                    color: rgb(161, 160, 160);
+
+                    .available-options {
+                        i {
+                            position: absolute;
+                            background-color: $pale-purple;
+                            border-radius: 55%;
+                            padding: 12px;
+                            color: $dark-gray;
+                            margin: 5px;                           
+                            &:hover {
+                                color: $off-white;
+                            }
+                        }
+
+                        .icon:nth-child(1){
+                            position: absolute;
+                            top: 17px;
+                            right: 80px;
+                        }
+
+                        .icon:nth-child(2){
+                            position: absolute;
+                            top: 17px;
+                            right: 33px;
+                        }
+
+
+                        .fa-trash-alt:hover {
+                            
+                            background-color: red;
+                            color: $off-white;
+                        }
+
+                        .fa-user-plus {
+                            width: 19px;
+                            padding-right: 16px;
+                            padding-left: 10px;
+                        }
+
+                        .fa-flag {
+                            padding-right: 14px;
+                            padding-left: 10px;
+                        }
+                    }
+                }
+
+                .feed-dreams-edit-pencil {
+                    position: absolute;
+                    bottom: 12px;
+                    right: 12px;
+                    color: $dark-gray;
+                    cursor: pointer;
+                    z-index: 1;
+                }
+
+                .feed-goals {
+                    border: 3px solid $off-white;
+                    background-color: $logo-yellow;
+                    box-shadow: 2px 2px 8px white;
+                }
+                
                 .feed-dreams {
-                    position: relative;
-                    padding: 10px;
                     border: 3px solid $off-white;
                     border-radius: 20px;
-                    // background-color: $dark-purple;
-                    background-color: $light-purple;
                     background-color: $pale-blue;
                     box-shadow: 2px 2px 8px $dark-gray;
+                }
+
+                .feed-dreams,
+                .feed-goals {
+                    position: relative;
+                    padding: 10px;
 
                     .new-dream-tags-container {
                         display: flex;
@@ -164,28 +238,34 @@
 
                     .feed-dreams-circle-big {
                         position: absolute;
-                        bottom: -7px;
-                        left: -12px;
+                        bottom: -5px;
+                        left: -10px;
+                        //!arch here
+                        // bottom: -5px;
+                        // left: -9px;
                         width: 15px;
                         height: 15px;
                         background-color: $dark-purple;
                         background-color: $pale-blue;
                         border: 3px solid $off-white;
                         border-radius: 50%;
-                        z-index: -1;
+                        z-index: 1;
                     }
 
                     .feed-dreams-circle-small {
                         position: absolute;
-                        bottom: -12px;
-                        left: -19px;
+                        bottom: -8px;
+                        left: -15px;
                         width: 10px;
+                        //!arch here
+                        // bottom: -11px;
+                        // left: -10px;
                         height: 10px;
                         background-color: $dark-purple;
                         background-color: $pale-blue;
                         border: 3px solid $off-white;
                         border-radius: 50%;
-                        z-index: -2;
+                        z-index: 0;
                     }
 
                     
@@ -226,6 +306,82 @@
 
             .feed-goals-wrapper {
                 padding-top: 20px;
+                position: relative;
+
+                .comment-options {
+                    position: absolute;
+                    z-index: 5;
+                    top: 30px;
+                    right: 15px;
+                    cursor: pointer;
+                    //! switch to light gray
+                    color: rgb(161, 160, 160);
+
+                    .available-options {
+                        // background-color: $off-white;
+
+                        
+                        i {
+                            position: absolute;
+                            // top: -38px;
+                            // right: 10px;
+                            
+                            background-color: $pale-purple;
+                            border-radius: 55%;
+                            padding: 12px;
+                            color: $dark-gray;
+                            margin: 5px;
+
+                            
+                            &:hover {
+                                color: $off-white;
+                            }
+                        }
+
+                        
+
+                        .icon:nth-child(1){
+                            position: absolute;
+                            // z-index: 100000000000000;
+                            top: 17px;
+                            right: 70px;
+                        }
+
+                        .icon:nth-child(2){
+                            position: absolute;
+                            top: 17px;
+                            right: 23px;
+                        }
+
+
+                        .fa-trash-alt:hover {
+                            
+                            background-color: red;
+                            color: $off-white;
+                        }
+
+                        .fa-user-plus {
+                            width: 19px;
+                            padding-right: 16px;
+                            padding-left: 10px;
+                        }
+
+                        .fa-flag {
+                            padding-right: 14px;
+                            padding-left: 10px;
+                        }
+                    }
+                }
+
+
+                .feed-dreams-edit-pencil {
+                    position: absolute;
+                    bottom: 12px;
+                    right: 12px;
+                    color: $dark-gray;
+                    cursor: pointer;
+                    z-index: 1;
+                }
 
                 .feed-goals {
                     padding: 10px;
@@ -336,6 +492,7 @@
         height: 40px;
         width: 100%;
         background-color: $off-white;
+        z-index: 2;
         // background: linear-gradient(to bottom, #2C31811a, $background-blue);
     }
 
@@ -350,13 +507,14 @@
 
 }
 
-@media (min-width: 800px) {
+@media (min-width: 700px) {
 
     .feed-outer-container {
 
 
         .feed-container {
-            
+            width: 100%;
+
             .feed-search-container {
                 width: 50%;
 
@@ -382,8 +540,9 @@
                 .feed-header-container {
                     width: 70%;
                     
-                    // .feed-header {
-                    // }
+                    .feed-header {
+                        cursor: pointer;
+                    }
                 }
             }
         }

@@ -3,7 +3,7 @@ import {
     RECEIVE_TAG,
     REMOVE_TAG,
     CLEAR_TAG
-} from '../actions/tag_actions'
+} from '../actions/tag_actions';
 
 const TagReducer = (oldState = {}, action) => {
     Object.freeze(oldState)
