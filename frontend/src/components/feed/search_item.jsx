@@ -16,6 +16,8 @@ class SearchItem extends React.Component {
     }
 
     render() {
+        console.log('search-item-props', this.props)
+
         let icon;
         let refer;
 
@@ -27,7 +29,7 @@ class SearchItem extends React.Component {
             refer = `/tags/${this.props.dream.name}`
         } else if (this.props.type === 'users') {
             icon = <i class="fas fa-user search-icon"></i>
-            refer = `/users/${this.props.dream.userId}`
+            refer = `/users/${this.props.dream._id}`
         }
 
         let item;
