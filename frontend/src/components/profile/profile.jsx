@@ -87,7 +87,7 @@ class Profile extends React.Component {
             editBtn = <button 
                         onClick={()=>this.toggleEditForm()}
                         className="profile-edit-button">
-                            edit profile
+                            Edit Profile
                     </button>
             newDreamBtn = <button
                             className="new-dream-btn"
@@ -194,7 +194,7 @@ class Profile extends React.Component {
         } else {
             profile = <div>
                 <div className="username">{this.state.profileUser.username}</div>
-                <div>Dreamer Since: {month} {date.getDate()} {date.getFullYear()}</div>
+                <div>Dreamer Since: {month} {date.getDate()}, {date.getFullYear()}</div>
                 <div>Location: {this.state.profileUser.location}</div>
                 <div className="age">Age: {this.state.profileUser.age}</div>
                 <div className="about">

@@ -1,7 +1,7 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
 import DreamItem from './dream_item';
-import GoalItem from './goal_item';
+// import GoalItem from './goal_item';
 import { withRouter } from 'react-router-dom';
 
 
@@ -58,32 +58,43 @@ class Feed extends React.Component {
 
         if (this.state.selected === "feed") {
             feed = Object.values(dreams).map((dream, idx) => {
-                console.log('map dream',dream)
-                if (dream.type === "dream" ) {
-                    return <DreamItem 
-                        key={idx} 
-                        tags={dream.tags} 
-                        dream={dream} 
-                        openModal={openModal} 
-                        modalInfo={modalInfo} 
-                        fetchCommentsByDream={fetchCommentsByDream} 
-                        clearComments={clearComments} 
-                        currentUser={currentUser}
-                        deleteDream={this.props.deleteDream}
-                    />
-                } else {
-                    return <GoalItem 
-                        key={idx} 
-                        tags={dream.tags} 
-                        dream={dream} 
-                        openModal={openModal} 
-                        modalInfo={modalInfo} 
-                        fetchCommentsByDream={fetchCommentsByDream} 
-                        clearComments={clearComments} 
-                        currentUser={currentUser}
-                        deleteDream={this.props.deleteDream} 
-                    />
-                }
+                return <DreamItem
+                    key={idx}
+                    tags={dream.tags}
+                    dream={dream}
+                    openModal={openModal}
+                    modalInfo={modalInfo}
+                    fetchCommentsByDream={fetchCommentsByDream}
+                    clearComments={clearComments}
+                    currentUser={currentUser}
+                    deleteDream={this.props.deleteDream}
+                />
+                // console.log('map dream',dream)
+                // if (dream.type === "dream" ) {
+                //     return <DreamItem 
+                //         key={idx} 
+                //         tags={dream.tags} 
+                //         dream={dream} 
+                //         openModal={openModal} 
+                //         modalInfo={modalInfo} 
+                //         fetchCommentsByDream={fetchCommentsByDream} 
+                //         clearComments={clearComments} 
+                //         currentUser={currentUser}
+                //         deleteDream={this.props.deleteDream}
+                //     />
+                // } else {
+                //     return <GoalItem 
+                //         key={idx} 
+                //         tags={dream.tags} 
+                //         dream={dream} 
+                //         openModal={openModal} 
+                //         modalInfo={modalInfo} 
+                //         fetchCommentsByDream={fetchCommentsByDream} 
+                //         clearComments={clearComments} 
+                //         currentUser={currentUser}
+                //         deleteDream={this.props.deleteDream} 
+                //     />
+                // }
             })
         } else if (this.state.selected === "dreams") {
             feed = Object.values(dreams).map((dream, idx) => {
@@ -106,7 +117,7 @@ class Feed extends React.Component {
         } else if (this.state.selected === "goals") {
             feed = Object.values(dreams).map((dream, idx) => {
                 if (dream.type === "goal") {
-                    return <GoalItem 
+                    return <DreamItem 
                         key={idx} 
                         tags={dream.tags} 
                         dream={dream} 
