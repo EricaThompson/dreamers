@@ -11,10 +11,10 @@ const LikeReducer = (oldState = {}, action) => {
         case RECEIVE_LIKES:
             return action.likes; 
         case RECEIVE_LIKE:
-            newState[action.like.id] = action.like
+            newState[action.like._id] = action.like
             return newState; 
         case REMOVE_LIKE:
-            delete newState[action.tag]
+            delete newState[action.like]
             return newState;
         default: 
             return oldState; 
