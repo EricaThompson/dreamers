@@ -71,7 +71,7 @@ router.post('/follow/:userId',
         options1 = { new: true }
     queries.push(User.findOneAndUpdate(queryParams1, update1, options1).exec())
 
-    var queryParams2 = { _id: req.user.userId },
+    var queryParams2 = { _id: req.user.id },
         update2 = { $addToSet: { followed: req.params.userId }},
         options2 = { new: true }
     queries.push(User.findOneAndUpdate(queryParams2, update2, options2).exec())
