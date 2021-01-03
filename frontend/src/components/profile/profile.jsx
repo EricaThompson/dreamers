@@ -87,7 +87,7 @@ class Profile extends React.Component {
             editBtn = <button 
                         onClick={()=>this.toggleEditForm()}
                         className="profile-edit-button">
-                            edit profile
+                            Edit Profile
                     </button>
             newDreamBtn = <button
                             className="new-dream-btn"
@@ -105,7 +105,7 @@ class Profile extends React.Component {
                     </button>
         }
 
-        let { openModal, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo, currentUser, closeModal } = this.props;
+        let { openModal, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo, currentUser, closeModal, deleteDream } = this.props;
         if (!dreams) return null;
         // console.log('user', this.props.user._id.toString().substring(0, 8))
         // console.log(this.state.timestamp.getMonth())
@@ -194,7 +194,7 @@ class Profile extends React.Component {
         } else {
             profile = <div>
                 <div className="username">{this.state.profileUser.username}</div>
-                <div>Dreamer Since: {month} {date.getDate()} {date.getFullYear()}</div>
+                <div>Dreamer Since: {month} {date.getDate()}, {date.getFullYear()}</div>
                 <div>Location: {this.state.profileUser.location}</div>
                 <div className="age">Age: {this.state.profileUser.age}</div>
                 <div className="about">
@@ -233,19 +233,8 @@ class Profile extends React.Component {
                         fetchCommentsByDream={fetchCommentsByDream}
                         modalInfo={modalInfo}
                         closeModal={closeModal}
+                        deleteDream={deleteDream}
                     />
-                    {/* <div>Dream</div>
-                    <div>Dream</div>
-                    <div>Dream</div>
-                    <div>Dream</div>
-                    <div>Dream</div>
-                    <div>Dream</div>
-                    <div>Dream</div>
-                    <div>Dream</div>
-                    <div>Dream</div>
-                    <div>Dream</div>
-                    <div>Dream</div>
-                    <div>Dream</div> */}
                 </div>
                 
             </div>

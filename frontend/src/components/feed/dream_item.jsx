@@ -10,6 +10,7 @@ class DreamItem extends React.Component {
         }
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleOpenEditModal = this.handleOpenEditModal.bind(this);
+        this.refreshAfterDelete = this.refreshAfterDelete.bind(this)
     }
 
     toggleEdit() {
@@ -22,6 +23,13 @@ class DreamItem extends React.Component {
 
     closeMenu() {
         this.setState({ showMenu: false })
+    }
+
+    refreshAfterDelete(dreamId){
+        this.props.deleteDream(dreamId)
+        //! fix this
+            .then(window.location.reload())
+        
     }
 
     handleOpenModal(e) {
@@ -38,7 +46,7 @@ class DreamItem extends React.Component {
     }
 
     render() {
-        let { dream, currentUser } = this.props;
+        let { dream, currentUser} = this.props;
         let tags;
 
         if (this.state.tags) {
@@ -53,6 +61,8 @@ class DreamItem extends React.Component {
                                 </div>
                             </Link>
                         )
+                    } else {
+                        return null;
                     }
                 })
                 
@@ -68,7 +78,7 @@ class DreamItem extends React.Component {
         let menuOptions;
         let optionsIcon;
 
-        console.log('current', dream.username, currentUser.username)
+        // console.log('current', dream.username, currentUser.username)
         if (dream.username === currentUser.username) {
             editIcon = <div
                             className="icon"
@@ -78,7 +88,7 @@ class DreamItem extends React.Component {
                     </div>
             deleteIcon = <div
                             className='icon'
-                            onClick={() => this.props.deleteDream(dream._id)}
+                            onClick={()=> this.refreshAfterDelete(dream._id)}
                         >
                             <i className="fas fa-trash-alt"></i>
                         </div>
@@ -109,15 +119,19 @@ class DreamItem extends React.Component {
         }
 
         return (
-            <div className="feed-dreams-wrapper" >
+            <div className={dream.type === "dream" ? "feed-dreams-wrapper" : "feed-goals-wrapper"} >
                 <div className="comment-options" onClick={()=>this.toggleMenu()} >
                     {optionsIcon}
                     {menuOptions}
                 </div>
-                <div className="feed-dreams" onClick={this.handleOpenModal} >
+                <div className={dream.type === "dream" ? "feed-dreams" : "feed-goals"}  onClick={this.handleOpenModal} >
                    {/* <Link to={`/dreams/${dream._id}`} style={{ textDecoration: 'none' }} > */}
-                        <div className="feed-dreams-circle-big" ></div>
-                        <div className="feed-dreams-circle-small" ></div>
+                   {dream.type === "dream" ? 
+                        <div>
+                            <div className="feed-dreams-circle-big" ></div>
+                            <div className="feed-dreams-circle-small" ></div>
+                        </div>
+                   : ""}
                         <div className="new-dream-tags-container" >
                             <div className="new-dream-tags" >
                                 {tags}

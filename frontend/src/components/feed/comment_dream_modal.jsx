@@ -42,8 +42,6 @@ class CommentDreamModal extends React.Component {
     render() {
         let { info, comments } = this.props;
 
-        
-
         let commentFeed;
 
         if (Object.values(comments).length === 0) {
@@ -69,7 +67,7 @@ class CommentDreamModal extends React.Component {
         return (
             <div className="comment-modal-outer-container">
                 <div className="comment-dreams-container" >
-                    <div className="comment-dreams" >
+                    <div className={this.props.info.type === "dream" ? "comment-dreams" : "comment-goals"}>
                         <p className="comment-dreams-info" >
                             <Link to={`/users/${info.userId}`} className="comment-dreams-info-link" style={{ textDecoration: 'none' }}>
                                 {info.username}
