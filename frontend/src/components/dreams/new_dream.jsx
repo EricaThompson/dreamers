@@ -9,7 +9,7 @@ class NewDream extends React.Component {
                 selectedOption: 'dream',
                 dreamText: '',
                 searchValue: '',
-                tags: ['KillingIt', 'Love', 'Teeth'],
+                tags: [],
                 showClose: false,
                 // newTags: this.props.tags
             }

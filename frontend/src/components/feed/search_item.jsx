@@ -16,7 +16,7 @@ class SearchItem extends React.Component {
     }
 
     render() {
-        console.log('search-item-props', this.props)
+        // console.log('search-item-props', this.props)
 
         let icon;
         let refer;

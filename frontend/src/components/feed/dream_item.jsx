@@ -168,7 +168,7 @@ class DreamItem extends React.Component {
             </i>
         }
 
-        console.log(dream._id)
+        // console.log(dream._id)
 
         return (
             <div className={dream.type === "dream" ? "feed-dreams-wrapper" : "feed-goals-wrapper"} >
