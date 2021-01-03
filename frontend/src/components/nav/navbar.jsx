@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import image from '../../css/components/DREAMERS-02.png'
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -24,8 +25,8 @@ class NavBar extends React.Component {
         this.props.logout();
     }
 
-    dropdownToggle(){
-        this.setState({showDropdown: !this.state.showDropdown})
+    dropdownToggle() {
+        this.setState({ showDropdown: !this.state.showDropdown })
     }
 
     render() {
@@ -33,7 +34,7 @@ class NavBar extends React.Component {
         let menu;
         let { currentUser, isModalOpen } = this.props;
 
-        if (this.props.loggedIn){
+        if (this.props.loggedIn) {
             menu = <div
                 onClick={() => this.dropdownToggle()}
                 className='menu'>
@@ -42,13 +43,13 @@ class NavBar extends React.Component {
 
             if (this.state.showDropdown) {
                 dropdown = <div className="menu-items">
-                                {/* <Link to={'/signup'}><p>signup</p></Link>
+                    {/* <Link to={'/signup'}><p>signup</p></Link>
                                 <Link to={'/login'}><p>login</p></Link> */}
-                                <Link onClick={() => this.props.openModal('newDream')}><p>create</p></Link>
-                                <Link to={`/users/${currentUser.id}`}><p>profile</p></Link>
-                                <Link to={`/about`}><p>about</p></Link>
-                                <p className="logout" onClick={this.logoutUser} >logout</p>
-                            </div>
+                    <Link onClick={() => this.props.openModal('newDream')}><p>create</p></Link>
+                    <Link to={`/users/${currentUser.id}`}><p>profile</p></Link>
+                    <Link to={`/about`}><p>about</p></Link>
+                    <p className="logout" onClick={this.logoutUser} >logout</p>
+                </div>
             }
         } else if (this.props.location.pathname !== "/") {
             menu = <div
@@ -66,18 +67,20 @@ class NavBar extends React.Component {
             }
         } else {
             menu = <div className="session-links">
-                        <Link to={`/about`}><p>about</p></Link>
-                        <Link to={'/login'}><p className="session-login-link">login</p></Link>
-                        <Link to={'/signup'}><p className="session-signup-link">signup</p></Link>  
-                    </div>
+                <Link to={`/about`}><p>about</p></Link>
+                <Link to={'/login'}><p className="session-login-link">login</p></Link>
+                <Link to={'/signup'}><p className="session-signup-link">signup</p></Link>
+            </div>
         }
 
         return (
-            <div className={isModalOpen ? "nav-bar nav-bar-modal" : "nav-bar" }>
+            <div className={isModalOpen ? "nav-bar nav-bar-modal" : "nav-bar"}>
                 <div className="logo">
                     <Link to="/"
-                    // to={this.props.loggedIn ? "/" : "/feed"} 
-                    style={{ textDecoration: 'none' }} > <h1 className="nav-title">{this.props.location.pathname === "/" ? "" : "DREAMERS"}</h1></Link>
+                        // to={this.props.loggedIn ? "/" : "/feed"} 
+                        style={{ textDecoration: 'none' }} > <h1 className="nav-title">{this.props.location.pathname === "/" ? "" : <img className='nav-logo' src={image} alt="" />}</h1>
+                    </Link>
+                    {/* <img className='nav-logo' src={image} alt="" /> */}
                 </div>
                 {menu}
                 {dropdown}
