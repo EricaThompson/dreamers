@@ -28,6 +28,7 @@ class NewDream extends React.Component {
     }
 
     handleChange(type) {
+        // debugger;
         return (e) => {
             this.setState({ [type]: e.currentTarget.value })
         }
