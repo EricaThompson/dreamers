@@ -14,7 +14,6 @@ export const receiveDreams = (dreams) => ({
 });
 
 export const receiveDream = (dream) => {
-    // debugger;
     return {
     type: RECEIVE_DREAM,
     dream
