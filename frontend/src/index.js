@@ -7,10 +7,12 @@ import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
 
 import { 
-  createTag, 
-  fetchTags, 
-  deleteTag
-} from './actions/tag_actions'
+  createLike, 
+  fetchLike, 
+  fetchLikesByDream, 
+  fetchLikesByUser, 
+  deleteLike
+} from './actions/like_actions'
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -36,9 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   window.store = store
-  window.createTag = createTag
-  window.fetchTags = fetchTags
-  window.deleteTag = deleteTag
+  window.createLike = createLike
+  window.fetchLike = fetchLike
+  window.fetchLikesByDream = fetchLikesByDream
+  window.fetchLikesByUser = fetchLikesByUser
+  window.deleteLike = deleteLike
 
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
