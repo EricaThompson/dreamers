@@ -554,8 +554,9 @@
                 .feed-header-container {
                     width: 70%;
                     
-                    // .feed-header {
-                    // }
+                    .feed-header {
+                        cursor: pointer;
+                    }
                 }
             }
         }

@@ -5,7 +5,6 @@ import { fetchCommentsByDream, clearComments } from '../../actions/comment_actio
 import { fetchDreams, clearDreams, deleteDream } from '../../actions/dream_actions';
 
 const mapSTP = state => {
-   
     return {
     currentUser: state.session.user,
     dreams: state.dream,
