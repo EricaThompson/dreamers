@@ -19,8 +19,8 @@ export const removeLike = (likeId) => ({
     likeId
 })
 
-export const fetchLike = (like) => dispatch => (
-    LikeApiUtil.fetchLike(like)
+export const fetchLike = (dreamId, like) => dispatch => (
+    LikeApiUtil.fetchLike(dreamId, like)
     .then(like => dispatch(fetchLike(like)))
     .catch(err => console.error(err))
 )
@@ -31,7 +31,7 @@ export const createLike = (dreamId, like) => dispatch => (
     .catch(err => console.error(err))
 )
 
-export const deleteLike = (like) => dispatch => (
-    LikeApiUtil.deleteLike(like)
-    .then(() => dispatch(removeLike(like)))
+export const deleteLike = (likeId, dream) => dispatch => (
+    LikeApiUtil.deleteLike(likeId)
+    .then(() => dispatch(removeLike(likeId)))
 )
