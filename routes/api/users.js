@@ -16,12 +16,11 @@ router.get('/user/:userId', (req, res) => {
     .catch(err => res.status(404).json({ nouserfound: 'No user found with specified id'}))
 })
 
-// router.get('/user/array', (req, res) => {
-//   User.find({ _id: { $in: req.body.userIds } })
-//     .then(users => res.json(users))
-//     .
-
-// })
+router.post('/array', (req, res) => {
+  User.find({ _id: { $in: req.body.userIds } })
+    .then(users => res.json(users))
+    .catch(err => res.status(404).json({ nousersfound: 'No users found with ids in the given list'}))
+})
 
 router.patch('/:userId',
   passport.authenticate('jwt', { session: false }),
