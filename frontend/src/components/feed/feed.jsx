@@ -12,7 +12,8 @@ class Feed extends React.Component {
         this.state = {
             searchValue: '',
             selected: 'feed',
-            dreams: null
+            dreams: null,
+            // spinnerShow: true,
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSelected = this.handleSelected.bind(this);
@@ -20,10 +21,13 @@ class Feed extends React.Component {
 
     componentDidMount() {
         // debugger;
+        this.setState({spinnerShow: true})
         this.props.closeModal();
         this.props.clearSearch();
         if (this.props.match.url.includes("feed") )
-        this.props.fetchDreams();
+
+        this.props.fetchDreams()
+            // .then(this.setState({spinnerShow: false}))
     }
 
     // componentWillReceiveProps(nextProps){
@@ -61,6 +65,10 @@ class Feed extends React.Component {
         if ( !dreams ) return null;
 
         let feed; 
+
+
+
+
 
         if (this.state.selected === "feed") {
             feed = Object.values(dreams).map((dream, idx) => {
@@ -113,6 +121,12 @@ class Feed extends React.Component {
                 }
             })
         }
+        
+        // let spinner;
+
+        // if (this.state.spinnerShow){
+        //     spinner = <i className="fas fa-asterisk fa-spin"></i>
+        // }
 
         let search;
         if (Object.values(searchResults).length > 0) {
@@ -143,6 +157,7 @@ class Feed extends React.Component {
                         </form>
                         {search}
                     </div>
+                    {/* {spinner} */}
                     <div className="feed-index-container" >
                         <div className="feed-header-container">
                             <h1 className={this.state.selected === 'feed' ? "feed-header feed-header-selected" : "feed-header"} 
