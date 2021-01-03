@@ -19,7 +19,16 @@ const UserSchema = new Schema({
   },
   location: {
     type: String,
-  }
+  },
+  followed: [
+    {
+      userId: { type: ObjectId, ref: 'User' },
+      username: { type: String }
+    },
+  ],
+  followers: [
+    { type: String },
+  ]
 }, {
   timestamps: true
 })

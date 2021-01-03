@@ -47,6 +47,72 @@ router.patch('/:userId',
   }
 )
 
+// follow
+
+// get followers
+router.get('/followed/:userId', (req, res) => {
+  User.findOne({ _id: req.params.userId })
+    .then(user => res.json(user.followed))
+    .catch(err => res.status(404).json({ nouserfound: 'No user found with that userId'}))
+})
+
+// get followed
+router.get('/followers/:userId', (req, res) => {
+  User.findOne({ _id: req.params.userId })
+    .then(user => res.json(user.follower))
+    .catch(err => res.status(404).json({ nouserfound: 'No user found with that userId'}))
+})
+
+// follow user
+router.post('/follow/:userId',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+
+    var query1 = { _id: req.params.userId },
+        update1 = { $push: { followers: req.user.username }},
+        options1 = { new: true }
+    User.findOneAndUpdate(query1, update1, options1, (followed) => {
+      
+      var query2 = { _id: req.user.userId },
+          update2 = { $push: { followed: { userId: followed._id, username: followed.username }}},
+          options2 = { new: true }
+      
+      User.findOneAndUpdate(query2, update2, options2, (follower) => {
+        res.json({
+          follower,
+          followed, 
+        })
+      })
+
+    })
+  }
+)
+
+// unfollow user
+router.delete('/follow/:userId',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    
+    var query1 = { _id: req.params.userId },
+        update1 = { $pull: { followers: req.user.username }},
+        options1 = { new: true }
+    User.findOneAndUpdate(query1, update1, options1, (followed) => {
+      
+      var query2 = { _id: req.user.userId },
+          update2 = { $pull: { followed: { userId: followed._id, username: followed.username }}},
+          options2 = { new: true }
+      
+      User.findOneAndUpdate(query2, update2, options2, (follower) => {
+        res.json({
+          follower,
+          followed, 
+        })
+      })
+
+    })
+  }
+)
+
 // uauth
 
 const validateRegisterInput = require('../../validation/register');
