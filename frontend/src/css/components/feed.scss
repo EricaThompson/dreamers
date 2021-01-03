@@ -98,10 +98,19 @@
             width: 90%;
             padding-bottom: 100px;
 
+            
+
             .feed-dreams-wrapper,
             .feed-goals-wrapper {
                 padding-top: 20px;
                 position: relative;
+
+                .dream-item-date {
+                    font-size: 10px;
+                    font-family: $sans-serif;
+                    color: $dark-gray;
+                }
+                
 
                 .comment-options {
                     position: absolute;
@@ -310,8 +319,8 @@
 
                 .comment-options {
                     position: absolute;
-                    z-index: 5;
-                    top: 30px;
+                    z-index: 2;
+                    bottom: 10px;
                     right: 15px;
                     cursor: pointer;
                     //! switch to light gray
