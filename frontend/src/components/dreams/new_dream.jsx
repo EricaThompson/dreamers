@@ -47,7 +47,7 @@ class NewDream extends React.Component {
             this.props.updateDream(this.props.info._id, newDream);
             // console.log('update dream', { dream: newDream })
         } else {
-            console.log('new dream', newDream)
+            // console.log('new dream', newDream)
             // this.props.createDream({dream: newDream});
             this.props.createDream(newDream);
         }
@@ -72,6 +72,7 @@ class NewDream extends React.Component {
             let newTags = this.state.tags
             let idx = newTags.indexOf(tag)
             delete newTags[idx]
+            // debugger;
             this.setState({ tags: newTags })
         }
     }
@@ -89,6 +90,8 @@ class NewDream extends React.Component {
                                 <p className="new-dream-tags-item" >{tag}</p>
                             </div>
                         )
+                    } else {
+                        return null;
                     }
                 })
             

@@ -53,6 +53,8 @@ class DreamItem extends React.Component {
                                 </div>
                             </Link>
                         )
+                    } else {
+                        return null;
                     }
                 })
                 
@@ -68,7 +70,7 @@ class DreamItem extends React.Component {
         let menuOptions;
         let optionsIcon;
 
-        console.log('current', dream.username, currentUser.username)
+        // console.log('current', dream.username, currentUser.username)
         if (dream.username === currentUser.username) {
             editIcon = <div
                             className="icon"
@@ -109,15 +111,19 @@ class DreamItem extends React.Component {
         }
 
         return (
-            <div className="feed-dreams-wrapper" >
+            <div className={dream.type === "dream" ? "feed-dreams-wrapper" : "feed-goals-wrapper"} >
                 <div className="comment-options" onClick={()=>this.toggleMenu()} >
                     {optionsIcon}
                     {menuOptions}
                 </div>
-                <div className="feed-dreams" onClick={this.handleOpenModal} >
+                <div className={dream.type === "dream" ? "feed-dreams" : "feed-goals"}  onClick={this.handleOpenModal} >
                    {/* <Link to={`/dreams/${dream._id}`} style={{ textDecoration: 'none' }} > */}
-                        <div className="feed-dreams-circle-big" ></div>
-                        <div className="feed-dreams-circle-small" ></div>
+                   {dream.type === "dream" ? 
+                        <div>
+                            <div className="feed-dreams-circle-big" ></div>
+                            <div className="feed-dreams-circle-small" ></div>
+                        </div>
+                   : ""}
                         <div className="new-dream-tags-container" >
                             <div className="new-dream-tags" >
                                 {tags}
