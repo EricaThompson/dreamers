@@ -1,7 +1,8 @@
 import { 
     RECEIVE_LIKES,
     RECEIVE_LIKE,
-    REMOVE_LIKE
+    REMOVE_LIKE, 
+    CLEAR_LIKE,
 } from '../actions/like_actions'
 
 const LikeReducer = (oldState = {}, action) => {
@@ -16,6 +17,8 @@ const LikeReducer = (oldState = {}, action) => {
         case REMOVE_LIKE:
             delete newState[action.like]
             return newState;
+        case CLEAR_LIKE:
+            return {};
         default: 
             return oldState; 
     }
