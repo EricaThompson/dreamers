@@ -7,6 +7,7 @@ class TagsFeed extends React.Component {
     componentDidMount() {
         this.props.fetchDreamsByTags({ tags: [this.props.tagName] });
         this.props.closeModal();
+        this.props.clearSearch();
     }
 
     componentWillUnmount() {
@@ -47,6 +48,9 @@ class TagsFeed extends React.Component {
                         fetchCommentsByDream={fetchCommentsByDream}
                         modalInfo={modalInfo}
                         closeModal={closeModal}
+                        searchResults={this.props.searchResults}
+                        fetchSearchResults={this.props.fetchSearchResults}
+                        clearSearch={this.props.clearSearch}
                     />
                 </div>
             </div>

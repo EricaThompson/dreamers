@@ -29,7 +29,7 @@ export const clearDreams = () => ({
 })
 
 export const receiveErrors = errors => {
-    debugger;
+    // debugger;
     return {
     type: RECEIVE_DREAM_ERRORS,
     errors

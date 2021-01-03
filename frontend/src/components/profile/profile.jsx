@@ -25,6 +25,7 @@ class Profile extends React.Component {
 
     componentDidMount() {
         this.props.closeModal();
+        this.props.clearSearch();
         this.props.clearModalInfo();
         this.props.fetchDreamsByUser(this.props.match.params.userId)
         this.props.fetchUserById(this.props.match.params.userId)
@@ -236,6 +237,9 @@ class Profile extends React.Component {
                         modalInfo={modalInfo}
                         closeModal={closeModal}
                         deleteDream={deleteDream}
+                        searchResults={this.props.searchResults}
+                        fetchSearchResults={this.props.fetchSearchResults}
+                        clearSearch={this.props.clearSearch}
                     />
                 </div>
                 
