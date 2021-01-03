@@ -6,9 +6,6 @@ import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
 
-import { fetchDreams } from './actions/dream_actions';
-import { createComment, deleteComment } from './actions/comment_actions';
-
 document.addEventListener('DOMContentLoaded', () => {
   let store;
 
@@ -31,13 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore({});
   }
-
-  // test
-  window.store = store;
-  window.fetchDreams = fetchDreams;
-  window.createComment = createComment;
-  window.updateComment = deleteComment;
-  // testing
 
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
