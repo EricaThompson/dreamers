@@ -5,7 +5,9 @@ export const CLEAR_SEARCH = 'CLEAR_SEARCH';
 
 export const receiveSearchResults = (payload) => ({
   type: SEARCH,
-  payload
+  tags: payload[0],
+  users: payload[1],
+  dreams: payload[2],
 })
 
 export const clearSearch = () => ({

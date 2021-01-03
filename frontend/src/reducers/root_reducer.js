@@ -6,7 +6,7 @@ import dream from './dream_reducer';
 import comment from './comment_reducer';
 import user from './user_reducer';
 import tag from './tag_reducers';
-import search from './search_reducers';
+import search from './search_reducer';
 import modalInfo from './modal_info_reducer';
 
 const RootReducer = combineReducers({
