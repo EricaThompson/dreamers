@@ -65,7 +65,9 @@ class Profile extends React.Component {
             bio: this.state.bio,
         }
         this.props.updateUser(this.state.currentUserId, user)
-            
+
+        //! change this
+        window.location.reload()
     }
 
     handleSelected(type) {
