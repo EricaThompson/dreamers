@@ -16,6 +16,13 @@ router.get('/user/:userId', (req, res) => {
     .catch(err => res.status(404).json({ nouserfound: 'No user found with specified id'}))
 })
 
+// router.get('/user/array', (req, res) => {
+//   User.find({ _id: { $in: req.body.userIds } })
+//     .then(users => res.json(users))
+//     .
+
+// })
+
 router.patch('/:userId',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
@@ -67,16 +74,15 @@ router.post('/follow/:userId',
     const queries = []
 
     var queryParams1 = { _id: req.params.userId },
-        update1 = { $addToSet: { followers: req.user.username }},
-        options1 = { new: true }
-    queries.push(User.findOneAndUpdate(queryParams1, update1, options1).exec())
+        update1 = { $addToSet: { followers: req.user.id }},
+        options = { new: true }
+    queries.push(User.findOneAndUpdate(queryParams1, update1, options).exec())
 
     var queryParams2 = { _id: req.user.id },
-        update2 = { $addToSet: { followed: req.params.userId }},
-        options2 = { new: true }
-    queries.push(User.findOneAndUpdate(queryParams2, update2, options2).exec())
+        update2 = { $addToSet: { followed: req.params.userId }}
+    queries.push(User.findOneAndUpdate(queryParams2, update2, options).exec())
 
-    Promise.all(queries).then(results => res.json(results));
+    Promise.all(queries).then(results => res.json(results[1]));
   }
 )
 
@@ -86,16 +92,15 @@ router.delete('/follow/:userId',
     const queries = []
 
     var queryParams1 = { _id: req.params.userId },
-        update1 = { $pull: { followers: req.user.username }},
-        options1 = { new: true }
-    queries.push(User.findOneAndUpdate(queryParams1, update1, options1).exec())
+        update1 = { $pull: { followers: req.user.id }},
+        options = { new: true }
+    queries.push(User.findOneAndUpdate(queryParams1, update1, options).exec())
 
-    var queryParams2 = { _id: req.user.userId },
-        update2 = { $pull: { followed: req.params.userId }},
-        options2 = { new: true }
-    queries.push(User.findOneAndUpdate(queryParams2, update2, options2).exec())
+    var queryParams2 = { _id: req.user.id },
+        update2 = { $pull: { followed: req.params.userId }}
+    queries.push(User.findOneAndUpdate(queryParams2, update2, options).exec())
 
-    Promise.all(queries).then(results => res.json(results));
+    Promise.all(queries).then(results => res.json(results[1]));
   }
 )
 
