@@ -4,9 +4,6 @@ import {
     REMOVE_DREAMS,
     CLEAR_DREAMS,
 } from '../actions/dream_actions';
-import {
-    SEARCH
-} from '../actions/search_actions';
 
 const DreamReducer = (oldState = {}, action) => {
     Object.freeze(oldState)
@@ -17,8 +14,6 @@ const DreamReducer = (oldState = {}, action) => {
                 newState[dream._id] = dream
             })
             return newState;
-        case SEARCH:
-            return action.dreams;
         case RECEIVE_DREAM:
             newState[action.dream._id] = action.dream; 
             return newState;
