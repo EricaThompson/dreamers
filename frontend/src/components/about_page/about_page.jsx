@@ -9,7 +9,7 @@ class AboutPage extends React.Component {
                 
 
                 <div className="about-container">
-                    <h1 className="about-title">About</h1>
+                    <h1 className="about-title">About:</h1>
                     <p className='team-member'>
                         “You are never too old to set another goal or to dream a new dream.” 
                         <br />
@@ -35,7 +35,7 @@ class AboutPage extends React.Component {
                 </div>
                 <br />
                 <div className="about-container">
-                    <h1 className="about-title">Credits</h1>
+                    <h1 className="about-title">Credits:</h1>
                     <p className="background-link">
                         <a href='https://www.fiverr.com/doomero' target="_blank" rel="noreferrer" className="background-link" >Logo created by Doomero</a>
                     </p>
