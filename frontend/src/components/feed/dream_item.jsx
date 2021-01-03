@@ -10,6 +10,7 @@ class DreamItem extends React.Component {
         }
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleOpenEditModal = this.handleOpenEditModal.bind(this);
+        this.refreshAfterDelete = this.refreshAfterDelete.bind(this)
     }
 
     toggleEdit() {
@@ -22,6 +23,13 @@ class DreamItem extends React.Component {
 
     closeMenu() {
         this.setState({ showMenu: false })
+    }
+
+    refreshAfterDelete(dreamId){
+        this.props.deleteDream(dreamId)
+        //! fix this
+            .then(window.location.reload())
+        
     }
 
     handleOpenModal(e) {
@@ -38,7 +46,7 @@ class DreamItem extends React.Component {
     }
 
     render() {
-        let { dream, currentUser } = this.props;
+        let { dream, currentUser} = this.props;
         let tags;
 
         if (this.state.tags) {
@@ -80,7 +88,7 @@ class DreamItem extends React.Component {
                     </div>
             deleteIcon = <div
                             className='icon'
-                            onClick={() => this.props.deleteDream(dream._id)}
+                            onClick={()=> this.refreshAfterDelete(dream._id)}
                         >
                             <i className="fas fa-trash-alt"></i>
                         </div>
