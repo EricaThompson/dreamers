@@ -64,60 +64,38 @@ router.get('/followers/:userId', (req, res) => {
 router.post('/follow/:userId',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
+    const queries = []
 
-    if (req.params.userId === req.user.id) {
-      res.status(400).json({ userauth: 'You cannot follow yourself'});
-      return;
-    }
-
-    var query1 = { _id: req.params.userId },
+    var queryParams1 = { _id: req.params.userId },
         update1 = { $addToSet: { followers: req.user.username }},
         options1 = { new: true }
-    User.findOneAndUpdate(query1, update1, options1, (err, followed) => {
-      if (err) {
-        res.status(400).json({err})
-      }
-      var query2 = { _id: req.user.userId },
-          update2 = { $addToSet: { followed: { userId: followed._id, username: followed.username }}},
-          options2 = { new: true }
-      
-      User.findOneAndUpdate(query2, update2, options2, (err, follower) => {
-        if(err) {
-          res.status(400).json({ nouserfound: ''})
-        } else {
-          res.json({
-            follower,
-            followed, 
-          })
-        }
-      })
+    queries.push(User.findOneAndUpdate(queryParams1, update1, options1).exec())
 
-    })
-    .catch(err => res.status(400).json({ nouserfound: 'No user found with that userId'}))
+    var queryParams2 = { _id: req.user.userId },
+        update2 = { $addToSet: { followed: req.params.userId }},
+        options2 = { new: true }
+    queries.push(User.findOneAndUpdate(queryParams2, update2, options2).exec())
+
+    Promise.all(queries).then(results => res.json(results));
   }
 )
 
 router.delete('/follow/:userId',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
+    const queries = []
 
-    var query1 = { _id: req.params.userId },
+    var queryParams1 = { _id: req.params.userId },
         update1 = { $pull: { followers: req.user.username }},
         options1 = { new: true }
-    User.findOneAndUpdate(query1, update1, options1, (err, followed) => {
-      
-      var query2 = { _id: req.user.userId },
-          update2 = { $pull: { followed: { userId: followed._id, username: followed.username }}},
-          options2 = { new: true }
-      
-      User.findOneAndUpdate(query2, update2, options2, (err, follower) => {
-        res.json({
-          follower,
-          followed, 
-        })
-      })
+    queries.push(User.findOneAndUpdate(queryParams1, update1, options1).exec())
 
-    })
+    var queryParams2 = { _id: req.user.userId },
+        update2 = { $pull: { followed: req.params.userId }},
+        options2 = { new: true }
+    queries.push(User.findOneAndUpdate(queryParams2, update2, options2).exec())
+
+    Promise.all(queries).then(results => res.json(results));
   }
 )
 
