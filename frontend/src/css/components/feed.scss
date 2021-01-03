@@ -554,19 +554,41 @@
     //     // background-color: $background-blue;
     //     background: linear-gradient(to bottom, #2C31811a, $background-blue);
     // }
-
+    }
 }
 
 @media (min-width: 700px) {
 
     .feed-outer-container {
 
-
         .feed-container {
             width: 100%;
 
             .feed-search-container {
                 width: 50%;
+
+                // .search-results-outer-container {        
+                    //  width: 95%;
+                // }
+    
+            // .feed-search-icon {
+            //     font-size: 15px;
+            //     padding: 2px 5px 0;
+            //     color: $dark-gray;
+            // }
+    
+            // .feed-search-form {
+            //     width: 100%;
+    
+            //     .feed-search-input {
+            //         font-family: $sans-serif;
+            //         font-size: 15px;
+            //         width: 100%;
+            //         color: $dark-gray;
+            //         padding-top: 2px;
+            //     }
+            // }
+            
 
         
                 // .feed-search-icon {
@@ -655,110 +677,111 @@
                 //         }
                 //     }
                 // }
+                
 
             }
         }
     }
 }
 
-@media (min-width: 1200px) {
+// @media (min-width: 1200px) {
 
-    .feed-outer-container {
+//     .feed-outer-container {
 
 
-        .feed-container {
+//         .feed-container {
             
-            .feed-search-container {
-                width: 40%;
+//             .feed-search-container {
+//                 width: 40%;
 
         
-                // .feed-search-icon {
+//                 // .feed-search-icon {
 
-                // }
+//                 // }
         
-                // .feed-search-form {
+//                 // .feed-search-form {
         
-                //     .feed-search-input {
-                //     }
-                // }
-            }
+//                 //     .feed-search-input {
+//                 //     }
+//                 // }
+//             }
         
-            // .feed-search-container:focus-within {
-            // }
+//             // .feed-search-container:focus-within {
+//             // }
         
-            .feed-index-container {
-                display: flex;
-                justify-content: center;
+//             .feed-index-container {
+//                 display: flex;
+//                 justify-content: center;
 
-                .feed-header-container {
-                    width: 60%;
+//                 .feed-header-container {
+//                     width: 60%;
                     
-                    // .feed-header {
-                    // }
-                }
-            }
-        }
+//                     // .feed-header {
+//                     // }
+//                 }
+//             }
+//         }
 
-        .feed-dreams-outer-container {
+//         .feed-dreams-outer-container {
 
-            .feed-dreams-container {
-                width: 60%;
+//             .feed-dreams-container {
+//                 width: 60%;
 
 
-                // .feed-dreams-wrapper {
+//                 // .feed-dreams-wrapper {
 
-                    // .feed-dreams {
+//                     // .feed-dreams {
 
-                        // .feed-dreams-circle-big {
-                        // }
+//                         // .feed-dreams-circle-big {
+//                         // }
 
-                        // .feed-dreams-circle-small {
-                        // }
+//                         // .feed-dreams-circle-small {
+//                         // }
 
                         
-                        // .feed-dreams-info {
-                        // }
+//                         // .feed-dreams-info {
+//                         // }
 
-                        // .feed-dreams-footer {
+//                         // .feed-dreams-footer {
 
-                        //     .feed-dreams-footer-info {
+//                         //     .feed-dreams-footer-info {
 
-                        //         .feed-dreams-footer-comments,
-                        //         .feed-dreams-footer-likes {
-                        //         }
+//                         //         .feed-dreams-footer-comments,
+//                         //         .feed-dreams-footer-likes {
+//                         //         }
 
-                        //         .feed-dreams-footer-comments:hover,
-                        //         .feed-dreams-footer-likes:hover {
-                        //         }
-                        //     }
-                        // }
-                    // }
-                // }
+//                         //         .feed-dreams-footer-comments:hover,
+//                         //         .feed-dreams-footer-likes:hover {
+//                         //         }
+//                         //     }
+//                         // }
+//                     // }
+//                 // }
 
-                // .feed-goals-wrapper {
+//                 // .feed-goals-wrapper {
 
-                //     .feed-goals {
+//                 //     .feed-goals {
                         
-                //         .feed-goals-info {
-                //         }
+//                 //         .feed-goals-info {
+//                 //         }
 
-                //         .feed-goals-footer {
+//                 //         .feed-goals-footer {
 
-                //             .feed-goals-footer-info {
+//                 //             .feed-goals-footer-info {
 
-                //                 .feed-goals-footer-comments,
-                //                 .feed-goals-footer-likes {
-                //                 }
+//                 //                 .feed-goals-footer-comments,
+//                 //                 .feed-goals-footer-likes {
+//                 //                 }
 
-                //                 .feed-goals-footer-comments:hover,
-                //                 .feed-goals-footer-likes:hover {
-                //                 }
-                //             }
-                //         }
-                //     }
-                }
+//                 //                 .feed-goals-footer-comments:hover,
+//                 //                 .feed-goals-footer-likes:hover {
+//                 //                 }
+//                 //             }
+//                 //         }
+//                 //     }
+//                 }
 
-            }
-        }
-    }
-}
+//             }
+//         }
+//     }
+// }
