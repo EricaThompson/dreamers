@@ -20,9 +20,9 @@ class SessionForm extends React.Component {
     }
     
     componentDidUpdate(nextProps) {
-        if (nextProps.isSignedIn === true) {
+        if (this.props.isSignedIn === true) {
             let user = {
-                handle: this.state.handle,
+                username: this.state.username,
                 password: this.state.password,
                 password2: this.state.password2
             };
