@@ -26,7 +26,11 @@ export const clearLike = () => ({
     type: CLEAR_LIKE
 })
 
-
+export const fetchLikes = () => dispatch => (
+    LikeApiUtil.fetchLikes()
+    .then(likes => dispatch(receiveLikes(likes)))
+    .catch(err => console.log(err))
+)
 
 export const fetchLike = (dreamId, like) => dispatch => (
     LikeApiUtil.fetchLike(dreamId, like)
