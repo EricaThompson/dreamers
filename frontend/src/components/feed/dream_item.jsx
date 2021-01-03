@@ -135,6 +135,7 @@ class DreamItem extends React.Component {
                         <div className="new-dream-tags-container" >
                             <div className="new-dream-tags" >
                                 {tags}
+                            <i className="far fa-heart"></i>
                             </div>
                         </div>
                         <p className="feed-dreams-info" >

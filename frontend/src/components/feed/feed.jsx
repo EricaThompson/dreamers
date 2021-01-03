@@ -50,7 +50,8 @@ class Feed extends React.Component {
             fetchCommentsByDream, 
             clearComments, 
             currentUser,
-            deleteDream 
+            deleteDream,
+            createLike 
         } = this.props;
         
         if ( !dreams ) return null;
@@ -69,6 +70,7 @@ class Feed extends React.Component {
                     clearComments={clearComments}
                     currentUser={currentUser}
                     deleteDream={deleteDream}
+                    createLike={createLike}
                 />
                 // console.log('map dream',dream)
                 // if (dream.type === "dream" ) {
