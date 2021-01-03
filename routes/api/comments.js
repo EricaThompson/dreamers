@@ -37,8 +37,8 @@ router.post('/:dreamId',
                   res.status(400).json(err)
                 } else {
                   res.json({
-                    dream,
-                    comment
+                    comment,
+                    dream
                   })
                 }
               })
