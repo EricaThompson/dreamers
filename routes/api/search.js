@@ -21,7 +21,7 @@ router.get('/:searchParam', (req, res) => {
     .exec()
   )
   
-  Promise.all(queries).then(results => console.log(results));
+  Promise.all(queries).then(results => res.json(results));
 })
 
 module.exports = router;
