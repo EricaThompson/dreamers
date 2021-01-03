@@ -3,7 +3,7 @@ import { closeModal, clearModalInfo } from '../../actions/modal_actions';
 import { createDream, updateDream } from '../../actions/dream_actions';
 import { connect } from 'react-redux';
 import NewDreamContainer from '../dreams/new_dream_container';
-import CommentGoalModal from '../feed/comment_goal_modal';
+// import CommentGoalModal from '../feed/comment_goal_modal';
 import CommentDreamModal from '../feed/comment_dream_modal';
 import { fetchCommentsByDream, createComment, deleteComment } from '../../actions/comment_actions';
 import { updateComment } from '../../actions/comment_actions';
@@ -27,30 +27,30 @@ class Modal extends React.Component {
         let component;
         switch (modal) {
             case 'newDream':
-                component = <NewDreamContainer 
-                    currentUser={currentUser} 
+                component = <NewDreamContainer
+                    currentUser={currentUser}
                     createDream={createDream}
                     updateDream={updateDream}
                     info={info}
                 />;
                 break;
-            case 'commentGoal':
-                component = <CommentGoalModal 
-                    info={info} 
-                    fetchCommentsByDream={fetchCommentsByDream} 
-                    comments={comments} 
-                    createComment={createComment}
-                    clearModalInfo={clearModalInfo}
-                    currentUser={currentUser}
-                    updateComment={updateComment}
-                />;
-                break;
+            // case 'commentGoal':
+            //     component = <CommentGoalModal
+            //         info={info}
+            //         fetchCommentsByDream={fetchCommentsByDream}
+            //         comments={comments}
+            //         createComment={createComment}
+            //         clearModalInfo={clearModalInfo}
+            //         currentUser={currentUser}
+            //         updateComment={updateComment}
+            //     />;
+            //     break;
             case 'commentDream':
-                component = <CommentDreamModal 
-                    info={info} 
-                    fetchCommentsByDream={fetchCommentsByDream} 
-                    comments={comments} 
-                    createComment={createComment} 
+                component = <CommentDreamModal
+                    info={info}
+                    fetchCommentsByDream={fetchCommentsByDream}
+                    comments={comments}
+                    createComment={createComment}
                     clearModalInfo={clearModalInfo}
                     currentUser={currentUser}
                     updateComment={updateComment}
@@ -63,7 +63,7 @@ class Modal extends React.Component {
             <div className="modal-background" onClick={this.handleCloseModal} >
                 <div className="modal-child" onClick={e => e.stopPropagation()} >
                     <span onClick={this.handleCloseModal} className="close-modal-btn">&#x2715;</span>
-                    { component }
+                    {component}
                     {/* <NewDreamContainer /> */}
                 </div>
             </div>
@@ -74,15 +74,16 @@ class Modal extends React.Component {
 const mapSTP = state => {
     // debugger;
     return {
-    modal: state.ui.modal,
-    currentUser: state.session.user,
-    info: state.modalInfo,
-    comments: state.comment
-}}
+        modal: state.ui.modal,
+        currentUser: state.session.user,
+        info: state.modalInfo,
+        comments: state.comment
+    }
+}
 
 const mapDTP = dispatch => ({
     closeModal: () => dispatch(closeModal()),
-    createDream: (dream)=> dispatch(createDream(dream)),
+    createDream: (dream) => dispatch(createDream(dream)),
     updateDream: (dreamId, dream) => dispatch(updateDream(dreamId, dream)),
     fetchCommentsByDream: (dreamId) => dispatch(fetchCommentsByDream(dreamId)),
     createComment: (dreamId, comment) => dispatch(createComment(dreamId, comment)),

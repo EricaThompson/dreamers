@@ -87,7 +87,7 @@
         align-items: center;
         width: 100%;
         height: 90%;
-        padding: 0px 20px 70px;
+        padding: 0px 20px 10px;
         background-color: $off-white-opaque;
         // position: relative;
         z-index: -3;
@@ -97,8 +97,9 @@
         .feed-dreams-container {
             width: 90%;
             padding-bottom: 100px;
-            
-            .feed-dreams-wrapper {
+
+            .feed-dreams-wrapper,
+            .feed-goals-wrapper {
                 padding-top: 20px;
                 position: relative;
 
@@ -165,15 +166,23 @@
                     z-index: 1;
                 }
 
+                .feed-goals {
+                    border: 3px solid $off-white;
+                    background-color: $logo-yellow;
+                    box-shadow: 2px 2px 8px white;
+                }
+                
                 .feed-dreams {
-                    position: relative;
-                    padding: 10px;
                     border: 3px solid $off-white;
                     border-radius: 20px;
-                    // background-color: $dark-purple;
-                    background-color: $light-purple;
                     background-color: $pale-blue;
                     box-shadow: 2px 2px 8px $dark-gray;
+                }
+
+                .feed-dreams,
+                .feed-goals {
+                    position: relative;
+                    padding: 10px;
 
                     .new-dream-tags-container {
                         display: flex;
@@ -531,8 +540,9 @@
                 .feed-header-container {
                     width: 70%;
                     
-                    // .feed-header {
-                    // }
+                    .feed-header {
+                        cursor: pointer;
+                    }
                 }
             }
         }

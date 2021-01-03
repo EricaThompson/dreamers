@@ -1,7 +1,7 @@
 import Profile from './profile';
 import { connect } from 'react-redux';
 import { openModal, closeModal, modalInfo, clearModalInfo } from '../../actions/modal_actions';
-import { fetchDreamsByUser, fetchDreams, createDream, clearDreams } from '../../actions/dream_actions';
+import { fetchDreamsByUser, fetchDreams, createDream, clearDreams, deleteDream } from '../../actions/dream_actions';
 import { fetchUserById, updateUser } from '../../actions/user_actions';
 import { fetchCommentsByDream, clearComments } from '../../actions/comment_actions';
 
@@ -24,6 +24,7 @@ const mapDTP = dispatch => ({
     clearComments: () => dispatch(clearComments()),
     modalInfo: (info) => dispatch(modalInfo(info)),
     clearModalInfo: () => dispatch(clearModalInfo()),
+    deleteDream: (dreamId) => dispatch(deleteDream(dreamId))
 })
 
 export default connect(mapSTP, mapDTP)(Profile);
