@@ -164,7 +164,7 @@ class Feed extends React.Component {
                         </form>
                         {search}
                         {/* <i className="fas fa-times-circle"></i> */}
-                        <i onClick={this.hideShow} className={this.state.showClose ? "fas fa-times-circle" : ''}></i>
+                        <i onClick={this.hideShow} className={this.state.showClose ? "fas fa-times-circle close-search-btn" : ''}></i>
                     </div>
                     {/* {spinner} */}
                     <div className="feed-index-container" >

@@ -84,6 +84,13 @@
             .search-results-outer-container::-webkit-scrollbar { 
                 display: none;  /* Safari and Chrome */
             }
+
+            .close-search-btn {
+                position: absolute;
+                right: 10px;
+                top: 11px;
+                color: $dark-gray;
+            }
         }
     
         .feed-search-container:focus-within {
