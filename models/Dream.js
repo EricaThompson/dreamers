@@ -34,6 +34,10 @@ const DreamSchema = new Schema({
     }
   }],
 
+  comments: {
+    type: Array,
+    default: []
+  },
   date: {
     type: Date,
     default: Date.now
