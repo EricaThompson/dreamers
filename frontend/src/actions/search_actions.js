@@ -11,6 +11,6 @@ export const receiveSearchResults = (payload) => ({
 
 export const fetchSearchResults = searchParams => dispatch => (
   SearchApiUtils.search(searchParams)
-  .then(payload => dispatch(receiveSearchResults(payload.data)))
+  .then(payload => dispatch(receiveSearchResults(payload.data))) 
   .catch(err => console.log(err))
 )
