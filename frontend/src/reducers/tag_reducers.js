@@ -29,4 +29,4 @@ const TagReducer = (oldState = {}, action) => {
     }
 }
 
-export default DreamReducer; 
+export default TagReducer; 
