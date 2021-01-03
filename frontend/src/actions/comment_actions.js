@@ -2,6 +2,7 @@ import * as CommentApiUtil from '../util/comment_api_util';
 
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
+export const RECEIVE_NEW_COMMENT = "RECEIVE_NEW_COMMENT";
 export const REMOVE_COMMENT = "REMOVE_COMMENT";
 export const CLEAR_COMMENTS = "CLEAR_COMMENTS";
 
@@ -15,9 +16,16 @@ export const receiveComment = (comment) => ({
     comment
 }); 
 
-export const removeComment = (commentId) => ({
+export const receiveNewComment = (payload) => ({
+    type: RECEIVE_NEW_COMMENT,
+    comment: payload.comment,
+    dream: payload.dream
+})
+
+export const removeComment = (payload) => ({
     type: REMOVE_COMMENT, 
-    commentId
+    commentId: payload.commentId,
+    dream: payload.dream,
 })
 
 export const clearComments = () => ({
@@ -44,7 +52,7 @@ export const fetchCommentsByUser = (userId) => dispatch => (
 
 export const createComment = (dreamId, comment) => dispatch => (
     CommentApiUtil.createComment(dreamId, comment)
-    .then(comment => dispatch(receiveComment(comment.data)))
+    .then(payload => dispatch(receiveNewComment(payload.data)))
     .catch(err => console.error(err))
 )
 
@@ -56,5 +64,5 @@ export const updateComment = (commentId, updatedFields) => dispatch => (
 
 export const deleteComment = (commentId) => dispatch => (
     CommentApiUtil.deleteComment(commentId)
-    .then(commentId => dispatch(removeComment(commentId.data)))
+    .then(payload => dispatch(removeComment(payload.data)))
 )
