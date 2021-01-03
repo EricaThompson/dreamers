@@ -157,6 +157,9 @@ class NewDream extends React.Component {
                             onChange={this.handleChange('dreamText')}></textarea>
                     </form>
                 </div>
+                <div className="session-errors-container">
+                    {this.props.errors.map(err => <p className="session-errors" >{err}</p>)}
+                </div>
                 <div className="create-dream-btn" >
                     <input className="new-dream-btn" 
                         type="submit" 

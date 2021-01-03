@@ -41,7 +41,7 @@ class CommentDreamModal extends React.Component {
     }
 
     render() {
-        let { info, comments } = this.props;
+        let { info, comments, errors } = this.props;
 
         let commentFeed;
 
@@ -89,6 +89,9 @@ class CommentDreamModal extends React.Component {
                                 <input className="comment-btn" type="submit" value="Create Comment" onClick={this.handleSubmit} />
                             </div>
                         </form>
+                        <div className="session-errors-container">
+                            {errors.map(err => <p className="session-errors" >{err}</p>)}
+                        </div>
                         <div className="comment-feed-container" >{commentFeed}</div>
                     </div>
                 </div>
