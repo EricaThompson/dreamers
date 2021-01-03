@@ -191,8 +191,8 @@ class DreamItem extends React.Component {
                         </div>
                         <p className="feed-dreams-info" >
                             <Link to={`/users/${dream.userId}`} className="feed-dreams-info-link" style={{ textDecoration: 'none' }}>
-                            {dream.username} <p className='dream-item-date'>{month} {date.getDate()} {date.getFullYear()}</p>
-                            <br />
+                            {dream.username} <p className='dream-item-date'>{month} {date.getDate()}, {date.getFullYear()}</p>
+                            {/* <br /> */}
                             </Link>
                         </p>
                         <p className="feed-dreams-info" >{dream.text}</p>
