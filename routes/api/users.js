@@ -57,7 +57,7 @@ router.get('/followed/:userId', (req, res) => {
 
 router.get('/followers/:userId', (req, res) => {
   User.findOne({ _id: req.params.userId })
-    .then(user => res.json(user.follower))
+    .then(user => res.json(user.followers))
     .catch(err => res.status(404).json({ nouserfound: 'No user found with that userId'}))
 })
 
@@ -66,23 +66,30 @@ router.post('/follow/:userId',
   (req, res) => {
 
     if (req.params.userId === req.user.id) {
-      res.status(400).json({ userauth: 'You cannot follow yourself'})
+      res.status(400).json({ userauth: 'You cannot follow yourself'});
+      return;
     }
 
     var query1 = { _id: req.params.userId },
-        update1 = { $push: { followers: req.user.username }},
+        update1 = { $addToSet: { followers: req.user.username }},
         options1 = { new: true }
-    User.findOneAndUpdate(query1, update1, options1, (followed) => {
-      
+    User.findOneAndUpdate(query1, update1, options1, (err, followed) => {
+      if (err) {
+        res.status(400).json({err})
+      }
       var query2 = { _id: req.user.userId },
-          update2 = { $push: { followed: { userId: followed._id, username: followed.username }}},
+          update2 = { $addToSet: { followed: { userId: followed._id, username: followed.username }}},
           options2 = { new: true }
       
-      User.findOneAndUpdate(query2, update2, options2, (follower) => {
-        res.json({
-          follower,
-          followed, 
-        })
+      User.findOneAndUpdate(query2, update2, options2, (err, follower) => {
+        if(err) {
+          res.status(400).json({ nouserfound: ''})
+        } else {
+          res.json({
+            follower,
+            followed, 
+          })
+        }
       })
 
     })
@@ -97,13 +104,13 @@ router.delete('/follow/:userId',
     var query1 = { _id: req.params.userId },
         update1 = { $pull: { followers: req.user.username }},
         options1 = { new: true }
-    User.findOneAndUpdate(query1, update1, options1, (followed) => {
+    User.findOneAndUpdate(query1, update1, options1, (err, followed) => {
       
       var query2 = { _id: req.user.userId },
           update2 = { $pull: { followed: { userId: followed._id, username: followed.username }}},
           options2 = { new: true }
       
-      User.findOneAndUpdate(query2, update2, options2, (follower) => {
+      User.findOneAndUpdate(query2, update2, options2, (err, follower) => {
         res.json({
           follower,
           followed, 

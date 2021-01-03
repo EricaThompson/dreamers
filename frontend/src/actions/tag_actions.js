@@ -5,7 +5,6 @@ export const RECEIVE_TAG = 'RECEIVE_TAG';
 export const REMOVE_TAG = 'REMOVE_TAG';
 export const CLEAR_TAG = 'CLEAR_TAG';
 
-
 export const receiveTags = tags => ({
     type: RECEIVE_TAGS, 
     tags 
