@@ -47,6 +47,12 @@ class Profile extends React.Component {
             // .then(res => this.setState({userDreams: res}))
     }
 
+    componentDidUpdate(nextProps) {
+        if (nextProps.location.pathname !== this.props.location.pathname) {
+            window.location.reload();
+        }
+    }
+
     componentWillUnmount() {
         this.props.clearDreams();
         this.props.clearModalInfo();

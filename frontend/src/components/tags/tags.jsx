@@ -10,6 +10,12 @@ class TagsFeed extends React.Component {
         this.props.clearSearch();
     }
 
+    componentDidUpdate(nextProps) {
+        if (nextProps.location.pathname !== this.props.location.pathname) {
+            window.location.reload();
+        }
+    }
+
     componentWillUnmount() {
         this.props.clearDreams();
     }
