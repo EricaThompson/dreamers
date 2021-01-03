@@ -94,7 +94,7 @@ router.delete('/:likeId',
                     })
                     .then(() => {
                         var query = {_id: like.dreamId}
-                            update = { $pull: { likes: mongoose.Types.ObjectId(req.params.likeId) } },
+                            update = { $pull: { likes: {id: mongoose.Types.ObjectId(req.params.likeId)} } },
                             options = { new: true }
                         Dream.findOneAndUpdate(query, update, options, (err, dream) => {
                             if (err) {

@@ -21,13 +21,13 @@ export const removeLike = (likeId) => ({
 
 export const fetchLike = (dreamId, like) => dispatch => (
     LikeApiUtil.fetchLike(dreamId, like)
-    .then(like => dispatch(fetchLike(like)))
+    .then(like => dispatch(receiveLike(like)))
     .catch(err => console.error(err))
 )
 
 export const createLike = (dreamId, like) => dispatch => (
     LikeApiUtil.createLike(dreamId, like)
-    .then(like => dispatch(createLike(like)))
+    .then(like => dispatch(receiveLike(like)))
     .catch(err => console.error(err))
 )
 
