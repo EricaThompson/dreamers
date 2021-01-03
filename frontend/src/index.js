@@ -5,8 +5,9 @@ import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
-import { createDream, updateDream } from './actions/dream_actions';
 
+import { fetchDreams } from './actions/dream_actions';
+import { createComment, deleteComment } from './actions/comment_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -31,11 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore({});
   }
 
+  // test
   window.store = store;
-  window.createDream = createDream;
-  window.updateDream = updateDream;
-
-
+  window.fetchDreams = fetchDreams;
+  window.createComment = createComment;
+  window.updateComment = deleteComment;
+  // testing
 
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);

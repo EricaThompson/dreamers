@@ -5,7 +5,8 @@ import {
     CLEAR_DREAMS,
 } from '../actions/dream_actions'
 import {
-    RECEIVE_NEW_COMMENT
+    RECEIVE_NEW_COMMENT,
+    REMOVE_COMMENT
 } from '../actions/comment_actions';
 
 
@@ -19,6 +20,7 @@ const DreamReducer = (oldState = {}, action) => {
             })
             return newState;
         case RECEIVE_NEW_COMMENT:
+        case REMOVE_COMMENT:
         case RECEIVE_DREAM:
             newState[action.dream._id] = action.dream; 
             return newState;
