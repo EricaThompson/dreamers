@@ -175,6 +175,7 @@ class NewDream extends React.Component {
                                     className="create-dream-search-input" 
                                 />
                         </form>
+                        {/* <i class={this.state.showClose ? "fas fa-check-circle search-check-btn" : ''}></i> */}
                         <i onClick={this.hideShow} className={this.state.showClose ? "fas fa-times-circle close-search-btn" : ''}></i>
                     </div>
                     {search}

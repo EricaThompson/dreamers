@@ -150,6 +150,7 @@
             padding: 10px;
             background-color: white;
             width: 90%;
+            position: relative;
 
             .dream-search-icon {
                 font-size: 15px;
@@ -166,6 +167,16 @@
                     width: 100%;
                     color: $dark-gray;
                     padding-top: 2px;
+                }
+            }
+
+            .search-check-btn {
+                position: absolute;
+                right: 30px;
+                color: $dark-gray;
+
+                &:hover {
+                    color: $green;
                 }
             }
         }
