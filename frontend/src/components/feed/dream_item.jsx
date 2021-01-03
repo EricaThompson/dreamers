@@ -32,6 +32,16 @@ class DreamItem extends React.Component {
         
     }
 
+    like(){
+        let like = {
+            username: this.props.dream.username,
+            dreamId: this.props.dream._id,
+            userId: this.props.currentUser._id,
+        }
+
+        this.props.createLike(this.props.dream._id, like)
+    }
+
     handleOpenModal(e) {
         this.props.clearComments();
         this.props.fetchCommentsByDream(this.props.dream._id);
@@ -46,7 +56,10 @@ class DreamItem extends React.Component {
     }
 
     render() {
-        let { dream, currentUser} = this.props;
+        let { dream, 
+            currentUser, 
+            // createLike
+        } = this.props;
         let tags;
 
         if (this.state.tags) {
@@ -90,7 +103,10 @@ class DreamItem extends React.Component {
                             className='icon'
                             onClick={()=> this.refreshAfterDelete(dream._id)}
                         >
-                            <i className="fas fa-trash-alt"></i>
+                            <i 
+                                className="fas fa-trash-alt"
+                            >
+                            </i>
                         </div>
         } else {
             //!if (!comment.author.followers.includes(currentUser))
@@ -104,6 +120,7 @@ class DreamItem extends React.Component {
 
         if (this.state.showMenu) {
             optionsIcon = <p onClick={() => this.toggleMenu()}>✕</p>
+            
             menuOptions = <div className='available-options'>
                 {editIcon}
                 {deleteIcon}
@@ -115,6 +132,13 @@ class DreamItem extends React.Component {
             optionsIcon = <i
                 className="fas fa-ellipsis-h"
                 onClick={() => this.toggleMenu()}>
+                    <br />
+                <i 
+                    className="far fa-heart"
+                    onClick={() => this.like()}
+                >
+
+                </i>
             </i>
         }
 
@@ -135,7 +159,7 @@ class DreamItem extends React.Component {
                         <div className="new-dream-tags-container" >
                             <div className="new-dream-tags" >
                                 {tags}
-                            <i className="far fa-heart"></i>
+                            
                             </div>
                         </div>
                         <p className="feed-dreams-info" >
