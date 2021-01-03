@@ -68,19 +68,22 @@
             display: flex;
             padding-bottom: 20px;
             
+            
             .new-dream-tags-item-container {
                 padding: 0 7px;
                 position: relative;
                 cursor: pointer;
+                
 
                 .new-dream-tags-item-circle {
                     position: absolute;
-                    top: 8px;
+                    top: 10px;
                     left: 10px;
                     width: 7px;
                     height: 7px;
                     border-radius: 50%;
                     border: 2px solid $dark-gray;
+                    background-color: $off-white;
                 }
 
                 .new-dream-tags-item {
@@ -90,6 +93,7 @@
                     border-bottom-left-radius: 9px;
                     font-family: $sans-serif;
                     color: $dark-gray;
+                    background-color: white;
                 }
 
             }
@@ -127,6 +131,7 @@
                 font-family: $serif;
                 color: $dark-gray;
                 font-size: 15px;
+                background-color: white;
             }
 
             .create-dream-textarea:focus-within {

@@ -10,7 +10,8 @@ const users = require('./routes/api/users');
 const goals = require('./routes/api/goals');
 const dreams = require('./routes/api/dreams');
 const comments = require('./routes/api/comments');
-const tags = require('./routes/api/tags')
+const tags = require('./routes/api/tags');
+const search = require('./routes/api/search');
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));
@@ -41,6 +42,7 @@ app.use('/api/goals', goals);
 app.use('/api/dreams', dreams);
 app.use('/api/comments', comments);
 app.use('/api/tags', tags);
+app.use('/api/search', search);
 
 const port = process.env.PORT || 5000; 
 

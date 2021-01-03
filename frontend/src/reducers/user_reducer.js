@@ -1,6 +1,10 @@
 import {
   RECEIVE_USER,
 } from '../actions/user_actions';
+import {
+  SEARCH,
+} from '../actions/search_actions';
+
 
 const UserReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -8,6 +12,8 @@ const UserReducer = (oldState = {}, action) => {
   switch (action.type) {
     case RECEIVE_USER:
       return action.user;
+    case SEARCH:
+      return action.users;
     default:
       return oldState;
   }

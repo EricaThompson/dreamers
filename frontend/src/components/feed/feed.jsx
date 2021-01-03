@@ -1,7 +1,7 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
 import DreamItem from './dream_item';
-import GoalItem from './goal_item';
+// import GoalItem from './goal_item';
 import { withRouter } from 'react-router-dom';
 
 
@@ -18,7 +18,8 @@ class Feed extends React.Component {
     }
 
     componentDidMount() {
-        // this.props.closeModal();
+        // debugger;
+        this.props.closeModal();
         if (this.props.match.url.includes("feed") )
         this.props.fetchDreams();
     }
@@ -42,29 +43,94 @@ class Feed extends React.Component {
     }
 
     render() {
-        let { openModal, modalInfo, dreams, fetchCommentsByDream, clearComments } = this.props;
+        let { 
+            openModal, 
+            modalInfo, 
+            dreams, 
+            fetchCommentsByDream, 
+            clearComments, 
+            currentUser,
+            deleteDream 
+        } = this.props;
+        
         if ( !dreams ) return null;
 
         let feed; 
-        
+
         if (this.state.selected === "feed") {
             feed = Object.values(dreams).map((dream, idx) => {
-                if (dream.type === "dream" ) {
-                    return <DreamItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} fetchCommentsByDream={fetchCommentsByDream} clearComments={clearComments} />
-                } else {
-                    return <GoalItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} fetchCommentsByDream={fetchCommentsByDream} clearComments={clearComments} />
-                }
+                return <DreamItem
+                    key={idx}
+                    tags={dream.tags}
+                    dream={dream}
+                    openModal={openModal}
+                    modalInfo={modalInfo}
+                    fetchCommentsByDream={fetchCommentsByDream}
+                    clearComments={clearComments}
+                    currentUser={currentUser}
+                    deleteDream={deleteDream}
+                />
+                // console.log('map dream',dream)
+                // if (dream.type === "dream" ) {
+                //     return <DreamItem 
+                //         key={idx} 
+                //         tags={dream.tags} 
+                //         dream={dream} 
+                //         openModal={openModal} 
+                //         modalInfo={modalInfo} 
+                //         fetchCommentsByDream={fetchCommentsByDream} 
+                //         clearComments={clearComments} 
+                //         currentUser={currentUser}
+                //         deleteDream={this.props.deleteDream}
+                //     />
+                // } else {
+                //     return <GoalItem 
+                //         key={idx} 
+                //         tags={dream.tags} 
+                //         dream={dream} 
+                //         openModal={openModal} 
+                //         modalInfo={modalInfo} 
+                //         fetchCommentsByDream={fetchCommentsByDream} 
+                //         clearComments={clearComments} 
+                //         currentUser={currentUser}
+                //         deleteDream={this.props.deleteDream} 
+                //     />
+                // }
             })
         } else if (this.state.selected === "dreams") {
             feed = Object.values(dreams).map((dream, idx) => {
                 if (dream.type === "dream") {
-                    return <DreamItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} fetchCommentsByDream={fetchCommentsByDream} clearComments={clearComments} />
+                    return <DreamItem 
+                        key={idx} 
+                        tags={dream.tags} 
+                        dream={dream} 
+                        openModal={openModal} 
+                        modalInfo={modalInfo} 
+                        fetchCommentsByDream={fetchCommentsByDream} 
+                        clearComments={clearComments} 
+                        currentUser={currentUser}
+                        deleteDream={deleteDream}
+                    />
+                } else {
+                    return ""
                 }
             })
         } else if (this.state.selected === "goals") {
             feed = Object.values(dreams).map((dream, idx) => {
                 if (dream.type === "goal") {
-                    return <GoalItem key={idx} dream={dream} openModal={openModal} modalInfo={modalInfo} fetchCommentsByDream={fetchCommentsByDream} clearComments={clearComments} />
+                    return <DreamItem 
+                        key={idx} 
+                        tags={dream.tags} 
+                        dream={dream} 
+                        openModal={openModal} 
+                        modalInfo={modalInfo} 
+                        fetchCommentsByDream={fetchCommentsByDream} 
+                        clearComments={clearComments} 
+                        currentUser={currentUser}
+                        deleteDream={deleteDream} 
+                        />
+                } else {
+                    return ""
                 }
             })
         }

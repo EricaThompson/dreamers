@@ -17,7 +17,7 @@
         justify-content: center;
         align-items: center;
         position: absolute;
-        top: 20px;
+        top: 13px;
         border: 2px solid $dark-gray;
         border-top-left-radius: 45%;
         border-bottom-left-radius: 45%;
@@ -43,5 +43,11 @@
             color: $dark-gray;
             font-size: 45px;
         }
+    }
+}
+
+@media (min-width: 700px) {
+    .tag-page-outer-container {
+        padding-right: 55px;
     }
 }

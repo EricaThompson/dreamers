@@ -3,15 +3,27 @@ import React from 'react';
 class NewDream extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            selectedOption: 'dream',
-            dreamText: '',
-            searchValue: '',
-            tags: ['KillingIt', 'Love', 'Teeth'],
+        if (Object.values(this.props.info).length === 0) {
+            // debugger;
+            this.state = {
+                selectedOption: 'dream',
+                dreamText: '',
+                searchValue: '',
+                tags: ['KillingIt', 'Love', 'Teeth'],
+                // newTags: this.props.tags
+            }
+        } else {
+            //debugger;
+            this.state = {
+                selectedOption: this.props.info.type,
+                dreamText: this.props.info.text,
+                searchValue: '',
+                tags: this.props.info.tags,
+            }
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        // this.handleTags = this.handleTags.bind(this);
+        this.handleTags = this.handleTags.bind(this);
         this.removeTag = this.removeTag.bind(this);
     }
 
@@ -24,20 +36,35 @@ class NewDream extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         let newDream = {
-            user: this.props.currentUser,
+            username: this.props.currentUser.username,
+            userId: this.props.currentUser.id,
             type: this.state.selectedOption,
             text: this.state.dreamText,
             tags: this.state.tags
         }
         // debugger;
-        console.log('new dream', newDream)
-        this.props.createDream(newDream);
+        if (this.props.info.userId) {
+            this.props.updateDream(this.props.info._id, newDream);
+            // console.log('update dream', { dream: newDream })
+        } else {
+            // console.log('new dream', newDream)
+            // this.props.createDream({dream: newDream});
+            this.props.createDream(newDream);
+        }
+
+        this.props.closeModal()
+        
+        //!needs to be fixed 
+        window.location.reload();
+        // console.log('new dream', newDream)
+        // this.props.closeModal();
     }
 
-    handleTags(e) {
+    handleTags() {
         let newTags = this.state.tags
-        newTags.push(e.target.value)
+        newTags.push(this.state.searchValue)
         this.setState({ tags: newTags })
+        
     }
 
     removeTag(tag) {
@@ -45,14 +72,35 @@ class NewDream extends React.Component {
             let newTags = this.state.tags
             let idx = newTags.indexOf(tag)
             delete newTags[idx]
+            // debugger;
             this.setState({ tags: newTags })
         }
     }
 
     render() {
+        let tags;
+
+        if (this.state.tags){
+            tags = 
+                this.state.tags.map((tag, idx) => {
+                    if (tag != null) {
+                        return (
+                            <div key={idx} className="new-dream-tags-item-container" onClick={this.removeTag(tag)}>
+                                <div className="new-dream-tags-item-circle" ></div>
+                                <p className="new-dream-tags-item" >{tag}</p>
+                            </div>
+                        )
+                    } else {
+                        return null;
+                    }
+                })
+            
+        }
+
+
         return (
             <div className="new-dream-container" onClick={e => e.stopPropagation()} >
-                <h1 className="new-dream-header" >New Dream</h1>
+                <h1 className="new-dream-header" >{Object.values(this.props.info).length === 0 ? "New Dream" : "Edit Dream"}</h1>
                 <form className="new-dream-radio">
                     <label className="new-dream-radio-btn" >
                         <h1 className={this.state.selectedOption === 'dream' ? "new-dream-radio-btn-header-checked" : "new-dream-radio-btn-header"} >Dream</h1>
@@ -76,25 +124,22 @@ class NewDream extends React.Component {
                 <div className="new-dream-tags-container" >
                     <h1 className="new-dream-tags-header" >Tags:</h1>
                     <div className="new-dream-tags" >
-                        {this.state.tags.map((tag, idx) => {
-                            return (
-                                <div className="new-dream-tags-item-container" onClick={this.removeTag(tag)}>
-                                    <div className="new-dream-tags-item-circle" ></div>
-                                    <p key={idx} className="new-dream-tags-item" >{tag}</p>
-                                </div>
-                            )
-                        })}
+                        {tags}
                     </div>
                 </div>
                 <div className="create-dream-container" >
                     <div className="create-dream-search-container" >
                         <i className="fas fa-search dream-search-icon"></i>
-                        <form className="create-dream-search-form" >
-                            <input type="text"
-                                placeholder="Add tags or create a new one..."
-                                value={this.state.searchValue}
-                                onChange={this.handleChange('searchValue')}
-                                className="create-dream-search-input" />
+                        <form 
+                            className="create-dream-search-form" 
+                            onSubmit={()=>this.handleTags()}
+                        >
+                                <input type="text"
+                                    placeholder="Search tags or create a new one..."
+                                    value={this.state.searchValue}
+                                    onChange={this.handleChange('searchValue')}
+                                    className="create-dream-search-input" 
+                                />
                         </form>
                     </div>
                 </div>
@@ -110,7 +155,7 @@ class NewDream extends React.Component {
                 <div className="create-dream-btn" >
                     <input className="new-dream-btn" 
                         type="submit" 
-                        value="Create Dream"
+                        value={Object.values(this.props.info).length === 0 ? "Create Dream" : "Edit Dream"}
                         onClick={this.handleSubmit} 
                         />
                 </div>
