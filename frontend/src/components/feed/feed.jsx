@@ -13,10 +13,12 @@ class Feed extends React.Component {
             searchValue: '',
             selected: 'feed',
             dreams: null,
+            showClose: false,
             // spinnerShow: true,
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSelected = this.handleSelected.bind(this);
+        this.hideShow = this.hideShow.bind(this);
     }
 
     componentDidMount() {
@@ -40,13 +42,18 @@ class Feed extends React.Component {
 
     handleChange(e) {
         this.props.fetchSearchResults(e.target.value);
-        this.setState({ searchValue: e.target.value })
+        this.setState({ searchValue: e.target.value, showClose: true })
     }
 
     handleSelected(type) {
         return (e) => {
             this.setState({ selected: type })
         }
+    }
+
+    hideShow() {
+        this.props.clearSearch();
+        this.setState({ showClose: false, searchValue: '' })
     }
 
     render() {
@@ -156,6 +163,8 @@ class Feed extends React.Component {
                                 className="feed-search-input" />
                         </form>
                         {search}
+                        {/* <i className="fas fa-times-circle"></i> */}
+                        <i onClick={this.hideShow} className={this.state.showClose ? "fas fa-times-circle" : ''}></i>
                     </div>
                     {/* {spinner} */}
                     <div className="feed-index-container" >
