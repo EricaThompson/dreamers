@@ -59,22 +59,22 @@ router.post('/:dreamId',
     }
 );
 
-router.get('/:like', (req, res) => {
-  Comment.findOne({_id: req.params.like})
+router.get('/:likeId', (req, res) => {
+  Like.findOne({_id: req.params.likeId})
     .sort({date: -1})
     .then(like => res.json(like))
     .catch(err => res.status(404).json({ nolikesfound: 'No like found with the specified id'}))
 });
 
 router.get('/dream/:dreamId', (req, res) => {
-  Comment.find({dreamId: req.params.dreamId})
+  Like.find({dreamId: req.params.dreamId})
     .sort({date: -1})
     .then(likes => res.json(likes))
     .catch(err => res.status(404).json({ nolikesfound: 'This dream has no likes'}))
 });
 
 router.get('/user/:userId', (req, res) => {
-  Comment.find({userId: req.params.userId})
+  Like.find({userId: req.params.userId})
     .sort({date: -1})
     .then(likes => res.json(likes))
     .catch(err => res.status(404).json({ nolikesfound: 'This user has no likes'}))
