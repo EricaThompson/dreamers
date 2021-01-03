@@ -5,6 +5,7 @@ import { signup, login, resetErrors } from '../../actions/session_actions';
 const mapSTP = state => ({
     formType: 'signup',
     errors: Object.values(state.errors.session),
+    isSignedIn: state.session.isSignedIn
 })
 
 const mapDTP = dispatch => ({

@@ -20,6 +20,7 @@ class SessionForm extends React.Component {
     }
     
     componentDidUpdate(nextProps) {
+        debugger;
         if (nextProps.isSignedIn === true) {
             let user = {
                 handle: this.state.handle,

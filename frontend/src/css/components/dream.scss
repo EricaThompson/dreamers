@@ -66,11 +66,13 @@
         
         .new-dream-tags {
             display: flex;
+            flex-wrap: wrap;
             padding-bottom: 20px;
+            max-width: 100%;
             
             
             .new-dream-tags-item-container {
-                padding: 0 7px;
+                padding: 0 7px 2px;
                 position: relative;
                 cursor: pointer;
                 

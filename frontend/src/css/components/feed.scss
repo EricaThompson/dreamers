@@ -210,10 +210,12 @@
                         
                         .new-dream-tags {
                             display: flex;
+                            flex-wrap: wrap;
+                            max-width: 100%;
                             padding-bottom: 5px;
                             
                             .new-dream-tags-item-container {
-                                padding: 0 5px;
+                                padding: 0 5px 2px;
                                 position: relative;
                                 cursor: pointer;
 
@@ -316,180 +318,180 @@
                 }
             }
 
-            .feed-goals-wrapper {
-                padding-top: 20px;
-                position: relative;
+        //     .feed-goals-wrapper {
+        //         padding-top: 20px;
+        //         position: relative;
 
-                .comment-options {
-                    position: absolute;
-                    z-index: 5;
-                    top: 30px;
-                    right: 15px;
-                    cursor: pointer;
-                    //! switch to light gray
-                    color: rgb(161, 160, 160);
+        //         .comment-options {
+        //             position: absolute;
+        //             z-index: 5;
+        //             top: 30px;
+        //             right: 15px;
+        //             cursor: pointer;
+        //             //! switch to light gray
+        //             color: rgb(161, 160, 160);
 
-                    .available-options {
-                        // background-color: $off-white;
-
-                        
-                        i {
-                            position: absolute;
-                            // top: -38px;
-                            // right: 10px;
-                            
-                            background-color: $pale-purple;
-                            border-radius: 55%;
-                            padding: 12px;
-                            color: $dark-gray;
-                            margin: 5px;
-
-                            
-                            &:hover {
-                                color: $off-white;
-                            }
-                        }
+        //             .available-options {
+        //                 // background-color: $off-white;
 
                         
-
-                        .icon:nth-child(1){
-                            position: absolute;
-                            // z-index: 100000000000000;
-                            top: 17px;
-                            right: 70px;
-                        }
-
-                        .icon:nth-child(2){
-                            position: absolute;
-                            top: 17px;
-                            right: 23px;
-                        }
-
-
-                        .fa-trash-alt:hover {
+        //                 i {
+        //                     position: absolute;
+        //                     // top: -38px;
+        //                     // right: 10px;
                             
-                            background-color: red;
-                            color: $off-white;
-                        }
+        //                     background-color: $pale-purple;
+        //                     border-radius: 55%;
+        //                     padding: 12px;
+        //                     color: $dark-gray;
+        //                     margin: 5px;
 
-                        .fa-user-plus {
-                            width: 19px;
-                            padding-right: 16px;
-                            padding-left: 10px;
-                        }
-
-                        .fa-flag {
-                            padding-right: 14px;
-                            padding-left: 10px;
-                        }
-                    }
-                }
-
-
-                .feed-dreams-edit-pencil {
-                    position: absolute;
-                    bottom: 12px;
-                    right: 12px;
-                    color: $dark-gray;
-                    cursor: pointer;
-                    z-index: 1;
-                }
-
-                .feed-goals {
-                    padding: 10px;
-                    border: 3px solid $off-white;
-                    // border-radius: 20px;
-                    background-color: $logo-yellow;
-                    // background-color: $pale-blue;
-                    box-shadow: 2px 2px 8px white;
-                    position: relative;
-
-                    .new-dream-tags-container {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        
-                        .new-dream-tags-header {
-                            font-family: $sans-serif;
-                            color: $dark-gray;
-                            font-size: 16px;
-                            padding-bottom: 15px;
-                        }
-                        
-                        .new-dream-tags {
-                            display: flex;
-                            padding-bottom: 5px;
                             
-                            .new-dream-tags-item-container {
-                                padding: 0 5px;
-                                position: relative;
-                                cursor: pointer;
+        //                     &:hover {
+        //                         color: $off-white;
+        //                     }
+        //                 }
 
-                                .new-dream-tags-item-circle {
-                                    position: absolute;
-                                    top: 8px;
-                                    left: 10px;
-                                    width: 5px;
-                                    height: 5px;
-                                    border-radius: 50%;
-                                    border: 2px solid $dark-gray;
-                                    background-color: $logo-yellow;
-                                }
+                        
 
-                                .new-dream-tags-item {
-                                    padding: 4px 5px 2px 14px;
-                                    border: 1px solid $dark-gray;
-                                    border-top-left-radius: 9px;
-                                    border-bottom-left-radius: 9px;
-                                    font-family: $sans-serif;
-                                    color: $dark-gray;
-                                    background-color: $off-white;
-                                }
+        //                 .icon:nth-child(1){
+        //                     position: absolute;
+        //                     // z-index: 100000000000000;
+        //                     top: 17px;
+        //                     right: 70px;
+        //                 }
 
-                            }
-                            .new-dream-tags-item-container:hover {
-                                .new-dream-tags-item {
-                                    background-color: $magenta;
-                                    color: $off-white;
-                                }
-                            }
-                        }
-                    }
+        //                 .icon:nth-child(2){
+        //                     position: absolute;
+        //                     top: 17px;
+        //                     right: 23px;
+        //                 }
+
+
+        //                 .fa-trash-alt:hover {
+                            
+        //                     background-color: red;
+        //                     color: $off-white;
+        //                 }
+
+        //                 .fa-user-plus {
+        //                     width: 19px;
+        //                     padding-right: 16px;
+        //                     padding-left: 10px;
+        //                 }
+
+        //                 .fa-flag {
+        //                     padding-right: 14px;
+        //                     padding-left: 10px;
+        //                 }
+        //             }
+        //         }
+
+
+        //         .feed-dreams-edit-pencil {
+        //             position: absolute;
+        //             bottom: 12px;
+        //             right: 12px;
+        //             color: $dark-gray;
+        //             cursor: pointer;
+        //             z-index: 1;
+        //         }
+
+        //         .feed-goals {
+        //             padding: 10px;
+        //             border: 3px solid $off-white;
+        //             // border-radius: 20px;
+        //             background-color: $logo-yellow;
+        //             // background-color: $pale-blue;
+        //             box-shadow: 2px 2px 8px white;
+        //             position: relative;
+
+        //             .new-dream-tags-container {
+        //                 display: flex;
+        //                 flex-direction: column;
+        //                 align-items: center;
+                        
+        //                 .new-dream-tags-header {
+        //                     font-family: $sans-serif;
+        //                     color: $dark-gray;
+        //                     font-size: 16px;
+        //                     padding-bottom: 15px;
+        //                 }
+                        
+        //                 .new-dream-tags {
+        //                     display: flex;
+        //                     padding-bottom: 5px;
+                            
+        //                     .new-dream-tags-item-container {
+        //                         padding: 0 5px;
+        //                         position: relative;
+        //                         cursor: pointer;
+
+        //                         .new-dream-tags-item-circle {
+        //                             position: absolute;
+        //                             top: 8px;
+        //                             left: 10px;
+        //                             width: 5px;
+        //                             height: 5px;
+        //                             border-radius: 50%;
+        //                             border: 2px solid $dark-gray;
+        //                             background-color: $logo-yellow;
+        //                         }
+
+        //                         .new-dream-tags-item {
+        //                             padding: 4px 5px 2px 14px;
+        //                             border: 1px solid $dark-gray;
+        //                             border-top-left-radius: 9px;
+        //                             border-bottom-left-radius: 9px;
+        //                             font-family: $sans-serif;
+        //                             color: $dark-gray;
+        //                             background-color: $off-white;
+        //                         }
+
+        //                     }
+        //                     .new-dream-tags-item-container:hover {
+        //                         .new-dream-tags-item {
+        //                             background-color: $magenta;
+        //                             color: $off-white;
+        //                         }
+        //                     }
+        //                 }
+        //             }
                     
-                    .feed-goals-info {
-                        color: $dark-gray;
-                        font-family: $serif;
+        //             .feed-goals-info {
+        //                 color: $dark-gray;
+        //                 font-family: $serif;
                         
-                        .feed-goals-info-link {
-                            font-weight: 700;
-                            color: $dark-gray;
-                        }
-                    }
+        //                 .feed-goals-info-link {
+        //                     font-weight: 700;
+        //                     color: $dark-gray;
+        //                 }
+        //             }
 
-                    .feed-goals-footer {
-                        display: flex;
-                        justify-content: space-around;
-                        align-items: flex-end;
-                        padding-top: 3px;
+        //             .feed-goals-footer {
+        //                 display: flex;
+        //                 justify-content: space-around;
+        //                 align-items: flex-end;
+        //                 padding-top: 3px;
 
-                        .feed-goals-footer-info {
-                            color: $dark-gray;
-                            font-family: $serif;
-                            font-size: 13px;
+        //                 .feed-goals-footer-info {
+        //                     color: $dark-gray;
+        //                     font-family: $serif;
+        //                     font-size: 13px;
 
-                            .feed-goals-footer-comments,
-                            .feed-goals-footer-likes {
-                                cursor: pointer;
-                            }
+        //                     .feed-goals-footer-comments,
+        //                     .feed-goals-footer-likes {
+        //                         cursor: pointer;
+        //                     }
 
-                            .feed-goals-footer-comments:hover,
-                            .feed-goals-footer-likes:hover {
-                                color: $magenta;
-                            }
-                        }
-                    }
-                }
-            }
+        //                     .feed-goals-footer-comments:hover,
+        //                     .feed-goals-footer-likes:hover {
+        //                         color: $magenta;
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
 
         }
     }
