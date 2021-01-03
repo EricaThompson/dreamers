@@ -7,7 +7,8 @@ class DreamItem extends React.Component {
         this.state = {
             tags: this.props.tags,
             showMenu: false,
-            like: this.props.like
+            like: this.props.like,
+            numLikes: null
         }
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleOpenEditModal = this.handleOpenEditModal.bind(this);
@@ -15,8 +16,10 @@ class DreamItem extends React.Component {
     }
 
     componentDidMount(){
-        this.props.fetchLike(this.props.dream._id)
-        console.log('like?', this.state.like)
+        // this.props.fetchLike(this.props.dream._id)
+        this.props.fetchLikesByDream(this.props.dream._id)
+            .then(res => this.setState({numLikes: res.likes.length}))
+        
     }
 
     toggleEdit() {
@@ -65,6 +68,8 @@ class DreamItem extends React.Component {
     }
 
     render() {
+        console.log('like?', this.state.numLikes)
+
         let { dream, 
             currentUser, 
             // createLike
@@ -187,7 +192,7 @@ class DreamItem extends React.Component {
                    {/* </Link> */}
                     <div className="feed-dreams-footer" >
                         <p className="feed-dreams-footer-info" >{dream.comments ? dream.comments.length : 0} <span className="feed-dreams-footer-comments" >{dream.comments && dream.comments.length === 1 ? "comment" : "comments"}</span></p>
-                        <p className="feed-dreams-footer-info" >3 <span className="feed-dreams-footer-likes" >likes</span></p>
+                        <p className="feed-dreams-footer-info" >{this.state.numLikes} <span className="feed-dreams-footer-likes" >likes</span></p>
                     </div>
                 </div>
             </div>

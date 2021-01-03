@@ -24,14 +24,16 @@ router.post('/:dreamId',
             .then(dream => {
             if (dream) {
                 if (dream.likes.find(like => like.username === req.user.username)) {
+                    
                     res.status(400).json({like: 'You have already liked this dream'})
+                    return 
                 }
 
                 const newLike = new Like ({
                     userId: req.user.id,
                     username: req.user.username, 
                     dreamId: req.params.dreamId, //
-                    like: req.user.id
+                    // like: req.user.id
             })
             newLike.save().then(like => {
                 var update = { $push: { likes: {id: like._id, username: newLike.username}}},
@@ -57,22 +59,22 @@ router.post('/:dreamId',
     }
 );
 
-router.get('/:like', (req, res) => {
-  Comment.findOne({_id: req.params.like})
+router.get('/:likeId', (req, res) => {
+  Like.findOne({_id: req.params.likeId})
     .sort({date: -1})
     .then(like => res.json(like))
     .catch(err => res.status(404).json({ nolikesfound: 'No like found with the specified id'}))
 });
 
 router.get('/dream/:dreamId', (req, res) => {
-  Comment.find({dreamId: req.params.dreamId})
+  Like.find({dreamId: req.params.dreamId})
     .sort({date: -1})
     .then(likes => res.json(likes))
     .catch(err => res.status(404).json({ nolikesfound: 'This dream has no likes'}))
 });
 
 router.get('/user/:userId', (req, res) => {
-  Comment.find({userId: req.params.userId})
+  Like.find({userId: req.params.userId})
     .sort({date: -1})
     .then(likes => res.json(likes))
     .catch(err => res.status(404).json({ nolikesfound: 'This user has no likes'}))
@@ -89,7 +91,7 @@ router.delete('/:likeId',
                 } else {
                     Like.deleteOne({_id: req.params.likeId}, (err) => {
                         if (err) {
-                            res.status(404).json({err})
+                            res.status(404).json({like: 'This like cannot be removed'})
                         }
                     })
                     .then(() => {
@@ -98,7 +100,7 @@ router.delete('/:likeId',
                             options = { new: true }
                         Dream.findOneAndUpdate(query, update, options, (err, dream) => {
                             if (err) {
-                                res.status(404).json({err})
+                                res.status(404).json({like: 'Cannot edit this like'})
                             } else {
                                 res.json ({
                                     likeId: req.params.likeId,
@@ -109,7 +111,7 @@ router.delete('/:likeId',
                     })
                 }
             })
-            .catch(err => res.status(400).json({err}))
+            .catch(err => res.status(400).json({like: 'cannot find the like'}))
     }
 )
 

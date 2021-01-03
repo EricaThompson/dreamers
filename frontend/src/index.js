@@ -8,6 +8,8 @@ import { logout } from './actions/session_actions';
 
 import { 
   fetchLike,
+  fetchLikesByDream,
+  fetchLikesByUser, 
   createLike, 
   deleteLike
 } from './actions/like_actions'
@@ -37,6 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.store = store
   window.fetchLike = fetchLike
+  window.fetchLikesByDream = fetchLikesByDream
+  window.fetchLikesByUser = fetchLikesByUser
   window.createLike = createLike 
   window.deleteLike = deleteLike
 

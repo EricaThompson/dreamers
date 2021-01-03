@@ -54,7 +54,8 @@ class Feed extends React.Component {
             createLike,
             deleteLike,
             fetchLike,
-            like 
+            like,
+            fetchLikesByDream,
         } = this.props;
         
         if ( !dreams ) return null;
@@ -77,6 +78,7 @@ class Feed extends React.Component {
                     deleteLike={deleteLike}
                     fetchLike={fetchLike}
                     like={like}
+                    fetchLikesByDream={fetchLikesByDream}
                 />
                 // console.log('map dream',dream)
                 // if (dream.type === "dream" ) {
@@ -121,6 +123,7 @@ class Feed extends React.Component {
                         deleteLike={deleteLike}
                         fetchLike={fetchLike}
                         like={like}
+                        fetchLikesByDream={fetchLikesByDream}
                     />
                 } else {
                     return ""
@@ -142,6 +145,7 @@ class Feed extends React.Component {
                         deleteLike={deleteLike}
                         fetchLike={fetchLike}
                         like={like}
+                        fetchLikesByDream={fetchLikesByDream}
                         />
                 } else {
                     return ""

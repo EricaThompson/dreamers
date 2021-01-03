@@ -35,7 +35,6 @@ const DreamReducer = (oldState = {}, action) => {
         case REMOVE_DREAMS:
             delete newState[action.dreamId]
             return newState; 
-        
         case CLEAR_DREAMS:
             return {};
         default: 
