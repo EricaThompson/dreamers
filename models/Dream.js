@@ -22,10 +22,15 @@ const DreamSchema = new Schema({
     required: true
   },
   likes: [{
-    type: Schema.Types.ObjectId, //
-    ref: 'users'
-  }],
+    _id: false,
+    id: {
+    type: Schema.Types.ObjectId,
+    ref: 'likes'
+    }, 
+    username: String, 
   
+  }],
+
   date: {
     type: Date,
     default: Date.now

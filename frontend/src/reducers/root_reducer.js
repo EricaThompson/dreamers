@@ -6,7 +6,8 @@ import comment from './comment_reducer';
 import user from './user_reducer';
 import ui from './ui_reducer';
 import modalInfo from './modal_info_reducer';
-import tag from './tag_reducers'
+import tag from './tag_reducers'; 
+import like from './like_reducer'
 
 const RootReducer = combineReducers({
     session, 
@@ -16,7 +17,8 @@ const RootReducer = combineReducers({
     comment,
     user,
     modalInfo, 
-    tag
+    tag, 
+    like
 });
 
 export default RootReducer;

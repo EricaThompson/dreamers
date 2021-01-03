@@ -14,10 +14,6 @@ const LikeSchema = new Schema({
         type: Schema.Types.ObjectId, //
         ref: "dreams"
     },
-    like: {
-        type: Schema.Types.ObjectId, //
-        ref: 'users'
-    },
     date: {
         type: Date, 
         default: Date.now

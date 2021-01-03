@@ -7,7 +7,11 @@ import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
 import { createComment } from './actions/comment_actions';
 
-
+import { 
+  fetchLike,
+  createLike, 
+  deleteLike
+} from './actions/like_actions'
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,6 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore({});
   }
+
+  window.store = store 
+  window.fetchLike = fetchLike
+  window.createLike = createLike
+  window.deleteLike = deleteLike
 
 
 

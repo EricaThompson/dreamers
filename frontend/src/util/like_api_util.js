@@ -4,12 +4,12 @@ export const createLike = (dreamId, like) => (
     axios.post(`/api/likes/${dreamId}`, like)
 ); 
 
-export const fetchLike = (like) => (
-    axios.get(`/api/likes/${like}`)
+export const fetchLike = (likeId) => (
+    axios.get(`/api/likes/${likeId}`)
 );
 
-export const deleteLike = (like) => (
-    axios.delete(`/api/likes/${like}`)
+export const deleteLike = (likeId) => (
+    axios.delete(`/api/likes/${likeId}`)
 )
 
 
