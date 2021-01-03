@@ -7,10 +7,16 @@ class DreamItem extends React.Component {
         this.state = {
             tags: this.props.tags,
             showMenu: false,
+            like: this.props.like
         }
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleOpenEditModal = this.handleOpenEditModal.bind(this);
         this.refreshAfterDelete = this.refreshAfterDelete.bind(this)
+    }
+
+    componentDidMount(){
+        this.props.fetchLike(this.props.dream._id)
+        console.log('like?', this.state.like)
     }
 
     toggleEdit() {
@@ -38,9 +44,12 @@ class DreamItem extends React.Component {
             dreamId: this.props.dream._id,
             userId: this.props.currentUser._id,
         }
-
         this.props.createLike(this.props.dream._id, like)
     }
+
+    // unlike(){
+    //     this.props.deleteLike
+    // }
 
     handleOpenModal(e) {
         this.props.clearComments();
@@ -90,6 +99,17 @@ class DreamItem extends React.Component {
         let flagIcon;
         let menuOptions;
         let optionsIcon;
+        let like = <i
+                        className="fas fa-heart"
+                        onClick={() => this.like()}
+                    >
+                    </i>
+        let unlike = <i 
+                        className="far fa-heart"
+                        // onClick={()=>this.unlike()}
+                    >
+                    </i>;
+
 
         // console.log('current', dream.username, currentUser.username)
         if (dream.username === currentUser.username) {
@@ -133,12 +153,8 @@ class DreamItem extends React.Component {
                 className="fas fa-ellipsis-h"
                 onClick={() => this.toggleMenu()}>
                     <br />
-                <i 
-                    className="far fa-heart"
-                    onClick={() => this.like()}
-                >
-
-                </i>
+                    {like}
+                    {unlike}
             </i>
         }
 

@@ -9,6 +9,7 @@ const mapSTP = state => {
     return {
     currentUser: state.session.user,
     dreams: state.dream,
+    like: state.like
 }}
 
 const mapDTP = dispatch => ({
