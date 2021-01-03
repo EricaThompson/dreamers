@@ -3,7 +3,8 @@ import React from 'react';
 class NewDream extends React.Component {
     constructor(props) {
         super(props);
-        if (Object.values(this.props.info).length === 0) {
+        debugger;
+        if (this.props.info === null || Object.values(this.props.info).length === 0) {
             // debugger;
             this.state = {
                 selectedOption: 'dream',
@@ -100,7 +101,7 @@ class NewDream extends React.Component {
 
         return (
             <div className="new-dream-container" onClick={e => e.stopPropagation()} >
-                <h1 className="new-dream-header" >{Object.values(this.props.info).length === 0 ? "New Dream" : "Edit Dream"}</h1>
+                <h1 className="new-dream-header" >{this.props.info === null || Object.values(this.props.info).length === 0 ? "New Dream" : "Edit Dream"}</h1>
                 <form className="new-dream-radio">
                     <label className="new-dream-radio-btn" >
                         <h1 className={this.state.selectedOption === 'dream' ? "new-dream-radio-btn-header-checked" : "new-dream-radio-btn-header"} >Dream</h1>
@@ -155,7 +156,7 @@ class NewDream extends React.Component {
                 <div className="create-dream-btn" >
                     <input className="new-dream-btn" 
                         type="submit" 
-                        value={Object.values(this.props.info).length === 0 ? "Create Dream" : "Edit Dream"}
+                        value={this.props.info === null || Object.values(this.props.info).length === 0 ? "Create Dream" : "Edit Dream"}
                         onClick={this.handleSubmit} 
                         />
                 </div>
