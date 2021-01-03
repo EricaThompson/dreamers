@@ -9,7 +9,8 @@ const mapSTP = (state, ownProps) => ({
     currentUser: state.session.user,
     dreams: state.dream,
     tagName: ownProps.match.params.tag,
-    searchResults: state.search
+    searchResults: state.search,
+    isModalOpen: state.ui.modal
 })
 
 const mapDTP = dispatch => ({

@@ -262,7 +262,8 @@
                                 position: relative;
                                 cursor: pointer;
 
-                                .new-dream-tags-item-circle {
+                                .new-dream-tags-item-circle,
+                                .new-goal-tags-item-circle {
                                     position: absolute;
                                     top: 8px;
                                     left: 10px;
@@ -271,6 +272,10 @@
                                     border-radius: 50%;
                                     border: 2px solid $dark-gray;
                                     background-color: $pale-blue;
+                                }
+
+                                .new-goal-tags-item-circle {
+                                    background-color: $logo-yellow;
                                 }
 
                                 .new-dream-tags-item {

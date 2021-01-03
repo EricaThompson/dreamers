@@ -246,6 +246,7 @@ class Profile extends React.Component {
                         searchResults={this.props.searchResults}
                         fetchSearchResults={this.props.fetchSearchResults}
                         clearSearch={this.props.clearSearch}
+                        isModalOpen={this.props.isModalOpen}
                     />
                 </div>
                 

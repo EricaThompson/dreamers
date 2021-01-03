@@ -8,6 +8,7 @@ import CommentDreamModal from '../feed/comment_dream_modal';
 import { fetchCommentsByDream, createComment, deleteComment } from '../../actions/comment_actions';
 import { updateComment } from '../../actions/comment_actions';
 import { resetErrors } from '../../actions/session_actions';
+import { fetchSearchResults, clearSearch } from '../../actions/search_actions';
 
 class Modal extends React.Component {
     constructor(props) {
@@ -18,10 +19,11 @@ class Modal extends React.Component {
     handleCloseModal(e) {
         this.props.closeModal();
         this.props.clearModalInfo();
+        this.props.clearSearch();
     }
 
     render() {
-        let { modal, currentUser, info, fetchCommentsByDream, comments, createComment, clearModalInfo, updateComment, errors } = this.props;
+        let { modal, currentUser, info, fetchCommentsByDream, comments, createComment, clearModalInfo, updateComment, errors, clearSearch, fetchSearchResults, searchResults } = this.props;
         if (!modal) {
             return null;
         }
@@ -35,6 +37,9 @@ class Modal extends React.Component {
                     info={info}
                     resetErrors={resetErrors}
                     errors={errors}
+                    clearSearch={clearSearch}
+                    fetchSearchResults={fetchSearchResults}
+                    searchResults={searchResults}
                 />;
                 break;
             // case 'commentGoal':
@@ -84,7 +89,8 @@ const mapSTP = state => {
         currentUser: state.session.user,
         info: state.modalInfo,
         comments: state.comment,
-        errors: state.errors.session
+        errors: state.errors.session,
+        searchResults: state.search
     }
 }
 
@@ -98,6 +104,8 @@ const mapDTP = dispatch => ({
     updateComment: (commentId, comment) => dispatch(updateComment(commentId, comment)),
     resetErrors: () => dispatch(resetErrors()),
     deleteComment: (commentId) => dispatch(deleteComment(commentId)),
+    fetchSearchResults: (searchParams) => dispatch(fetchSearchResults(searchParams)),
+    clearSearch: () => dispatch(clearSearch()),
 })
 
 export default connect(mapSTP, mapDTP)(Modal);

@@ -12,7 +12,8 @@ const mapSTP = state => ({
 const mapDTP = dispatch => ({
     closeModal: () => dispatch(closeModal()),
     createDream: (dream) => dispatch(createDream(dream)),
-    updateDream: (dreamId, dream) => dispatch(updateDream(dreamId, dream))
+    updateDream: (dreamId, dream) => dispatch(updateDream(dreamId, dream)),
+
 })
 
 export default connect(mapSTP, mapDTP)(NewDream);

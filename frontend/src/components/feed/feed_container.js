@@ -9,7 +9,8 @@ const mapSTP = state => {
     return {
     currentUser: state.session.user,
     dreams: state.dream,
-    searchResults: state.search
+    searchResults: state.search,
+    isModalOpen: state.ui.modal
 }}
 
 const mapDTP = dispatch => ({

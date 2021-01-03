@@ -106,7 +106,7 @@ class DreamItem extends React.Component {
                         return (
                             <Link to={`/tags/${tag}`} key={idx} style={{ textDecoration: 'none' }} >
                                 <div className="new-dream-tags-item-container" onClick={e => e.stopPropagation()} >
-                                    <div className="new-dream-tags-item-circle" ></div>
+                                    <div className={dream.type === "dream" ? "new-dream-tags-item-circle" : "new-goal-tags-item-circle"} ></div>
                                     <p className="new-dream-tags-item" >{tag}</p>
                                 </div>
                             </Link>
