@@ -7,6 +7,7 @@ import NewDreamContainer from '../dreams/new_dream_container';
 import CommentDreamModal from '../feed/comment_dream_modal';
 import { fetchCommentsByDream, createComment, deleteComment } from '../../actions/comment_actions';
 import { updateComment } from '../../actions/comment_actions';
+import { resetErrors } from '../../actions/session_actions';
 
 class Modal extends React.Component {
     constructor(props) {
@@ -32,6 +33,7 @@ class Modal extends React.Component {
                     createDream={createDream}
                     updateDream={updateDream}
                     info={info}
+                    resetErrors={resetErrors}
                 />;
                 break;
             // case 'commentGoal':
@@ -54,6 +56,7 @@ class Modal extends React.Component {
                     clearModalInfo={clearModalInfo}
                     currentUser={currentUser}
                     updateComment={updateComment}
+                    resetErrors={resetErrors}
                 />;
                 break;
             default:
@@ -77,7 +80,8 @@ const mapSTP = state => {
         modal: state.ui.modal,
         currentUser: state.session.user,
         info: state.modalInfo,
-        comments: state.comment
+        comments: state.comment,
+        errors: state.errors.session
     }
 }
 
@@ -89,7 +93,8 @@ const mapDTP = dispatch => ({
     createComment: (dreamId, comment) => dispatch(createComment(dreamId, comment)),
     clearModalInfo: () => dispatch(clearModalInfo()),
     updateComment: (commentId, comment) => dispatch(updateComment(commentId, comment)),
-    deleteComment: (commentId) => dispatch(deleteComment(commentId))
+    resetErrors: () => dispatch(resetErrors()),
+    deleteComment: (commentId) => dispatch(deleteComment(commentId)),
 })
 
 export default connect(mapSTP, mapDTP)(Modal);

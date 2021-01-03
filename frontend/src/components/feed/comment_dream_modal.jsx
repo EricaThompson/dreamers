@@ -17,6 +17,7 @@ class CommentDreamModal extends React.Component {
     componentDidMount() {
         // debugger;
         // this.props.fetchCommentsByDream(this.props.info._id)
+        this.props.resetErrors();
     }
 
     componentWillUnmount() {
@@ -56,6 +57,7 @@ class CommentDreamModal extends React.Component {
                                     updateComment={this.props.updateComment}
                                     currentUser={this.props.currentUser}
                                     deleteComment={this.props.deleteComment}
+                                    errors={this.props.errors}
                                 />
                     })}
                 </div>

@@ -27,6 +27,10 @@ class NewDream extends React.Component {
         this.removeTag = this.removeTag.bind(this);
     }
 
+    componentDidMount() {
+        this.props.resetErrors();
+    }
+
     handleChange(type) {
         // debugger;
         return (e) => {
