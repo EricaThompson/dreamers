@@ -9,29 +9,33 @@ export const receiveLikes = (likes) => ({
     likes
 }); 
 
-export const receiveLike = (like) => ({
+export const receiveLike = (payload) => ({
     type: RECEIVE_LIKE,
-    like
+    like: payload.like,
+    dream: payload.dream
 });
 
-export const removeLike = (likeId) => ({
+export const removeLike = (payload) => ({
     type: REMOVE_LIKE,
-    likeId
+    likeId: payload.likeId,
+    dream: payload.dream
 })
+
+
 
 export const fetchLike = (dreamId, like) => dispatch => (
     LikeApiUtil.fetchLike(dreamId, like)
-    .then(like => dispatch(receiveLike(like)))
+    .then(payload => dispatch(receiveLike(payload.data)))
     .catch(err => console.error(err))
 )
 
 export const createLike = (dreamId, like) => dispatch => (
     LikeApiUtil.createLike(dreamId, like)
-    .then(like => dispatch(receiveLike(like)))
+    .then(payload => dispatch(receiveLike(payload.data)))
     .catch(err => console.error(err))
 )
 
 export const deleteLike = (likeId, dream) => dispatch => (
     LikeApiUtil.deleteLike(likeId)
-    .then(() => dispatch(removeLike(likeId)))
+    .then((payload) => dispatch(removeLike(payload.data)))
 )
