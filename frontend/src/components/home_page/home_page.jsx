@@ -1,6 +1,8 @@
 import React from 'react';
 // import "../../App.scss";
 // import Feed from '../feed/feed';
+import image from '../../css/components/DREAMERS-02.png'
+
 
 class HomePage extends React.Component {
 
@@ -13,7 +15,9 @@ class HomePage extends React.Component {
         return (
             <div className="logo" >
                 {/* <i class="fas fa-cloud logo-icon"></i> */}
-                <h1 className="logo-title">DREAMERS</h1>
+                {/* <h1 className="logo-title">DREAMERS</h1> */}
+                
+                <img className='nav-logo' src={image} alt="" />
                 {/* <div className="box"></div> */}
                 {/* <Feed
                     fetchDreams={this.props.fetchDreams}

@@ -7,10 +7,15 @@ class DreamItem extends React.Component {
         this.state = {
             tags: this.props.tags,
             showMenu: false,
+            timestamp: null
         }
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleOpenEditModal = this.handleOpenEditModal.bind(this);
         this.refreshAfterDelete = this.refreshAfterDelete.bind(this)
+    }
+
+    componentDidMount(){
+        this.setState({ timestamp: this.props.dream._id.toString().substring(0, 8)})
     }
 
     toggleEdit() {
@@ -49,6 +54,51 @@ class DreamItem extends React.Component {
         let { dream, currentUser} = this.props;
         let tags;
 
+        let date = new Date(parseInt(this.state.timestamp, 16) * 1000)
+        let month = date.getMonth()
+
+        switch (month) {
+            case 0:
+                month = "Jan"
+                break;
+            case 1:
+                month = "Feb"
+                break;
+            case 2:
+                month = "Mar"
+                break;
+            case 3:
+                month = "Apr"
+                break;
+            case 4:
+                month = "May"
+                break;
+            case 5:
+                month = "Jun"
+                break;
+            case 6:
+                month = "Jul"
+                break;
+            case 7:
+                month = "Aug"
+                break;
+            case 8:
+                month = "Sep"
+                break;
+            case 9:
+                month = "Oct"
+                break;
+            case 10:
+                month = "Nov"
+                break;
+            case 11:
+                month = "Dec"
+                break;
+
+            default:
+                break;
+        }
+
         if (this.state.tags) {
             tags =
                 this.state.tags.map((tag, idx) => {
@@ -56,7 +106,7 @@ class DreamItem extends React.Component {
                         return (
                             <Link to={`/tags/${tag}`} key={idx} style={{ textDecoration: 'none' }} >
                                 <div className="new-dream-tags-item-container" onClick={e => e.stopPropagation()} >
-                                    <div className="new-dream-tags-item-circle" ></div>
+                                    <div className={dream.type === "dream" ? "new-dream-tags-item-circle" : "new-goal-tags-item-circle"} ></div>
                                     <p className="new-dream-tags-item" >{tag}</p>
                                 </div>
                             </Link>
@@ -118,6 +168,8 @@ class DreamItem extends React.Component {
             </i>
         }
 
+        // console.log(dream._id)
+
         return (
             <div className={dream.type === "dream" ? "feed-dreams-wrapper" : "feed-goals-wrapper"} >
                 <div className="comment-options" onClick={()=>this.toggleMenu()} >
@@ -139,7 +191,8 @@ class DreamItem extends React.Component {
                         </div>
                         <p className="feed-dreams-info" >
                             <Link to={`/users/${dream.userId}`} className="feed-dreams-info-link" style={{ textDecoration: 'none' }}>
-                                {dream.username}
+                            {dream.username} <p className='dream-item-date'>{month} {date.getDate()}, {date.getFullYear()}</p>
+                            {/* <br /> */}
                             </Link>
                         </p>
                         <p className="feed-dreams-info" >{dream.text}</p>
