@@ -56,7 +56,7 @@ export const createLike = (dreamId, like) => dispatch => (
     .catch(err => console.error(err))
 )
 
-export const deleteLike = (likeId) => dispatch => (
-    LikeApiUtil.deleteLike(likeId)
+export const deleteLike = (likeId, dream) => dispatch => (
+    LikeApiUtil.deleteLike(likeId, dream)
     .then((payload) => dispatch(removeLike(payload.data)))
 )
