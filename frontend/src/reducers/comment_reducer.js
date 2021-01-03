@@ -1,6 +1,7 @@
 import {
     RECEIVE_COMMENTS, 
-    RECEIVE_COMMENT, 
+    RECEIVE_COMMENT,
+    RECEIVE_NEW_COMMENT,
     REMOVE_COMMENT,
     CLEAR_COMMENTS
 } from '../actions/comment_actions';
@@ -14,6 +15,7 @@ const CommentReducer = (oldState = {} , action) => {
                 newState[comment._id] = comment
             })
             return newState;
+        case RECEIVE_NEW_COMMENT:
         case RECEIVE_COMMENT:
             newState[action.comment._id] = action.comment
             return newState;
