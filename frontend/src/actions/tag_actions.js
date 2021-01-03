@@ -50,6 +50,11 @@ export const fetchExactTag = (tag) => dispatch => (
     .catch(err => receiveErrors(err))
 )
 
+export const createTag = (tag) => dispatch => (
+    TagApiUtil.createTag(tag)
+    .then(tag => dispatch(receiveTag(tag)))
+    .catch(err => console.log(err))
+)
 export const deleteTag = (tag) => dispatch => (
     TagApiUtil.deleteTag(tag)
     .then(()=> dispatch(removeTag(tag)))

@@ -21,10 +21,19 @@ const DreamSchema = new Schema({
     type: String,
     required: true
   },
-  comments: {
-    type: Array,
-    default: []
-  },
+  likes: [{
+    _id: false,
+    id: {
+    type: Schema.Types.ObjectId,
+    ref: 'likes'
+    }, 
+    username: {
+      type: String, 
+      required: true, 
+      unique: true
+    }
+  }],
+
   date: {
     type: Date,
     default: Date.now
