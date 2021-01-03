@@ -65,6 +65,10 @@ router.post('/follow/:userId',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
 
+    if (req.params.userId === req.user.id) {
+      res.status(400).json({ userauth: 'You cannot follow yourself'})
+    }
+
     var query1 = { _id: req.params.userId },
         update1 = { $push: { followers: req.user.username }},
         options1 = { new: true }
@@ -82,13 +86,14 @@ router.post('/follow/:userId',
       })
 
     })
+    .catch(err => res.status(400).json({ nouserfound: 'No user found with that userId'}))
   }
 )
 
 router.delete('/follow/:userId',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    
+
     var query1 = { _id: req.params.userId },
         update1 = { $pull: { followers: req.user.username }},
         options1 = { new: true }
