@@ -349,6 +349,7 @@
                             justify-content: space-around;
                             align-items: flex-end;
                             padding-top: 3px;
+                            position: relative;
 
                             .feed-dreams-footer-info {
                                 color: $dark-gray;
@@ -364,6 +365,50 @@
                                 .feed-dreams-footer-likes:hover {
                                     color: $magenta;
                                 }
+                            }
+
+                            .likes-popout-container {
+                                position: absolute;
+                                bottom: -10px;
+                                right: -40px;
+                                background-color: $off-white;
+                                border: 2px solid $dark-gray;
+                                border-radius: 5px;
+                                z-index: 2;
+                                width: 150px;
+                                max-width: 150px;
+                                max-height: 500px;
+                                overflow-y: scroll;
+
+                                &::-webkit-scrollbar { 
+                                    display: none;  /* Safari and Chrome */
+                                }
+
+                                .likes-popout-inner-container {
+                                    padding-top: 20px;
+                                    position: relative;
+
+                                    .close-popout-btn {
+                                        position: absolute;
+                                        top: 5px;
+                                        right: 5px;
+                                    }
+
+                                    .popout-item,
+                                    .popout-item-none {
+                                        color: $dark-gray;
+                                        padding: 5px;
+                                        font-family: $serif;
+                                        font-size: 14px;
+    
+                                    }
+                                    
+                                    .popout-item:hover {
+                                        color: $off-white;
+                                        background-color: $magenta;
+                                    }
+                                }
+                                
                             }
                         }
                     }
