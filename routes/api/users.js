@@ -81,7 +81,7 @@ router.post('/follow/:userId',
         update2 = { $addToSet: { followed: req.params.userId }}
     queries.push(User.findOneAndUpdate(queryParams2, update2, options).exec())
 
-    Promise.all(queries).then(results => res.json(results[1]));
+    Promise.all(queries).then(results => res.json(results));
   }
 )
 
@@ -99,7 +99,7 @@ router.delete('/follow/:userId',
         update2 = { $pull: { followed: req.params.userId }}
     queries.push(User.findOneAndUpdate(queryParams2, update2, options).exec())
 
-    Promise.all(queries).then(results => res.json(results[1]));
+    Promise.all(queries).then(results => res.json(results));
   }
 )
 

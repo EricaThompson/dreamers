@@ -6,7 +6,6 @@ import {
   SEARCH,
 } from '../actions/search_actions';
 
-
 const UserReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch (action.type) {
