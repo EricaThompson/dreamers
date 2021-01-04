@@ -55,7 +55,7 @@ class DreamItem extends React.Component {
         }
         this.props.createLike(this.props.dream._id, like)
             .then(res => this.setState({currentLike: res.like._id}))
-        window.location.reload()
+        // window.location.reload()
     }
 
     unlike(){
