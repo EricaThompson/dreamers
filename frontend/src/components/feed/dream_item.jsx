@@ -9,7 +9,6 @@ class DreamItem extends React.Component {
             showMenu: false,
             likes: [],
             numLikes: null,
-            // currentLike: '',
             propLikes: null,
             timestamp: null
         }
@@ -60,7 +59,6 @@ class DreamItem extends React.Component {
 
     unlike(){
         this.state.likes.forEach(like=>{
-            // debugger;
             if (like.username === this.props.currentUser.username){
                 this.props.deleteLike(like._id)
             }
