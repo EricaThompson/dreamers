@@ -130,17 +130,18 @@ class NewDream extends React.Component {
         // debugger;
         if (Object.values(this.props.searchResults).length > 0) {
         // if (this.props.searchResults) {
-            {Object.values(this.props.searchResults.tags).map((result, idx) => (
-                search = <div className="tag-search-results-outer-container" >
-                     <div className="tag-search-results-inner-container" onClick={() => this.handleTags(result.name)} key={idx} >
+            search = <div>
+                {Object.values(this.props.searchResults.tags).map((result, idx) => (
+                    <div className="tag-search-results-outer-container" >
+                         <div className="tag-search-results-inner-container" onClick={() => this.handleTags(result.name)} key={idx} >
                             <i class="fas fa-tag search-icon"></i>
                             {result.name}
                         </div>
-                    
                     </div>
-            ))}
+                ))}
+            </div>
         } else {
-            // return null;
+            search = null;
         }
 
         return (

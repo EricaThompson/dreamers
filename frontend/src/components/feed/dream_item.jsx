@@ -189,12 +189,12 @@ class DreamItem extends React.Component {
                                 {tags}
                             </div>
                         </div>
-                        <p className="feed-dreams-info" >
+                        <div className="feed-dreams-info" >
                             <Link to={`/users/${dream.userId}`} className="feed-dreams-info-link" style={{ textDecoration: 'none' }}>
                             {dream.username} <p className='dream-item-date'>{month} {date.getDate()}, {date.getFullYear()}</p>
                             {/* <br /> */}
                             </Link>
-                        </p>
+                        </div>
                         <p className="feed-dreams-info" >{dream.text}</p>
                    {/* </Link> */}
                     <div className="feed-dreams-footer" >
