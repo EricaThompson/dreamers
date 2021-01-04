@@ -34,7 +34,34 @@ class HomePage extends React.Component {
                 </div>
 
                 <img className='slogan-image' src={slogan} alt="" />
-
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                {/* <br /> */}
+                
                 <img className='nav-logo' src={image} alt="" />
                 {/* <div className="box"></div> */}
                 {/* <Feed
