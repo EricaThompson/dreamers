@@ -187,28 +187,27 @@ class DreamItem extends React.Component {
         >
         </i>
 
-        if (this.state.likes){
-            // console.log(this.state.likes)
-            this.state.likes.forEach(like => {
+        //! likes functionality
+        // if (this.state.likes){
+        //     // console.log(this.state.likes)
+        //     this.state.likes.forEach(like => {
                 
-                if(like.username === currentUser.username){
-                    likeIcon = <i
-                        className="fas fa-heart"
-                    // onClick={()=>this.unlike()}
-                    >
-                    </i>;
-                } else {
-                    likeIcon = <i
-                        className="far fa-heart"
-                        onClick={() => this.like()}
-                    >
-                    </i>
-                }
-                // console.log(this.state.likes[0].username)
-            })
-        } else {
-            console.log('not liked')
-        }
+        //         if(like.username === currentUser.username){
+        //             likeIcon = <i
+        //                 className="fas fa-heart"
+        //             // onClick={()=>this.unlike()}
+        //             >
+        //             </i>;
+        //         } else {
+        //             likeIcon = <i
+        //                 className="far fa-heart"
+        //                 onClick={() => this.like()}
+        //             >
+        //             </i>
+        //         }
+        //         // console.log(this.state.likes[0].username)
+        //     })
+        // } 
 
         
 
