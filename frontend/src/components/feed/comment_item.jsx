@@ -130,7 +130,7 @@ class CommentItem extends React.Component {
                     className="comment-item-container"
                     // onClick={()=>this.closeMenu()}
                 >
-                    <p className="comment-item-text" >
+                    <div className="comment-item-text" >
                         <Link to={`/users/${comment.userId}`} 
                             style={{ textDecoration: 'none' }} 
                             className="comment-item-text-link" >
@@ -140,7 +140,7 @@ class CommentItem extends React.Component {
                                 {optionsIcon}
                                 {menuOptions}
                         </div>
-                    </p>
+                    </div>
                     <p hidden={editHide} 
                         className="comment-item-text" >
                             <textarea
