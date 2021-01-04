@@ -11,11 +11,13 @@ class DreamItem extends React.Component {
             numLikes: null,
             // currentLike: '',
             propLikes: null,
-            timestamp: null
+            timestamp: null,
+            popout: false,
         }
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleOpenEditModal = this.handleOpenEditModal.bind(this);
-        this.refreshAfterDelete = this.refreshAfterDelete.bind(this)
+        this.refreshAfterDelete = this.refreshAfterDelete.bind(this);
+        this.handlePopOut = this.handlePopOut.bind(this);
     }
 
     componentDidMount(){
@@ -67,6 +69,10 @@ class DreamItem extends React.Component {
         })
         //!fix
         window.location.reload()
+    }
+
+    handlePopOut() {
+        this.setState({popout: !this.state.popout})
     }
 
     handleOpenModal(e) {
@@ -286,6 +292,23 @@ class DreamItem extends React.Component {
             </i>
         }
 
+        let popout;
+
+        if (this.state.likes.length > 0) {
+            popout = <div className="likes-popout-inner-container">
+                <span onClick={this.handlePopOut} className="close-popout-btn">&#x2715;</span>
+                {this.state.likes.map((like, idx) => {
+                    return <Link key={idx} to={`/users/${like.userId}`} style={{ textDecoration: 'none' }}>
+                        <div className="popout-item" >{like.username}</div>
+                    </Link>
+                })}
+            </div>
+        } else {
+            popout = <div className="likes-popout-inner-container" >
+                <span onClick={this.handlePopOut} className="close-popout-btn">&#x2715;</span>
+                <p className="popout-item-none" >Be the first to like!</p>
+            </div>
+        }
         
 
         // console.log(dream._id)
@@ -328,7 +351,15 @@ class DreamItem extends React.Component {
                    {/* </Link> */}
                     <div className="feed-dreams-footer" >
                         <p className="feed-dreams-footer-info" >{dream.comments ? dream.comments.length : 0} <span className="feed-dreams-footer-comments" >{dream.comments && dream.comments.length === 1 ? "comment" : "comments"}</span></p>
-                        <p className="feed-dreams-footer-info" >{this.state.likes.length} <span className="feed-dreams-footer-likes" >{this.state.likes.length === 1 ? "like" : "likes"}</span></p>
+                        <div className="feed-dreams-footer">
+
+                            <p className="feed-dreams-footer-info" onClick={(e) => e.stopPropagation()}>{this.state.likes.length} <span onClick={this.handlePopOut} className="feed-dreams-footer-likes" >{this.state.likes.length === 1 ? "like" : "likes"}</span></p>
+                            {this.state.popout ? 
+                                <div className="likes-popout-container" onClick={(e) => e.stopPropagation()} >
+                                    {popout} 
+                                </div>
+                            : ''}
+                        </div>
                     </div>
                 </div>
             </div>
