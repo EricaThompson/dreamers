@@ -7,7 +7,6 @@ const passport = require('passport');
 const path = require('path');
 
 const users = require('./routes/api/users');
-const goals = require('./routes/api/goals');
 const dreams = require('./routes/api/dreams');
 const comments = require('./routes/api/comments');
 
@@ -40,7 +39,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/api/users', users);
-app.use('/api/goals', goals);
 app.use('/api/dreams', dreams);
 app.use('/api/comments', comments);
 app.use('/api/tags', tags);
