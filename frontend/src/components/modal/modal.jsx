@@ -2,13 +2,14 @@ import React from 'react';
 import { closeModal, clearModalInfo } from '../../actions/modal_actions';
 import { createDream, updateDream } from '../../actions/dream_actions';
 import { connect } from 'react-redux';
-import NewDreamContainer from '../dreams/new_dream_container';
+import NewDream from '../dreams/new_dream';
 // import CommentGoalModal from '../feed/comment_goal_modal';
 import CommentDreamModal from '../feed/comment_dream_modal';
 import { fetchCommentsByDream, createComment, deleteComment } from '../../actions/comment_actions';
 import { updateComment } from '../../actions/comment_actions';
 import { resetErrors } from '../../actions/session_actions';
 import { fetchSearchResults, clearSearch } from '../../actions/search_actions';
+import { createTag } from '../../actions/tag_actions';
 
 class Modal extends React.Component {
     constructor(props) {
@@ -23,14 +24,14 @@ class Modal extends React.Component {
     }
 
     render() {
-        let { modal, currentUser, info, fetchCommentsByDream, comments, createComment, clearModalInfo, updateComment, errors, clearSearch, fetchSearchResults, searchResults } = this.props;
+        let { modal, currentUser, info, fetchCommentsByDream, comments, createComment, clearModalInfo, updateComment, errors, clearSearch, fetchSearchResults, searchResults, createTag, createDream, updateDream } = this.props;
         if (!modal) {
             return null;
         }
         let component;
         switch (modal) {
             case 'newDream':
-                component = <NewDreamContainer
+                component = <NewDream
                     currentUser={currentUser}
                     createDream={createDream}
                     updateDream={updateDream}
@@ -40,6 +41,8 @@ class Modal extends React.Component {
                     clearSearch={clearSearch}
                     fetchSearchResults={fetchSearchResults}
                     searchResults={searchResults}
+                    createTag={createTag}
+                    closeModal={closeModal}
                 />;
                 break;
             // case 'commentGoal':
@@ -106,6 +109,7 @@ const mapDTP = dispatch => ({
     deleteComment: (commentId) => dispatch(deleteComment(commentId)),
     fetchSearchResults: (searchParams) => dispatch(fetchSearchResults(searchParams)),
     clearSearch: () => dispatch(clearSearch()),
+    createTag: (tag) => dispatch(createTag(tag)),
 })
 
 export default connect(mapSTP, mapDTP)(Modal);
