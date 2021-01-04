@@ -25,6 +25,7 @@ class Profile extends React.Component {
 
     componentDidMount() {
         this.props.closeModal();
+        this.props.clearSearch();
         this.props.clearModalInfo();
         this.props.fetchDreamsByUser(this.props.match.params.userId)
         this.props.fetchUserById(this.props.match.params.userId)
@@ -44,6 +45,12 @@ class Profile extends React.Component {
         // console.log('props dreams',this.props.dreams)
         // console.log('state dreams', this.state.userDreams)
             // .then(res => this.setState({userDreams: res}))
+    }
+
+    componentDidUpdate(nextProps) {
+        if (nextProps.location.pathname !== this.props.location.pathname) {
+            window.location.reload();
+        }
     }
 
     componentWillUnmount() {
@@ -236,6 +243,10 @@ class Profile extends React.Component {
                         modalInfo={modalInfo}
                         closeModal={closeModal}
                         deleteDream={deleteDream}
+                        searchResults={this.props.searchResults}
+                        fetchSearchResults={this.props.fetchSearchResults}
+                        clearSearch={this.props.clearSearch}
+                        isModalOpen={this.props.isModalOpen}
                     />
                 </div>
                 

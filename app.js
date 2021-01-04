@@ -9,7 +9,9 @@ const path = require('path');
 const users = require('./routes/api/users');
 const dreams = require('./routes/api/dreams');
 const comments = require('./routes/api/comments');
-const tags = require('./routes/api/tags');
+
+const tags = require('./routes/api/tags')
+const likes = require('./routes/api/likes')
 const search = require('./routes/api/search');
 
 if (process.env.NODE_ENV === 'production') {
@@ -40,7 +42,9 @@ app.use('/api/users', users);
 app.use('/api/dreams', dreams);
 app.use('/api/comments', comments);
 app.use('/api/tags', tags);
+app.use('/api/likes', likes)
 app.use('/api/search', search);
+
 
 const port = process.env.PORT || 5000; 
 

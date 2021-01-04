@@ -2,11 +2,14 @@ import React from 'react';
 import { closeModal, clearModalInfo } from '../../actions/modal_actions';
 import { createDream, updateDream } from '../../actions/dream_actions';
 import { connect } from 'react-redux';
-import NewDreamContainer from '../dreams/new_dream_container';
+import NewDream from '../dreams/new_dream';
 // import CommentGoalModal from '../feed/comment_goal_modal';
 import CommentDreamModal from '../feed/comment_dream_modal';
 import { fetchCommentsByDream, createComment, deleteComment } from '../../actions/comment_actions';
 import { updateComment } from '../../actions/comment_actions';
+import { resetErrors } from '../../actions/session_actions';
+import { fetchSearchResults, clearSearch } from '../../actions/search_actions';
+import { createTag } from '../../actions/tag_actions';
 
 class Modal extends React.Component {
     constructor(props) {
@@ -17,21 +20,29 @@ class Modal extends React.Component {
     handleCloseModal(e) {
         this.props.closeModal();
         this.props.clearModalInfo();
+        this.props.clearSearch();
     }
 
     render() {
-        let { modal, currentUser, info, fetchCommentsByDream, comments, createComment, clearModalInfo, updateComment } = this.props;
+        let { modal, currentUser, info, fetchCommentsByDream, comments, createComment, clearModalInfo, updateComment, errors, clearSearch, fetchSearchResults, searchResults, createTag, createDream, updateDream } = this.props;
         if (!modal) {
             return null;
         }
         let component;
         switch (modal) {
             case 'newDream':
-                component = <NewDreamContainer
+                component = <NewDream
                     currentUser={currentUser}
                     createDream={createDream}
                     updateDream={updateDream}
                     info={info}
+                    resetErrors={resetErrors}
+                    errors={errors}
+                    clearSearch={clearSearch}
+                    fetchSearchResults={fetchSearchResults}
+                    searchResults={searchResults}
+                    createTag={createTag}
+                    closeModal={closeModal}
                 />;
                 break;
             // case 'commentGoal':
@@ -54,6 +65,9 @@ class Modal extends React.Component {
                     clearModalInfo={clearModalInfo}
                     currentUser={currentUser}
                     updateComment={updateComment}
+                    resetErrors={resetErrors}
+                    errors={errors}
+
                 />;
                 break;
             default:
@@ -77,7 +91,9 @@ const mapSTP = state => {
         modal: state.ui.modal,
         currentUser: state.session.user,
         info: state.modalInfo,
-        comments: state.comment
+        comments: state.comment,
+        errors: state.errors.session,
+        searchResults: state.search
     }
 }
 
@@ -89,7 +105,11 @@ const mapDTP = dispatch => ({
     createComment: (dreamId, comment) => dispatch(createComment(dreamId, comment)),
     clearModalInfo: () => dispatch(clearModalInfo()),
     updateComment: (commentId, comment) => dispatch(updateComment(commentId, comment)),
-    deleteComment: (commentId) => dispatch(deleteComment(commentId))
+    resetErrors: () => dispatch(resetErrors()),
+    deleteComment: (commentId) => dispatch(deleteComment(commentId)),
+    fetchSearchResults: (searchParams) => dispatch(fetchSearchResults(searchParams)),
+    clearSearch: () => dispatch(clearSearch()),
+    createTag: (tag) => dispatch(createTag(tag)),
 })
 
 export default connect(mapSTP, mapDTP)(Modal);
