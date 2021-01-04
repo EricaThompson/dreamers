@@ -28,6 +28,8 @@ The frontend of our application is a mobile-first, fully responsive to all viewp
 - bCrypt for password salting
 
 ### Frontend
+The design of Dreamers was intended to evoke the whimsical nature of dreams. We were inspired by our background image and logo artists and desired to create a cohesive portrait of a dreamscape. With the use of color and shape, we differentiated dreams and goals to help users keep track of their journal entries. We desired to create a playful landscape for users to enter their personal thoughts and share with each other their inner thoughts.
+
 One of the exciting features of the DREAMERS app is the search functionality. In a single search bar, a user can search through dreams, goals, users, and tags. Each search item opens the correct item, whether it be a modal, or a tag thread. In addition to the main search feature, there is also a tag search feature. When building a new dream or goal, a user can wade through existing tags to connect their dreams with other users. This functionality is also tied into a create tag feature, so if a user does not find a tag that is to their liking, they can make a new one!
 
 ```js
