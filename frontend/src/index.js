@@ -39,10 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.store = store
   window.fetchLike = fetchLike
-  window.fetchLikesByDream = fetchLikesByDream
-  window.fetchLikesByUser = fetchLikesByUser
-  window.createLike = createLike 
-  window.deleteLike = deleteLike
+  // window.fetchLikesByDream = fetchLikesByDream
+  // window.fetchLikesByUser = fetchLikesByUser
+  // window.createLike = createLike 
+  // window.deleteLike = deleteLike
 
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);

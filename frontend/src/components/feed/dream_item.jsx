@@ -7,8 +7,10 @@ class DreamItem extends React.Component {
         this.state = {
             tags: this.props.tags,
             showMenu: false,
-            like: this.props.like,
-            numLikes: null
+            likes: this.props.like,
+            numLikes: null,
+            currentLike: null,
+            propLikes: null
         }
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleOpenEditModal = this.handleOpenEditModal.bind(this);
@@ -18,7 +20,7 @@ class DreamItem extends React.Component {
     componentDidMount(){
         // this.props.fetchLike(this.props.dream._id)
         this.props.fetchLikesByDream(this.props.dream._id)
-            .then(res => this.setState({numLikes: res.likes.length}))
+            .then(res => this.setState({likes: res.likes}))
         
     }
 
@@ -48,6 +50,7 @@ class DreamItem extends React.Component {
             userId: this.props.currentUser._id,
         }
         this.props.createLike(this.props.dream._id, like)
+            .then(res => this.setState({currentLike: res.like._id}))
     }
 
     // unlike(){
@@ -68,7 +71,8 @@ class DreamItem extends React.Component {
     }
 
     render() {
-        console.log('like?', this.state.numLikes)
+        // console.log('like?', this.state.numLikes)
+        // console.log('current like',this.state.currentLike)
 
         let { dream, 
             currentUser, 
@@ -104,16 +108,55 @@ class DreamItem extends React.Component {
         let flagIcon;
         let menuOptions;
         let optionsIcon;
-        let like = <i
-                        className="fas fa-heart"
-                        onClick={() => this.like()}
-                    >
-                    </i>
-        let unlike = <i 
-                        className="far fa-heart"
-                        // onClick={()=>this.unlike()}
-                    >
-                    </i>;
+        let likeIcon;
+        // let unlike;
+
+        // if (this.state.currentLike){
+        //     unlike = <i
+        //         className="fas fa-heart"
+        //     // onClick={()=>this.unlike()}
+        //     >
+        //     </i>;
+
+
+        // } else {
+        //     like = <i
+        //         className="far fa-heart"
+        //         onClick={() => this.like()}
+        //     >
+        //     </i>
+        // }
+
+
+        // if (dream.username){
+        //     console.log(dream.username)
+        // }
+
+        // if (this.state.likes){
+        //     console.log(this.state.likes)
+        //     this.state.likes.forEach(like => {
+                
+        //         if(like.username === currentUser.username){
+        //             likeIcon = <i
+        //                 className="fas fa-heart"
+        //             // onClick={()=>this.unlike()}
+        //             >
+        //             </i>;
+        //         } else {
+        //             likeIcon = <i
+        //                 className="far fa-heart"
+        //                 onClick={() => this.like()}
+        //             >
+        //             </i>
+        //         }
+        //         // console.log(this.state.likes[0].username)
+        //     })
+        // } else {
+        //     console.log('not liked')
+        // }
+
+        
+        
 
 
         // console.log('current', dream.username, currentUser.username)
@@ -158,8 +201,8 @@ class DreamItem extends React.Component {
                 className="fas fa-ellipsis-h"
                 onClick={() => this.toggleMenu()}>
                     <br />
-                    {like}
-                    {unlike}
+                    {likeIcon}
+                    {/* {unlike} */}
             </i>
         }
 
@@ -192,7 +235,7 @@ class DreamItem extends React.Component {
                    {/* </Link> */}
                     <div className="feed-dreams-footer" >
                         <p className="feed-dreams-footer-info" >{dream.comments ? dream.comments.length : 0} <span className="feed-dreams-footer-comments" >{dream.comments && dream.comments.length === 1 ? "comment" : "comments"}</span></p>
-                        <p className="feed-dreams-footer-info" >{this.state.numLikes} <span className="feed-dreams-footer-likes" >likes</span></p>
+                        <p className="feed-dreams-footer-info" >{this.state.likes.length} <span className="feed-dreams-footer-likes" >likes</span></p>
                     </div>
                 </div>
             </div>
