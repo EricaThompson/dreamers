@@ -64,13 +64,16 @@ class NewDream extends React.Component {
             tags: this.state.tags
         }
         // debugger;
-        if (this.props.info) {
-            this.props.updateDream(this.props.info._id, newDream);
+        if (Object.values(this.props.info).length === 0) {
+        // if (this.props.info) {
+
+            this.props.createDream(newDream);
+            // debugger;
             // console.log('update dream', { dream: newDream })
         } else {
             // console.log('new dream', newDream)
             // this.props.createDream({dream: newDream});
-            this.props.createDream(newDream);
+            this.props.updateDream(this.props.info._id, newDream);
             // debugger;
         }
 

@@ -139,23 +139,25 @@
         z-index: -3;
         overflow: scroll;
         overflow-x: hidden;
-
-            .feed-dreams-container {
-                width: 90%;
-                padding-bottom: 100px;
-
-                
-
-                .feed-dreams-wrapper,
-                .feed-goals-wrapper {
-                    padding-top: 20px;
-                    position: relative;
+        
+        .feed-dreams-container {
+            width: 90%;
+            padding-bottom: 100px;
+            
+            
+            
+            .feed-dreams-wrapper,
+            .feed-goals-wrapper {
+                padding-top: 20px;
+                position: relative;
+                cursor: pointer;
 
                     .dream-item-date {
                         font-size: 10px;
                         font-family: $serif;
                         color: $dark-gray;
                         padding: 2px 0px;
+                        cursor: pointer;
                     }
                     
 
