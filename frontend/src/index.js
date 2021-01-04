@@ -6,6 +6,10 @@ import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
 
+import {
+  createDream,
+} from './actions/dream_actions'
+
 import { 
   createLike, 
   fetchLike, 
@@ -13,6 +17,11 @@ import {
   fetchLikesByUser, 
   deleteLike
 } from './actions/like_actions'
+
+import {
+  createTag,
+  deleteTag,
+} from './actions/tag_actions'
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -43,6 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fetchLikesByDream = fetchLikesByDream
   window.fetchLikesByUser = fetchLikesByUser
   window.deleteLike = deleteLike
+  window.createTag = createTag
+  window.deleteTag = deleteTag
+  window.createDream = createDream
 
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);

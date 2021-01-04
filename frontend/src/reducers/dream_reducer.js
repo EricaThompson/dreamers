@@ -25,13 +25,10 @@ const DreamReducer = (oldState = {}, action) => {
                 newState[dream._id] = dream
             })
             return newState;
-<<<<<<< HEAD
-        case RECEIVE_LIKE:
-        case REMOVE_LIKE:
-=======
         case RECEIVE_NEW_COMMENT:
         case REMOVE_COMMENT:
->>>>>>> 3df26c33f5a7457a79d9b32c9551e5fd43a3379a
+        case RECEIVE_LIKE:
+        case REMOVE_LIKE:
         case RECEIVE_DREAM:
             newState[action.dream._id] = action.dream; 
             return newState;

@@ -20,12 +20,14 @@ class NewDream extends React.Component {
                 dreamText: this.props.info.text,
                 searchValue: '',
                 tags: this.props.info.tags,
+                showClose: false,
             }
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSearchChange = this.handleSearchChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleTags = this.handleTags.bind(this);
+        this.addTag = this.addTag.bind(this);
         this.removeTag = this.removeTag.bind(this);
         this.hideShow = this.hideShow.bind(this);
     }
@@ -62,13 +64,14 @@ class NewDream extends React.Component {
             tags: this.state.tags
         }
         // debugger;
-        if (this.props.info.userId) {
+        if (this.props.info) {
             this.props.updateDream(this.props.info._id, newDream);
             // console.log('update dream', { dream: newDream })
         } else {
             // console.log('new dream', newDream)
             // this.props.createDream({dream: newDream});
             this.props.createDream(newDream);
+            debugger;
         }
 
         this.props.closeModal()
@@ -85,6 +88,12 @@ class NewDream extends React.Component {
         this.setState({ tags: newTags, showClose: false, searchValue: '' })
         this.props.clearSearch();
         // debugger;
+    }
+
+    addTag() {
+        // debugger;
+        this.props.createTag({tag: this.state.searchValue});
+        this.handleTags(this.state.searchValue);
     }
 
     removeTag(tag) {
@@ -118,18 +127,21 @@ class NewDream extends React.Component {
         }
 
         let search;
+        // debugger;
         if (Object.values(this.props.searchResults).length > 0) {
-            {Object.values(this.props.searchResults.tags).map((result, idx) => {
-                search = <div className="tag-search-results-outer-container" >
-                    {/* //  <Link to={refer} style={{ textDecoration: 'none' }}  > */}
-                     <div className="tag-search-results-inner-container" onClick={() => this.handleTags(result.name)} key={idx} >
+        // if (this.props.searchResults) {
+            search = <div>
+                {Object.values(this.props.searchResults.tags).map((result, idx) => (
+                    <div className="tag-search-results-outer-container" >
+                         <div className="tag-search-results-inner-container" onClick={() => this.handleTags(result.name)} key={idx} >
                             <i class="fas fa-tag search-icon"></i>
                             {result.name}
                         </div>
-                    
-                    {/* // </Link> */}
                     </div>
-                })}
+                ))}
+            </div>
+        } else {
+            search = null;
         }
 
         return (
@@ -161,7 +173,7 @@ class NewDream extends React.Component {
                         {tags}
                     </div>
                 </div>
-                <div className="create-dream-container" >
+                <div className="create-dream-container" onClick={e => e.stopPropagation()} >
                     <div className="create-dream-search-container" >
                         <i className="fas fa-search dream-search-icon"></i>
                         <form 
@@ -175,7 +187,8 @@ class NewDream extends React.Component {
                                     className="create-dream-search-input" 
                                 />
                         </form>
-                        <i onClick={this.hideShow} className={this.state.showClose ? "fas fa-times-circle close-search-btn" : ''}></i>
+                        <i onClick={this.addTag} onSubmit={e => e.stopPropagation()} className={this.state.showClose ? "fas fa-check-circle search-check-btn" : ''}></i>
+                        <i onClick={this.hideShow} onSubmit={e => e.stopPropagation()} className={this.state.showClose ? "fas fa-times-circle close-search-btn" : ''}></i>
                     </div>
                     {search}
                 </div>

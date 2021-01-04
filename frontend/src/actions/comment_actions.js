@@ -59,7 +59,7 @@ export const fetchCommentsByUser = (userId) => dispatch => (
 
 export const createComment = (dreamId, comment) => dispatch => (
     CommentApiUtil.createComment(dreamId, comment)
-    .then(comment => dispatch(receiveComment(comment.data)))
+    .then(comment => dispatch(receiveNewComment(comment.data)))
     .catch(err => receiveErrors(err))
 )
 

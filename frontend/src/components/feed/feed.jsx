@@ -137,8 +137,13 @@ class Feed extends React.Component {
 
         let search;
         if (Object.values(searchResults).length > 0 && !this.props.isModalOpen) {
+        // if (searchResults && !this.props.isModalOpen) {
+
             search = <div className="search-results-outer-container" >
                 {Object.values(searchResults.dreams).map((result, idx) => {
+                    // {
+                        // searchResults.dreams.map((result, idx) => {
+
                     return <SearchItem key={idx} dream={result} type={"dream"} text={result.text} clearComments={clearComments} fetchCommentsByDream={fetchCommentsByDream} openModal={openModal} modalInfo={modalInfo} clearSearch={clearSearch} />
                 })}
                 {Object.values(searchResults.tags).map((result, idx) => {
