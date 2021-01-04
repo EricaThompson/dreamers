@@ -17,6 +17,7 @@ const RootReducer = combineReducers({
     dream, 
     comment,
     user,
+    search,
     modalInfo, 
     tag, 
     like

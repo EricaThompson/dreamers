@@ -17,6 +17,7 @@ class CommentDreamModal extends React.Component {
     componentDidMount() {
         // debugger;
         // this.props.fetchCommentsByDream(this.props.info._id)
+        this.props.resetErrors();
     }
 
     componentWillUnmount() {
@@ -40,7 +41,7 @@ class CommentDreamModal extends React.Component {
     }
 
     render() {
-        let { info, comments } = this.props;
+        let { info, comments, errors } = this.props;
 
         let commentFeed;
 
@@ -56,6 +57,7 @@ class CommentDreamModal extends React.Component {
                                     updateComment={this.props.updateComment}
                                     currentUser={this.props.currentUser}
                                     deleteComment={this.props.deleteComment}
+                                    errors={this.props.errors}
                                 />
                     })}
                 </div>
@@ -87,6 +89,9 @@ class CommentDreamModal extends React.Component {
                                 <input className="comment-btn" type="submit" value="Create Comment" onClick={this.handleSubmit} />
                             </div>
                         </form>
+                        <div className="session-errors-container">
+                            {errors.map(err => <p className="session-errors" >{err}</p>)}
+                        </div>
                         <div className="comment-feed-container" >{commentFeed}</div>
                     </div>
                 </div>

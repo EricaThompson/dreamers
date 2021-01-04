@@ -12,6 +12,20 @@
         height: 64px;
         z-index: 10;
 
+        .logo {
+            width: 20px;
+            height: 20px;
+
+            .nav-logo {
+                position: absolute;
+                z-index: 10;
+                top: -32px;
+                left: -20px;
+                height: 130px;
+                width: auto;
+            }
+        }
+
         .nav-title {
             margin-top: 10px;
             margin-left: 25px;
