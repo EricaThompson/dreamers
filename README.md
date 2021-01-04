@@ -1,6 +1,4 @@
-# dreamers
-
-Production README - make sure it has:
+# DREAMERS
 
 DREAMERS is a social dream and goals journal that allows dreamers to connect based on dreams they had the night before or goals they want to create in the future. Our goal was to create a very feature-rich, intuitive experience for our users to share and collaborate in a new way.
 
