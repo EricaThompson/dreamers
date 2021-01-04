@@ -173,8 +173,10 @@ class DreamItem extends React.Component {
         return (
             <div className={dream.type === "dream" ? "feed-dreams-wrapper" : "feed-goals-wrapper"} onClick={this.handleOpenModal}>
                 <div className="comment-options" onClick={()=>this.toggleMenu()} >
-                    {optionsIcon}
-                    {menuOptions}
+                    <div onClick={(e) => e.stopPropagation()}>
+                        {optionsIcon}
+                        {menuOptions}
+                    </div>
                 </div>
                 <div className={dream.type === "dream" ? "feed-dreams" : "feed-goals"}   >
                    {/* <Link to={`/dreams/${dream._id}`} style={{ textDecoration: 'none' }} > */}
