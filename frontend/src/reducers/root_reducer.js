@@ -7,6 +7,7 @@ import comment from './comment_reducer';
 import user from './user_reducer';
 import tag from './tag_reducers';
 import search from './search_reducer';
+import follow from './follow_reducer';
 import modalInfo from './modal_info_reducer';
 
 const RootReducer = combineReducers({
@@ -18,6 +19,7 @@ const RootReducer = combineReducers({
     user,
     tag,
     search,
+    follow,
     modalInfo,
 });
 
