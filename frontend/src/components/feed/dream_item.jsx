@@ -171,12 +171,14 @@ class DreamItem extends React.Component {
         // console.log(dream._id)
 
         return (
-            <div className={dream.type === "dream" ? "feed-dreams-wrapper" : "feed-goals-wrapper"} >
+            <div className={dream.type === "dream" ? "feed-dreams-wrapper" : "feed-goals-wrapper"} onClick={this.handleOpenModal}>
                 <div className="comment-options" onClick={()=>this.toggleMenu()} >
-                    {optionsIcon}
-                    {menuOptions}
+                    <div onClick={(e) => e.stopPropagation()}>
+                        {optionsIcon}
+                        {menuOptions}
+                    </div>
                 </div>
-                <div className={dream.type === "dream" ? "feed-dreams" : "feed-goals"}  onClick={this.handleOpenModal} >
+                <div className={dream.type === "dream" ? "feed-dreams" : "feed-goals"}   >
                    {/* <Link to={`/dreams/${dream._id}`} style={{ textDecoration: 'none' }} > */}
                    {dream.type === "dream" ? 
                         <div>
@@ -189,11 +191,12 @@ class DreamItem extends React.Component {
                                 {tags}
                             </div>
                         </div>
-                        <div className="feed-dreams-info" >
+                    <div className="feed-dreams-info" >
                             <Link to={`/users/${dream.userId}`} className="feed-dreams-info-link" style={{ textDecoration: 'none' }}>
-                            {dream.username} <p className='dream-item-date'>{month} {date.getDate()}, {date.getFullYear()}</p>
+                                {dream.username} 
                             {/* <br /> */}
                             </Link>
+                            <p className='dream-item-date'>{month} {date.getDate()}, {date.getFullYear()}</p>
                         </div>
                         <p className="feed-dreams-info" >{dream.text}</p>
                    {/* </Link> */}
