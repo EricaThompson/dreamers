@@ -1,6 +1,6 @@
 import { MODAL_INFO, CLEAR_MODAL_INFO } from '../actions/modal_actions';
 
-const ModalInfoReducer = (oldState = null, action) => {
+const ModalInfoReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
 
     switch (action.type) {
