@@ -18,6 +18,9 @@ class Profile extends React.Component {
             bio: null,
             location: null,
             timestamp: null,
+            likes: [],
+            numLikes: null,
+            propLikes: null,
         }
         // this.handleChange = this.handleChange.bind(this);
         // this.handleSelected = this.handleSelected.bind(this);
@@ -37,6 +40,11 @@ class Profile extends React.Component {
                 location: res.user.location,
                 bio: res.user.bio
             }))
+
+        // this.props.fetchLikesByDream(this.props.dream._id)
+        //     .then(res => this.setState({ likes: res.likes }))
+        //     .then(this.setState({ propLikes: this.props.like }))
+
             // .then(res => this.setState({ }))
             // .then(res => console.log(res))
         // this.props.fetchDreams()
@@ -57,6 +65,28 @@ class Profile extends React.Component {
         this.props.clearDreams();
         this.props.clearModalInfo();
     }
+
+    // like() {
+    //     let like = {
+    //         username: this.props.dream.username,
+    //         dreamId: this.props.dream._id,
+    //         userId: this.props.currentUser._id,
+    //     }
+    //     this.props.createLike(this.props.dream._id, like)
+    //         .then(res => this.setState({ currentLike: res.like._id }))
+    //     // window.location.reload()
+    // }
+
+    // unlike() {
+    //     this.state.likes.forEach(like => {
+    //         // debugger;
+    //         if (like.username === this.props.currentUser.username) {
+    //             this.props.deleteLike(like._id)
+    //         }
+    //     })
+    //     //!fix
+    //     window.location.reload()
+    // }
 
     handleChange(value) {
         return e => {
@@ -114,7 +144,7 @@ class Profile extends React.Component {
                     </button>
         }
 
-        let { openModal, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo, currentUser, closeModal, deleteDream } = this.props;
+        let { openModal, dream, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo, currentUser, closeModal, deleteDream, fetchLike, createLike, deleteLike, fetchLikesByDream } = this.props;
         if (!dreams) return null;
         // console.log('user', this.props.user._id.toString().substring(0, 8))
         // console.log(this.state.timestamp.getMonth())
@@ -247,6 +277,11 @@ class Profile extends React.Component {
                         fetchSearchResults={this.props.fetchSearchResults}
                         clearSearch={this.props.clearSearch}
                         isModalOpen={this.props.isModalOpen}
+                        fetchLike={fetchLike}
+                        createLike={createLike}
+                        deleteLike={deleteLike}
+                        fetchLikesByDream={fetchLikesByDream}
+                        dream={dreams}
                     />
                 </div>
                 
