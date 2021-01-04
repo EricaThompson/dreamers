@@ -6,6 +6,81 @@
     //     color: $dark-gray;
     //     // opacity: .7;
     // }
+    // width: 20px;
+    // height: 20px;
+
+    .star-image-1 {
+        position: absolute;
+        z-index: 10;
+        top: 102px;
+        left: 10px;
+        height: 200px;
+        width: auto;
+    }
+
+    .star-image-2 {
+        position: absolute;
+        z-index: 10;
+        top: 192px;
+        right: 10px;
+        height: 120px;
+        width: auto;
+    }
+
+    .star-image-3 {
+        position: absolute;
+        z-index: 10;
+        top: 622px;
+        left: 10px;
+        height: 120px;
+        width: auto;
+    }
+
+    .star-image-4 {
+        position: absolute;
+        z-index: 10;
+        top: 732px;
+        right: 10px;
+        height: 120px;
+        width: auto;
+    }
+
+    .slogan-image {
+        position: absolute;
+        top: 200px;
+        right: 0px;
+        height: 170px;
+        width: auto;
+        display: none;
+    }
+
+    .dreams-image {
+        position: absolute;
+        // position: absolute;
+        z-index: 10;
+        top: 402px;
+        right: 10px;
+        height: 200px;
+        width: auto;
+        // box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    }
+
+    .goals-image {
+        position: absolute;
+        // position: absolute;
+        z-index: 10;
+        top: 402px;
+        left: 17px;
+        height: 200px;
+        width: auto;
+        // box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    }
+
+
+    // .nav-logo {
+    //     // margin-top: 580px;
+    //     // box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    // }
 
     .logo-title {
         font-family: $bold;
