@@ -7,6 +7,10 @@ class DreamItem extends React.Component {
         this.state = {
             tags: this.props.tags,
             showMenu: false,
+            likes: [],
+            numLikes: null,
+            // currentLike: '',
+            propLikes: null,
             timestamp: null
         }
         this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -15,7 +19,14 @@ class DreamItem extends React.Component {
     }
 
     componentDidMount(){
+        // this.props.fetchLike(this.props.dream._id)
+        this.props.fetchLikesByDream(this.props.dream._id)
+            .then(res => this.setState({likes: res.likes}))
+            .then(this.setState({propLikes: this.props.like}))
+        
         this.setState({ timestamp: this.props.dream._id.toString().substring(0, 8)})
+
+
     }
 
     toggleEdit() {
@@ -34,7 +45,28 @@ class DreamItem extends React.Component {
         this.props.deleteDream(dreamId)
         //! fix this
             .then(window.location.reload())
-        
+    }
+
+    like(){
+        let like = {
+            username: this.props.dream.username,
+            dreamId: this.props.dream._id,
+            userId: this.props.currentUser._id,
+        }
+        this.props.createLike(this.props.dream._id, like)
+            .then(res => this.setState({currentLike: res.like._id}))
+        window.location.reload()
+    }
+
+    unlike(){
+        this.state.likes.forEach(like=>{
+            // debugger;
+            if (like.username === this.props.currentUser.username){
+                this.props.deleteLike(like._id)
+            }
+        })
+        //!fix
+        window.location.reload()
     }
 
     handleOpenModal(e) {
@@ -51,7 +83,13 @@ class DreamItem extends React.Component {
     }
 
     render() {
-        let { dream, currentUser} = this.props;
+        // console.log('like?', this.state.numLikes)
+        // console.log('current like',this.state.currentLike)
+
+        let { dream, 
+            currentUser, 
+            // createLike
+        } = this.props;
         let tags;
 
         let date = new Date(parseInt(this.state.timestamp, 16) * 1000)
@@ -127,9 +165,82 @@ class DreamItem extends React.Component {
         let flagIcon;
         let menuOptions;
         let optionsIcon;
+        let likeIcon;
+        // let unlike;
+
+        // if (this.state.currentLike){
+        //     unlike = <i
+        //         className="fas fa-heart"
+        //     // onClick={()=>this.unlike()}
+        //     >
+        //     </i>;
+
+
+        // } else {
+        //     like = <i
+        //         className="far fa-heart"
+        //         onClick={() => this.like()}
+        //     >
+        //     </i>
+        // }
+
+
+        // if (dream.username){
+        //     console.log(dream.username)
+        // }
+
+        ////////////////////////////
+
+        likeIcon = <i
+            className="far fa-heart"
+            onClick={() => this.like()}
+        >
+        </i>
+
+        //! likes functionality
+        if (this.state.likes){
+            // console.log(this.state.likes)
+            this.state.likes.forEach(like => {
+                
+                if(like.username === currentUser.username){
+                    likeIcon = <i
+                        className="fas fa-heart"
+                        onClick={()=>this.unlike()}
+                    >
+                    </i>;
+                    
+                } else {
+                    likeIcon = <i
+                        className="far fa-heart"
+                        onClick={() => this.like()}
+                    >
+                    </i>
+                }
+                // console.log(this.state.likes[0].username)
+            })
+        } 
+
+
+        // this.state.likes.forEach(like => {
+
+        // })
+
+        
+
+        
+        
+
 
         // console.log('current', dream.username, currentUser.username)
         if (dream.username === currentUser.username) {
+            optionsIcon = <i
+                            className="fas fa-ellipsis-h"
+                            onClick={() => this.toggleMenu()}>
+                            <br />
+                            {likeIcon}
+                            {/* {unlike} */}
+                        </i>
+
             editIcon = <div
                             className="icon"
                             onClick={this.handleOpenEditModal}
@@ -140,44 +251,58 @@ class DreamItem extends React.Component {
                             className='icon'
                             onClick={()=> this.refreshAfterDelete(dream._id)}
                         >
-                            <i className="fas fa-trash-alt"></i>
+                            <i 
+                                className="fas fa-trash-alt"
+                            >
+                            </i>
                         </div>
         } else {
             //!if (!comment.author.followers.includes(currentUser))
-            followIcon = <div className="icon">
-                            <i className="fas fa-user-plus"></i>
-                        </div>
-            flagIcon = <div className="icon">
-                            <i className="fas fa-flag"></i>
-                        </div>
+            // followIcon = <div className="icon">
+            //                 <i className="fas fa-user-plus"></i>
+            //             </div>
+            // flagIcon = <div className="icon">
+            //                 <i className="fas fa-flag"></i>
+            //             </div>
         }
 
         if (this.state.showMenu) {
             optionsIcon = <p onClick={() => this.toggleMenu()}>✕</p>
+            
             menuOptions = <div className='available-options'>
                 {editIcon}
                 {deleteIcon}
-                {followIcon}
+                {/* {followIcon} */}
                 {/* maybe links to a contact form with their username?*/}
-                {flagIcon}
+                {/* {flagIcon} */}
             </div>
-        } else {
+        } else if (dream.username === currentUser.username){
             optionsIcon = <i
                 className="fas fa-ellipsis-h"
                 onClick={() => this.toggleMenu()}>
+                    <br />
+                    
+                    {/* {unlike} */}
             </i>
         }
+
+        
 
         // console.log(dream._id)
 
         return (
             <div className={dream.type === "dream" ? "feed-dreams-wrapper" : "feed-goals-wrapper"} onClick={this.handleOpenModal}>
-                <div className="comment-options" onClick={()=>this.toggleMenu()} >
-                    <div onClick={(e) => e.stopPropagation()}>
-                        {optionsIcon}
-                        {menuOptions}
-                    </div>
+                <div className="comment-options" onClick={() => this.toggleMenu(), (e) => e.stopPropagation() } >
+                    {optionsIcon}
+                    <br />
+                    {likeIcon}
+                    {menuOptions}
                 </div>
+
+                {/* <div onClick={(e) => e.stopPropagation()}>
+                    {optionsIcon}
+                    {menuOptions}
+                </div> */}
                 <div className={dream.type === "dream" ? "feed-dreams" : "feed-goals"}   >
                    {/* <Link to={`/dreams/${dream._id}`} style={{ textDecoration: 'none' }} > */}
                    {dream.type === "dream" ? 
@@ -189,6 +314,7 @@ class DreamItem extends React.Component {
                         <div className="new-dream-tags-container" >
                             <div className="new-dream-tags" >
                                 {tags}
+                            
                             </div>
                         </div>
                     <div className="feed-dreams-info" >
@@ -202,7 +328,7 @@ class DreamItem extends React.Component {
                    {/* </Link> */}
                     <div className="feed-dreams-footer" >
                         <p className="feed-dreams-footer-info" >{dream.comments ? dream.comments.length : 0} <span className="feed-dreams-footer-comments" >{dream.comments && dream.comments.length === 1 ? "comment" : "comments"}</span></p>
-                        <p className="feed-dreams-footer-info" >3 <span className="feed-dreams-footer-likes" >likes</span></p>
+                        <p className="feed-dreams-footer-info" >{this.state.likes.length} <span className="feed-dreams-footer-likes" >{this.state.likes.length === 1 ? "like" : "likes"}</span></p>
                     </div>
                 </div>
             </div>

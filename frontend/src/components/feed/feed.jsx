@@ -65,6 +65,11 @@ class Feed extends React.Component {
             clearComments, 
             currentUser,
             deleteDream,
+            createLike,
+            deleteLike,
+            fetchLike,
+            like,
+            fetchLikesByDream,
             searchResults,
             clearSearch
         } = this.props;
@@ -89,6 +94,11 @@ class Feed extends React.Component {
                     clearComments={clearComments}
                     currentUser={currentUser}
                     deleteDream={deleteDream}
+                    createLike={createLike}
+                    deleteLike={deleteLike}
+                    fetchLike={fetchLike}
+                    like={like}
+                    fetchLikesByDream={fetchLikesByDream}
                 />
             })
         } else if (this.state.selected === "dreams") {
@@ -104,6 +114,10 @@ class Feed extends React.Component {
                         clearComments={clearComments} 
                         currentUser={currentUser}
                         deleteDream={deleteDream}
+                        deleteLike={deleteLike}
+                        fetchLike={fetchLike}
+                        like={like}
+                        fetchLikesByDream={fetchLikesByDream}
                     />
                 } else {
                     return ""
@@ -122,6 +136,10 @@ class Feed extends React.Component {
                         clearComments={clearComments} 
                         currentUser={currentUser}
                         deleteDream={deleteDream} 
+                        deleteLike={deleteLike}
+                        fetchLike={fetchLike}
+                        like={like}
+                        fetchLikesByDream={fetchLikesByDream}
                         />
                 } else {
                     return ""

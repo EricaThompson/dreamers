@@ -33,6 +33,7 @@ const DreamSchema = new Schema({
       unique: true
     }
   }],
+
   comments: {
     type: Array,
     default: []
