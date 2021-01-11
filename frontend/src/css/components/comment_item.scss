@@ -1,6 +1,6 @@
 .comment-feed-container {
     overflow-y: scroll;
-    max-height: 460px;
+    max-height: 35vh;
 }
 
 .comment-feed-container::-webkit-scrollbar { 
@@ -11,7 +11,7 @@
     padding-top: 20px;
 
     .comment-item-container {
-        width: 99%;
+        width: 98%;
         border: 2px solid $dark-gray;
         background-color: $off-white;
         border-radius: 10px;
@@ -54,9 +54,6 @@
                 top: 15px;
                 right: 5px;
                 cursor: pointer;
-
-                
-                
 
                 .available-options {
                     // background-color: $off-white;
@@ -118,6 +115,7 @@
         .comment-item-text-link {
             color: $dark-gray;
             font-weight: 700;
+            max-width: 100px;
             cursor: pointer;
         }
 

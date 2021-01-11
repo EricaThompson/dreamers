@@ -24,7 +24,7 @@ class Modal extends React.Component {
     }
 
     render() {
-        let { modal, currentUser, info, fetchCommentsByDream, comments, createComment, clearModalInfo, updateComment, errors, clearSearch, fetchSearchResults, searchResults, createTag, createDream, updateDream } = this.props;
+        let { modal, currentUser, info, fetchCommentsByDream, comments, createComment, clearModalInfo, updateComment, deleteComment, errors, clearSearch, fetchSearchResults, searchResults, createTag, createDream, updateDream } = this.props;
         if (!modal) {
             return null;
         }
@@ -65,9 +65,9 @@ class Modal extends React.Component {
                     clearModalInfo={clearModalInfo}
                     currentUser={currentUser}
                     updateComment={updateComment}
+                    deleteComment={deleteComment}
                     resetErrors={resetErrors}
                     errors={errors}
-
                 />;
                 break;
             default:
