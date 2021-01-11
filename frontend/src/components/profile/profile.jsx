@@ -1,9 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Feed from '../feed/feed';
-import axios from 'axios';
-
-import { followUser, unfollowUser, fetchFollowed } from '../../util/follow_api_util';
 
 class Profile extends React.Component {
     constructor(props) {
@@ -44,12 +41,7 @@ class Profile extends React.Component {
             bio: res.user.bio
         }))
         this.props.fetchDreamsByUser(this.props.match.params.userId)
-        axios.get(`/api/users/followers/${this.props.match.params.userId}`)
-            .then(res => this.setState({followers: res.data}))
-
-
-        console.log(this.props.user);
-        this.followers = fetchFollowed(this.props.match.params.userId);
+        this.props.fetchFollowers(this.props.match.params.userId).then(payload => this.setState({followers: payload.data}));
 
         // this.props.fetchLikesByDream(this.props.dream._id)
         //     .then(res => this.setState({ likes: res.likes }))
@@ -146,16 +138,24 @@ class Profile extends React.Component {
                         </button>
             
         } else {
-            if(this.followers.includes(this.props.currentUser.id)) {
+            if(this.state.followers.includes(this.props.currentUser.id)) {
                 followBtn = <button
                         // className="new-dream-btn"
-                        onClick={unfollowUser(this.props.match.params.userId)} 
+                        onClick={() => {this.props.unfollowUser(this.props.match.params.userId)
+                            let i = this.state.followers.indexOf(this.props.match.params.userId);
+                            this.state.followers.splice(i, 1);
+                            this.setState({ followers: this.state.followers });
+                        }} 
                     >
                         Unfollow
                     </button>
             } else {
                 followBtn = <button
-                        onClick={followUser(this.props.match.params.userId)} 
+                        onClick={() => { 
+                            this.props.followUser(this.props.match.params.userId)
+                            this.state.followers.push(this.props.currentUser.id);
+                            this.setState({ followers: this.state.followers });
+                        }}
                     >
                         Follow
                     </button>
