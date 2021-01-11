@@ -23,6 +23,7 @@ class Profile extends React.Component {
             propLikes: null,
             followers: []
         }
+        
         // this.handleChange = this.handleChange.bind(this);
         // this.handleSelected = this.handleSelected.bind(this);
     }
@@ -140,7 +141,7 @@ class Profile extends React.Component {
         } else {
             if(this.state.followers.includes(this.props.currentUser.id)) {
                 followBtn = <button
-                        // className="new-dream-btn"
+                        className="new-dream-btn"
                         onClick={() => {this.props.unfollowUser(this.props.match.params.userId)
                             let i = this.state.followers.indexOf(this.props.match.params.userId);
                             this.state.followers.splice(i, 1);
@@ -151,6 +152,7 @@ class Profile extends React.Component {
                     </button>
             } else {
                 followBtn = <button
+                        className="new-dream-btn"
                         onClick={() => { 
                             this.props.followUser(this.props.match.params.userId)
                             this.state.followers.push(this.props.currentUser.id);
