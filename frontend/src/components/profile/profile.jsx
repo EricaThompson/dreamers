@@ -3,6 +3,8 @@ import { withRouter } from 'react-router-dom';
 import Feed from '../feed/feed';
 import axios from 'axios';
 
+import { followUser, unfollowUser, fetchFollowed } from '../../util/follow_api_util';
+
 class Profile extends React.Component {
     constructor(props) {
         super(props);
@@ -45,6 +47,10 @@ class Profile extends React.Component {
         axios.get(`/api/users/followers/${this.props.match.params.userId}`)
             .then(res => this.setState({followers: res.data}))
 
+
+        console.log(this.props.user);
+        this.followers = fetchFollowed(this.props.match.params.userId);
+
         // this.props.fetchLikesByDream(this.props.dream._id)
         //     .then(res => this.setState({ likes: res.likes }))
         //     .then(this.setState({ propLikes: this.props.like }))
@@ -68,10 +74,6 @@ class Profile extends React.Component {
     componentWillUnmount() {
         this.props.clearDreams();
         this.props.clearModalInfo();
-    }
-
-    follow(){
-        axios.post(`/api/users/follow/${this.props.match.params.userId}`)
     }
 
     // like() {
@@ -144,12 +146,20 @@ class Profile extends React.Component {
                         </button>
             
         } else {
-            followBtn = <button
-                        className="new-dream-btn"
-                        // onClick={() => openModal('newDream')} 
+            if(this.followers.includes(this.props.currentUser.id)) {
+                followBtn = <button
+                        // className="new-dream-btn"
+                        onClick={unfollowUser(this.props.match.params.userId)} 
+                    >
+                        Unfollow
+                    </button>
+            } else {
+                followBtn = <button
+                        onClick={followUser(this.props.match.params.userId)} 
                     >
                         Follow
                     </button>
+            }
         }
 
         let { openModal, dream, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo, currentUser, closeModal, deleteDream, fetchLike, createLike, deleteLike, fetchLikesByDream } = this.props;
