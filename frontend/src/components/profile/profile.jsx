@@ -131,7 +131,7 @@ class Profile extends React.Component {
         let followBtn;
 
         if (this.props.match.params.userId === this.state.currentUser.id){
-            editBtn = <button 
+            editBtn = <button
                         onClick={()=>this.toggleEditForm()}
                         className="profile-edit-button">
                             Edit Profile

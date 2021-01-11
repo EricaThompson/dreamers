@@ -143,12 +143,13 @@
             // margin-left: 16px;
             margin-right: 2vw;
             
-            .profile-edit-button {
-                padding-bottom: 4px;
-            }
-
             div {
                 padding: 4px 4px 4px 0px;
+            }
+            .profile-edit-button {
+                
+                padding-bottom: 4px;
+                padding-top: 15px;
             }
         }
     }
@@ -180,6 +181,8 @@
             width: 707px;
             padding-left: 50px;
             box-sizing: border-box;
+            padding-top: 20px;
+            
             
             .fa-cloud {
                 font-size: 105px;
