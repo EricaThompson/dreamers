@@ -71,6 +71,10 @@ class CommentItem extends React.Component {
         // let optionsHide;
 
         if (comment.username === this.props.currentUser.username){
+            optionsIcon = <i
+                            className="fas fa-ellipsis-h"
+                            onClick={() => this.toggleMenu()}>
+                        </i>
             editIcon = <div
                             className="icon"
                             onClick={() => this.toggleEdit()}
@@ -112,10 +116,7 @@ class CommentItem extends React.Component {
                             {flagIcon}
                         </div>
         } else {
-            optionsIcon = <i
-                            className="fas fa-ellipsis-h"
-                            onClick={() => this.toggleMenu()}>
-                        </i>
+            
         }
 
         // console.log('comment', comment)
