@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Feed from '../feed/feed';
-import axios from 'axios';
 
 class Profile extends React.Component {
     constructor(props) {
@@ -24,6 +23,7 @@ class Profile extends React.Component {
             propLikes: null,
             followers: []
         }
+        
         // this.handleChange = this.handleChange.bind(this);
         // this.handleSelected = this.handleSelected.bind(this);
     }
@@ -42,8 +42,7 @@ class Profile extends React.Component {
             bio: res.user.bio
         }))
         this.props.fetchDreamsByUser(this.props.match.params.userId)
-        axios.get(`/api/users/followers/${this.props.match.params.userId}`)
-            .then(res => this.setState({followers: res.data}))
+        this.props.fetchFollowers(this.props.match.params.userId).then(payload => this.setState({followers: payload.data}));
 
         // this.props.fetchLikesByDream(this.props.dream._id)
         //     .then(res => this.setState({ likes: res.likes }))
@@ -68,10 +67,6 @@ class Profile extends React.Component {
     componentWillUnmount() {
         this.props.clearDreams();
         this.props.clearModalInfo();
-    }
-
-    follow(){
-        axios.post(`/api/users/follow/${this.props.match.params.userId}`)
     }
 
     // like() {
@@ -144,12 +139,29 @@ class Profile extends React.Component {
                         </button>
             
         } else {
-            followBtn = <button
+            if(this.state.followers.includes(this.props.currentUser.id)) {
+                followBtn = <button
                         className="new-dream-btn"
-                        // onClick={() => openModal('newDream')} 
+                        onClick={() => {this.props.unfollowUser(this.props.match.params.userId)
+                            let i = this.state.followers.indexOf(this.props.match.params.userId);
+                            this.state.followers.splice(i, 1);
+                            this.setState({ followers: this.state.followers });
+                        }} 
+                    >
+                        Unfollow
+                    </button>
+            } else {
+                followBtn = <button
+                        className="new-dream-btn"
+                        onClick={() => { 
+                            this.props.followUser(this.props.match.params.userId)
+                            this.state.followers.push(this.props.currentUser.id);
+                            this.setState({ followers: this.state.followers });
+                        }}
                     >
                         Follow
                     </button>
+            }
         }
 
         let { openModal, dream, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo, currentUser, closeModal, deleteDream, fetchLike, createLike, deleteLike, fetchLikesByDream } = this.props;
