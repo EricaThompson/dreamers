@@ -5,6 +5,74 @@
 
     .comment-dreams-container {
 
+        .new-dream-tags-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            .new-dream-tags-header {
+                font-family: $sans-serif;
+                color: $dark-gray;
+                font-size: 16px;
+                padding-bottom: 15px;
+            }
+            
+            .new-dream-tags {
+                display: flex;
+                flex-wrap: wrap;
+                // padding-bottom: 20px;
+                max-width: 100%;
+                
+                
+                .new-dream-tags-item-container {
+                    padding: 0 7px 2px;
+                    position: relative;
+                    cursor: pointer;
+                    
+
+                    .new-dream-tags-item-circle,
+                    .new-goal-tags-item-circle {
+                        position: absolute;
+                        top: 7px;
+                        left: 10px;
+                        width: 6px;
+                        height: 6px;
+                        border-radius: 50%;
+                        border: 2px solid $dark-gray;
+                    }
+
+                    .new-dream-tags-item-circle {
+                        background-color: $pale-blue;
+                    }
+
+                    .new-goal-tags-item-circle {
+                        background-color: $logo-yellow;
+                    }
+
+                    .new-dream-tags-item {
+                        padding: 4px 7px 2px 22px;
+                        border: 1px solid $dark-gray;
+                        border-top-left-radius: 9px;
+                        border-bottom-left-radius: 9px;
+                        font-family: $sans-serif;
+                        color: $dark-gray;
+                        background-color: white;
+                    }
+
+                }
+                .new-dream-tags-item-container:hover {
+                    .new-dream-tags-item-circle {
+                        background-color: $off-white;
+                    }
+
+                    .new-dream-tags-item {
+                        background-color: $magenta;
+                        color: $off-white;
+                    }
+                }
+            }
+        }
+
         .comment-dreams {
             border-radius: 20px;
             background-color: $pale-blue;
@@ -23,6 +91,12 @@
             .comment-dreams-info {
                 color: $dark-gray;
                 font-family: $serif;
+                max-height: 100px;
+                overflow-y: scroll;
+
+                &::-webkit-scrollbar { 
+                    display: none;  /* Safari and Chrome */
+                }
 
                 .comment-dreams-info-link {
                     font-weight: 700;
