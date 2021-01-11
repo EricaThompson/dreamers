@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Feed from '../feed/feed';
+import axios from 'axios';
 
 class Profile extends React.Component {
     constructor(props) {
@@ -21,6 +22,7 @@ class Profile extends React.Component {
             likes: [],
             numLikes: null,
             propLikes: null,
+            followers: []
         }
         // this.handleChange = this.handleChange.bind(this);
         // this.handleSelected = this.handleSelected.bind(this);
@@ -30,16 +32,18 @@ class Profile extends React.Component {
         this.props.closeModal();
         this.props.clearSearch();
         this.props.clearModalInfo();
-        this.props.fetchDreamsByUser(this.props.match.params.userId)
         this.props.fetchUserById(this.props.match.params.userId)
-            .then(res => this.setState({ 
-                profileUser: res.user, 
-                timestamp: res.user._id.toString().substring(0, 8),
-                username: res.user.username,
-                age: res.user.age,
-                location: res.user.location,
-                bio: res.user.bio
-            }))
+        .then(res => this.setState({ 
+            profileUser: res.user, 
+            timestamp: res.user._id.toString().substring(0, 8),
+            username: res.user.username,
+            age: res.user.age,
+            location: res.user.location,
+            bio: res.user.bio
+        }))
+        this.props.fetchDreamsByUser(this.props.match.params.userId)
+        axios.get(`/api/users/followers/${this.props.match.params.userId}`)
+            .then(res => this.setState({followers: res.data}))
 
         // this.props.fetchLikesByDream(this.props.dream._id)
         //     .then(res => this.setState({ likes: res.likes }))
@@ -64,6 +68,10 @@ class Profile extends React.Component {
     componentWillUnmount() {
         this.props.clearDreams();
         this.props.clearModalInfo();
+    }
+
+    follow(){
+        axios.post(`/api/users/follow/${this.props.match.params.userId}`)
     }
 
     // like() {
@@ -239,6 +247,7 @@ class Profile extends React.Component {
                 <div className="about">
                     Bio: {this.state.profileUser.bio}
                 </div>
+                <div>Followers: {this.state.followers.length}</div>
             </div>
 
         }
