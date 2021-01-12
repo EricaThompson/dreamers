@@ -173,7 +173,7 @@ class Profile extends React.Component {
             }
         }
 
-        let { openModal, dream, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo, currentUser, closeModal, deleteDream, fetchLike, createLike, deleteLike, fetchLikesByDream } = this.props;
+        let { openModal, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo, currentUser, closeModal, deleteDream, fetchLike, createLike, deleteLike, fetchLikesByDream } = this.props;
         if (!dreams) return null;
         // console.log('user', this.props.user._id.toString().substring(0, 8))
         // console.log(this.state.timestamp.getMonth())
