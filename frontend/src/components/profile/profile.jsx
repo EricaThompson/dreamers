@@ -286,7 +286,7 @@ class Profile extends React.Component {
                         </div>
                         <div onClick={this.handlePopOut}>Followers: {this.state.followers.length}</div>
                         {this.state.popout ?
-                            <div className="likes-popout-container" onClick={(e) => e.stopPropagation()} >
+                            <div className="follower-popout-container" onClick={(e) => e.stopPropagation()} >
                                 <div>{popout}</div>
                             </div>
                             : ''}
