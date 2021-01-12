@@ -118,25 +118,27 @@ class CommentDreamModal extends React.Component {
         >
         </i>
 
+        let liked = false;
+
         if (this.state.likes) {
             console.log('this state likes',this.state.likes)
             this.state.likes.forEach(like => {
 
                 if (like.username === currentUser.username) {
-                    this.liked();
+                    liked = true;
                 } 
             }) 
         } 
 
-        if (this.state.isLiked){
+        if (liked){
             likeIcon = <i
-                className="fas fa-heart"
+                className="fas fa-heart liked"
                 onClick={() => this.unlike()}
             >
             </i>;
         } else {
             likeIcon = <i
-                className="far fa-heart"
+                className="far fa-heart unliked"
                 onClick={() => this.like()}
             >
             </i>
@@ -169,7 +171,7 @@ class CommentDreamModal extends React.Component {
         return (
             <div className="comment-modal-outer-container">
                 <div className="comment-dreams-container" >
-                    {likeIcon}
+                    <div className='comment-like'>{likeIcon}</div>
                     <div className={this.props.info.type === "dream" ? "comment-dreams" : "comment-goals"}>
                         <div className="new-dream-tags-container" >
                             <div className="new-dream-tags" >

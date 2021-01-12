@@ -4,6 +4,21 @@
     width: 100%;
 
     .comment-dreams-container {
+        
+
+        .comment-like {
+            position: absolute;
+            top: 48px;
+            right: 12px;
+
+            .liked {
+                color: $red;
+            }
+
+            .unliked {
+                color: $red;
+            }
+        }
 
         .new-dream-tags-container {
             display: flex;

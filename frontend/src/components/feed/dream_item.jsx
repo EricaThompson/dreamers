@@ -12,7 +12,6 @@ class DreamItem extends React.Component {
             propLikes: null,
             timestamp: null,
             popout: false,
-            likeOnce: 0
         }
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleOpenEditModal = this.handleOpenEditModal.bind(this);
@@ -60,12 +59,6 @@ class DreamItem extends React.Component {
         window.location.reload()
     }
 
-    liked() {
-        if (this.state.likeOnce === 0) {
-            this.setState({ isLiked: true })
-            this.setState({ likeOnce: 1 })
-        }
-    }
 
     unlike(){
         this.state.likes.forEach(like=>{
@@ -209,26 +202,29 @@ class DreamItem extends React.Component {
         >
         </i>
 
+        let liked = false;
         //! likes functionality
         if (this.state.likes) {
             // console.log('this state likes', this.state.likes)
             this.state.likes.forEach(like => {
 
                 if (like.username === currentUser.username) {
-                    this.liked();
+                    liked = true;
                 }
             })
         }
 
-        if (this.state.isLiked) {
+        
+
+        if (liked) {
             likeIcon = <i
-                className="fas fa-heart"
+                className="fas fa-heart liked"
                 onClick={() => this.unlike()}
             >
             </i>;
         } else {
             likeIcon = <i
-                className="far fa-heart"
+                className="far fa-heart unliked"
                 onClick={() => this.like()}
             >
             </i>
@@ -323,7 +319,7 @@ class DreamItem extends React.Component {
 
         return (
             <div className={dream.type === "dream" ? "feed-dreams-wrapper" : "feed-goals-wrapper"} onClick={this.handleOpenModal}>
-                <div className="comment-options" onClick={() => this.toggleMenu(), (e) => e.stopPropagation() } >
+                <div key={Math.random()} className="comment-options" onClick={() => this.toggleMenu(), (e) => e.stopPropagation() } >
                     {optionsIcon}
                     <br />
                     {likeIcon}
