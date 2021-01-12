@@ -68,6 +68,7 @@ class CommentDreamModal extends React.Component {
         let { info, comments, errors, currentUser } = this.props;
 
         let commentFeed;
+        let tags;
 
         if (Object.values(comments).length === 0) {
             commentFeed = null;
@@ -117,6 +118,28 @@ class CommentDreamModal extends React.Component {
                 // console.log(this.state.likes[0].username)
             })
         } 
+        if (info.tags) {
+            // debugger;
+            tags =
+                info.tags.map((tag, idx) => {
+                    if (tag != null) {
+                        return (
+                            <Link to={`/tags/${tag}`} key={idx} style={{ textDecoration: 'none' }} >
+                                <div className="new-dream-tags-item-container" onClick={e => e.stopPropagation()} >
+                                    <div className={info.type === "dream" ? "new-dream-tags-item-circle" : "new-goal-tags-item-circle"} ></div>
+                                    <p className="new-dream-tags-item" >{tag}</p>
+                                </div>
+                            </Link>
+                        )
+                    } else {
+                        return null;
+                    }
+                })
+
+
+        } else {
+            tags = null
+        }
         
 
         return (
@@ -124,6 +147,11 @@ class CommentDreamModal extends React.Component {
                 <div className="comment-dreams-container" >
                     {likeIcon}
                     <div className={this.props.info.type === "dream" ? "comment-dreams" : "comment-goals"}>
+                        <div className="new-dream-tags-container" >
+                            <div className="new-dream-tags" >
+                                {tags}
+                            </div>
+                        </div>
                         <p className="comment-dreams-info" >
                             <Link 
                                 to={`/users/${info.userId}`} 
