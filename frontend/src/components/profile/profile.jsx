@@ -47,8 +47,7 @@ class Profile extends React.Component {
         }))
         this.props.fetchDreamsByUser(this.props.match.params.userId)
         this.props.fetchFollowers(this.props.match.params.userId).then(payload => this.setState({followers: payload.data}));
-        this.props.fetchUsersByUserIds(this.state.profileUser.followers).then(payload => this.setState({ myFollowers: payload.data }));
-        debugger;
+
         // this.props.fetchLikesByDream(this.props.dream._id)
         //     .then(res => this.setState({ likes: res.likes }))
         //     .then(this.setState({ propLikes: this.props.like }))
@@ -75,8 +74,8 @@ class Profile extends React.Component {
     }
 
     handlePopOut() {
-        console.log('popped')
-        this.setState({ popout: !this.state.popout })
+        // console.log('popped')
+        this.props.fetchUsersByUserIds({userIds: this.state.followers}).then(payload => this.setState({ myFollowers: payload.data, popout: !this.state.popout }));
     }
 
     // like() {
@@ -230,13 +229,13 @@ class Profile extends React.Component {
         let editForm;
         let popout;
 
-        if (this.state.followers.length > 0) {
+        if (this.state.myFollowers.length > 0) {
             popout = <div className="likes-popout-inner-container">
                 <span onClick={this.handlePopOut} className="close-popout-btn">&#x2715;</span>
-                {this.state.followers.map((follower, idx) => {
-                    //console.log(follower)
-                    return <Link key={idx} to={`/users/${follower}`} style={{ textDecoration: 'none' }}>
-                        <div className="popout-item" >{follower}</div>
+                {this.state.myFollowers.map((follower, idx) => {
+                    // console.log(follower)
+                    return <Link key={idx} to={`/users/${follower._id}`} style={{ textDecoration: 'none' }}>
+                        <div className="popout-item" >{follower.username}</div>
                     </Link>
                 })}
             </div>
