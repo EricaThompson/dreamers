@@ -21,7 +21,9 @@ class Profile extends React.Component {
             likes: [],
             numLikes: null,
             propLikes: null,
+            followers: []
         }
+        
         // this.handleChange = this.handleChange.bind(this);
         // this.handleSelected = this.handleSelected.bind(this);
     }
@@ -30,16 +32,17 @@ class Profile extends React.Component {
         this.props.closeModal();
         this.props.clearSearch();
         this.props.clearModalInfo();
-        this.props.fetchDreamsByUser(this.props.match.params.userId)
         this.props.fetchUserById(this.props.match.params.userId)
-            .then(res => this.setState({ 
-                profileUser: res.user, 
-                timestamp: res.user._id.toString().substring(0, 8),
-                username: res.user.username,
-                age: res.user.age,
-                location: res.user.location,
-                bio: res.user.bio
-            }))
+        .then(res => this.setState({ 
+            profileUser: res.user, 
+            timestamp: res.user._id.toString().substring(0, 8),
+            username: res.user.username,
+            age: res.user.age,
+            location: res.user.location,
+            bio: res.user.bio
+        }))
+        this.props.fetchDreamsByUser(this.props.match.params.userId)
+        this.props.fetchFollowers(this.props.match.params.userId).then(payload => this.setState({followers: payload.data}));
 
         // this.props.fetchLikesByDream(this.props.dream._id)
         //     .then(res => this.setState({ likes: res.likes }))
@@ -136,12 +139,29 @@ class Profile extends React.Component {
                         </button>
             
         } else {
-            followBtn = <button
+            if(this.state.followers.includes(this.props.currentUser.id)) {
+                followBtn = <button
                         className="new-dream-btn"
-                        // onClick={() => openModal('newDream')} 
+                        onClick={() => {this.props.unfollowUser(this.props.match.params.userId)
+                            let i = this.state.followers.indexOf(this.props.match.params.userId);
+                            this.state.followers.splice(i, 1);
+                            this.setState({ followers: this.state.followers });
+                        }} 
+                    >
+                        Unfollow
+                    </button>
+            } else {
+                followBtn = <button
+                        className="new-dream-btn"
+                        onClick={() => { 
+                            this.props.followUser(this.props.match.params.userId)
+                            this.state.followers.push(this.props.currentUser.id);
+                            this.setState({ followers: this.state.followers });
+                        }}
                     >
                         Follow
                     </button>
+            }
         }
 
         let { openModal, dream, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo, currentUser, closeModal, deleteDream, fetchLike, createLike, deleteLike, fetchLikesByDream } = this.props;
@@ -239,6 +259,7 @@ class Profile extends React.Component {
                 <div className="about">
                     Bio: {this.state.profileUser.bio}
                 </div>
+                <div>Followers: {this.state.followers.length}</div>
             </div>
 
         }
