@@ -26,7 +26,7 @@ class CommentDreamModal extends React.Component {
         this.props.fetchLikesByDream(this.props.info._id)
             .then(res => this.setState({ likes: res.likes }))
             .then(this.setState({ propLikes: this.props.like }))
-        console.log('props',this.props)
+        // console.log('props',this.props)
 
     }
 
@@ -64,7 +64,7 @@ class CommentDreamModal extends React.Component {
         this.setState({currentLike: ''})
             // console.log('props dream', this.props.dream)
         //!fix
-        // window.location.reload()
+        window.location.reload()
     }
 
     liked(){
@@ -82,7 +82,7 @@ class CommentDreamModal extends React.Component {
         })
         this.setState({ currentLike: '' })
         //!fix
-        // window.location.reload()
+        window.location.reload()
     }
 
     render() {
