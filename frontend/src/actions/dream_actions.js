@@ -38,43 +38,43 @@ export const receiveErrors = errors => {
 export const fetchDreams = () => dispatch => (
     DreamApiUtils.fetchDreams()
     .then(dreams => dispatch(receiveDreams(dreams.data)))
-        .catch(err => receiveErrors(err))
+    .catch(err => console.log(receiveErrors(err.response.data)))
 )
 
 export const fetchDreamsByUser = userId => dispatch => (
     DreamApiUtils.fetchDreamsByUser(userId)
     .then(dreams => dispatch(receiveDreams(dreams.data)))
-    .catch(err => receiveErrors(err))
+    .catch(err => console.log(receiveErrors(err.response.data)))
 )
 
 export const fetchDreamById = dreamId => dispatch => (
     DreamApiUtils.fetchDreamById(dreamId)
     .then(dream => dispatch(receiveDream(dream.data)))
-    .catch(err => receiveErrors(err))
+    .catch(err => console.log(receiveErrors(err.response.data)))
 )
 
 export const fetchDreamsByType = type => dispatch => (
     DreamApiUtils.fetchDreamsByType(type)
     .then(dreams => dispatch(receiveDreams(dreams.data)))
-    .catch(err => receiveErrors(err))
+    .catch(err => console.log(receiveErrors(err.response.data)))
 )
 
 export const fetchDreamsByTags = tags => dispatch => (
     DreamApiUtils.fetchDreamsByTags(tags)
     .then(dreams => dispatch(receiveDreams(dreams.data)))
-    .catch(err => receiveErrors(err))
+    .catch(err => console.log(receiveErrors(err.response.data)))
 )
 
 export const createDream = dream => dispatch => (
     DreamApiUtils.createDream(dream)
     .then(dream => dispatch(receiveDream(dream.data)))
-    .catch(err => receiveErrors(err))
+    .catch(err => console.log(receiveErrors(err.response.data)))
 )
 
 export const updateDream = (dreamId, updatedFields) => dispatch  => (
     DreamApiUtils.updateDream(dreamId, updatedFields)
     .then(dream => dispatch(receiveDream(dream)))
-    .catch(err => receiveErrors(err))
+    .catch(err => console.log(receiveErrors(err.response.data)))
 )
 
 export const deleteDream = dreamId => dispatch => (

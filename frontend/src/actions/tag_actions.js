@@ -34,25 +34,25 @@ export const receiveErrors = errors => ({
 export const fetchTags = () => dispatch => (
     TagApiUtil.fetchTags()
     .then(tags => dispatch(receiveTags(tags)))
-    .catch(err => receiveErrors(err))
+    .catch(err => console.log(receiveErrors(err.response.data)))
 )
 
 export const fetchMatchingTag = (tag) => dispatch => (
     TagApiUtil.fetchMatchingTag(tag)
     .then(tag => dispatch(receiveTag(tag)))
-    .catch(err => receiveErrors(err))
+    .catch(err => console.log(receiveErrors(err.response.data)))
 )
 
 export const fetchExactTag = (tag) => dispatch => (
     TagApiUtil.fetchExactTag(tag)
     .then(tag => dispatch(receiveTag(tag)))
-    .catch(err => receiveErrors(err))
+    .catch(err => console.log(receiveErrors(err.response.data)))
 )
 
 export const createTag = (tag) => dispatch => (
     TagApiUtil.createTag(tag)
     .then(tag => dispatch(receiveTag(tag.data)))
-    .catch(err => console.log(err))
+    .catch(err => console.log(receiveErrors(err.response.data)))
 )
 export const deleteTag = (tag) => dispatch => (
     TagApiUtil.deleteTag(tag)

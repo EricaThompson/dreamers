@@ -42,31 +42,31 @@ export const receiveErrors = errors => ({
 export const fetchCommentById = (commentId) => dispatch => (
     CommentApiUtil.fetchCommentById(commentId)
     .then(comment => dispatch(receiveComment(comment.data)))
-    .catch(err => receiveErrors(err))
+    .catch(err => console.log(receiveErrors(err.response.data)))
 )
 
 export const fetchCommentsByDream = (dreamId) => dispatch => (
     CommentApiUtil.fetchCommentsByDream(dreamId)
     .then(comments => dispatch(receiveComments(comments.data)))
-    .catch(err => receiveErrors(err))
+    .catch(err => console.log(receiveErrors(err.response.data)))
 )
 
 export const fetchCommentsByUser = (userId) => dispatch => (
     CommentApiUtil.fetchCommentsByUser(userId)
     .then(comments => dispatch(receiveComments(comments.data)))
-    .catch(err => receiveErrors(err))
+    .catch(err => console.log(receiveErrors(err.response.data)))
 )
 
 export const createComment = (dreamId, comment) => dispatch => (
     CommentApiUtil.createComment(dreamId, comment)
     .then(comment => dispatch(receiveNewComment(comment.data)))
-    .catch(err => receiveErrors(err))
+    .catch(err => console.log(receiveErrors(err.response.data)))
 )
 
 export const updateComment = (commentId, updatedFields) => dispatch => (
     CommentApiUtil.updateComment(commentId, updatedFields)
     .then(comment => dispatch(receiveComment(comment.data)))
-    .catch(err => receiveErrors(err))
+    .catch(err => console.log(receiveErrors(err.response.data)))
 )
 
 export const deleteComment = (commentId) => dispatch => (
