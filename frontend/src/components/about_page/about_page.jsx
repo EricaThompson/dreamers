@@ -24,6 +24,8 @@ class AboutPage extends React.Component {
                         
                         Our app lets you see who else in your network has similar dreams/goals and will be able to connect you to be able to dream up and build awesome things together.
                         </p>
+                    <br />
+                    <p className="team-member">-<a href="https://github.com/EricaThompson/dreamers">Dreamers Repository</a>-</p>
                 </div>
                 <br />
                 <div className="about-container">
@@ -32,6 +34,7 @@ class AboutPage extends React.Component {
                     <p className="team-member">Backend Lead - <a target="_blank" rel="noreferrer" href="https://github.com/AlanDai">Alan Dai</a></p>
                     <p className="team-member">Frontend/Backend Flex - <a target="_blank" rel="noreferrer" href="https://github.com/cindy803">Cindy Li</a></p>
                     <p className="team-member">Team Lead - <a target="_blank" rel="noreferrer" href="https://github.com/EricaThompson">Erica Thompson</a></p>
+                    
                 </div>
                 <br />
                 <div className="about-container">
