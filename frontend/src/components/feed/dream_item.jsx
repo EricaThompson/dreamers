@@ -12,6 +12,7 @@ class DreamItem extends React.Component {
             propLikes: null,
             timestamp: null,
             popout: false,
+            likeOnce: 0
         }
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleOpenEditModal = this.handleOpenEditModal.bind(this);
@@ -57,6 +58,13 @@ class DreamItem extends React.Component {
         this.props.createLike(this.props.dream._id, like)
             .then(res => this.setState({currentLike: res.like._id}))
         window.location.reload()
+    }
+
+    liked() {
+        if (this.state.likeOnce === 0) {
+            this.setState({ isLiked: true })
+            this.setState({ likeOnce: 1 })
+        }
     }
 
     unlike(){
@@ -202,27 +210,29 @@ class DreamItem extends React.Component {
         </i>
 
         //! likes functionality
-        if (this.state.likes){
-            // console.log(this.state.likes)
+        if (this.state.likes) {
+            // console.log('this state likes', this.state.likes)
             this.state.likes.forEach(like => {
-                
-                if(like.username === currentUser.username){
-                    likeIcon = <i
-                        className="fas fa-heart"
-                        onClick={()=>this.unlike()}
-                    >
-                    </i>;
-                    
-                } else {
-                    likeIcon = <i
-                        className="far fa-heart"
-                        onClick={() => this.like()}
-                    >
-                    </i>
+
+                if (like.username === currentUser.username) {
+                    this.liked();
                 }
-                // console.log(this.state.likes[0].username)
             })
-        } 
+        }
+
+        if (this.state.isLiked) {
+            likeIcon = <i
+                className="fas fa-heart"
+                onClick={() => this.unlike()}
+            >
+            </i>;
+        } else {
+            likeIcon = <i
+                className="far fa-heart"
+                onClick={() => this.like()}
+            >
+            </i>
+        }
 
 
         // this.state.likes.forEach(like => {

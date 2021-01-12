@@ -10,7 +10,7 @@ import { updateComment } from '../../actions/comment_actions';
 import { resetErrors } from '../../actions/session_actions';
 import { fetchSearchResults, clearSearch } from '../../actions/search_actions';
 import { createTag } from '../../actions/tag_actions';
-import { createLike, deleteLike } from '../../actions/like_actions';
+import { createLike, deleteLike, fetchLikesByDream } from '../../actions/like_actions';
 
 class Modal extends React.Component {
     constructor(props) {
@@ -25,7 +25,6 @@ class Modal extends React.Component {
     }
 
     render() {
-<<<<<<< HEAD
         let { 
             modal, 
             currentUser, 
@@ -42,11 +41,11 @@ class Modal extends React.Component {
             createTag, 
             createDream, 
             updateDream,
-            dream 
+            dream,
+            createLike,
+            deleteLike,
+            fetchLikesByDream 
         } = this.props;
-=======
-        let { modal, currentUser, info, fetchCommentsByDream, comments, createComment, clearModalInfo, updateComment, deleteComment, errors, clearSearch, fetchSearchResults, searchResults, createTag, createDream, updateDream } = this.props;
->>>>>>> 5bd498c62569a1ca04d51a07bcbf824aceb1804d
         if (!modal) {
             return null;
         }
@@ -90,13 +89,11 @@ class Modal extends React.Component {
                     deleteComment={deleteComment}
                     resetErrors={resetErrors}
                     errors={errors}
-<<<<<<< HEAD
                     dream={dream}
                     createLike = {createLike}
                     deleteLike = {deleteLike}
+                    fetchLikesByDream={fetchLikesByDream}
 
-=======
->>>>>>> 5bd498c62569a1ca04d51a07bcbf824aceb1804d
                 />;
                 break;
             default:
@@ -141,7 +138,8 @@ const mapDTP = dispatch => ({
     clearSearch: () => dispatch(clearSearch()),
     createTag: (tag) => dispatch(createTag(tag)),
     createLike: (dreamId)=> dispatch(createLike(dreamId)),
-    deleteLike: (likeId)=> dispatch(deleteLike(likeId))
+    deleteLike: (likeId)=> dispatch(deleteLike(likeId)),
+    fetchLikesByDream: (dreamId) => dispatch(fetchLikesByDream(dreamId))
 })
 
 export default connect(mapSTP, mapDTP)(Modal);
