@@ -61,6 +61,7 @@ export const createComment = (dreamId, comment) => dispatch => (
     CommentApiUtil.createComment(dreamId, comment)
     .then(comment => dispatch(receiveNewComment(comment.data)))
     .catch(err => console.log(receiveErrors(err.response.data)))
+   
 )
 
 export const updateComment = (commentId, updatedFields) => dispatch => (
