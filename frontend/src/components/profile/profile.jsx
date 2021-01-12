@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import Feed from '../feed/feed';
 
 class Profile extends React.Component {
@@ -21,11 +21,13 @@ class Profile extends React.Component {
             likes: [],
             numLikes: null,
             propLikes: null,
-            followers: []
+            followers: [],
+            popout: false
         }
         
         // this.handleChange = this.handleChange.bind(this);
         // this.handleSelected = this.handleSelected.bind(this);
+        this.handlePopOut = this.handlePopOut.bind(this);
     }
 
     componentDidMount() {
@@ -67,6 +69,11 @@ class Profile extends React.Component {
     componentWillUnmount() {
         this.props.clearDreams();
         this.props.clearModalInfo();
+    }
+
+    handlePopOut() {
+        console.log('popped')
+        this.setState({ popout: !this.state.popout })
     }
 
     // like() {
@@ -218,6 +225,24 @@ class Profile extends React.Component {
 
         let profile;
         let editForm;
+        let popout;
+
+        if (this.state.followers.length > 0) {
+            popout = <div className="likes-popout-inner-container">
+                <span onClick={this.handlePopOut} className="close-popout-btn">&#x2715;</span>
+                {this.state.followers.map((follower, idx) => {
+                    //console.log(follower)
+                    return <Link key={idx} to={`/users/${follower}`} style={{ textDecoration: 'none' }}>
+                        <div className="popout-item" >{follower}</div>
+                    </Link>
+                })}
+            </div>
+        } else {
+            popout = <div className="likes-popout-inner-container" >
+                <span onClick={this.handlePopOut} className="close-popout-btn">&#x2715;</span>
+                <p className="popout-item-none" >Be the first to follow!</p>
+            </div>
+        }
 
         if (this.state.showEditForm) {
             editForm = <div className="edit-profile-form">
@@ -251,18 +276,27 @@ class Profile extends React.Component {
                                 <button onClick={() => this.handleSubmit()}>update</button>
                             </div>
         } else {
-            profile = <div>
-                <div className="username">{this.state.profileUser.username}</div>
-                <div>Dreamer Since: {month} {date.getDate()}, {date.getFullYear()}</div>
-                <div>Location: {this.state.profileUser.location}</div>
-                <div className="age">Age: {this.state.profileUser.age}</div>
-                <div className="about">
-                    Bio: {this.state.profileUser.bio}
-                </div>
-                <div>Followers: {this.state.followers.length}</div>
-            </div>
+            profile = <div className='inner-profile'>
+                        <div className="username">{this.state.profileUser.username}</div>
+                        <div>Dreamer Since: {month} {date.getDate()}, {date.getFullYear()}</div>
+                        <div>Location: {this.state.profileUser.location}</div>
+                        <div className="age">Age: {this.state.profileUser.age}</div>
+                        <div className="about">
+                            Bio: {this.state.profileUser.bio}
+                        </div>
+                        <div onClick={this.handlePopOut}>Followers: {this.state.followers.length}</div>
+                        {this.state.popout ?
+                            <div className="likes-popout-container" onClick={(e) => e.stopPropagation()} >
+                                <div>{popout}</div>
+                            </div>
+                            : ''}
+                    </div>
 
         }
+
+        
+
+        
 
         return (
             <div className="profile-container">
@@ -276,6 +310,7 @@ class Profile extends React.Component {
                         {newDreamBtn}
                         {editForm}
                         {profile}
+                        
                         
                         {/* <div>Followers: {this.state.thisUser.followers.length}</div> */}
                         {followBtn}
