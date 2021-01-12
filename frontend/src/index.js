@@ -23,6 +23,8 @@ import {
   deleteTag,
 } from './actions/tag_actions'
 
+import { fetchUsersByUserIds } from './util/user_api_util';
+
 document.addEventListener('DOMContentLoaded', () => {
   let store;
 
@@ -55,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.createTag = createTag
   window.deleteTag = deleteTag
   window.createDream = createDream
+  window.fetchUsersByUserIds = fetchUsersByUserIds;
 
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);

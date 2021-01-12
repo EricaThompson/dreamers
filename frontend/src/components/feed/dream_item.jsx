@@ -164,10 +164,10 @@ class DreamItem extends React.Component {
             tags = null
         }
 
-        let followIcon;
+        // let followIcon;
         let editIcon;
         let deleteIcon;
-        let flagIcon;
+        // let flagIcon;
         let menuOptions;
         let optionsIcon;
         let likeIcon;

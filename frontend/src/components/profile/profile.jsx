@@ -22,9 +22,11 @@ class Profile extends React.Component {
             numLikes: null,
             propLikes: null,
             followers: [],
+            myFollowers: [],
             popout: false
         }
-        
+        console.log(this.state);
+
         // this.handleChange = this.handleChange.bind(this);
         // this.handleSelected = this.handleSelected.bind(this);
         this.handlePopOut = this.handlePopOut.bind(this);
@@ -45,7 +47,8 @@ class Profile extends React.Component {
         }))
         this.props.fetchDreamsByUser(this.props.match.params.userId)
         this.props.fetchFollowers(this.props.match.params.userId).then(payload => this.setState({followers: payload.data}));
-
+        this.props.fetchUsersByUserIds(this.state.profileUser.followers).then(payload => this.setState({ myFollowers: payload.data }));
+        debugger;
         // this.props.fetchLikesByDream(this.props.dream._id)
         //     .then(res => this.setState({ likes: res.likes }))
         //     .then(this.setState({ propLikes: this.props.like }))
@@ -287,7 +290,7 @@ class Profile extends React.Component {
                         <div onClick={this.handlePopOut}>Followers: {this.state.followers.length}</div>
                         {this.state.popout ?
                             <div className="follower-popout-container" onClick={(e) => e.stopPropagation()} >
-                                <div>{popout}</div>
+                                {popout}
                             </div>
                             : ''}
                     </div>
