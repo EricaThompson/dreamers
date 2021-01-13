@@ -26,34 +26,24 @@ export const clearLike = () => ({
     type: CLEAR_LIKE
 })
 
-// export const fetchLikes = () => dispatch => (
-//     LikeApiUtil.fetchLikes()
-//     .then(likes => dispatch(receiveLikes(likes)))
-//     .catch(err => console.log(err))
-// )
-
 export const fetchLike = (likeId) => dispatch => (
     LikeApiUtil.fetchLike(likeId)
     .then(payload => dispatch(receiveLike(payload.data)))
-    .catch(err => console.error(err))
 )
 
 export const fetchLikesByDream = (dreamId) => dispatch => (
     LikeApiUtil.fetchLikesByDream(dreamId)
     .then(likes => dispatch(receiveLikes(likes.data)))
-    .catch(err => console.error(err))
 )
 
 export const fetchLikesByUser = (userId) => dispatch => (
     LikeApiUtil.fetchLikesByUser(userId)
     .then(likes => dispatch(receiveLikes(likes.data)))
-    .catch(err => console.error(err))
 )
 
 export const createLike = (dreamId) => dispatch => (
     LikeApiUtil.createLike(dreamId)
     .then(payload => dispatch(receiveLike(payload.data)))
-    .catch(err => console.error(err))
 )
 
 export const deleteLike = (likeId) => dispatch => (

@@ -32,9 +32,9 @@ router.post('/:dreamId',
             newComment.save().then(comment => {
               var update = { $push: { comments: comment._id } },
                   options = { new: true }
-              Dream.findOneAndUpdate(query, update, options, (err, dream) => {
-                if (err) {
-                  res.status(400).json(err)
+              Dream.findOneAndUpdate(query, update, options, (errors, dream) => {
+                if (errors) {
+                  res.status(400).json(errors)
                 } else {
                   res.json({
                     comment,
@@ -45,7 +45,7 @@ router.post('/:dreamId',
             })
           })
           .catch(err => 
-            res.status(404).json({err})
+            res.status(404).json(err)
           )
     }
 );
