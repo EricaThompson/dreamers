@@ -4,7 +4,7 @@ export const fetchUserById = userId => (
   axios.get(`/api/users/user/${userId}`)
 );
 
-export const fetchUserByUserIds = userIds => (
+export const fetchUsersByUserIds = userIds => (
   axios.post('/api/users/array', userIds)
 )
 

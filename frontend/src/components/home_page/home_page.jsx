@@ -4,7 +4,7 @@ import React from 'react';
 import image from '../../css/components/DREAMERS-02.png'
 import dreams from '../../css/components/DREAMS.png';
 import goals from '../../css/components/GOALS.png';
-import slogan from '../../css/components/SLOGAN.png';
+// import slogan from '../../css/components/SLOGAN.png';
 import star from '../../css/components/STAR.png'
 
 class HomePage extends React.Component {

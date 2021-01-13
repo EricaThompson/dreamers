@@ -59,6 +59,7 @@ class DreamItem extends React.Component {
         window.location.reload()
     }
 
+
     unlike(){
         this.state.likes.forEach(like=>{
             if (like.username === this.props.currentUser.username){
@@ -163,10 +164,10 @@ class DreamItem extends React.Component {
             tags = null
         }
 
-        let followIcon;
+        // let followIcon;
         let editIcon;
         let deleteIcon;
-        let flagIcon;
+        // let flagIcon;
         let menuOptions;
         let optionsIcon;
         let likeIcon;
@@ -201,28 +202,33 @@ class DreamItem extends React.Component {
         >
         </i>
 
+        let liked = false;
         //! likes functionality
-        if (this.state.likes){
-            // console.log(this.state.likes)
+        if (this.state.likes) {
+            // console.log('this state likes', this.state.likes)
             this.state.likes.forEach(like => {
-                
-                if(like.username === currentUser.username){
-                    likeIcon = <i
-                        className="fas fa-heart"
-                        onClick={()=>this.unlike()}
-                    >
-                    </i>;
-                    
-                } else {
-                    likeIcon = <i
-                        className="far fa-heart"
-                        onClick={() => this.like()}
-                    >
-                    </i>
+
+                if (like.username === currentUser.username) {
+                    liked = true;
                 }
-                // console.log(this.state.likes[0].username)
             })
-        } 
+        }
+
+        
+
+        if (liked) {
+            likeIcon = <i
+                className="fas fa-heart liked"
+                onClick={() => this.unlike()}
+            >
+            </i>;
+        } else {
+            likeIcon = <i
+                className="far fa-heart unliked"
+                onClick={() => this.like()}
+            >
+            </i>
+        }
 
 
         // this.state.likes.forEach(like => {
@@ -313,7 +319,7 @@ class DreamItem extends React.Component {
 
         return (
             <div className={dream.type === "dream" ? "feed-dreams-wrapper" : "feed-goals-wrapper"} onClick={this.handleOpenModal}>
-                <div className="comment-options" onClick={() => this.toggleMenu(), (e) => e.stopPropagation() } >
+                <div key={Math.random()} className="comment-options" onClick={() => this.toggleMenu(), (e) => e.stopPropagation() } >
                     {optionsIcon}
                     <br />
                     {likeIcon}

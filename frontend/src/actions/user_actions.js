@@ -21,8 +21,8 @@ export const fetchUserById = userId => dispatch => (
   .catch(err => dispatch(receiveErrors(err.response.data)))
 );
 
-export const fetchUserByUserIds = userIds => dispatch => (
-  UserApiUtils.fetchUserByUserIds(userIds)
+export const fetchUsersByUserIds = userIds => dispatch => (
+  UserApiUtils.fetchUsersByUserIds(userIds)
   .then(users => dispatch(receiveUsers(users.data)))
   .catch(err => dispatch(receiveErrors(err.response.data)))
 )

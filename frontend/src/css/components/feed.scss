@@ -167,8 +167,15 @@
                         bottom: 10px;
                         right: 15px;
                         cursor: pointer;
-                        //! switch to light gray
-                        color: rgb(161, 160, 160);
+                        color: $light-gray;
+
+                        .liked {
+                            color: $red;
+                        }
+
+                        .unliked {
+                            color: $red;
+                        }
 
                         .available-options {
                             i {

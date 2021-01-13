@@ -7,6 +7,7 @@ import { fetchCommentsByDream, clearComments } from '../../actions/comment_actio
 import { fetchSearchResults, clearSearch } from '../../actions/search_actions';
 import { fetchLike, createLike, deleteLike, fetchLikesByDream } from '../../actions/like_actions';
 import { followUser, unfollowUser, fetchFollowers } from '../../util/follow_api_util';
+import { fetchUsersByUserIds } from '../../util/user_api_util';
 
 const mapSTP = state => ({
     currentUser: state.session.user,
@@ -16,6 +17,7 @@ const mapSTP = state => ({
     isModalOpen: state.ui.modal,
     like: state.like,
     dream: state.dream,
+    follower: state.followers,
 })
 
 const mapDTP = dispatch => ({
@@ -41,6 +43,7 @@ const mapDTP = dispatch => ({
     followUser: followUser,
     unfollowUser: unfollowUser,
     fetchFollowers: fetchFollowers,
+    fetchUsersByUserIds: fetchUsersByUserIds,
 })
 
 export default connect(mapSTP, mapDTP)(Profile);

@@ -7,7 +7,12 @@ class CommentDreamModal extends React.Component {
         super(props);
         this.state = {
             comment: '',
-            
+            likes: [],
+            numLikes: null,
+            propLikes: null,
+            currentLike: 'like',
+            isLiked: false,
+            likeOnce: 0
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -18,6 +23,11 @@ class CommentDreamModal extends React.Component {
         // debugger;
         // this.props.fetchCommentsByDream(this.props.info._id)
         this.props.resetErrors();
+        this.props.fetchLikesByDream(this.props.info._id)
+            .then(res => this.setState({ likes: res.likes }))
+            .then(this.setState({ propLikes: this.props.like }))
+        // console.log('props',this.props)
+
     }
 
     componentWillUnmount() {
@@ -40,8 +50,43 @@ class CommentDreamModal extends React.Component {
         this.setState({ comment: e.target.value })
     }
 
+    like() {
+        // console.log(this.props)
+        let like = {
+            username: this.props.currentUser.username,
+            dreamId: this.props.info._id,
+            userId: this.props.currentUser.id,
+        }
+        this.props.createLike(this.props.info._id, like)
+            .then(res => console.log('res?',res))
+            // .then(res => this.setState({ currentLike: res.like._id }))
+        console.log('createLike', this.props.createLike(this.props.info._id, like), this.props.info._id, like)
+        this.setState({currentLike: ''})
+            // console.log('props dream', this.props.dream)
+        //!fix
+        window.location.reload()
+    }
+
+    liked(){
+        if(this.state.likeOnce === 0){
+            this.setState({isLiked: true})
+            this.setState({likeOnce: 1})
+        }
+    }
+
+    unlike() {
+        this.state.likes.forEach(like => {
+            if (like.username === this.props.currentUser.username) {
+                this.props.deleteLike(like._id)
+            }
+        })
+        this.setState({ currentLike: '' })
+        //!fix
+        window.location.reload()
+    }
+
     render() {
-        let { info, comments, errors } = this.props;
+        let { info, comments, errors, currentUser } = this.props;
 
         let commentFeed;
         let tags;
@@ -63,6 +108,40 @@ class CommentDreamModal extends React.Component {
                     })}
                 </div>
             )
+        }
+
+        let likeIcon;
+
+        likeIcon = <i
+            className="far fa-heart"
+            onClick={() => this.like()}
+        >
+        </i>
+
+        let liked = false;
+
+        if (this.state.likes) {
+            console.log('this state likes',this.state.likes)
+            this.state.likes.forEach(like => {
+
+                if (like.username === currentUser.username) {
+                    liked = true;
+                } 
+            }) 
+        } 
+
+        if (liked){
+            likeIcon = <i
+                className="fas fa-heart liked"
+                onClick={() => this.unlike()}
+            >
+            </i>;
+        } else {
+            likeIcon = <i
+                className="far fa-heart unliked"
+                onClick={() => this.like()}
+            >
+            </i>
         }
 
         if (info.tags) {
@@ -92,6 +171,7 @@ class CommentDreamModal extends React.Component {
         return (
             <div className="comment-modal-outer-container">
                 <div className="comment-dreams-container" >
+                    <div className='comment-like'>{likeIcon}</div>
                     <div className={this.props.info.type === "dream" ? "comment-dreams" : "comment-goals"}>
                         <div className="new-dream-tags-container" >
                             <div className="new-dream-tags" >
@@ -99,22 +179,32 @@ class CommentDreamModal extends React.Component {
                             </div>
                         </div>
                         <p className="comment-dreams-info" >
-                            <Link to={`/users/${info.userId}`} className="comment-dreams-info-link" style={{ textDecoration: 'none' }}>
-                                {info.username}
+                            <Link 
+                                to={`/users/${info.userId}`} 
+                                className="comment-dreams-info-link" 
+                                style={{ textDecoration: 'none' }}
+                            >
+                                    {info.username}
                             </Link>
                         </p>
                         <p className="comment-dreams-info" >{info.text}</p>
                         <form className="comment-form" onSubmit={this.handleSubmit} >
                             <label className="comment-label" >
-                                <textarea className="comment-input" 
+                                <textarea 
+                                    className="comment-input" 
                                     type="text" 
                                     placeholder="Leave your comment here"
                                     value={this.state.comment}
                                     onChange={this.handleChange}
-                                    />
+                                />
                             </label>
                             <div className="comment-btn-container">
-                                <input className="comment-btn" type="submit" value="Create Comment" onClick={this.handleSubmit} />
+                                <input 
+                                    className="comment-btn" 
+                                    type="submit" 
+                                    value="Create Comment" 
+                                    onClick={this.handleSubmit} 
+                                />
                             </div>
                         </form>
                         {/* <div className="session-errors-container">
