@@ -2,7 +2,7 @@
 
 DREAMERS is a social dream and goals journal that allows dreamers to connect based on dreams they had the night before or goals they want to create in the future. Our goal was to create a very feature-rich, intuitive experience for our users to share and collaborate in a new way.
 
-A live link to the site hosted on Heroku is here: [DREAMERS](https://the-dreamers-app.herokuapp.com/#/)
+A live link to the site hosted on Heroku is here: [DREAMERS](https://the-dreamers-app.herokuapp.com/)
 
 <p align="center" width="107">
   <img src="https://campsound-dev.s3-us-west-1.amazonaws.com/dreamers+images/Screen+Shot+2021-01-03+at+10.06.39+PM.png" alt="splash page" />
