@@ -286,7 +286,7 @@ class Profile extends React.Component {
                         <div className="about">
                             Bio: {this.state.profileUser.bio}
                         </div>
-                        <div onClick={this.handlePopOut}>Followers: {this.state.followers.length}</div>
+                        <div className="followers" onClick={this.handlePopOut}>Followers: {this.state.followers.length}</div>
                         {this.state.popout ?
                             <div className="follower-popout-container" onClick={(e) => e.stopPropagation()} >
                                 {popout}

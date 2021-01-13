@@ -143,6 +143,11 @@
             // margin-left: 16px;
             margin-right: 2vw;
 
+            .inner-profile {
+                .followers {
+                    cursor: pointer;
+                }
+            }
             .follower-popout-container {
                 position: absolute;
                 top: 142px;
@@ -184,7 +189,7 @@
                         width: 220px;
                         height: 28px;
                         margin-left: -5px;
-                        margin-bottom: -10px;
+                        margin-bottom: 1px;
                     }
                     
                     .popout-item:hover {
@@ -315,7 +320,7 @@
                             width: 220px;
                             margin-left: -5px;
                             // margin-bottom: -10px;
-                            height: 35px;
+                            height: 30px;
                             box-sizing: border-box;
                         }
                         
