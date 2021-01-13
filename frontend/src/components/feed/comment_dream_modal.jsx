@@ -207,9 +207,9 @@ class CommentDreamModal extends React.Component {
                                 />
                             </div>
                         </form>
-                        <div className="session-errors-container">
+                        {/* <div className="session-errors-container">
                             {errors.map(err => <p className="session-errors" >{err}</p>)}
-                        </div>
+                        </div> */}
                         <div className="comment-feed-container" >{commentFeed}</div>
                     </div>
                 </div>
