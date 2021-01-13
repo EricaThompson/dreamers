@@ -1,5 +1,5 @@
 import * as TagApiUtil from '../util/tag_api_util';
-import { receiveErrors } from './actions/error_actions';
+import { receiveErrors } from './error_actions';
 
 export const RECEIVE_TAGS = 'RECEIVE_TAGS';
 export const RECEIVE_TAG = 'RECEIVE_TAG';
