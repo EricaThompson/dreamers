@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import image from '../../css/components/DREAMERS-02.png'
+import image from '../../css/components/DREAMERS PNG-01 (2).png'
 
 class NavBar extends React.Component {
     constructor(props) {
