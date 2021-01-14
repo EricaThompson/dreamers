@@ -23,6 +23,12 @@ class NavBar extends React.Component {
         }
     }
 
+    openModalAndPreventDefault(e){
+        e.preventDefault()
+        this.props.openModal('newDream')
+    }
+    
+
     logoutUser(e) {
         e.preventDefault();
         this.props.logout();
@@ -46,8 +52,8 @@ class NavBar extends React.Component {
 
             if (this.state.showDropdown) {
                 dropdown = <div className="menu-items">
-                    <Link 
-                        onClick={() => this.props.openModal('newDream')}
+                    <Link to={`/`}
+                        onClick={()=>this.openModalAndPreventDefault()}
                     >
                         <p>create</p>
                     </Link>

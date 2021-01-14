@@ -43,7 +43,8 @@ class Profile extends React.Component {
         }))
 
         this.props.fetchDreamsByUser(this.props.match.params.userId)
-        this.props.fetchFollowers(this.props.match.params.userId).then(payload => this.setState({followers: payload.data}));
+        this.props.fetchFollowers(this.props.match.params.userId)
+            .then(payload => this.setState({followers: payload.data}));
     }
 
     componentDidUpdate(nextProps) {
@@ -58,7 +59,11 @@ class Profile extends React.Component {
     }
 
     handlePopOut() {
-        this.props.fetchUsersByUserIds({userIds: this.state.followers}).then(payload => this.setState({ myFollowers: payload.data, popout: !this.state.popout }));
+        this.props.fetchUsersByUserIds({userIds: this.state.followers})
+            .then(payload => this.setState({ 
+                myFollowers: payload.data, 
+                popout: !this.state.popout 
+            }));
     }
 
     handleChange(value) {
@@ -111,8 +116,11 @@ class Profile extends React.Component {
             if(this.state.followers.includes(this.props.currentUser.id)) {
                 followBtn = <button
                         className="new-dream-btn"
-                        onClick={() => {this.props.unfollowUser(this.props.match.params.userId)
-                            let i = this.state.followers.indexOf(this.props.match.params.userId);
+                        onClick={() => {
+                            this.props.unfollowUser(
+                                this.props.match.params.userId)
+                            let i = this.state.followers
+                                .indexOf(this.props.match.params.userId);
                             this.state.followers.splice(i, 1);
                             this.setState({ followers: this.state.followers });
                         }} 
@@ -133,7 +141,21 @@ class Profile extends React.Component {
             }
         }
 
-        let { openModal, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo, currentUser, closeModal, deleteDream, fetchLike, createLike, deleteLike, fetchLikesByDream } = this.props;
+        let { 
+            openModal, 
+            dreams, 
+            clearDreams, 
+            clearComments, 
+            fetchCommentsByDream, 
+            modalInfo, 
+            currentUser, 
+            closeModal, 
+            deleteDream, 
+            fetchLike, 
+            createLike, 
+            deleteLike, 
+            fetchLikesByDream 
+        } = this.props;
         if (!dreams) return null;
 
         let date = new Date(parseInt(this.state.timestamp, 16) * 1000)
@@ -187,25 +209,41 @@ class Profile extends React.Component {
 
         if (this.state.myFollowers.length > 0) {
             popout = <div className="likes-popout-inner-container">
-                <span onClick={this.handlePopOut} className="close-popout-btn">&#x2715;</span>
+                <span 
+                    onClick={this.handlePopOut} 
+                    className="close-popout-btn">
+                        &#x2715;
+                </span>
                 {this.state.myFollowers.map((follower, idx) => {
-                    return <Link key={idx} to={`/users/${follower._id}`} style={{ textDecoration: 'none' }}>
+                    return <Link 
+                                key={idx} 
+                                to={`/users/${follower._id}`} 
+                                style={{ textDecoration: 'none' }}
+                            >
                         <div className="popout-item" >{follower.username}</div>
                     </Link>
                 })}
             </div>
         } else {
             popout = <div className="likes-popout-inner-container" >
-                <span onClick={this.handlePopOut} className="close-popout-btn">&#x2715;</span>
+                <span 
+                    onClick={this.handlePopOut} 
+                    className="close-popout-btn">
+                        &#x2715;
+                </span>
                 <p className="popout-item-none" >Be the first to follow!</p>
             </div>
         }
 
         if (this.state.showEditForm) {
             editForm = <div className="edit-profile-form">
-                            
-                            <div className="username">{this.state.profileUser.username}</div>
-                            <div>Dreamer Since: {month} {date.getDate()} {date.getFullYear()}</div>
+                            <div className="username">
+                                {this.state.profileUser.username}
+                            </div>
+                            <div>
+                                Dreamer Since: {month} {date.getDate()} 
+                                {date.getFullYear()}
+                            </div>
                             <div 
                                 className="location"> 
                                 Location: 
@@ -230,12 +268,19 @@ class Profile extends React.Component {
                                     value={this.state.bio} 
                                 />
                             </div>
-                                <button onClick={() => this.handleSubmit()}>update</button>
+                                <button 
+                                    onClick={() => this.handleSubmit()}>
+                                        update
+                                </button>
                             </div>
         } else {
             profile = <div className='inner-profile'>
-                        <div className="username">{this.state.profileUser.username}</div>
-                        <div>Dreamer Since: {month} {date.getDate()}, {date.getFullYear()}</div>
+                        <div 
+                            className="username">{this.state.profileUser.username}
+                        </div>
+                        <div>
+                            Dreamer Since: {month} {date.getDate()}, {date.getFullYear()}
+                        </div>
                         <div>Location: {this.state.profileUser.location}</div>
                         <div className="age">Age: {this.state.profileUser.age}</div>
                         <div className="about">
