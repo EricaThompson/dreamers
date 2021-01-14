@@ -154,7 +154,7 @@ class NewDream extends React.Component {
                                             () => this.handleTags(result.name)} 
                                         key={idx} 
                                     >
-                                        <i class="fas fa-tag search-icon">
+                                        <i className="fas fa-tag search-icon">
                                         </i>
                                         {result.name}
                         </div>
