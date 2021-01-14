@@ -28,19 +28,23 @@ class NewDream extends React.Component {
         this.addTag = this.addTag.bind(this);
         this.removeTag = this.removeTag.bind(this);
         this.hideShow = this.hideShow.bind(this);
+        this.closeDreamCreation = this.closeDreamCreation.bind(this);
     }
 
     componentDidMount() {
         this.props.resetErrors();
+        this.props.clearErrors();
     }
 
     handleChange(type) {
         return (e) => {
+            this.props.clearErrors();
             this.setState({ [type]: e.currentTarget.value })
         }
     }
 
     handleSearchChange(e) {
+        this.props.clearErrors();
         this.props.fetchSearchResults(e.target.value);
         this.setState({ searchValue: e.target.value, showClose: true })
     }
@@ -60,40 +64,48 @@ class NewDream extends React.Component {
             tags: this.state.tags
         }
         if (Object.values(this.props.info).length === 0) {
-
             this.props.createDream(newDream);
-
         } else {
-
             this.props.updateDream(this.props.info._id, newDream);
-
         }
-
-        this.props.closeModal()
         
-        //!needs to be fixed 
-        window.location.reload();
-
+        setTimeout(() => this.closeDreamCreation(), 500)
+    }
+        
+    closeDreamCreation() {
+        if (this.props.errors.length === 0) {
+            this.props.closeModal()
+            window.location.reload();
+        }
     }
 
     handleTags(tag) {
         let newTags = this.state.tags
-        newTags.push(tag)
+        if (Object.values(this.props.errors).length === 0) {
+            newTags.push(tag)
+        }
         this.setState({ tags: newTags, showClose: false, searchValue: '' })
         this.props.clearSearch();
     }
 
     addTag() {
-        this.props.createTag({tag: this.state.searchValue});
-        this.handleTags(this.state.searchValue);
+
+        this.props.createTag({tag: this.state.searchValue})
+            .then(()=> setTimeout(() => this.handleTags(this.state.searchValue), 500))
+            .catch(() => setTimeout(() =>this.setState({searchValue: 'test'}), 500))
+
     }
+
 
     removeTag(tag) {
         return (e) => {
             let newTags = this.state.tags
             let idx = newTags.indexOf(tag)
             delete newTags[idx]
-            this.setState({ tags: newTags })
+            let newestTags = newTags.filter(t => t.length > 0)
+            console.log(newestTags)
+            this.setState({ tags: newestTags })
+            this.props.clearErrors();
         }
     }
 
@@ -133,6 +145,7 @@ class NewDream extends React.Component {
                         {Object.values(this.props.searchResults.tags)
                             .map((result, idx) => (
                                 <div 
+                                    key={idx}
                                     className=
                                         "tag-search-results-outer-container" 
                                 >
@@ -143,7 +156,7 @@ class NewDream extends React.Component {
                                             () => this.handleTags(result.name)} 
                                         key={idx} 
                                     >
-                                        <i class="fas fa-tag search-icon">
+                                        <i className="fas fa-tag search-icon">
                                         </i>
                                         {result.name}
                         </div>
@@ -216,7 +229,7 @@ class NewDream extends React.Component {
                         <i className="fas fa-search dream-search-icon"></i>
                         <form 
                             className="create-dream-search-form" 
-                            onSubmit={()=>this.handleTags()}
+                            onSubmit={this.addTag}
                         >
                             <input type="text"
                                 placeholder="Search tags or create a new one"
@@ -255,8 +268,12 @@ class NewDream extends React.Component {
                             onChange={this.handleChange('dreamText')}>
                         </textarea>
                     </form>
+                    <div className="session-errors-container">
+                        {Object.values(this.props.errors).map((err, idx) => {
+                        return <p key={idx} className="session-errors" >{err}</p>
+                    })}
+                    </div>
                 </div>
-
                 <div className="create-dream-btn" >
                     <input className="new-dream-btn" 
                         type="submit" 

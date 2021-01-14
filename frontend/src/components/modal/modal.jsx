@@ -10,6 +10,7 @@ import { resetErrors } from '../../actions/session_actions';
 import { fetchSearchResults, clearSearch } from '../../actions/search_actions';
 import { createTag } from '../../actions/tag_actions';
 import { createLike, deleteLike, fetchLikesByDream } from '../../actions/like_actions';
+import { receiveErrors, clearErrors } from '../../actions/error_actions';
 
 class Modal extends React.Component {
     constructor(props) {
@@ -43,7 +44,9 @@ class Modal extends React.Component {
             dream,
             createLike,
             deleteLike,
-            fetchLikesByDream 
+            fetchLikesByDream,
+            receiveErrors, 
+            clearErrors
         } = this.props;
         if (!modal) {
             return null;
@@ -63,6 +66,8 @@ class Modal extends React.Component {
                     searchResults={searchResults}
                     createTag={createTag}
                     closeModal={closeModal}
+                    receiveErrors={receiveErrors}
+                    clearErrors={clearErrors}
                 />;
                 break;
             case 'commentDream':
@@ -81,7 +86,7 @@ class Modal extends React.Component {
                     createLike = {createLike}
                     deleteLike = {deleteLike}
                     fetchLikesByDream={fetchLikesByDream}
-
+                    clearErrors={clearErrors}
                 />;
                 break;
             default:
@@ -132,7 +137,9 @@ const mapDTP = dispatch => ({
     createTag: (tag) => dispatch(createTag(tag)),
     createLike: (dreamId)=> dispatch(createLike(dreamId)),
     deleteLike: (likeId)=> dispatch(deleteLike(likeId)),
-    fetchLikesByDream: (dreamId) => dispatch(fetchLikesByDream(dreamId))
+    fetchLikesByDream: (dreamId) => dispatch(fetchLikesByDream(dreamId)),
+    receiveErrors: (errors) => dispatch(receiveErrors(errors)), 
+    clearErrors: () => dispatch(clearErrors())
 })
 
 export default connect(mapSTP, mapDTP)(Modal);
