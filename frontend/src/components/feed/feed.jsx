@@ -1,7 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import DreamItem from './dream_item';
-// import GoalItem from './goal_item';
 import { withRouter } from 'react-router-dom';
 import SearchItem from './search_item';
 
@@ -14,6 +12,7 @@ class Feed extends React.Component {
             selected: 'feed',
             dreams: null,
             showClose: false,
+            //! may include spinner for loading views for UX
             // spinnerShow: true,
         }
         this.handleChange = this.handleChange.bind(this);
@@ -22,20 +21,15 @@ class Feed extends React.Component {
     }
 
     componentDidMount() {
-        // debugger;
         this.setState({spinnerShow: true})
         this.props.closeModal();
         this.props.clearSearch();
         if (this.props.match.url.includes("feed") )
-
         this.props.fetchDreams()
+            //!spinner
             // .then(this.setState({spinnerShow: false}))
     }
 
-    // componentWillReceiveProps(nextProps){
-    //     nextProps.fetchDreamsByUser(nextProps.userId)
-    //         .then(res => this.setState({dreams: res}))
-    // }
     componentWillUnmount() {
         this.props.clearDreams();
     }
@@ -46,7 +40,7 @@ class Feed extends React.Component {
     }
 
     handleSelected(type) {
-        return (e) => {
+        return () => {
             this.setState({ selected: type })
         }
     }
@@ -146,7 +140,7 @@ class Feed extends React.Component {
                 }
             })
         }
-        
+        //!spinner
         // let spinner;
 
         // if (this.state.spinnerShow){
@@ -154,21 +148,37 @@ class Feed extends React.Component {
         // }
 
         let search;
-        if (Object.values(searchResults).length > 0 && !this.props.isModalOpen) {
-        // if (searchResults && !this.props.isModalOpen) {
+        if (Object.values(searchResults).length > 0 && !this.props.isModalOpen){
 
             search = <div className="search-results-outer-container" >
                 {Object.values(searchResults.dreams).map((result, idx) => {
-                    // {
-                        // searchResults.dreams.map((result, idx) => {
-
-                    return <SearchItem key={idx} dream={result} type={"dream"} text={result.text} clearComments={clearComments} fetchCommentsByDream={fetchCommentsByDream} openModal={openModal} modalInfo={modalInfo} clearSearch={clearSearch} />
+                    return <SearchItem 
+                                key={idx} 
+                                dream={result} 
+                                type={"dream"} 
+                                text={result.text} 
+                                clearComments={clearComments} 
+                                fetchCommentsByDream={fetchCommentsByDream} 
+                                openModal={openModal} 
+                                modalInfo={modalInfo} 
+                                clearSearch={clearSearch} 
+                            />
                 })}
                 {Object.values(searchResults.tags).map((result, idx) => {
-                    return <SearchItem key={idx} dream={result} type={"tag"} text={result.name} />
+                    return <SearchItem 
+                                key={idx} 
+                                dream={result} 
+                                type={"tag"} 
+                                text={result.name} 
+                            />
                 })}
                 {Object.values(searchResults.users).map((result, idx) => {
-                    return <SearchItem key={idx} dream={result} type={"users"} text={result.username} />
+                    return <SearchItem 
+                                key={idx} 
+                                dream={result} 
+                                type={"users"} 
+                                text={result.username} 
+                            />
                 })}
             </div>
         }
@@ -186,21 +196,38 @@ class Feed extends React.Component {
                                 className="feed-search-input" />
                         </form>
                         {search}
-                        {/* <i className="fas fa-times-circle"></i> */}
-                        <i onClick={this.hideShow} className={this.state.showClose ? "fas fa-times-circle close-search-btn" : ''}></i>
+                        <i 
+                            onClick={this.hideShow} 
+                            className={
+                                this.state.showClose 
+                                ? "fas fa-times-circle close-search-btn" 
+                                : ''}
+                        >
+                        </i>
                     </div>
-                    {/* {spinner} */}
                     <div className="feed-index-container" >
                         <div className="feed-header-container">
-                            <h1 className={this.state.selected === 'feed' ? "feed-header feed-header-selected" : "feed-header"} 
+                            <h1 className={
+                                this.state.selected === 'feed' 
+                                    ? "feed-header feed-header-selected" 
+                                    : "feed-header"} 
                                 onClick={this.handleSelected('feed')}
                             >Feed</h1>
-                            <h1 className={this.state.selected === 'dreams' ? "feed-header feed-header-selected" : "feed-header"} 
+                            <h1 
+                                className={
+                                    this.state.selected === 'dreams' 
+                                        ? "feed-header feed-header-selected" 
+                                        : "feed-header"} 
                                 onClick={this.handleSelected('dreams')}
                             >Dreams</h1>
-                            <h1 className={this.state.selected === 'goals' ? "feed-header feed-header-selected" : "feed-header"} 
+                            <h1 
+                                className={this.state.selected === 'goals' 
+                                ? "feed-header feed-header-selected" 
+                                : "feed-header"} 
                                 onClick={this.handleSelected('goals')}
-                            >Goals</h1>
+                            >
+                                Goals
+                            </h1>
                         </div>
                     </div>
                 </div>
@@ -212,7 +239,6 @@ class Feed extends React.Component {
                     </div>
                 </div>
                 <div className="feed-dreams-bottom" ></div>
-                {/* <div className="feed-dreams-blur" ></div> */}
             </div>
         )
     }

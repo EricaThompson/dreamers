@@ -2,9 +2,17 @@ import TagsFeed from './tags';
 import { connect } from 'react-redux';
 import { openModal, closeModal, modalInfo } from '../../actions/modal_actions';
 import { fetchDreamsByTags, clearDreams } from '../../actions/dream_actions';
-import { fetchCommentsByDream, clearComments } from '../../actions/comment_actions';
+import { 
+    fetchCommentsByDream, 
+    clearComments 
+} from '../../actions/comment_actions';
 import { fetchSearchResults, clearSearch } from '../../actions/search_actions';
-import { fetchLike, createLike, deleteLike, fetchLikesByDream } from '../../actions/like_actions';
+import { 
+    fetchLike, 
+    createLike, 
+    deleteLike, 
+    fetchLikesByDream 
+} from '../../actions/like_actions';
 
 const mapSTP = (state, ownProps) => ({
     currentUser: state.session.user,

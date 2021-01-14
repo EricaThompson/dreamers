@@ -1,14 +1,5 @@
 .logo {
     position: relative;
-
-    // .logo-icon {
-    //     font-size: 250px;
-    //     color: $dark-gray;
-    //     // opacity: .7;
-    // }
-    // width: 20px;
-    // height: 20px;
-
     width: 100%;
     height: 100%;
 
@@ -62,25 +53,17 @@
 
             .dreams-image {
                 position: absolute;
-                // position: absolute;
                 z-index: 10;
-                // top: 402px;
                 left: 0px;
                 height: 200px;
                 width: auto;
-                // box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
             }
         
             .goals-image {
-
-                // position: absolute;
-                // position: absolute;
                 z-index: 10;
-                // top: 402px;
                 right: 0px;
                 height: 200px;
                 width: auto;
-                // box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
             }
         }
         
@@ -89,24 +72,7 @@
     .nav-logo {
         position: absolute;
         bottom: 10%;
-        // font-family: $bold;
-        // font-size: 50px;
-        // color: $logo-yellow;
-        // letter-spacing: 2px;
-        // // -webkit-text-stroke: 1px $dark-gray;
-        // text-shadow: 5px 5px 5px $dark-gray;
-        // padding-bottom: 30px;
-        // position: absolute;
-        // top: 0;
     }
-
-
-
-    // .nav-logo {
-    //     // margin-top: 580px;
-    //     // box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-    // }
-
 
     .box {
         height: 100px;
@@ -118,16 +84,6 @@
 
 @media (min-width: 700px) {
     .logo {
-        // position: relative;
-
-        // .logo-icon {
-        //     font-size: 250px;
-        //     color: $dark-gray;
-        //     // opacity: .7;
-        // }
-        // width: 20px;
-        // height: 20px;
-
         width: 100%;
         height: 100%;
 
@@ -186,46 +142,26 @@
             .splash-box {
                 width: auto;
                 .dreams-image {
-                    // position: absolute;
-                    // position: absolute;
                     z-index: 10;
-                    // top: 402px;
-                    // right: 10px;
                     height: 200px;
                     width: auto;
-                    // box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
                 }
             
                 .goals-image {
-                    // position: absolute;
-                    // position: absolute;
                     z-index: 10;
-                    // top: 402px;
-                    // left: 17px;
                     height: 200px;
                     width: auto;
-                    // box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
                 }
             }
         }
-
-
-
-        // .nav-logo {
-        //     // margin-top: 580px;
-        //     // box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-        // }
 
         .logo-title {
             font-family: $bold;
             font-size: 50px;
             color: $logo-yellow;
             letter-spacing: 2px;
-            // -webkit-text-stroke: 1px $dark-gray;
             text-shadow: 5px 5px 5px $dark-gray;
             padding-bottom: 30px;
-            // position: absolute;
-            // top: 0;
         }
 
         .box {

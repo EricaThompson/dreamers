@@ -1,7 +1,10 @@
-// import Profile from './profile';
 import { connect } from 'react-redux';
 import { openModal, closeModal } from '../../actions/modal_actions';
-import { fetchDreamsByUser, fetchDreams, createDream } from '../../actions/dream_actions';
+import { 
+    fetchDreamsByUser, 
+    fetchDreams, 
+    createDream 
+} from '../../actions/dream_actions';
 import HomePage from './home_page';
 
 
