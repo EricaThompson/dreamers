@@ -227,7 +227,7 @@ class NewDream extends React.Component {
                         <i className="fas fa-search dream-search-icon"></i>
                         <form 
                             className="create-dream-search-form" 
-                            onSubmit={()=>this.handleTags()}
+                            onSubmit={this.addTag}
                         >
                             <input type="text"
                                 placeholder="Search tags or create a new one"
