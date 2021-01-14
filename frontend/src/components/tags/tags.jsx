@@ -19,7 +19,21 @@ class TagsFeed extends React.Component {
     }
     
     render() {
-        let { tagName, openModal, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo, currentUser, closeModal, fetchLike, createLike, deleteLike, fetchLikesByDream } = this.props;
+        let {
+            tagName, 
+            openModal, 
+            dreams, 
+            clearDreams, 
+            clearComments, 
+            fetchCommentsByDream, 
+            modalInfo, 
+            currentUser, 
+            closeModal, 
+            fetchLike, 
+            createLike, 
+            deleteLike, 
+            fetchLikesByDream 
+        } = this.props;
 
         return (
             <div className="profile-container">
