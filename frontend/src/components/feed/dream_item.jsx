@@ -24,7 +24,9 @@ class DreamItem extends React.Component {
             .then(res => this.setState({likes: res.likes}))
             .then(this.setState({propLikes: this.props.like}))
         
-        this.setState({ timestamp: this.props.dream._id.toString().substring(0, 8)})
+        this.setState({ 
+            timestamp: this.props.dream._id.toString().substring(0, 8)
+        })
 
 
     }
@@ -35,6 +37,12 @@ class DreamItem extends React.Component {
 
     toggleMenu() {
         this.setState({ showMenu: !this.state.showMenu })
+    }
+
+    toggleAndStopPropagation(e){
+        () => this.toggleMenu();
+        (e) => e.stopPropagation();
+
     }
 
     closeMenu() {
@@ -143,10 +151,25 @@ class DreamItem extends React.Component {
                 this.state.tags.map((tag, idx) => {
                     if (tag != null) {
                         return (
-                            <Link to={`/tags/${tag}`} key={idx} style={{ textDecoration: 'none' }} >
-                                <div className="new-dream-tags-item-container" onClick={e => e.stopPropagation()} >
-                                    <div className={dream.type === "dream" ? "new-dream-tags-item-circle" : "new-goal-tags-item-circle"} ></div>
-                                    <p className="new-dream-tags-item" >{tag}</p>
+                            <Link 
+                                to={`/tags/${tag}`} 
+                                key={idx} 
+                                style={{ textDecoration: 'none' }} 
+                                >
+                                <div 
+                                    className="new-dream-tags-item-container" 
+                                    onClick={e => e.stopPropagation()} 
+                                >
+                                    <div 
+                                        className={dream.type === "dream" 
+                                        ? "new-dream-tags-item-circle" 
+                                        : "new-goal-tags-item-circle"} 
+                                    >
+
+                                    </div>
+                                    <p className="new-dream-tags-item" >
+                                        {tag}
+                                    </p>
                                 </div>
                             </Link>
                         )
@@ -244,30 +267,57 @@ class DreamItem extends React.Component {
 
         if (this.state.likes.length > 0) {
             popout = <div className="likes-popout-inner-container">
-                <span onClick={this.handlePopOut} className="close-popout-btn">&#x2715;</span>
+                <span 
+                    onClick={this.handlePopOut} 
+                    className="close-popout-btn">
+                        &#x2715;
+                </span>
                 {this.state.likes.map((like, idx) => {
-                    return <Link key={idx} to={`/users/${like.userId}`} style={{ textDecoration: 'none' }}>
-                        <div className="popout-item" >{like.username}</div>
-                    </Link>
+                    return <Link 
+                                key={idx} 
+                                to={`/users/${like.userId}`} 
+                                style={{ textDecoration: 'none' }}
+                            >
+                                <div className="popout-item" >
+                                    {like.username}
+                                </div>
+                            </Link>
                 })}
             </div>
         } else {
             popout = <div className="likes-popout-inner-container" >
-                <span onClick={this.handlePopOut} className="close-popout-btn">&#x2715;</span>
+                <span 
+                    onClick={this.handlePopOut} 
+                    className="close-popout-btn">
+                        &#x2715;
+                </span>
                 <p className="popout-item-none" >Be the first to like!</p>
             </div>
         }
         
         return (
-            <div className={dream.type === "dream" ? "feed-dreams-wrapper" : "feed-goals-wrapper"} onClick={this.handleOpenModal}>
-                <div key={Math.random()} className="comment-options" onClick={() => this.toggleMenu(), (e) => e.stopPropagation() } >
+            <div className={
+                dream.type === "dream" 
+                    ? "feed-dreams-wrapper" 
+                    : "feed-goals-wrapper"} 
+                    onClick={this.handleOpenModal}
+            >
+                <div 
+                    key={Math.random()} 
+                    className="comment-options" 
+                    onClick={(e)=>this.toggleAndStopPropagation(e)} 
+                >
                     {optionsIcon}
                     <br />
                     {likeIcon}
                     {menuOptions}
                 </div>
 
-                <div className={dream.type === "dream" ? "feed-dreams" : "feed-goals"}   >
+                <div className={
+                    dream.type === "dream" 
+                        ? "feed-dreams" 
+                        : "feed-goals"}   
+                >
                     {dream.type === "dream" ? 
                         <div>
                             <div className="feed-dreams-circle-big" ></div>
@@ -281,19 +331,51 @@ class DreamItem extends React.Component {
                             </div>
                         </div>
                     <div className="feed-dreams-info" >
-                            <Link to={`/users/${dream.userId}`} className="feed-dreams-info-link" style={{ textDecoration: 'none' }}>
+                            <Link 
+                                to={`/users/${dream.userId}`} 
+                                className="feed-dreams-info-link" 
+                                style={{ textDecoration: 'none' }}
+                            >
                                 {dream.username} 
                             </Link>
-                            <p className='dream-item-date'>{month} {date.getDate()}, {date.getFullYear()}</p>
+                            <p 
+                                className='dream-item-date'
+                            >
+                                {month} {date.getDate()}, {date.getFullYear()}
+                            </p>
                         </div>
                         <p className="feed-dreams-info" >{dream.text}</p>
                     <div className="feed-dreams-footer" >
-                        <p className="feed-dreams-footer-info" >{dream.comments ? dream.comments.length : 0} <span className="feed-dreams-footer-comments" >{dream.comments && dream.comments.length === 1 ? "comment" : "comments"}</span></p>
+                        <p 
+                            className="feed-dreams-footer-info">
+                                {dream.comments ? dream.comments.length : 0} 
+                            <span 
+                                className="feed-dreams-footer-comments" >
+                                    {dream.comments && dream.comments.length === 1 
+                                ? "comment" 
+                                : "comments"}
+                            </span>
+                        </p>
                         <div className="feed-dreams-footer">
 
-                            <p className="feed-dreams-footer-info" onClick={(e) => e.stopPropagation()}>{this.state.likes.length} <span onClick={this.handlePopOut} className="feed-dreams-footer-likes" >{this.state.likes.length === 1 ? "like" : "likes"}</span></p>
+                            <p 
+                                className="feed-dreams-footer-info" 
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                {this.state.likes.length} 
+                                <span 
+                                    onClick={this.handlePopOut} 
+                                    className="feed-dreams-footer-likes" >
+                                        {this.state.likes.length === 1 
+                                    ? "like" 
+                                    : "likes"}
+                                </span>
+                            </p>
                             {this.state.popout ? 
-                                <div className="likes-popout-container" onClick={(e) => e.stopPropagation()} >
+                                <div 
+                                    className="likes-popout-container" 
+                                    onClick={(e) => e.stopPropagation()} 
+                                >
                                     {popout} 
                                 </div>
                             : ''}

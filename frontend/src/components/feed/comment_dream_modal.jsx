@@ -79,7 +79,7 @@ class CommentDreamModal extends React.Component {
     }
 
     render() {
-        let { info, comments, errors, currentUser } = this.props;
+        let { info, comments, currentUser } = this.props;
 
         let commentFeed;
         let tags;
