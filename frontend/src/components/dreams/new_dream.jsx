@@ -88,13 +88,13 @@ class NewDream extends React.Component {
     }
 
     addTag() {
-        this.props.createTag({tag: this.state.searchValue});
-        console.log('errors' + this.props.errors);
-        setTimeout(() => this.handleTags(this.state.searchValue), 500)
-        // if (Object.values(this.props.errors).length === 0) {
-        //     this.handleTags(this.state.searchValue);
-        // }
+
+        this.props.createTag({tag: this.state.searchValue})
+            .then(()=> setTimeout(() => this.handleTags(this.state.searchValue), 500))
+            .catch(() => setTimeout(() =>this.setState({searchValue: 'test'}), 500))
+
     }
+
 
     removeTag(tag) {
         return (e) => {
@@ -144,6 +144,7 @@ class NewDream extends React.Component {
                         {Object.values(this.props.searchResults.tags)
                             .map((result, idx) => (
                                 <div 
+                                    key={idx}
                                     className=
                                         "tag-search-results-outer-container" 
                                 >
@@ -267,8 +268,8 @@ class NewDream extends React.Component {
                         </textarea>
                     </form>
                     <div className="session-errors-container">
-                        {Object.values(this.props.errors).map(err => {
-                        return <p className="session-errors" >{err}</p>
+                        {Object.values(this.props.errors).map((err, idx) => {
+                        return <p key={idx} className="session-errors" >{err}</p>
                     })}
                     </div>
                 </div>
