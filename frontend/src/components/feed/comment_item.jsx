@@ -14,10 +14,6 @@ class CommentItem extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    // componentDidMount(){
-    //     console.log('comment: ',this.props.comment)
-    // }
-
     toggleEdit() {
         this.setState({ showEditForm: !this.state.showEditForm })
     }
@@ -41,7 +37,7 @@ class CommentItem extends React.Component {
             username: this.props.comment.username,
             comment: this.state.comment
         }
-        // debugger
+
         this.props.updateComment(this.props.comment._id, comment)
             .then(res => console.log('response: ',res))
             .catch(err => console.log('error: ',err))
@@ -68,7 +64,7 @@ class CommentItem extends React.Component {
         let flagIcon;
         let menuOptions;
         let optionsIcon;
-        // let optionsHide;
+
 
         if (comment.username === this.props.currentUser.username){
             optionsIcon = <i
@@ -112,24 +108,16 @@ class CommentItem extends React.Component {
                             {editIcon}
                             {deleteIcon}
                             {followIcon}
-                            {/* maybe links to a contact form with their username?*/}
                             {flagIcon}
                         </div>
         } else {
             
         }
 
-        // console.log('comment', comment)
-        // console.log('currentUser', this.props.currentUser)
-        // if (comment.username === this.props.currentUser.username){
-        //     console.log('same person')
-        // }
-
         return (
             <div className="comment-item-outer-container" >
                 <div 
                     className="comment-item-container"
-                    // onClick={()=>this.closeMenu()}
                 >
                     <div className="comment-item-text" >
                         <Link to={`/users/${comment.userId}`} 
@@ -160,7 +148,6 @@ class CommentItem extends React.Component {
                     >
                             {comment.comment}
                     </p>
-                    {/* <p className="comment-item-text" >{comment.comment}</p> */}
                 </div>
             </div>
         )
