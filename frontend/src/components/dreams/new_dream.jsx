@@ -33,6 +33,7 @@ class NewDream extends React.Component {
 
     componentDidMount() {
         this.props.resetErrors();
+        this.props.clearErrors();
     }
 
     handleChange(type) {
