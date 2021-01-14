@@ -4,17 +4,15 @@ class NewDream extends React.Component {
     constructor(props) {
         super(props);
         if (this.props.info === null || Object.values(this.props.info).length === 0) {
-            // debugger;
+
             this.state = {
                 selectedOption: 'dream',
                 dreamText: '',
                 searchValue: '',
                 tags: [],
                 showClose: false,
-                // newTags: this.props.tags
             }
         } else {
-            //debugger;
             this.state = {
                 selectedOption: this.props.info.type,
                 dreamText: this.props.info.text,
@@ -37,14 +35,12 @@ class NewDream extends React.Component {
     }
 
     handleChange(type) {
-        // debugger;
         return (e) => {
             this.setState({ [type]: e.currentTarget.value })
         }
     }
 
     handleSearchChange(e) {
-        // debugger;
         this.props.fetchSearchResults(e.target.value);
         this.setState({ searchValue: e.target.value, showClose: true })
     }
@@ -63,26 +59,21 @@ class NewDream extends React.Component {
             text: this.state.dreamText,
             tags: this.state.tags
         }
-        // debugger;
         if (Object.values(this.props.info).length === 0) {
-        // if (this.props.info) {
 
             this.props.createDream(newDream);
-            // debugger;
-            // console.log('update dream', { dream: newDream })
+
         } else {
-            // console.log('new dream', newDream)
-            // this.props.createDream({dream: newDream});
+
             this.props.updateDream(this.props.info._id, newDream);
-            // debugger;
+
         }
 
         this.props.closeModal()
         
         //!needs to be fixed 
         window.location.reload();
-        // console.log('new dream', newDream)
-        // this.props.closeModal();
+
     }
 
     handleTags(tag) {
@@ -90,11 +81,9 @@ class NewDream extends React.Component {
         newTags.push(tag)
         this.setState({ tags: newTags, showClose: false, searchValue: '' })
         this.props.clearSearch();
-        // debugger;
     }
 
     addTag() {
-        // debugger;
         this.props.createTag({tag: this.state.searchValue});
         this.handleTags(this.state.searchValue);
     }
@@ -104,7 +93,6 @@ class NewDream extends React.Component {
             let newTags = this.state.tags
             let idx = newTags.indexOf(tag)
             delete newTags[idx]
-            // debugger;
             this.setState({ tags: newTags })
         }
     }
@@ -130,13 +118,13 @@ class NewDream extends React.Component {
         }
 
         let search;
-        // debugger;
+
         if (Object.values(this.props.searchResults).length > 0) {
-        // if (this.props.searchResults) {
+
             search = <div>
                 {Object.values(this.props.searchResults.tags).map((result, idx) => (
                     <div className="tag-search-results-outer-container" >
-                         <div className="tag-search-results-inner-container" onClick={() => this.handleTags(result.name)} key={idx} >
+                        <div className="tag-search-results-inner-container" onClick={() => this.handleTags(result.name)} key={idx} >
                             <i class="fas fa-tag search-icon"></i>
                             {result.name}
                         </div>
@@ -204,9 +192,7 @@ class NewDream extends React.Component {
                             onChange={this.handleChange('dreamText')}></textarea>
                     </form>
                 </div>
-                {/* <div className="session-errors-container">
-                    {this.props.errors.map(err => <p className="session-errors" >{err}</p>)}
-                </div> */}
+
                 <div className="create-dream-btn" >
                     <input className="new-dream-btn" 
                         type="submit" 
