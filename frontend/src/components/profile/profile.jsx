@@ -281,8 +281,11 @@ class Profile extends React.Component {
                             {this.state.profileUser.username}
                         </div>
                         <div>
-                            Dreamer Since: {month} {date.getDate()}, 
-                            {date.getFullYear()}
+                            Dreamer Since: {
+                                month} {
+                                date.getDate()}, {
+                                date.getFullYear()
+                            }
                         </div>
                         <div>
                             Location: {this.state.profileUser.location}
