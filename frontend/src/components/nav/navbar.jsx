@@ -52,8 +52,8 @@ class NavBar extends React.Component {
 
             if (this.state.showDropdown) {
                 dropdown = <div className="menu-items">
-                    <Link to={`/`}
-                        onClick={()=>this.openModalAndPreventDefault()}
+                    <Link to={`/new`}
+                        onClick={(e)=>this.openModalAndPreventDefault(e)}
                     >
                         <p>create</p>
                     </Link>
