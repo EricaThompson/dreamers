@@ -8,6 +8,10 @@ export const fetchDreams = () => (
   axios.get('/api/dreams/')
 )
 
+export const fetchFollowedUsersDreams = () => (
+  axios.get('/api/dreams/followed')
+)
+
 export const fetchDreamById = dreamId => (
   axios.get(`/api/dreams/${dreamId}`)
 )

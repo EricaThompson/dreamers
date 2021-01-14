@@ -39,6 +39,16 @@ router.get('/', (req, res) => {
         .catch(err => res.status(404).json({ nodreamsfound: 'No dreams found'}));
 })
 
+router.get('/followed',
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+        const followedIds = req.user.followed.map(id => mongoose.Types.ObjectId(id))
+        Dream.find({ userId: { $in: followedIds } })
+            .then(dreams => res.json(dreams))
+            .catch(err => res.status(400).json({ nodreamsfound: "No dreams found by followed users"}))
+    }
+)
+
 router.get('/type/:type', (req, res) => {
     Dream.find({ type: req.params.type })
         .sort({ date: -1 })
