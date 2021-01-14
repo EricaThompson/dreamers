@@ -86,7 +86,7 @@ class Modal extends React.Component {
                     createLike = {createLike}
                     deleteLike = {deleteLike}
                     fetchLikesByDream={fetchLikesByDream}
-
+                    clearErrors={clearErrors}
                 />;
                 break;
             default:

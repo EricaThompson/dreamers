@@ -37,12 +37,12 @@ class CommentDreamModal extends React.Component {
             comment: this.state.comment,
         }
         this.props.createComment(this.props.info._id, thisComment);
-        console.log('Comment Errors ' + this.props.errors)
         this.setState({ comment: '' })
     }
 
     handleChange(e) {
         this.setState({ comment: e.target.value })
+        this.props.clearErrors();
     }
 
     like() {
@@ -79,7 +79,7 @@ class CommentDreamModal extends React.Component {
     }
 
     render() {
-        let { info, comments, currentUser } = this.props;
+        let { info, comments, currentUser, errors } = this.props;
 
         let commentFeed;
         let tags;
@@ -212,6 +212,11 @@ class CommentDreamModal extends React.Component {
                                     onChange={this.handleChange}
                                 />
                             </label>
+                            <div className="session-errors-container">
+                                {Object.values(this.props.errors).map(err => {
+                                    return <p className="session-errors" >{err}</p>
+                                })}
+                            </div>
                             <div className="comment-btn-container">
                                 <input 
                                     className="comment-btn" 
