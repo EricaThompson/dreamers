@@ -1,10 +1,7 @@
 import React from 'react';
-// import "../../App.scss";
-// import Feed from '../feed/feed';
 import image from '../../css/components/DREAMERS PNG-01 (2).png'
 import dreams from '../../css/components/DREAMS.png';
 import goals from '../../css/components/GOALS.png';
-// import slogan from '../../css/components/SLOGAN.png';
 import star from '../../css/components/STAR.png'
 
 class HomePage extends React.Component {
