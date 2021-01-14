@@ -52,7 +52,6 @@ class CommentDreamModal extends React.Component {
             userId: this.props.currentUser.id,
         }
         this.props.createLike(this.props.info._id, like)
-            .then(res => console.log('res?',res))
 
         this.setState({currentLike: ''})
 
@@ -114,9 +113,7 @@ class CommentDreamModal extends React.Component {
         let liked = false;
 
         if (this.state.likes) {
-            console.log('this state likes',this.state.likes)
             this.state.likes.forEach(like => {
-
                 if (like.username === currentUser.username) {
                     liked = true;
                 } 

@@ -39,17 +39,13 @@ class CommentItem extends React.Component {
         }
 
         this.props.updateComment(this.props.comment._id, comment)
-            .then(res => console.log('response: ',res))
-            .catch(err => console.log('error: ',err))
 
         this.setState({showEditForm: false})
 
     }
 
     deleteComment(){
-        console.log('deleted?')
         this.props.deleteComment(this.props.comment._id)
-            .then(res => console.log(res))
     }
 
     render() {
