@@ -88,10 +88,17 @@ class Modal extends React.Component {
                 return null;
         }
         return (
-            <div className="modal-background" onClick={this.handleCloseModal} >
-                <div className="modal-child" onClick={e => e.stopPropagation()} >
-                    <span onClick={this.handleCloseModal} className="close-modal-btn">&#x2715;</span>
-                    {component}
+            <div className="modal-background" 
+                onClick={this.handleCloseModal} >
+                <div className="modal-child" 
+                    onClick={e => e.stopPropagation()} >
+                        <span 
+                            onClick={this.handleCloseModal} 
+                            className="close-modal-btn"
+                        >
+                            &#x2715;
+                        </span>
+                        {component}
                 </div>
             </div>
         )

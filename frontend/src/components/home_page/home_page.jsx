@@ -14,11 +14,9 @@ class HomePage extends React.Component {
                 <img className='star-image-4' src={star} alt="" />
                 <div className="splash-box-container">
                     <div className="splash-box">
-                    
                         <img className='dreams-image' src={dreams} alt="" />
                     </div>
                     <div className="splash-box">
-                    
                         <img className='goals-image' src={goals} alt="" />
                     </div>
                 </div>                
