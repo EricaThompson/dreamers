@@ -14,7 +14,9 @@ module.exports = function validateUpdateDreamInput(data) {
     errors.tags = 'Only 3 tags are allowed'
   }
 
-  if (data.type && !Validator.equals(data.type, 'dream') && !Validator.equals(data.type, 'goal')) {
+  if (data.type 
+      && !Validator.equals(data.type, 'dream') 
+      && !Validator.equals(data.type, 'goal')) {
     errors.type = 'Type needs to be either dream or goal';
   }
 

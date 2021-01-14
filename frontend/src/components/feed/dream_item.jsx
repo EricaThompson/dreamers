@@ -353,8 +353,8 @@ class DreamItem extends React.Component {
                                 className="feed-dreams-footer-comments" 
                             >
                                 {dream.comments && dream.comments.length === 1 
-                                    ? "comment" 
-                                    : "comments"}
+                                    ? " comment" 
+                                    : " comments"}
                             </span>
                         </p>
                         <div className="feed-dreams-footer">
@@ -368,8 +368,8 @@ class DreamItem extends React.Component {
                                     onClick={this.handlePopOut} 
                                     className="feed-dreams-footer-likes" >
                                         {this.state.likes.length === 1 
-                                    ? "like" 
-                                    : "likes"}
+                                    ? " like" 
+                                    : " likes"}
                                 </span>
                             </p>
                             {this.state.popout ? 
