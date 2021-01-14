@@ -28,6 +28,7 @@ class NewDream extends React.Component {
         this.addTag = this.addTag.bind(this);
         this.removeTag = this.removeTag.bind(this);
         this.hideShow = this.hideShow.bind(this);
+        this.closeDreamCreation = this.closeDreamCreation.bind(this);
     }
 
     componentDidMount() {
@@ -64,26 +65,24 @@ class NewDream extends React.Component {
         if (Object.values(this.props.info).length === 0) {
             this.props.createDream(newDream);
         } else {
-
             this.props.updateDream(this.props.info._id, newDream);
-
         }
-
-        // if (this.props.errors.length === 0) {
-        //     this.props.closeModal()
-        //     window.location.reload();
-        // }
         
-        //!needs to be fixed 
-        // console.log('new dream', newDream)
-        // this.props.closeModal();
-        window.location.reload();
-
+        setTimeout(() => this.closeDreamCreation(), 500)
+    }
+        
+    closeDreamCreation() {
+        if (this.props.errors.length === 0) {
+            this.props.closeModal()
+            window.location.reload();
+        }
     }
 
     handleTags(tag) {
         let newTags = this.state.tags
-        newTags.push(tag)
+        if (Object.values(this.props.errors).length === 0) {
+            newTags.push(tag)
+        }
         this.setState({ tags: newTags, showClose: false, searchValue: '' })
         this.props.clearSearch();
     }
@@ -91,9 +90,10 @@ class NewDream extends React.Component {
     addTag() {
         this.props.createTag({tag: this.state.searchValue});
         console.log('errors' + this.props.errors);
-        if (this.props.errors.length === 0) {
-            this.handleTags(this.state.searchValue);
-        }
+        setTimeout(() => this.handleTags(this.state.searchValue), 500)
+        // if (Object.values(this.props.errors).length === 0) {
+        //     this.handleTags(this.state.searchValue);
+        // }
     }
 
     removeTag(tag) {
@@ -101,7 +101,10 @@ class NewDream extends React.Component {
             let newTags = this.state.tags
             let idx = newTags.indexOf(tag)
             delete newTags[idx]
-            this.setState({ tags: newTags })
+            let newestTags = newTags.filter(t => t.length > 0)
+            console.log(newestTags)
+            this.setState({ tags: newestTags })
+            this.props.clearErrors();
         }
     }
 
