@@ -5,17 +5,9 @@
 
 .profile-container {
     font-family: $sans-serif;
-    // display: flex;
-
-    // background-color: $off-white-opaque;
-    // padding: 20px;
     width: 100%;
-    // height: 1900px;
-    // position: relative;
     margin-top: 170px;
     height: 100%;
-    // border: 1px solid yellow;
-    // overflow: scroll;
     animation: fade-in .2s ease-in-out;
 
     .username {
@@ -24,18 +16,11 @@
     
     .edit-profile-form {
         width: 234px;
-        // display: flex;
-
 
         cursor: default;
         input {
-            // text-align: right;
-            // justify-self: flex-end;
-            // width: 20px;
             width: 70%;
-            background-color: $lightest-blue;
-            // padding-left: 3px;
-        
+            background-color: $lightest-blue;     
         }
 
         .location, .age, .bio {
@@ -69,15 +54,9 @@
         height: 200px;
         display: flex;
         margin-top: -20px;
-        // margin-left: -20px;
-        // position: fixed;
-        // top: 200px;
         justify-content: space-between;
-        // border: 1px solid blue;
         align-items: center;
         background-color: $off-white;
-        // padding: 20px;
-        // box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
         z-index: 5;
         font-size: 14px;
         
@@ -87,9 +66,6 @@
             justify-self: center;
             margin-top: 6px;
             color: $off-white-opaque;
-            // padding-right: 16px;
-            // margin: 50%;
-            
         }
 
         .profile-pic {
@@ -100,8 +76,6 @@
             margin-left: 2vw;
             background: linear-gradient(270deg, #5e47fd, #1e9fc4);
             background-size: 400% 400%;
-
-            // SlowTransition is the identifier variable for @keyframes below
             -webkit-animation: SlowTransition 30s ease infinite;
             -moz-animation: SlowTransition 30s ease infinite;
             animation: SlowTransition 30s ease infinite;
@@ -138,9 +112,6 @@
         .user-info {
             width: 255px;
             text-align: left;
-            // border: 1px solid $dark-gray;
-            // padding-left: 16px;
-            // margin-left: 16px;
             margin-right: 2vw;
 
             .inner-profile {
@@ -153,7 +124,6 @@
                 top: 142px;
                 right: 30px;
                 padding: 5px;
-                // padding-right: 30px;
                 background-color: $off-white;
                 border: 2px solid $dark-gray;
                 border-radius: 5px;
@@ -164,7 +134,7 @@
                 overflow-y: scroll;
 
                 &::-webkit-scrollbar { 
-                    display: none;  /* Safari and Chrome */
+                    display: none;
                 }
 
                 .likes-popout-inner-container {
@@ -214,18 +184,6 @@
         margin-top: 107px;
         width: 101%;
         height: calc(100vh - 192px);
-        
-        // overflow: scroll;
-        // display: absolute;
-        // overflow-y: scroll;
-
-        // div {
-        //     border: 1px solid $dark-gray;
-        //     padding: 10px;
-        //     margin-bottom: 10px;
-        //     height: 150px;
-        // }
-
     }
     
 
@@ -245,10 +203,7 @@
                 text-align: center;
                 justify-self: center;
                 margin-top: 6px;
-                color: $off-white-opaque;
-                // padding-right: 16px;
-                // margin: 50%;
-                
+                color: $off-white-opaque;             
             }
 
             .profile-pic {
@@ -298,11 +253,10 @@
                     overflow-y: scroll;
 
                     &::-webkit-scrollbar { 
-                        display: none;  /* Safari and Chrome */
+                        display: none;  
                     }
 
                     .likes-popout-inner-container {
-                        // padding-top: 20px;
                         position: relative;
 
                         .close-popout-btn {
@@ -314,12 +268,10 @@
                         .popout-item,
                         .popout-item-none {
                             color: $dark-gray;
-                            // padding: 5px;
                             font-family: $serif;
                             font-size: 14px;
                             width: 220px;
                             margin-left: -5px;
-                            // margin-bottom: -10px;
                             height: 30px;
                             box-sizing: border-box;
                         }

@@ -25,10 +25,6 @@ class Profile extends React.Component {
             myFollowers: [],
             popout: false
         }
-        console.log(this.state);
-
-        // this.handleChange = this.handleChange.bind(this);
-        // this.handleSelected = this.handleSelected.bind(this);
         this.handlePopOut = this.handlePopOut.bind(this);
     }
 
@@ -45,21 +41,9 @@ class Profile extends React.Component {
             location: res.user.location,
             bio: res.user.bio
         }))
+
         this.props.fetchDreamsByUser(this.props.match.params.userId)
         this.props.fetchFollowers(this.props.match.params.userId).then(payload => this.setState({followers: payload.data}));
-
-        // this.props.fetchLikesByDream(this.props.dream._id)
-        //     .then(res => this.setState({ likes: res.likes }))
-        //     .then(this.setState({ propLikes: this.props.like }))
-
-            // .then(res => this.setState({ }))
-            // .then(res => console.log(res))
-        // this.props.fetchDreams()
-            // .then(res => this.setState({userDreams: Object.values(res).data}))
-        // debugger
-        // console.log('props dreams',this.props.dreams)
-        // console.log('state dreams', this.state.userDreams)
-            // .then(res => this.setState({userDreams: res}))
     }
 
     componentDidUpdate(nextProps) {
@@ -74,31 +58,8 @@ class Profile extends React.Component {
     }
 
     handlePopOut() {
-        // console.log('popped')
         this.props.fetchUsersByUserIds({userIds: this.state.followers}).then(payload => this.setState({ myFollowers: payload.data, popout: !this.state.popout }));
     }
-
-    // like() {
-    //     let like = {
-    //         username: this.props.dream.username,
-    //         dreamId: this.props.dream._id,
-    //         userId: this.props.currentUser._id,
-    //     }
-    //     this.props.createLike(this.props.dream._id, like)
-    //         .then(res => this.setState({ currentLike: res.like._id }))
-    //     // window.location.reload()
-    // }
-
-    // unlike() {
-    //     this.state.likes.forEach(like => {
-    //         // debugger;
-    //         if (like.username === this.props.currentUser.username) {
-    //             this.props.deleteLike(like._id)
-    //         }
-    //     })
-    //     //!fix
-    //     window.location.reload()
-    // }
 
     handleChange(value) {
         return e => {
@@ -107,7 +68,6 @@ class Profile extends React.Component {
     }
 
     handleSubmit(){
-        // debugger
         let user = {
             age: this.state.age,
             location: this.state.location,
@@ -120,7 +80,7 @@ class Profile extends React.Component {
     }
 
     handleSelected(type) {
-        return (e) => {
+        return () => {
             this.setState({ selected: type })
         }
     }
@@ -175,11 +135,7 @@ class Profile extends React.Component {
 
         let { openModal, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo, currentUser, closeModal, deleteDream, fetchLike, createLike, deleteLike, fetchLikesByDream } = this.props;
         if (!dreams) return null;
-        // console.log('user', this.props.user._id.toString().substring(0, 8))
-        // console.log(this.state.timestamp.getMonth())
 
-        //!fix user grab
-        // let timestamp = this.state.profileUser._id.toString().substring(0, 8)
         let date = new Date(parseInt(this.state.timestamp, 16) * 1000)
         let month = date.getMonth()
 
@@ -233,7 +189,6 @@ class Profile extends React.Component {
             popout = <div className="likes-popout-inner-container">
                 <span onClick={this.handlePopOut} className="close-popout-btn">&#x2715;</span>
                 {this.state.myFollowers.map((follower, idx) => {
-                    // console.log(follower)
                     return <Link key={idx} to={`/users/${follower._id}`} style={{ textDecoration: 'none' }}>
                         <div className="popout-item" >{follower.username}</div>
                     </Link>
@@ -311,10 +266,7 @@ class Profile extends React.Component {
                         {editBtn}
                         {newDreamBtn}
                         {editForm}
-                        {profile}
-                        
-                        
-                        {/* <div>Followers: {this.state.thisUser.followers.length}</div> */}
+                        {profile}                                           
                         {followBtn}
                     </div>
                 </div>
@@ -342,7 +294,6 @@ class Profile extends React.Component {
                         dream={dreams}
                     />
                 </div>
-                
             </div>
         )
     }

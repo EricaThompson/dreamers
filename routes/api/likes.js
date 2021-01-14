@@ -12,12 +12,6 @@ const validateUpdateDreamInput = require('../../validation/update_dream')
 router.post('/:dreamId',
     passport.authenticate('jwt', {session: false}),
     (req, res) => {
-        // const {errors, isValid} = validateCreateDreamInput(req.body); 
-
-        // if (!isValid) {
-        //     return res.status(400).json(errors); 
-        // }
-
         var query = {_id: req.params.dreamId}
 
         Dream.findOne(query)
@@ -32,8 +26,7 @@ router.post('/:dreamId',
                 const newLike = new Like ({
                     userId: req.user.id,
                     username: req.user.username, 
-                    dreamId: req.params.dreamId, //
-                    // like: req.user.id
+                    dreamId: req.params.dreamId, 
             })
             newLike.save().then(like => {
                 var update = { $push: { likes: {id: like._id, username: newLike.username}}},
@@ -60,30 +53,29 @@ router.post('/:dreamId',
 );
 
 router.get('/:likeId', (req, res) => {
-  Like.findOne({_id: req.params.likeId})
-    .sort({date: -1})
-    .then(like => res.json(like))
-    .catch(err => res.status(404).json({ nolikesfound: 'No like found with the specified id'}))
+    Like.findOne({_id: req.params.likeId})
+        .sort({date: -1})
+        .then(like => res.json(like))
+        .catch(() => res.status(404).json({ nolikesfound: 'No like found with the specified id'}))
 });
 
 router.get('/dream/:dreamId', (req, res) => {
-  Like.find({dreamId: req.params.dreamId})
-    .sort({date: -1})
-    .then(likes => res.json(likes))
-    .catch(err => res.status(404).json({ nolikesfound: 'This dream has no likes'}))
+    Like.find({dreamId: req.params.dreamId})
+        .sort({date: -1})
+        .then(likes => res.json(likes))
+        .catch(() => res.status(404).json({ nolikesfound: 'This dream has no likes'}))
 });
 
 router.get('/user/:userId', (req, res) => {
-  Like.find({userId: req.params.userId})
-    .sort({date: -1})
-    .then(likes => res.json(likes))
-    .catch(err => res.status(404).json({ nolikesfound: 'This user has no likes'}))
+    Like.find({userId: req.params.userId})
+        .sort({date: -1})
+        .then(likes => res.json(likes))
+        .catch(() => res.status(404).json({ nolikesfound: 'This user has no likes'}))
 });
 
 router.delete('/:likeId',
     passport.authenticate('jwt', {session: false}),
     (req, res) => {
-       
         Like.findOne({_id: req.params.likeId})
             .then(like => {
                 if (like.userId != req.user.id) {
@@ -111,7 +103,7 @@ router.delete('/:likeId',
                     })
                 }
             })
-            .catch(err => res.status(400).json({like: 'cannot find the like'}))
+            .catch(() => res.status(400).json({like: 'cannot find the like'}))
     }
 )
 

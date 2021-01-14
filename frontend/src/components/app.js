@@ -1,6 +1,5 @@
 import React from 'react';
 import NavBarContainer from './nav/navbar_container';
-// import HomePageContainer from './home_page/home_page_container';
 import HomePage from './home_page/home_page';
 import AboutPage from './about_page/about_page';
 import "../App.scss";
@@ -10,9 +9,7 @@ import SignupFormContainer from './session/signup_form_container';
 import Modal from './modal/modal';
 import FeedContainer from './feed/feed_container';
 import ProfileContainer from './profile/profile_container';
-// import NewDreamContainer from './dreams/new_dream_container';
 import TagsContainer from './tags/tags_container';
-// import DreamShowContainer from './dreams/dream_show_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 
@@ -23,7 +20,6 @@ const App = () => (
         </div>    
         <div className="main-app" >
             <Modal />
-            {/* <NewDreamContainer /> */}
             <Switch>
                 <AuthRoute path={`/login`} component={LoginFormContainer} />
                 <AuthRoute path={`/signup`} component={SignupFormContainer} />
@@ -32,7 +28,6 @@ const App = () => (
                 <ProtectedRoute path={`/feed`} component={FeedContainer} />
                 <ProtectedRoute path={`/users/:userId`} component={ProfileContainer} />
                 <ProtectedRoute path={`/tags/:tag`} component={TagsContainer} />
-                {/* <ProtectedRoute path={`/dreams/:dreamId`} component={DreamShowContainer} /> */}
                 <Redirect to="/" />
             </Switch>
         </div>

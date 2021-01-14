@@ -13,13 +13,13 @@ const validateUpdateUserInput = require('../../validation/update_dream');
 router.get('/user/:userId', (req, res) => {
   User.findOne({ _id: req.params.userId })
     .then(user => res.json(user))
-    .catch(err => res.status(404).json({ nouserfound: 'No user found with specified id'}))
+    .catch(() => res.status(404).json({ nouserfound: 'No user found with specified id'}))
 })
 
 router.post('/array', (req, res) => {
   User.find({ _id: { $in: req.body.userIds } })
     .then(users => res.json(users))
-    .catch(err => res.status(404).json({ nousersfound: 'No users found with ids in the given list'}))
+    .catch(() => res.status(404).json({ nousersfound: 'No users found with ids in the given list'}))
 })
 
 router.patch('/:userId',
@@ -49,7 +49,7 @@ router.patch('/:userId',
           })
         }
       })
-      .catch(err => res.status(404).json({ nouserfound: 'No user found with that ID' }))
+      .catch(() => res.status(404).json({ nouserfound: 'No user found with that ID' }))
   }
 )
 
@@ -58,13 +58,13 @@ router.patch('/:userId',
 router.get('/followed/:userId', (req, res) => {
   User.findOne({ _id: req.params.userId })
     .then(user => res.json(user.followed))
-    .catch(err => res.status(404).json({ nouserfound: 'No user found with that userId'}))
+    .catch(() => res.status(404).json({ nouserfound: 'No user found with that userId'}))
 })
 
 router.get('/followers/:userId', (req, res) => {
   User.findOne({ _id: req.params.userId })
     .then(user => res.json(user.followers))
-    .catch(err => res.status(404).json({ nouserfound: 'No user found with that userId'}))
+    .catch(() => res.status(404).json({ nouserfound: 'No user found with that userId'}))
 })
 
 router.post('/follow/:userId',

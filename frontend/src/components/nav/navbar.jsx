@@ -43,8 +43,6 @@ class NavBar extends React.Component {
 
             if (this.state.showDropdown) {
                 dropdown = <div className="menu-items">
-                    {/* <Link to={'/signup'}><p>signup</p></Link>
-                                <Link to={'/login'}><p>login</p></Link> */}
                     <Link onClick={() => this.props.openModal('newDream')}><p>create</p></Link>
                     <Link to={`/users/${currentUser.id}`}><p>profile</p></Link>
                     <Link to={`/about`}><p>about</p></Link>
@@ -77,10 +75,8 @@ class NavBar extends React.Component {
             <div className={isModalOpen ? "nav-bar nav-bar-modal" : "nav-bar"}>
                 <div className="logo">
                     <Link to="/"
-                        // to={this.props.loggedIn ? "/" : "/feed"} 
                         style={{ textDecoration: 'none' }} > <h1 className="nav-title">{this.props.location.pathname === "/" ? "" : <img className='nav-logo' src={image} alt="" />}</h1>
                     </Link>
-                    {/* <img className='nav-logo' src={image} alt="" /> */}
                 </div>
                 {menu}
                 {dropdown}
