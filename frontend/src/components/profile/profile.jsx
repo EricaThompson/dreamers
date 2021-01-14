@@ -276,29 +276,40 @@ class Profile extends React.Component {
         } else {
             profile = <div className='inner-profile'>
                         <div 
-                            className="username">{this.state.profileUser.username}
+                            className="username"
+                        >
+                            {this.state.profileUser.username}
                         </div>
                         <div>
-                            Dreamer Since: {month} {date.getDate()}, {date.getFullYear()}
+                            Dreamer Since: {month} {date.getDate()}, 
+                            {date.getFullYear()}
                         </div>
-                        <div>Location: {this.state.profileUser.location}</div>
-                        <div className="age">Age: {this.state.profileUser.age}</div>
+                        <div>
+                            Location: {this.state.profileUser.location}
+                        </div>
+                        <div className="age">
+                            Age: {this.state.profileUser.age}
+                        </div>
                         <div className="about">
                             Bio: {this.state.profileUser.bio}
                         </div>
-                        <div className="followers" onClick={this.handlePopOut}>Followers: {this.state.followers.length}</div>
-                        {this.state.popout ?
-                            <div className="follower-popout-container" onClick={(e) => e.stopPropagation()} >
-                                {popout}
-                            </div>
+                        <div 
+                            className="followers" 
+                            onClick={this.handlePopOut}
+                        >
+                            Followers: {this.state.followers.length}
+                        </div>
+                        {this.state.popout 
+                            ? <div 
+                                    className="follower-popout-container" 
+                                    onClick={(e) => e.stopPropagation()} 
+                                >
+                                    {popout}
+                                </div>
                             : ''}
                     </div>
 
         }
-
-        
-
-        
 
         return (
             <div className="profile-container">
