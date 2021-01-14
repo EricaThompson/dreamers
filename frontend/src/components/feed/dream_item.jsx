@@ -40,8 +40,8 @@ class DreamItem extends React.Component {
     }
 
     toggleAndStopPropagation(e){
-        () => this.toggleMenu();
-        (e) => e.stopPropagation();
+        this.toggleMenu();
+        e.stopPropagation();
 
     }
 
