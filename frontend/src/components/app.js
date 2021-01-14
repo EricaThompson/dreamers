@@ -26,7 +26,10 @@ const App = () => (
                 <AuthRoute exact path="/" component={HomePage} />
                 <Route exact path="/about" component={AboutPage} />
                 <ProtectedRoute path={`/feed`} component={FeedContainer} />
-                <ProtectedRoute path={`/users/:userId`} component={ProfileContainer} />
+                <ProtectedRoute 
+                    path={`/users/:userId`} 
+                    component={ProfileContainer} 
+                />
                 <ProtectedRoute path={`/tags/:tag`} component={TagsContainer} />
                 <Redirect to="/" />
             </Switch>
