@@ -350,10 +350,11 @@ class DreamItem extends React.Component {
                             className="feed-dreams-footer-info">
                                 {dream.comments ? dream.comments.length : 0} 
                             <span 
-                                className="feed-dreams-footer-comments" >
-                                    {dream.comments && dream.comments.length === 1 
-                                ? "comment" 
-                                : "comments"}
+                                className="feed-dreams-footer-comments" 
+                            >
+                                {dream.comments && dream.comments.length === 1 
+                                    ? "comment" 
+                                    : "comments"}
                             </span>
                         </p>
                         <div className="feed-dreams-footer">

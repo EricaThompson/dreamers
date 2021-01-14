@@ -148,18 +148,37 @@ class Feed extends React.Component {
         // }
 
         let search;
-        if (Object.values(searchResults).length > 0 && !this.props.isModalOpen) {
+        if (Object.values(searchResults).length > 0 && !this.props.isModalOpen){
 
             search = <div className="search-results-outer-container" >
                 {Object.values(searchResults.dreams).map((result, idx) => {
- 
-                    return <SearchItem key={idx} dream={result} type={"dream"} text={result.text} clearComments={clearComments} fetchCommentsByDream={fetchCommentsByDream} openModal={openModal} modalInfo={modalInfo} clearSearch={clearSearch} />
+                    return <SearchItem 
+                                key={idx} 
+                                dream={result} 
+                                type={"dream"} 
+                                text={result.text} 
+                                clearComments={clearComments} 
+                                fetchCommentsByDream={fetchCommentsByDream} 
+                                openModal={openModal} 
+                                modalInfo={modalInfo} 
+                                clearSearch={clearSearch} 
+                            />
                 })}
                 {Object.values(searchResults.tags).map((result, idx) => {
-                    return <SearchItem key={idx} dream={result} type={"tag"} text={result.name} />
+                    return <SearchItem 
+                                key={idx} 
+                                dream={result} 
+                                type={"tag"} 
+                                text={result.name} 
+                            />
                 })}
                 {Object.values(searchResults.users).map((result, idx) => {
-                    return <SearchItem key={idx} dream={result} type={"users"} text={result.username} />
+                    return <SearchItem 
+                                key={idx} 
+                                dream={result} 
+                                type={"users"} 
+                                text={result.username} 
+                            />
                 })}
             </div>
         }
@@ -177,19 +196,38 @@ class Feed extends React.Component {
                                 className="feed-search-input" />
                         </form>
                         {search}
-                        <i onClick={this.hideShow} className={this.state.showClose ? "fas fa-times-circle close-search-btn" : ''}></i>
+                        <i 
+                            onClick={this.hideShow} 
+                            className={
+                                this.state.showClose 
+                                ? "fas fa-times-circle close-search-btn" 
+                                : ''}
+                        >
+                        </i>
                     </div>
                     <div className="feed-index-container" >
                         <div className="feed-header-container">
-                            <h1 className={this.state.selected === 'feed' ? "feed-header feed-header-selected" : "feed-header"} 
+                            <h1 className={
+                                this.state.selected === 'feed' 
+                                    ? "feed-header feed-header-selected" 
+                                    : "feed-header"} 
                                 onClick={this.handleSelected('feed')}
                             >Feed</h1>
-                            <h1 className={this.state.selected === 'dreams' ? "feed-header feed-header-selected" : "feed-header"} 
+                            <h1 
+                                className={
+                                    this.state.selected === 'dreams' 
+                                        ? "feed-header feed-header-selected" 
+                                        : "feed-header"} 
                                 onClick={this.handleSelected('dreams')}
                             >Dreams</h1>
-                            <h1 className={this.state.selected === 'goals' ? "feed-header feed-header-selected" : "feed-header"} 
+                            <h1 
+                                className={this.state.selected === 'goals' 
+                                ? "feed-header feed-header-selected" 
+                                : "feed-header"} 
                                 onClick={this.handleSelected('goals')}
-                            >Goals</h1>
+                            >
+                                Goals
+                            </h1>
                         </div>
                     </div>
                 </div>
