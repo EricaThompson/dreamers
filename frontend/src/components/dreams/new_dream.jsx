@@ -39,12 +39,14 @@ class NewDream extends React.Component {
     handleChange(type) {
         // debugger;
         return (e) => {
+            this.props.clearErrors();
             this.setState({ [type]: e.currentTarget.value })
         }
     }
 
     handleSearchChange(e) {
         // debugger;
+        this.props.clearErrors();
         this.props.fetchSearchResults(e.target.value);
         this.setState({ searchValue: e.target.value, showClose: true })
     }
@@ -68,6 +70,7 @@ class NewDream extends React.Component {
         // if (this.props.info) {
 
             this.props.createDream(newDream);
+            console.log(this.props.errors.length)
             // debugger;
             // console.log('update dream', { dream: newDream })
         } else {
@@ -77,10 +80,12 @@ class NewDream extends React.Component {
             // debugger;
         }
 
-        this.props.closeModal()
+        // if (this.props.errors.length === 0) {
+        //     this.props.closeModal()
+        //     window.location.reload();
+        // }
         
         //!needs to be fixed 
-        window.location.reload();
         // console.log('new dream', newDream)
         // this.props.closeModal();
     }
@@ -96,7 +101,10 @@ class NewDream extends React.Component {
     addTag() {
         // debugger;
         this.props.createTag({tag: this.state.searchValue});
-        this.handleTags(this.state.searchValue);
+        console.log('errors' + this.props.errors);
+        if (this.props.errors.length === 0) {
+            this.handleTags(this.state.searchValue);
+        }
     }
 
     removeTag(tag) {
@@ -137,7 +145,7 @@ class NewDream extends React.Component {
                 {Object.values(this.props.searchResults.tags).map((result, idx) => (
                     <div className="tag-search-results-outer-container" >
                          <div className="tag-search-results-inner-container" onClick={() => this.handleTags(result.name)} key={idx} >
-                            <i class="fas fa-tag search-icon"></i>
+                            <i className="fas fa-tag search-icon"></i>
                             {result.name}
                         </div>
                     </div>
@@ -203,10 +211,12 @@ class NewDream extends React.Component {
                             value={this.state.dreamText}
                             onChange={this.handleChange('dreamText')}></textarea>
                     </form>
+                    <div className="session-errors-container">
+                        {Object.values(this.props.errors).map(err => {
+                        return <p className="session-errors" >{err}</p>
+                    })}
+                    </div>
                 </div>
-                {/* <div className="session-errors-container">
-                    {this.props.errors.map(err => <p className="session-errors" >{err}</p>)}
-                </div> */}
                 <div className="create-dream-btn" >
                     <input className="new-dream-btn" 
                         type="submit" 
