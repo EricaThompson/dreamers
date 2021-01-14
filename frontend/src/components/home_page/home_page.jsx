@@ -1,10 +1,7 @@
 import React from 'react';
-// import "../../App.scss";
-// import Feed from '../feed/feed';
 import image from '../../css/components/DREAMERS PNG-01 (2).png'
 import dreams from '../../css/components/DREAMS.png';
 import goals from '../../css/components/GOALS.png';
-// import slogan from '../../css/components/SLOGAN.png';
 import star from '../../css/components/STAR.png'
 
 class HomePage extends React.Component {
@@ -17,11 +14,9 @@ class HomePage extends React.Component {
                 <img className='star-image-4' src={star} alt="" />
                 <div className="splash-box-container">
                     <div className="splash-box">
-                    
                         <img className='dreams-image' src={dreams} alt="" />
                     </div>
                     <div className="splash-box">
-                    
                         <img className='goals-image' src={goals} alt="" />
                     </div>
                 </div>                

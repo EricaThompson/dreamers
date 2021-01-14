@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const LikeSchema = new Schema({
     userId: {
-        type: Schema.Types.ObjectId, //
+        type: Schema.Types.ObjectId,
         ref: 'users'
     },
     username: {
@@ -11,7 +11,7 @@ const LikeSchema = new Schema({
         required: true
     },
     dreamId: {
-        type: Schema.Types.ObjectId, //
+        type: Schema.Types.ObjectId,
         ref: "dreams"
     },
     date: {

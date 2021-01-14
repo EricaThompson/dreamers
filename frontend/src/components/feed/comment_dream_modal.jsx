@@ -20,14 +20,11 @@ class CommentDreamModal extends React.Component {
     }
 
     componentDidMount() {
-        // debugger;
-        // this.props.fetchCommentsByDream(this.props.info._id)
+
         this.props.resetErrors();
         this.props.fetchLikesByDream(this.props.info._id)
             .then(res => this.setState({ likes: res.likes }))
             .then(this.setState({ propLikes: this.props.like }))
-        // console.log('props',this.props)
-
     }
 
     componentWillUnmount() {
@@ -38,10 +35,7 @@ class CommentDreamModal extends React.Component {
         e.preventDefault();
         let thisComment = {
             comment: this.state.comment,
-            // username: this.props.info.username,
-            // userId: this.props.info.userId,
         }
-        // debugger;
         this.props.createComment(this.props.info._id, thisComment);
         this.setState({ comment: '' })
     }
@@ -51,18 +45,16 @@ class CommentDreamModal extends React.Component {
     }
 
     like() {
-        // console.log(this.props)
+
         let like = {
             username: this.props.currentUser.username,
             dreamId: this.props.info._id,
             userId: this.props.currentUser.id,
         }
         this.props.createLike(this.props.info._id, like)
-            .then(res => console.log('res?',res))
-            // .then(res => this.setState({ currentLike: res.like._id }))
-        console.log('createLike', this.props.createLike(this.props.info._id, like), this.props.info._id, like)
+
         this.setState({currentLike: ''})
-            // console.log('props dream', this.props.dream)
+
         //!fix
         window.location.reload()
     }
@@ -86,7 +78,7 @@ class CommentDreamModal extends React.Component {
     }
 
     render() {
-        let { info, comments, errors, currentUser } = this.props;
+        let { info, comments, currentUser } = this.props;
 
         let commentFeed;
         let tags;
@@ -121,9 +113,7 @@ class CommentDreamModal extends React.Component {
         let liked = false;
 
         if (this.state.likes) {
-            console.log('this state likes',this.state.likes)
             this.state.likes.forEach(like => {
-
                 if (like.username === currentUser.username) {
                     liked = true;
                 } 
@@ -145,15 +135,29 @@ class CommentDreamModal extends React.Component {
         }
 
         if (info.tags) {
-            // debugger;
             tags =
                 info.tags.map((tag, idx) => {
                     if (tag != null) {
                         return (
-                            <Link to={`/tags/${tag}`} key={idx} style={{ textDecoration: 'none' }} >
-                                <div className="new-dream-tags-item-container" onClick={e => e.stopPropagation()} >
-                                    <div className={info.type === "dream" ? "new-dream-tags-item-circle" : "new-goal-tags-item-circle"} ></div>
-                                    <p className="new-dream-tags-item" >{tag}</p>
+                            <Link 
+                                to={`/tags/${tag}`} 
+                                key={idx} 
+                                style={{ textDecoration: 'none' }} 
+                            >
+                                <div 
+                                    className="new-dream-tags-item-container" 
+                                    onClick={e => e.stopPropagation()} 
+                                >
+                                    <div 
+                                        className={
+                                            info.type === "dream" 
+                                            ? "new-dream-tags-item-circle" 
+                                            : "new-goal-tags-item-circle"} 
+                                    >
+                                    </div>
+                                    <p 
+                                        className="new-dream-tags-item" >{tag}
+                                    </p>
                                 </div>
                             </Link>
                         )
@@ -172,7 +176,13 @@ class CommentDreamModal extends React.Component {
             <div className="comment-modal-outer-container">
                 <div className="comment-dreams-container" >
                     <div className='comment-like'>{likeIcon}</div>
-                    <div className={this.props.info.type === "dream" ? "comment-dreams" : "comment-goals"}>
+                    <div 
+                        className={
+                            this.props.info.type === "dream" 
+                            ? "comment-dreams" 
+                            : "comment-goals"
+                        }
+                    >
                         <div className="new-dream-tags-container" >
                             <div className="new-dream-tags" >
                                 {tags}
@@ -188,7 +198,10 @@ class CommentDreamModal extends React.Component {
                             </Link>
                         </p>
                         <p className="comment-dreams-info" >{info.text}</p>
-                        <form className="comment-form" onSubmit={this.handleSubmit} >
+                        <form 
+                            className="comment-form" 
+                            onSubmit={this.handleSubmit} 
+                        >
                             <label className="comment-label" >
                                 <textarea 
                                     className="comment-input" 
@@ -207,10 +220,10 @@ class CommentDreamModal extends React.Component {
                                 />
                             </div>
                         </form>
-                        {/* <div className="session-errors-container">
-                            {errors.map(err => <p className="session-errors" >{err}</p>)}
-                        </div> */}
-                        <div className="comment-feed-container" >{commentFeed}</div>
+
+                        <div className="comment-feed-container" >
+                            {commentFeed}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,12 +1,40 @@
 import Profile from './profile';
 import { connect } from 'react-redux';
-import { openModal, closeModal, modalInfo, clearModalInfo } from '../../actions/modal_actions';
-import { fetchDreamsByUser, fetchDreams, createDream, clearDreams, deleteDream } from '../../actions/dream_actions';
+import { 
+    openModal, 
+    closeModal, 
+    modalInfo, 
+    clearModalInfo 
+} from '../../actions/modal_actions';
+
+import { 
+    fetchDreamsByUser, 
+    fetchDreams, 
+    createDream, 
+    clearDreams, 
+    deleteDream 
+} from '../../actions/dream_actions';
+
 import { fetchUserById, updateUser } from '../../actions/user_actions';
-import { fetchCommentsByDream, clearComments } from '../../actions/comment_actions';
+import { 
+    fetchCommentsByDream, 
+    clearComments } 
+from '../../actions/comment_actions';
+
 import { fetchSearchResults, clearSearch } from '../../actions/search_actions';
-import { fetchLike, createLike, deleteLike, fetchLikesByDream } from '../../actions/like_actions';
-import { followUser, unfollowUser, fetchFollowers } from '../../util/follow_api_util';
+import { 
+    fetchLike, 
+    createLike, 
+    deleteLike, 
+    fetchLikesByDream 
+} from '../../actions/like_actions';
+
+import { 
+    followUser, 
+    unfollowUser, 
+    fetchFollowers 
+} from '../../util/follow_api_util';
+
 import { fetchUsersByUserIds } from '../../util/user_api_util';
 
 const mapSTP = state => ({

@@ -7,7 +7,7 @@ class SearchItem extends React.Component {
         this.handleOpenModal = this.handleOpenModal.bind(this);
     }
 
-    handleOpenModal(e) {
+    handleOpenModal() {
         this.props.clearComments();
         this.props.clearSearch();
         this.props.fetchCommentsByDream(this.props.dream._id);
@@ -16,7 +16,6 @@ class SearchItem extends React.Component {
     }
 
     render() {
-        // console.log('search-item-props', this.props)
 
         let icon;
         let refer;

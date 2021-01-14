@@ -56,21 +56,24 @@ router.get('/:commentId', (req, res) => {
   Comment.findOne({_id: req.params.commentId})
     .sort({date: -1})
     .then(comment => res.json(comment))
-    .catch(err => res.status(404).json({ nocommentfound: 'No comment found with the specified id'}))
+    .catch(err => res.status(404)
+      .json({ nocommentfound: 'No comment found with the specified id'}))
 });
 
 router.get('/dream/:dreamId', (req, res) => {
   Comment.find({dreamId: req.params.dreamId})
     .sort({date: -1})
     .then(comments => res.json(comments))
-    .catch(err => res.status(404).json({ nocommentsfound: 'This dream has no comments'}))
+    .catch(err => res.status(404)
+      .json({ nocommentsfound: 'This dream has no comments'}))
 });
 
 router.get('/user/:userId', (req, res) => {
   Comment.find({userId: req.params.userId})
     .sort({date: -1})
     .then(comments => res.json(comments))
-    .catch(err => res.status(404).json({ nocommentsfound: 'This user has no comments'}))
+    .catch(err => res.status(404)
+      .json({ nocommentsfound: 'This user has no comments'}))
 });
 
 // update
@@ -92,7 +95,8 @@ router.patch('/:commentId',
       .then(comment => {
         
         if (comment.userId != req.user.id ) {
-          res.status(400).json({ userauth: 'You can only edit your own comments'})
+          res.status(400)
+            .json({ userauth: 'You can only edit your own comments'})
         } else {
           Comment.findOneAndUpdate(query, update, options, (err, comment) => {
             if (err) {
@@ -117,7 +121,8 @@ router.delete('/:commentId',
       .then(comment => {
         
         if (comment.userId != req.user.id) {
-          res.status(400).json({ userauth: 'You can only delete your own comments'})
+          res.status(400)
+            .json({ userauth: 'You can only delete your own comments'})
         } else {
 
           Comment.deleteOne({ _id: req.params.commentId }, (err) => {
@@ -127,7 +132,9 @@ router.delete('/:commentId',
           })
           .then(() => {
             var query = { _id: comment.dreamId },
-              update = { $pull: { comments: mongoose.Types.ObjectId(req.params.commentId) } },
+              update = { 
+                $pull: { 
+                  comments: mongoose.Types.ObjectId(req.params.commentId) } },
               options = { new: true }
 
             Dream.findOneAndUpdate(query, update, options, (err, dream) => {
