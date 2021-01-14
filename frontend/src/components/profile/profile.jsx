@@ -74,9 +74,9 @@ class Profile extends React.Component {
 
     handleSubmit(){
         let user = {
-            age: this.state.age,
-            location: this.state.location,
-            bio: this.state.bio,
+            age: this.state.age.slice(0, 3),
+            location: this.state.location.slice(0, 20),
+            bio: this.state.bio.slice(0, 30),
         }
         this.props.updateUser(this.state.currentUserId, user)
 
