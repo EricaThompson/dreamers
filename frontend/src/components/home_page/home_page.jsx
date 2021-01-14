@@ -8,19 +8,27 @@ class HomePage extends React.Component {
     render() {
         return (
             <div className="logo" >
-                <img className='star-image-1' src={star} alt="" />
-                <img className='star-image-2' src={star} alt="" />
-                <img className='star-image-3' src={star} alt="" />
-                <img className='star-image-4' src={star} alt="" />
+                <img className='star-image-1' src={star} alt="Star" />
+                <img className='star-image-2' src={star} alt="Star" />
+                <img className='star-image-3' src={star} alt="Star" />
+                <img className='star-image-4' src={star} alt="Star" />
                 <div className="splash-box-container">
                     <div className="splash-box">
-                        <img className='dreams-image' src={dreams} alt="" />
+                        <img 
+                            className='dreams-image' 
+                            src={dreams} 
+                            alt="Dreams marketing illustration" 
+                        />
                     </div>
                     <div className="splash-box">
-                        <img className='goals-image' src={goals} alt="" />
+                        <img 
+                            className='goals-image' 
+                            src={goals} 
+                            alt="Goals marketing illustration" 
+                        />
                     </div>
                 </div>                
-                <img className='nav-logo' src={image} alt="" />
+                <img className='nav-logo' src={image} alt="Dreamers logo" />
             </div>
         )
     }

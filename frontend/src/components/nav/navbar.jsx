@@ -103,7 +103,7 @@ class NavBar extends React.Component {
                         <h1 className="nav-title">
                             {this.props.location.pathname === "/" 
                                 ? "" 
-                                : <img className='nav-logo' src={image} alt=""/>
+                                : <img className='nav-logo' src={image} alt="Dreamers logo"/>
                             }
                         </h1>
                     </Link>
