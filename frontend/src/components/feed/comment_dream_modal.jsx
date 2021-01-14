@@ -54,7 +54,6 @@ class CommentDreamModal extends React.Component {
         this.props.createLike(this.props.info._id, like)
             .then(res => console.log('res?',res))
 
-        console.log('createLike', this.props.createLike(this.props.info._id, like), this.props.info._id, like)
         this.setState({currentLike: ''})
 
         //!fix
@@ -143,10 +142,25 @@ class CommentDreamModal extends React.Component {
                 info.tags.map((tag, idx) => {
                     if (tag != null) {
                         return (
-                            <Link to={`/tags/${tag}`} key={idx} style={{ textDecoration: 'none' }} >
-                                <div className="new-dream-tags-item-container" onClick={e => e.stopPropagation()} >
-                                    <div className={info.type === "dream" ? "new-dream-tags-item-circle" : "new-goal-tags-item-circle"} ></div>
-                                    <p className="new-dream-tags-item" >{tag}</p>
+                            <Link 
+                                to={`/tags/${tag}`} 
+                                key={idx} 
+                                style={{ textDecoration: 'none' }} 
+                            >
+                                <div 
+                                    className="new-dream-tags-item-container" 
+                                    onClick={e => e.stopPropagation()} 
+                                >
+                                    <div 
+                                        className={
+                                            info.type === "dream" 
+                                            ? "new-dream-tags-item-circle" 
+                                            : "new-goal-tags-item-circle"} 
+                                    >
+                                    </div>
+                                    <p 
+                                        className="new-dream-tags-item" >{tag}
+                                    </p>
                                 </div>
                             </Link>
                         )
@@ -165,7 +179,13 @@ class CommentDreamModal extends React.Component {
             <div className="comment-modal-outer-container">
                 <div className="comment-dreams-container" >
                     <div className='comment-like'>{likeIcon}</div>
-                    <div className={this.props.info.type === "dream" ? "comment-dreams" : "comment-goals"}>
+                    <div 
+                        className={
+                            this.props.info.type === "dream" 
+                            ? "comment-dreams" 
+                            : "comment-goals"
+                        }
+                    >
                         <div className="new-dream-tags-container" >
                             <div className="new-dream-tags" >
                                 {tags}
@@ -181,7 +201,10 @@ class CommentDreamModal extends React.Component {
                             </Link>
                         </p>
                         <p className="comment-dreams-info" >{info.text}</p>
-                        <form className="comment-form" onSubmit={this.handleSubmit} >
+                        <form 
+                            className="comment-form" 
+                            onSubmit={this.handleSubmit} 
+                        >
                             <label className="comment-label" >
                                 <textarea 
                                     className="comment-input" 
@@ -201,7 +224,9 @@ class CommentDreamModal extends React.Component {
                             </div>
                         </form>
 
-                        <div className="comment-feed-container" >{commentFeed}</div>
+                        <div className="comment-feed-container" >
+                            {commentFeed}
+                        </div>
                     </div>
                 </div>
             </div>
