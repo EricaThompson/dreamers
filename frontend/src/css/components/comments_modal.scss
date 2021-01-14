@@ -4,8 +4,6 @@
     width: 100%;
 
     .comment-dreams-container {
-        
-
         .comment-like {
             position: absolute;
             top: 48px;
@@ -37,7 +35,6 @@
             .new-dream-tags {
                 display: flex;
                 flex-wrap: wrap;
-                // padding-bottom: 20px;
                 max-width: 100%;
                 
                 
@@ -46,7 +43,6 @@
                     position: relative;
                     cursor: pointer;
                     
-
                     .new-dream-tags-item-circle,
                     .new-goal-tags-item-circle {
                         position: absolute;
@@ -112,7 +108,7 @@
                 overflow-y: scroll;
 
                 &::-webkit-scrollbar { 
-                    display: none;  /* Safari and Chrome */
+                    display: none;
                 }
 
                 .comment-dreams-info-link {
@@ -120,16 +116,6 @@
                     color: $dark-gray;
                 }
             }
-
-            // .comment-goals-info {
-            //     color: $dark-gray;
-            //     font-family: $serif;
-
-            //     .comment-goals-info-link {
-            //         font-weight: 700;
-            //         color: $dark-gray;
-            //     }
-            // }
 
             .comment-form {
                 .comment-label {

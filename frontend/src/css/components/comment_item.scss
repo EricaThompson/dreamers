@@ -4,7 +4,7 @@
 }
 
 .comment-feed-container::-webkit-scrollbar { 
-    display: none;  /* Safari and Chrome */
+    display: none; 
 }
 
 .comment-item-outer-container {
@@ -46,7 +46,6 @@
                 padding: 10px;
                 border-radius: 55%;
                 cursor: pointer;
-                // box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
             }
 
             .comment-options {
@@ -55,34 +54,22 @@
                 right: 5px;
                 cursor: pointer;
 
-                
-
-                .available-options {
-                    // background-color: $off-white;
-
-                    
+                .available-options {                  
                     i {
                         position: absolute;
-                        // top: -38px;
-                        // right: 10px;
-                        
                         background-color: $pale-purple;
                         border-radius: 55%;
                         padding: 12px;
                         color: $dark-gray;
                         margin: 5px;
 
-                        
                         &:hover {
                             color: $off-white;
                         }
                     }
 
-                    
-
                     .icon:nth-child(1){
                         position: absolute;
-                        // z-index: 100000000000000;
                         top: -47px;
                         right: 82px;
                     }
@@ -93,9 +80,7 @@
                         right: 34px;
                     }
 
-
                     .fa-trash-alt:hover {
-                        
                         background-color: red;
                         color: $off-white;
                     }
@@ -120,6 +105,5 @@
             max-width: 100px;
             cursor: pointer;
         }
-
     }
 }
