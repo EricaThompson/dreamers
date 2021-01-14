@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class DreamItem extends React.Component {
+    _isMounted = false;
     constructor(props) {
         super(props);
         this.state = {
@@ -20,6 +21,7 @@ class DreamItem extends React.Component {
     }
 
     componentDidMount(){
+        this._isMounted = true;
         this.props.fetchLikesByDream(this.props.dream._id)
             .then(res => this.setState({likes: res.likes}))
             .then(this.setState({propLikes: this.props.like}))
@@ -29,6 +31,12 @@ class DreamItem extends React.Component {
         })
 
 
+    }
+
+    componentWillUnmount() {
+        this.setState = (state, callback) => {
+            return;
+        };
     }
 
     toggleEdit() {
