@@ -122,6 +122,8 @@ class Feed extends React.Component {
                         like={like}
                         fetchLikesByDream={fetchLikesByDream}
                     />
+                } else {
+                    return ""
                 }
             })
         } else if (this.state.selected === "dreams") {
