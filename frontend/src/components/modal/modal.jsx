@@ -31,7 +31,8 @@ class Modal extends React.Component {
             info, 
             fetchCommentsByDream, 
             comments, 
-            createComment, 
+            createComment,
+            deleteComment,
             clearModalInfo, 
             updateComment, 
             errors, 
@@ -46,7 +47,9 @@ class Modal extends React.Component {
             deleteLike,
             fetchLikesByDream,
             receiveErrors, 
-            clearErrors
+            clearErrors,
+            closeModal,
+            resetErrors
         } = this.props;
         if (!modal) {
             return null;

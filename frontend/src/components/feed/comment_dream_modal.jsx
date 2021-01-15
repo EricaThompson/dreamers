@@ -91,7 +91,7 @@ class CommentDreamModal extends React.Component {
                 <div>
                     {Object.values(comments).map((comment, idx) => {
                         return <CommentItem 
-                                    key={idx} 
+                                    key={comment._id} 
                                     comment={comment} 
                                     updateComment={this.props.updateComment}
                                     currentUser={this.props.currentUser}
