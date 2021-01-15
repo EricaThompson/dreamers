@@ -99,7 +99,7 @@ router.patch('/:dreamId',
         const { errors, isValid } = validateUpdateDreamInput(req.body);
 
         if (!isValid) {
-            return res.json.status(400).json(errors);
+            return res.status(400).json(errors);
         }
 
         var query = { _id: req.params.dreamId },
