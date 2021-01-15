@@ -12,7 +12,7 @@ class Feed extends React.Component {
             selected: 'feed',
             dreams: null,
             showClose: false,
-            followed: {}
+            followed: []
             //! may include spinner for loading views for UX
             // spinnerShow: true,
         }
@@ -27,9 +27,13 @@ class Feed extends React.Component {
         this.props.clearSearch();
         if (this.props.match.url.includes("feed")) {
             this.props.fetchDreams();
-            this.props.fetchFollowedUsersDreams()
-                .then(res => this.setState({ followed: res.data }))
-        } 
+            // this.props.fetchFollowedUsersDreams()
+            //     .then(res => this.setState({ followed: res.data }))
+            this.props.fetchUserById(this.props.currentUser.id)
+                .then(res => this.setState({
+                    followed: res.user.followed
+                }))
+        }
             //!spinner
             // .then(this.setState({spinnerShow: false}))
     }
@@ -100,23 +104,25 @@ class Feed extends React.Component {
                 />
             })
         } else if (this.state.selected === "followed") {
-            feed = Object.values(this.state.followed).map((dream, idx) => {
-                return <DreamItem
-                    key={idx}
-                    tags={dream.tags}
-                    dream={dream}
-                    openModal={openModal}
-                    modalInfo={modalInfo}
-                    fetchCommentsByDream={fetchCommentsByDream}
-                    clearComments={clearComments}
-                    currentUser={currentUser}
-                    deleteDream={deleteDream}
-                    createLike={createLike}
-                    deleteLike={deleteLike}
-                    fetchLike={fetchLike}
-                    like={like}
-                    fetchLikesByDream={fetchLikesByDream}
-                />
+            feed = Object.values(dreams).map((dream, idx) => {
+                if (this.state.followed.includes(dream.userId)) {
+                    return <DreamItem
+                        key={idx}
+                        tags={dream.tags}
+                        dream={dream}
+                        openModal={openModal}
+                        modalInfo={modalInfo}
+                        fetchCommentsByDream={fetchCommentsByDream}
+                        clearComments={clearComments}
+                        currentUser={currentUser}
+                        deleteDream={deleteDream}
+                        createLike={createLike}
+                        deleteLike={deleteLike}
+                        fetchLike={fetchLike}
+                        like={like}
+                        fetchLikesByDream={fetchLikesByDream}
+                    />
+                }
             })
         } else if (this.state.selected === "dreams") {
             feed = Object.values(dreams).map((dream, idx) => {
