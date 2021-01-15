@@ -36,7 +36,7 @@ router.get('/', (req, res) => {
   Tag.find()
     .sort({lastUsed: -1})
     .then(tags => res.json(tags))
-    .catch(err => res.status(404).json({ notagsfound: 'No tags found'}))
+    .catch(() => res.status(404).json({ notagsfound: 'No tags found'}))
 })
 
 router.get('/:tag', (req, res) => {
@@ -44,13 +44,13 @@ router.get('/:tag', (req, res) => {
   Tag.find({ name: { $regex: regex }})
     .sort({lastUsed: -1})
     .then(tags => res.json(tags))
-    .catch(err => res.status(404).json({ notagsfound: 'No matching tags found'}))
+    .catch(() => res.status(404).json({ notagsfound: 'No matching tags found'}))
 });
 
 router.get('/exact/:tag', (req, res) => {
   Tag.findOne({name: req.params.tag})
     .then(tag => res.json(tag))
-    .catch(err => res.status(404).json({ notagfound: 'No matching tag found'}))
+    .catch(() => res.status(404).json({ notagfound: 'No matching tag found'}))
 })
 
 // delete
@@ -59,8 +59,8 @@ router.delete('/:tag',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     Tag.findOneAndDelete({ name: req.params.tag })
-      .then(payload => res.json('Success'))
-      .catch(err => res.json('Failure'))
+      .then(() => res.json('Success'))
+      .catch(() => res.json('Failure'))
   }
 )
 

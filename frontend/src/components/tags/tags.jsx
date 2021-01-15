@@ -1,6 +1,4 @@
 import React from 'react';
-// import DreamItem from '../feed/dream_item';
-// import GoalItem from '../feed/goal_item';
 import Feed from '../feed/feed';
 
 class TagsFeed extends React.Component {
@@ -21,15 +19,21 @@ class TagsFeed extends React.Component {
     }
     
     render() {
-        let { tagName, openModal, dreams, clearDreams, clearComments, fetchCommentsByDream, modalInfo, currentUser, closeModal, fetchLike, createLike, deleteLike, fetchLikesByDream } = this.props;
-        // debugger
-        // let feed = Object.values(dreams).map((dream, idx) => {
-        //     if (dream.type === "dream") {
-        //         return <DreamItem key={idx} dream={dream} openModal={openModal} />
-        //     } else {
-        //         return <GoalItem key={idx} dream={dream} openModal={openModal} />
-        //     }
-        // })
+        let {
+            tagName, 
+            openModal, 
+            dreams, 
+            clearDreams, 
+            clearComments, 
+            fetchCommentsByDream, 
+            modalInfo, 
+            currentUser, 
+            closeModal, 
+            fetchLike, 
+            createLike, 
+            deleteLike, 
+            fetchLikesByDream 
+        } = this.props;
 
         return (
             <div className="profile-container">
@@ -62,7 +66,6 @@ class TagsFeed extends React.Component {
                         createLike={createLike}
                         deleteLike={deleteLike}
                         fetchLikesByDream={fetchLikesByDream}
-                        // dream={dreams}
                     />
                 </div>
             </div>

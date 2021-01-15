@@ -1,5 +1,4 @@
 .about-outer-container {
-    // padding-top: 50px;
     overflow-y: scroll;
     height: 90%;
     margin-top: 50px;
@@ -28,8 +27,7 @@
             color: $dark-gray;
 
             a {
-                //darkened $logo-yellow for readability
-                color: #d6b40b;
+                color: $darker-logo-yellow;
                 text-decoration: none;
                 
             }
@@ -51,8 +49,8 @@
 }
 
 .about-outer-container::-webkit-scrollbar { 
-        display: none;  /* Safari and Chrome */
-    }
+        display: none; 
+}
 
 
 @media (min-width: 800px) {

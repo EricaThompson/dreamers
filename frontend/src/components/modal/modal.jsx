@@ -3,7 +3,6 @@ import { closeModal, clearModalInfo } from '../../actions/modal_actions';
 import { createDream, updateDream } from '../../actions/dream_actions';
 import { connect } from 'react-redux';
 import NewDream from '../dreams/new_dream';
-// import CommentGoalModal from '../feed/comment_goal_modal';
 import CommentDreamModal from '../feed/comment_dream_modal';
 import { fetchCommentsByDream, createComment, deleteComment } from '../../actions/comment_actions';
 import { updateComment } from '../../actions/comment_actions';
@@ -11,6 +10,7 @@ import { resetErrors } from '../../actions/session_actions';
 import { fetchSearchResults, clearSearch } from '../../actions/search_actions';
 import { createTag } from '../../actions/tag_actions';
 import { createLike, deleteLike, fetchLikesByDream } from '../../actions/like_actions';
+import { receiveErrors, clearErrors } from '../../actions/error_actions';
 
 class Modal extends React.Component {
     constructor(props) {
@@ -18,7 +18,7 @@ class Modal extends React.Component {
         this.handleCloseModal = this.handleCloseModal.bind(this);
     }
 
-    handleCloseModal(e) {
+    handleCloseModal() {
         this.props.closeModal();
         this.props.clearModalInfo();
         this.props.clearSearch();
@@ -44,7 +44,9 @@ class Modal extends React.Component {
             dream,
             createLike,
             deleteLike,
-            fetchLikesByDream 
+            fetchLikesByDream,
+            receiveErrors, 
+            clearErrors
         } = this.props;
         if (!modal) {
             return null;
@@ -64,19 +66,10 @@ class Modal extends React.Component {
                     searchResults={searchResults}
                     createTag={createTag}
                     closeModal={closeModal}
+                    receiveErrors={receiveErrors}
+                    clearErrors={clearErrors}
                 />;
                 break;
-            // case 'commentGoal':
-            //     component = <CommentGoalModal
-            //         info={info}
-            //         fetchCommentsByDream={fetchCommentsByDream}
-            //         comments={comments}
-            //         createComment={createComment}
-            //         clearModalInfo={clearModalInfo}
-            //         currentUser={currentUser}
-            //         updateComment={updateComment}
-            //     />;
-            //     break;
             case 'commentDream':
                 component = <CommentDreamModal
                     info={info}
@@ -93,18 +86,24 @@ class Modal extends React.Component {
                     createLike = {createLike}
                     deleteLike = {deleteLike}
                     fetchLikesByDream={fetchLikesByDream}
-
+                    clearErrors={clearErrors}
                 />;
                 break;
             default:
                 return null;
         }
         return (
-            <div className="modal-background" onClick={this.handleCloseModal} >
-                <div className="modal-child" onClick={e => e.stopPropagation()} >
-                    <span onClick={this.handleCloseModal} className="close-modal-btn">&#x2715;</span>
-                    {component}
-                    {/* <NewDreamContainer /> */}
+            <div className="modal-background" 
+                onClick={this.handleCloseModal} >
+                <div className="modal-child" 
+                    onClick={e => e.stopPropagation()} >
+                        <span 
+                            onClick={this.handleCloseModal} 
+                            className="close-modal-btn"
+                        >
+                            &#x2715;
+                        </span>
+                        {component}
                 </div>
             </div>
         )
@@ -112,7 +111,6 @@ class Modal extends React.Component {
 }
 
 const mapSTP = state => {
-    // debugger;
     return {
         modal: state.ui.modal,
         currentUser: state.session.user,
@@ -139,7 +137,9 @@ const mapDTP = dispatch => ({
     createTag: (tag) => dispatch(createTag(tag)),
     createLike: (dreamId)=> dispatch(createLike(dreamId)),
     deleteLike: (likeId)=> dispatch(deleteLike(likeId)),
-    fetchLikesByDream: (dreamId) => dispatch(fetchLikesByDream(dreamId))
+    fetchLikesByDream: (dreamId) => dispatch(fetchLikesByDream(dreamId)),
+    receiveErrors: (errors) => dispatch(receiveErrors(errors)), 
+    clearErrors: () => dispatch(clearErrors())
 })
 
 export default connect(mapSTP, mapDTP)(Modal);

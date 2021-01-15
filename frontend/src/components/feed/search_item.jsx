@@ -7,7 +7,7 @@ class SearchItem extends React.Component {
         this.handleOpenModal = this.handleOpenModal.bind(this);
     }
 
-    handleOpenModal(e) {
+    handleOpenModal() {
         this.props.clearComments();
         this.props.clearSearch();
         this.props.fetchCommentsByDream(this.props.dream._id);
@@ -16,19 +16,18 @@ class SearchItem extends React.Component {
     }
 
     render() {
-        // console.log('search-item-props', this.props)
 
         let icon;
         let refer;
 
         if (this.props.type === 'dream') {
-            icon = <i class="fas fa-cloud search-icon"></i>
+            icon = <i className="fas fa-cloud search-icon"></i>
             refer = ""
         } else if (this.props.type === 'tag') {
-            icon = <i class="fas fa-tag search-icon"></i>
+            icon = <i className="fas fa-tag search-icon"></i>
             refer = `/tags/${this.props.dream.name}`
         } else if (this.props.type === 'users') {
-            icon = <i class="fas fa-user search-icon"></i>
+            icon = <i className="fas fa-user search-icon"></i>
             refer = `/users/${this.props.dream._id}`
         }
 

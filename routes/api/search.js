@@ -7,18 +7,21 @@ const mongoose = require('mongoose');
 router.get('/:searchParam', (req, res) => {
   const queries = [];
 
-  queries.push(Tag.find({ name: { $regex: new RegExp(req.params.searchParam) } })
-    .sort({ lastUsed: -1 })
-    .exec()
+  queries.push(Tag.find({ 
+    name: { $regex: new RegExp(req.params.searchParam) } })
+      .sort({ lastUsed: -1 })
+      .exec()
   )
 
-  queries.push(User.find({ username: { $regex: new RegExp(req.params.searchParam) } })
-    .exec()
+  queries.push(User.find({ 
+    username: { $regex: new RegExp(req.params.searchParam) } })
+      
   )
 
-  queries.push(Dream.find({ text: { $regex: new RegExp(req.params.searchParam) } })
-    .sort({ date: -1 })
-    .exec()
+  queries.push(Dream.find({ 
+    text: { $regex: new RegExp(req.params.searchParam) } })
+      .sort({ date: -1 })
+      .exec()
   )
   
   Promise.all(queries).then(results => res.json(results));

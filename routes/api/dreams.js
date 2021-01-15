@@ -36,7 +36,8 @@ router.get('/', (req, res) => {
     Dream.find()
         .sort({date: -1})
         .then(dreams => res.json(dreams))
-        .catch(err => res.status(404).json({ nodreamsfound: 'No dreams found'}));
+        .catch(() => res.status(404)
+            .json({ nodreamsfound: 'No dreams found'}));
 })
 
 router.get('/followed',
@@ -53,15 +54,17 @@ router.get('/type/:type', (req, res) => {
     Dream.find({ type: req.params.type })
         .sort({ date: -1 })
         .then(dreams => res.json(dreams))
-        .catch(err => res.status(404).json({ nodreamsfound: 'No dreams found of that type'}));
+        .catch(() => res.status(404)
+            .json({ nodreamsfound: 'No dreams found of that type'}));
 })
 
 router.get('/user/:userId', (req, res) => {
     Dream.find({userId: req.params.userId})
         .sort({ date: -1 })
         .then(dreams => res.json(dreams))
-        .catch(err =>
-            res.status(404).json({ nodreamsfound: 'No dreams found from that user' }
+        .catch(() =>
+            res.status(404)
+                .json({ nodreamsfound: 'No dreams found from that user' }
         )
     );
 });
@@ -69,8 +72,9 @@ router.get('/user/:userId', (req, res) => {
 router.get('/:id', (req, res) => {
     Dream.findOne({_id: req.params.id})
         .then(dream => res.json(dream))
-        .catch(err =>
-            res.status(404).json({ nodreamfound: 'No dream found with that ID' }
+        .catch(() =>
+            res.status(404)
+                .json({ nodreamfound: 'No dream found with that ID' }
         )
     );
 });
@@ -79,8 +83,10 @@ router.post('/tags', (req, res) => {
     Dream.find( { tags: { $all: req.body.tags } } )
         .sort({ date: -1 })
         .then(dreams => res.json(dreams))
-        .catch(err =>
-            res.status(404).json({ nodreamsfound: 'No dreams found with all of the specified tags'}
+        .catch(() =>
+            res.status(404)
+                .json({ 
+                    nodreamsfound: 'No dreams found with all of the specified tags'}
         )
     );
 })
@@ -103,21 +109,27 @@ router.patch('/:dreamId',
         Dream.findOne(query)
             .then(dream => {
                 if (dream.userId != req.user.id) {
-                    res.status(400).json({ userauth: 'You can only edit your own dreams'})
+                    res.status(400)
+                        .json({ userauth: 'You can only edit your own dreams'})
                 } else {
                     if (req.body.text.length === 0) {
                         delete req.body.text;
                     }
-                    Dream.findOneAndUpdate(query, update, options, (err, dream) => {
-                        if(err) {
-                            res.status(400).json(err);
-                        } else {
-                            res.json(dream);
-                        }
+                    Dream.findOneAndUpdate(
+                        query, 
+                        update, 
+                        options, 
+                        (err, dream) => {
+                            if(err) {
+                                res.status(400).json(err);
+                            } else {
+                                res.json(dream);
+                            }
                     })
                 }
             })
-            .catch(err => res.status(404).json({ nodreamfound: 'No dream found with that ID' }))
+            .catch(() => res.status(404)
+                .json({ nodreamfound: 'No dream found with that ID' }))
 
     }
 )
@@ -131,7 +143,9 @@ router.delete('/:dreamId',
         Dream.findOne(query)
             .then(dream => {
                 if (dream.userId != req.user.id) {
-                    res.status(400).json({ userauth: 'You can only delete your own dreams'})
+                    res.status(400)
+                        .json({ 
+                            userauth: 'You can only delete your own dreams'})
                 } else {
                     Dream.deleteOne(query, function (err) {
                         if(err) {
