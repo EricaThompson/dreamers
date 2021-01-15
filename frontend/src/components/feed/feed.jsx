@@ -12,6 +12,7 @@ class Feed extends React.Component {
             selected: 'feed',
             dreams: null,
             showClose: false,
+            followed: {}
             //! may include spinner for loading views for UX
             // spinnerShow: true,
         }
@@ -77,6 +78,25 @@ class Feed extends React.Component {
 
 
         if (this.state.selected === "feed") {
+            feed = Object.values(dreams).map((dream, idx) => {
+                return <DreamItem
+                    key={idx}
+                    tags={dream.tags}
+                    dream={dream}
+                    openModal={openModal}
+                    modalInfo={modalInfo}
+                    fetchCommentsByDream={fetchCommentsByDream}
+                    clearComments={clearComments}
+                    currentUser={currentUser}
+                    deleteDream={deleteDream}
+                    createLike={createLike}
+                    deleteLike={deleteLike}
+                    fetchLike={fetchLike}
+                    like={like}
+                    fetchLikesByDream={fetchLikesByDream}
+                />
+            })
+        } else if (this.state.selected === "followed") {
             feed = Object.values(dreams).map((dream, idx) => {
                 return <DreamItem
                     key={idx}
@@ -209,10 +229,19 @@ class Feed extends React.Component {
                         <div className="feed-header-container">
                             <h1 className={
                                 this.state.selected === 'feed' 
-                                    ? "feed-header feed-header-selected" 
-                                    : "feed-header"} 
+                                ? "feed-header feed-header-selected" 
+                                : "feed-header"} 
                                 onClick={this.handleSelected('feed')}
-                            >Feed</h1>
+                                >Feed</h1>
+                            {this.props.location.pathname.includes('feed') 
+                                ? <h1 className={
+                                    this.state.selected === 'followed'
+                                        ? "feed-header feed-header-selected"
+                                        : "feed-header"}
+                                    onClick={this.handleSelected('followed')}
+                                >Followed</h1>
+                                : ''
+                            }
                             <h1 
                                 className={
                                     this.state.selected === 'dreams' 
