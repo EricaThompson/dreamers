@@ -4,13 +4,13 @@ const validText = require('./valid-text');
 module.exports = function validateUpdateDreamInput(data) {
   let errors = {};
 
-  data.text = validText(data.text) ? data.text : '';
+  if (data.text) data.text = validText(data.text) ? data.text : '';
 
-  if (data.text && !Validator.isLength(data.text, { min: 1, max: 1000 })) {
+  if (data.text !== undefined && !Validator.isLength(data.text, { min: 1, max: 1000 })) {
     errors.text = 'Dream must be between 1 and 1000 characters';
   }
 
-  if (data.tags && data.tags.length > 10) {
+  if (data.tags && data.tags.length > 3) {
     errors.tags = 'Only 3 tags are allowed'
   }
 
