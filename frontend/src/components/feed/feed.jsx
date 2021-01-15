@@ -25,8 +25,11 @@ class Feed extends React.Component {
         this.setState({spinnerShow: true})
         this.props.closeModal();
         this.props.clearSearch();
-        if (this.props.match.url.includes("feed") )
-        this.props.fetchDreams()
+        if (this.props.match.url.includes("feed")) {
+            this.props.fetchDreams();
+            this.props.fetchFollowedUsersDreams()
+                .then(res => this.setState({ followed: res.data }))
+        } 
             //!spinner
             // .then(this.setState({spinnerShow: false}))
     }
@@ -97,7 +100,7 @@ class Feed extends React.Component {
                 />
             })
         } else if (this.state.selected === "followed") {
-            feed = Object.values(dreams).map((dream, idx) => {
+            feed = Object.values(this.state.followed).map((dream, idx) => {
                 return <DreamItem
                     key={idx}
                     tags={dream.tags}
