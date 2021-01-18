@@ -9,7 +9,7 @@ A live link to the site hosted on Heroku is here: [DREAMERS](https://the-dreamer
 </p>
 
 ## Instructions
-To run this application, after cloning the repository, run `npm install` in both the root and `frontend` directories. Next, run  `npm run dev` in the root directory to run the backend and frontend servers concurrently. The application should load in the browser automatically and ff it doesn't, navigate to `localhost:3000` in your web browser.
+To run this application, after cloning the repository, run `npm install` in both the root and `frontend` directories. Next, run  `npm run dev` in the root directory to run the backend and frontend servers concurrently. The application should load in the browser automatically and if it doesn't, navigate to `localhost:3000` in your web browser.
 
 
 ## Technologies
