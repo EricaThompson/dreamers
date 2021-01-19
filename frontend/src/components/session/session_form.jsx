@@ -123,14 +123,14 @@ class SessionForm extends React.Component {
                                 )}
                                 {errors.map((err, i) => err.includes(
                                     'Passwords must match') 
-                                        ? <p className="session-errors" key={i}> >
+                                        ? <p className="session-errors" key={i}> 
                                                 {err}
                                             </p> 
                                         : ''
                                 )}
                                 {errors.map((err, i) => err.includes(
                                     'Incorrect password') 
-                                        ? <p className="session-errors" key={i}> >
+                                        ? <p className="session-errors" key={i}> 
                                                 {err}
                                             </p> 
                                         : ''
