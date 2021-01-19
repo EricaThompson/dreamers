@@ -74,6 +74,7 @@ class CommentDreamModal extends React.Component {
             }
         })
         this.setState({ currentLike: '' })
+        
         //!fix
         window.location.reload()
     }

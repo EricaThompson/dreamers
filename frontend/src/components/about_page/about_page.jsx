@@ -15,7 +15,7 @@ class AboutPage extends React.Component {
                         - C.S. Lewis
                         <br />
                         <br />
-                        pDREAMERS is an app that takes those once-transient nightly 
+                        DREAMERS is an app that takes those once-transient nightly 
                         experiences and turns them into a new way to connect socially.
                         <br />
                         <br />
