@@ -81,6 +81,7 @@ class DreamItem extends React.Component {
                 this.props.deleteLike(like._id)
             }
         })
+
         //!fix
         window.location.reload()
     }
@@ -203,8 +204,9 @@ class DreamItem extends React.Component {
         >
         </i>
 
-        let liked = false;
         //! likes functionality
+        let liked = false;
+        
         if (this.state.likes) {
             this.state.likes.forEach(like => {
 
