@@ -75,7 +75,6 @@ class SessionForm extends React.Component {
                             <div className="session-errors-container">
                                 {errors.map((err, i) => err.includes('User') 
                                     ? <p className="session-errors" key={i} >
-                                    
                                         {err}
                                         </p> 
                                     : ''
@@ -89,16 +88,16 @@ class SessionForm extends React.Component {
                             value={this.state.password}
                             onChange={this.handleChange('password')} />
                         <div className="session-errors-container">
-                            {errors.map(err => err.includes(
+                            {errors.map((err,i) => err.includes(
                                 'Password field is required') 
-                                    ? <p className="session-errors" >
+                                    ? <p className="session-errors" key={i}>
                                             {err}
                                         </p> 
                                     : ''
                             )}
-                            {errors.map(err => err.includes(
+                            {errors.map((err,i) => err.includes(
                                 'Password must be at least 6 characters') 
-                                    ? <p className="session-errors" >
+                                    ? <p className="session-errors" key={i}>
                                             {err}
                                         </p> 
                                     : ''
@@ -115,23 +114,23 @@ class SessionForm extends React.Component {
                                 value={this.state.password2}
                                 onChange={this.handleChange('password2')} />
                             <div className="session-errors-container">
-                                {errors.map(err => err.includes(
+                                {errors.map((err, i) => err.includes(
                                     'Confirm Password field is required') 
-                                        ? <p className="session-errors" >
+                                        ? <p className="session-errors" key={i}>
                                                 {err}
                                             </p> 
                                         : ''
                                 )}
-                                {errors.map(err => err.includes(
+                                {errors.map((err, i) => err.includes(
                                     'Passwords must match') 
-                                        ? <p className="session-errors" >
+                                        ? <p className="session-errors" key={i}> >
                                                 {err}
                                             </p> 
                                         : ''
                                 )}
-                                {errors.map(err => err.includes(
+                                {errors.map((err, i) => err.includes(
                                     'Incorrect password') 
-                                        ? <p className="session-errors" >
+                                        ? <p className="session-errors" key={i}> >
                                                 {err}
                                             </p> 
                                         : ''
