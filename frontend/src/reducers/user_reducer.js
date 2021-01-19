@@ -2,6 +2,7 @@ import {
   RECEIVE_USER,
   RECEIVE_USERS
 } from '../actions/user_actions';
+
 import {
   SEARCH,
 } from '../actions/search_actions';

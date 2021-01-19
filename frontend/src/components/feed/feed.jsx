@@ -34,15 +34,11 @@ class Feed extends React.Component {
         //
         if (this.props.match.url.includes("feed")) {
             this.props.fetchDreams();
-            // this.props.fetchFollowedUsersDreams()
-            //     .then(res => this.setState({ followed: res.data }))
             this.props.fetchUserById(this.props.currentUser.id)
                 .then(res => this.setState({
                     followed: res.user.followed
                 }))
         }
-            //!spinner
-            // .then(this.setState({spinnerShow: false}))
     }
 
     componentWillUnmount() {
@@ -174,12 +170,6 @@ class Feed extends React.Component {
                 }
             })
         }
-        //!spinner
-        // let spinner;
-
-        // if (this.state.spinnerShow){
-        //     spinner = <i className="fas fa-asterisk fa-spin"></i>
-        // }
 
         let search;
         if (Object.values(searchResults).length > 0 && !this.props.isModalOpen){

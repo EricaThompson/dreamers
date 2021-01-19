@@ -80,7 +80,6 @@ class CommentItem extends React.Component {
                             <i className="fas fa-trash-alt"></i>
                         </div>
         } else {
-            //!if (!comment.author.followers.includes(currentUser))
             followIcon = <div className="icon">
                             <i className="fas fa-user-plus"></i>
                         </div>

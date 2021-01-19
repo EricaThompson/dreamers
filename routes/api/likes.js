@@ -9,6 +9,7 @@ const validateCreateDreamInput = require('../../validation/create_dream');
 const validateUpdateDreamInput = require('../../validation/update_dream')
 
 //create 
+
 router.post('/:dreamId',
     passport.authenticate('jwt', {session: false}),
     (req, res) => {
