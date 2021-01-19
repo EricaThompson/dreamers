@@ -73,8 +73,9 @@ class SessionForm extends React.Component {
                             value={this.state.username}
                             onChange={this.handleChange('username')} />
                             <div className="session-errors-container">
-                                {errors.map(err => err.includes('User') 
-                                    ? <p className="session-errors" >
+                                {errors.map((err, i) => err.includes('User') 
+                                    ? <p className="session-errors" key={i} >
+                                    
                                         {err}
                                         </p> 
                                     : ''
