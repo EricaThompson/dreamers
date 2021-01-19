@@ -57,7 +57,7 @@ class CommentDreamModal extends React.Component {
         this.setState({currentLike: ''})
 
         //!fix
-        window.location.reload()
+        // window.location.reload()
     }
 
     liked(){
@@ -75,7 +75,7 @@ class CommentDreamModal extends React.Component {
         })
         this.setState({ currentLike: '' })
         //!fix
-        window.location.reload()
+        // window.location.reload()
     }
 
     render() {

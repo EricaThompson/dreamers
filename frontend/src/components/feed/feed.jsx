@@ -12,7 +12,8 @@ class Feed extends React.Component {
             selected: 'feed',
             dreams: null,
             showClose: false,
-            followed: []
+            followed: [],
+            likes: []
             //! may include spinner for loading views for UX
             // spinnerShow: true,
         }
@@ -25,6 +26,12 @@ class Feed extends React.Component {
         this.setState({spinnerShow: true})
         this.props.closeModal();
         this.props.clearSearch();
+         this._isMounted = true;
+         //sami messed with it here
+        // this.props.fetchLikesByDream(this.props.dream._id)
+        //     .then(res => this.setState({likes: res.likes}))
+        //     .then(this.setState({propLikes: this.props.like}))
+        //
         if (this.props.match.url.includes("feed")) {
             this.props.fetchDreams();
             // this.props.fetchFollowedUsersDreams()
@@ -79,10 +86,6 @@ class Feed extends React.Component {
         if ( !dreams ) return null;
 
         let feed; 
-
-
-
-
 
         if (this.state.selected === "feed") {
             feed = Object.values(dreams).map((dream, idx) => {
