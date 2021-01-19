@@ -1,5 +1,5 @@
 import React from 'react';
-import image from '../../css/components/DREAMERS-LOGO-1.png'
+import image from '../../css/components/DREAMERS-LOGO-3.png'
 import dreams from '../../css/components/DREAMS.png';
 import goals from '../../css/components/GOALS.png';
 import star from '../../css/components/STAR.png'
