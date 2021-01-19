@@ -30,7 +30,8 @@ class DreamItem extends React.Component {
         //     .then(this.setState({propLikes: this.props.like}))
         
         this.setState({ 
-            timestamp: this.props.dream._id.toString().substring(0, 8)
+            timestamp: this.props.dream._id.toString().substring(0, 8),
+            likes: this.props.dream.likes
         })
     }
 
@@ -72,22 +73,15 @@ class DreamItem extends React.Component {
         }
         this.props.createLike(this.props.dream._id, like)
             .then(() => this.setState({ likes: this.props.dream.likes }))
-        
-        // this.props.fetchLikesByDream(this.props.dream._id)
-        //!fix
-        // window.location.reload()
     }
 
 
     unlike(){
         this.state.likes.forEach(like=>{
             if (like.username === this.props.currentUser.username){
-                this.props.deleteLike(like._id).then(() =>{this.setState({likes: this.props.dream.likes})})
+                this.props.deleteLike(like.id).then(() =>{this.setState({likes: this.props.dream.likes})})
             }
         })
-
-        //!fix
-        // window.location.reload()
     }
 
     handlePopOut() {
@@ -210,8 +204,11 @@ class DreamItem extends React.Component {
         </i>
 
         //! likes functionality
-        if (this.props.dream.likes) {
-            this.props.dream.likes.forEach(like => {
+
+        let liked;
+
+        if (this.state.likes) {
+            this.state.likes.forEach(like => {
 
                 if (like.username === currentUser.username) {
                     liked = true;
@@ -240,7 +237,7 @@ class DreamItem extends React.Component {
                             className="fas fa-ellipsis-h"
                             onClick={() => this.toggleMenu()}>
                             <br />
-                            {likeIcon}
+                            {/* {likeIcon} */}
                         </i>
 
             editIcon = <div
@@ -318,14 +315,18 @@ class DreamItem extends React.Component {
                 <div 
                     key={Math.random()} 
                     className="comment-options" 
-                    onClick={(e)=>this.toggleAndStopPropagation(e)} 
+                    onClick={(e) => e.stopPropagation()} 
                 >
                     {optionsIcon}
-                    <br />
-                    {likeIcon}
                     {menuOptions}
                 </div>
-
+                <div
+                    key={Math.random()}
+                    className="liked-options"
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    {likeIcon}
+                </div>
                 <div className={
                     dream.type === "dream" 
                         ? "feed-dreams" 

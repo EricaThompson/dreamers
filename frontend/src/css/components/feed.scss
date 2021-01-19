@@ -158,17 +158,9 @@
                         position: absolute;
                         z-index: 2;
                         bottom: 10px;
-                        right: 15px;
+                        left: 15px;
                         cursor: pointer;
                         color: $light-gray;
-
-                        .liked {
-                            color: $red;
-                        }
-
-                        .unliked {
-                            color: $red;
-                        }
 
                         .available-options {
                             i {
@@ -183,16 +175,20 @@
                                 }
                             }
 
+                            p {
+                                position: absolute;
+                            }
+
                             .icon:nth-child(1){
                                 position: absolute;
-                                top: 17px;
-                                right: 80px;
+                                bottom: 2px;
+                                left: 33px;
                             }
 
                             .icon:nth-child(2){
                                 position: absolute;
-                                top: 17px;
-                                right: 33px;
+                                bottom: 2px;
+                                left: -10px;
                             }
 
 
@@ -212,6 +208,22 @@
                                 padding-right: 14px;
                                 padding-left: 10px;
                             }
+                        }
+                    }
+
+                    .liked-options {
+                        position: absolute;
+                        z-index: 2;
+                        bottom: 10px;
+                        right: 15px;
+                        cursor: pointer;
+                        
+                        .liked {
+                            color: $red;
+                        }
+
+                        .unliked {
+                            color: $red;
                         }
                     }
 
