@@ -233,7 +233,7 @@ class DreamItem extends React.Component {
             </i>
         }
 
-        if (dream.username === currentUser.username) {
+        if (dream.username === currentUser.username || currentUser.id === "6008ae5487226a3ee8c43414") {
             optionsIcon = <i
                             className="fas fa-ellipsis-h"
                             onClick={() => this.toggleMenu()}>

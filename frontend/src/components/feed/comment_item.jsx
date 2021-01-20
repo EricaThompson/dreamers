@@ -62,7 +62,7 @@ class CommentItem extends React.Component {
         let optionsIcon;
 
 
-        if (comment.username === this.props.currentUser.username){
+        if (comment.username === this.props.currentUser.username || this.props.currentUser.id === "6008ae5487226a3ee8c43414"){
             optionsIcon = <i
                             className="fas fa-ellipsis-h"
                             onClick={() => this.toggleMenu()}>
