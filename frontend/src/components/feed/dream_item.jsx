@@ -25,14 +25,19 @@ class DreamItem extends React.Component {
 
     componentDidMount(){
         this._isMounted = true;
-        // this.props.fetchLikesByDream(this.props.dream._id)
-        //     .then(res => this.setState({likes: res.likes}))
-        //     .then(this.setState({propLikes: this.props.like}))
-        
         this.setState({ 
             timestamp: this.props.dream._id.toString().substring(0, 8),
             likes: this.props.dream.likes
         })
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.isModalOpen !== this.props.isModalOpen) {
+            this.setState({
+                timestamp: this.props.dream._id.toString().substring(0, 8),
+                likes: this.props.dream.likes
+            })
+        }
     }
 
     componentWillUnmount() {
@@ -78,8 +83,13 @@ class DreamItem extends React.Component {
 
     unlike(){
         this.state.likes.forEach(like=>{
+            // debugger;
             if (like.username === this.props.currentUser.username){
-                this.props.deleteLike(like.id).then(() =>{this.setState({likes: this.props.dream.likes})})
+                if (like.id) {
+                    this.props.deleteLike(like.id).then(() =>{this.setState({likes: this.props.dream.likes})})
+                } else {
+                    this.props.deleteLike(like._id).then(() => { this.setState({ likes: this.props.dream.likes }) })
+                }
             }
         })
     }
@@ -209,7 +219,6 @@ class DreamItem extends React.Component {
 
         if (this.state.likes) {
             this.state.likes.forEach(like => {
-
                 if (like.username === currentUser.username) {
                     liked = true;
                 }

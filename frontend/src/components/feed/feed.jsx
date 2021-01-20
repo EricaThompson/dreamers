@@ -64,7 +64,8 @@ class Feed extends React.Component {
     render() {
         let { 
             openModal, 
-            modalInfo, 
+            modalInfo,
+            isModalOpen,
             dreams, 
             fetchCommentsByDream, 
             clearComments, 
@@ -100,6 +101,7 @@ class Feed extends React.Component {
                     fetchLike={fetchLike}
                     like={like}
                     fetchLikesByDream={fetchLikesByDream}
+                    isModalOpen={isModalOpen}
                 />
             })
         } else if (this.state.selected === "followed") {
@@ -120,6 +122,7 @@ class Feed extends React.Component {
                         fetchLike={fetchLike}
                         like={like}
                         fetchLikesByDream={fetchLikesByDream}
+                        isModalOpen={isModalOpen}
                     />
                 } else {
                     return ""
@@ -142,6 +145,7 @@ class Feed extends React.Component {
                         fetchLike={fetchLike}
                         like={like}
                         fetchLikesByDream={fetchLikesByDream}
+                        isModalOpen={isModalOpen}
                     />
                 } else {
                     return ""
@@ -164,6 +168,7 @@ class Feed extends React.Component {
                         fetchLike={fetchLike}
                         like={like}
                         fetchLikesByDream={fetchLikesByDream}
+                        isModalOpen={isModalOpen}
                         />
                 } else {
                     return ""
