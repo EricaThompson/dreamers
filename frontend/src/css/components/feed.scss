@@ -50,16 +50,16 @@
             
             .search-results-outer-container {
                 position: absolute;
-                top: 39px;
+                top: 38px;
                 left: 14px;
                 background-color: $off-white;
                 z-index: 10;
                 max-height: 350px;
                 overflow-y: scroll;
                 width: 91%;
-                border-bottom: 2px solid $dark-gray;
-                border-right: 2px solid $dark-gray;
-                border-left: 2px solid $dark-gray;
+                border-bottom: 2px solid $magenta;
+                border-right: 2px solid $magenta;
+                border-left: 2px solid $magenta;
                 
                 .search-results-inner-container {
                     padding: 5px;
@@ -161,6 +161,11 @@
                         left: 15px;
                         cursor: pointer;
                         color: $light-gray;
+                        width: 10px;
+                        
+                        .fa-ellipsis-h {
+                            z-index: 4;
+                        }
 
                         .available-options {
                             i {
@@ -213,7 +218,7 @@
 
                     .liked-options {
                         position: absolute;
-                        z-index: 2;
+                        z-index: 4;
                         bottom: 10px;
                         right: 15px;
                         cursor: pointer;
