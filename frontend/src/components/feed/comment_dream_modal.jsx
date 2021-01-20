@@ -15,15 +15,10 @@ class CommentDreamModal extends React.Component {
     }
 
     componentDidMount() {
-
         this.props.resetErrors();
         this.setState({
             likes: this.props.info.likes
         })
-        // debugger;
-        // this.props.fetchLikesByDream(this.props.info._id)
-        //     .then(res => this.setState({ likes: res.likes }))
-        //     .then(this.setState({ propLikes: this.props.like }))
     }
 
     componentWillUnmount() {
@@ -57,7 +52,6 @@ class CommentDreamModal extends React.Component {
     unlike() {
         this.state.likes.forEach(like => {
             if (like.username === this.props.currentUser.username) {
-                // this.props.deleteLike(like._id).then(() => { this.setState({ likes: [] }) })
                 if (like.id) {
                     this.props.deleteLike(like.id).then(() => { this.setState({ likes: [] }) })
                 } else {

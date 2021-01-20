@@ -2,18 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class DreamItem extends React.Component {
-    _isMounted = false;
     constructor(props) {
         super(props);
         this.state = {
             tags: this.props.tags,
             showMenu: false,
             likes: [],
-            numLikes: null,
-            propLikes: null,
             timestamp: null,
             popout: false,
-            currentLike: '',
         }
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleOpenEditModal = this.handleOpenEditModal.bind(this);
@@ -24,7 +20,6 @@ class DreamItem extends React.Component {
     }
 
     componentDidMount(){
-        this._isMounted = true;
         this.setState({ 
             timestamp: this.props.dream._id.toString().substring(0, 8),
             likes: this.props.dream.likes
@@ -83,7 +78,6 @@ class DreamItem extends React.Component {
 
     unlike(){
         this.state.likes.forEach(like=>{
-            // debugger;
             if (like.username === this.props.currentUser.username){
                 if (like.id) {
                     this.props.deleteLike(like.id).then(() =>{this.setState({likes: this.props.dream.likes})})
@@ -112,8 +106,6 @@ class DreamItem extends React.Component {
     }
 
     render() {
-        // console.log('likes: ', this.state.likes)
-
         let { dream, 
             currentUser, 
         } = this.props;
