@@ -13,10 +13,12 @@ router.get('/:searchParam', (req, res) => {
       .exec()
   )
 
-  queries.push(User.find({ 
-    username: { $regex: new RegExp(req.params.searchParam) } })
-      
-  )
+  queries.push(User.find(
+    { $and: [
+      { username: { $regex: new RegExp(req.params.searchParam) } },
+      {username: { $ne: 'superuser' }}
+    ]}
+  ))
 
   queries.push(Dream.find({ 
     text: { $regex: new RegExp(req.params.searchParam) } })
