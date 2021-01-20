@@ -32,7 +32,7 @@ class DreamItem extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.isModalOpen !== this.props.isModalOpen) {
+        if (prevProps.dream.likes !== this.props.dream.likes) {
             this.setState({
                 timestamp: this.props.dream._id.toString().substring(0, 8),
                 likes: this.props.dream.likes
