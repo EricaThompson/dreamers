@@ -24,6 +24,7 @@ class Modal extends React.Component {
         this.props.clearSearch();
     }
 
+
     render() {
         let { 
             modal, 
