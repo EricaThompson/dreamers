@@ -94,7 +94,7 @@ router.patch('/:commentId',
     Comment.findOne(query)
       .then(comment => {
         
-        if (comment.userId != req.user.id ) {
+        if (comment.userId != req.user.id && req.user.username != 'superuser') {
           res.status(400)
             .json({ userauth: 'You can only edit your own comments'})
         } else {
@@ -120,7 +120,7 @@ router.delete('/:commentId',
     Comment.findOne({ _id: req.params.commentId })
       .then(comment => {
         
-        if (comment.userId != req.user.id) {
+        if (comment.userId != req.user.id && req.user.username != 'superuser') {
           res.status(400)
             .json({ userauth: 'You can only delete your own comments'})
         } else {

@@ -108,7 +108,7 @@ router.patch('/:dreamId',
 
         Dream.findOne(query)
             .then(dream => {
-                if (dream.userId != req.user.id) {
+                if (dream.userId != req.user.id && req.user.username != 'superuser') {
                     res.status(400)
                         .json({ userauth: 'You can only edit your own dreams'})
                 } else {
@@ -142,7 +142,7 @@ router.delete('/:dreamId',
         var query = { _id: req.params.dreamId }
         Dream.findOne(query)
             .then(dream => {
-                if (dream.userId != req.user.id) {
+                if (dream.userId != req.user.id && req.user.username != 'superuser') {
                     res.status(400)
                         .json({ 
                             userauth: 'You can only delete your own dreams'})
