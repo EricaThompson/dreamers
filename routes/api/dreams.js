@@ -108,7 +108,7 @@ router.patch('/:dreamId',
 
         Dream.findOne(query)
             .then(dream => {
-                if (dream.userId != req.user.id && req.user.id != "6008ae5487226a3ee8c43414") {
+                if (dream.userId != req.user.id) {
                     res.status(400)
                         .json({ userauth: 'You can only edit your own dreams'})
                 } else {
