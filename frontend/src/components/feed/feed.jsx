@@ -12,7 +12,8 @@ class Feed extends React.Component {
             selected: 'feed',
             dreams: null,
             showClose: false,
-            followed: []
+            followed: [],
+            likes: []
             //! may include spinner for loading views for UX
             // spinnerShow: true,
         }
@@ -25,17 +26,19 @@ class Feed extends React.Component {
         this.setState({spinnerShow: true})
         this.props.closeModal();
         this.props.clearSearch();
+         this._isMounted = true;
+         //sami messed with it here
+        // this.props.fetchLikesByDream(this.props.dream._id)
+        //     .then(res => this.setState({likes: res.likes}))
+        //     .then(this.setState({propLikes: this.props.like}))
+        //
         if (this.props.match.url.includes("feed")) {
             this.props.fetchDreams();
-            // this.props.fetchFollowedUsersDreams()
-            //     .then(res => this.setState({ followed: res.data }))
             this.props.fetchUserById(this.props.currentUser.id)
                 .then(res => this.setState({
                     followed: res.user.followed
                 }))
         }
-            //!spinner
-            // .then(this.setState({spinnerShow: false}))
     }
 
     componentWillUnmount() {
@@ -79,10 +82,6 @@ class Feed extends React.Component {
         if ( !dreams ) return null;
 
         let feed; 
-
-
-
-
 
         if (this.state.selected === "feed") {
             feed = Object.values(dreams).map((dream, idx) => {
@@ -171,12 +170,6 @@ class Feed extends React.Component {
                 }
             })
         }
-        //!spinner
-        // let spinner;
-
-        // if (this.state.spinnerShow){
-        //     spinner = <i className="fas fa-asterisk fa-spin"></i>
-        // }
 
         let search;
         if (Object.values(searchResults).length > 0 && !this.props.isModalOpen){

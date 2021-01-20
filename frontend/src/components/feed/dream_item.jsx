@@ -13,24 +13,26 @@ class DreamItem extends React.Component {
             propLikes: null,
             timestamp: null,
             popout: false,
+            currentLike: '',
         }
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleOpenEditModal = this.handleOpenEditModal.bind(this);
         this.refreshAfterDelete = this.refreshAfterDelete.bind(this);
         this.handlePopOut = this.handlePopOut.bind(this);
+        this.like = this.like.bind(this);
+        this.unlike = this.unlike.bind(this)
     }
 
     componentDidMount(){
         this._isMounted = true;
-        this.props.fetchLikesByDream(this.props.dream._id)
-            .then(res => this.setState({likes: res.likes}))
-            .then(this.setState({propLikes: this.props.like}))
+        // this.props.fetchLikesByDream(this.props.dream._id)
+        //     .then(res => this.setState({likes: res.likes}))
+        //     .then(this.setState({propLikes: this.props.like}))
         
         this.setState({ 
-            timestamp: this.props.dream._id.toString().substring(0, 8)
+            timestamp: this.props.dream._id.toString().substring(0, 8),
+            likes: this.props.dream.likes
         })
-
-
     }
 
     componentWillUnmount() {
@@ -70,19 +72,16 @@ class DreamItem extends React.Component {
             userId: this.props.currentUser._id,
         }
         this.props.createLike(this.props.dream._id, like)
-            .then(res => this.setState({currentLike: res.like._id}))
-        window.location.reload()
+            .then(() => this.setState({ likes: this.props.dream.likes }))
     }
 
 
     unlike(){
         this.state.likes.forEach(like=>{
             if (like.username === this.props.currentUser.username){
-                this.props.deleteLike(like._id)
+                this.props.deleteLike(like.id).then(() =>{this.setState({likes: this.props.dream.likes})})
             }
         })
-        //!fix
-        window.location.reload()
     }
 
     handlePopOut() {
@@ -103,6 +102,7 @@ class DreamItem extends React.Component {
     }
 
     render() {
+        // console.log('likes: ', this.state.likes)
 
         let { dream, 
             currentUser, 
@@ -203,8 +203,10 @@ class DreamItem extends React.Component {
         >
         </i>
 
-        let liked = false;
         //! likes functionality
+
+        let liked;
+
         if (this.state.likes) {
             this.state.likes.forEach(like => {
 
@@ -235,7 +237,7 @@ class DreamItem extends React.Component {
                             className="fas fa-ellipsis-h"
                             onClick={() => this.toggleMenu()}>
                             <br />
-                            {likeIcon}
+                            {/* {likeIcon} */}
                         </i>
 
             editIcon = <div
@@ -273,7 +275,7 @@ class DreamItem extends React.Component {
 
         let popout;
 
-        if (this.state.likes.length > 0) {
+        if (this.props.dream.likes.length > 0) {
             popout = <div className="likes-popout-inner-container">
                 <span 
                     onClick={this.handlePopOut} 
@@ -313,14 +315,18 @@ class DreamItem extends React.Component {
                 <div 
                     key={Math.random()} 
                     className="comment-options" 
-                    onClick={(e)=>this.toggleAndStopPropagation(e)} 
+                    onClick={(e) => e.stopPropagation()} 
                 >
                     {optionsIcon}
-                    <br />
-                    {likeIcon}
                     {menuOptions}
                 </div>
-
+                <div
+                    key={Math.random()}
+                    className="liked-options"
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    {likeIcon}
+                </div>
                 <div className={
                     dream.type === "dream" 
                         ? "feed-dreams" 
@@ -371,11 +377,11 @@ class DreamItem extends React.Component {
                                 className="feed-dreams-footer-info" 
                                 onClick={(e) => e.stopPropagation()}
                             >
-                                {this.state.likes.length} 
+                                {this.props.dream.likes.length} 
                                 <span 
                                     onClick={this.handlePopOut} 
                                     className="feed-dreams-footer-likes" >
-                                        {this.state.likes.length === 1 
+                                    {this.props.dream.likes.length === 1 
                                     ? " like" 
                                     : " likes"}
                                 </span>

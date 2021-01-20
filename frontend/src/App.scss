@@ -6,7 +6,6 @@
 @import "css/base/colors.scss";
 
 /* Component Styles */
-// @import "css/components/*";
 @import "./css/components/home_page.scss";
 @import "./css/components/main.scss";
 @import "./css/components/nav_bar.scss";
@@ -20,45 +19,3 @@
 @import "./css/components/tag.scss";
 @import "./css/components/dream_show.scss";
 @import "./css/components/comment_item.scss";
-
-/* .App {
-  text-align: center;
-  background-image: url("./background-image.jpg");
-  height: 100%;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-image: url("./background-image.jpg");
-  background-color: #2b337c;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */

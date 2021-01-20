@@ -8,14 +8,13 @@ import { fetchSearchResults, clearSearch } from '../../actions/search_actions';
 import { fetchFollowedUsersDreams } from '../../util/dream_api_util';
 import { fetchUserById } from '../../actions/user_actions';
 
-const mapSTP = state => {
-    return {
+const mapSTP = state => ({
     currentUser: state.session.user,
     dreams: state.dream,
     like: state.like,
     searchResults: state.search,
     isModalOpen: state.ui.modal
-}}
+})
 
 const mapDTP = dispatch => ({
     openModal: (modal) => dispatch(openModal(modal)),

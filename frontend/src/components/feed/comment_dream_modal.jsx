@@ -8,11 +8,6 @@ class CommentDreamModal extends React.Component {
         this.state = {
             comment: '',
             likes: [],
-            numLikes: null,
-            propLikes: null,
-            currentLike: 'like',
-            isLiked: false,
-            likeOnce: 0
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -22,9 +17,12 @@ class CommentDreamModal extends React.Component {
     componentDidMount() {
 
         this.props.resetErrors();
-        this.props.fetchLikesByDream(this.props.info._id)
-            .then(res => this.setState({ likes: res.likes }))
-            .then(this.setState({ propLikes: this.props.like }))
+        this.setState({
+            likes: this.props.info.likes
+        })
+        // this.props.fetchLikesByDream(this.props.info._id)
+        //     .then(res => this.setState({ likes: res.likes }))
+        //     .then(this.setState({ propLikes: this.props.like }))
     }
 
     componentWillUnmount() {
@@ -46,36 +44,21 @@ class CommentDreamModal extends React.Component {
     }
 
     like() {
-
         let like = {
             username: this.props.currentUser.username,
             dreamId: this.props.info._id,
             userId: this.props.currentUser.id,
         }
         this.props.createLike(this.props.info._id, like)
-
-        this.setState({currentLike: ''})
-
-        //!fix
-        window.location.reload()
-    }
-
-    liked(){
-        if(this.state.likeOnce === 0){
-            this.setState({isLiked: true})
-            this.setState({likeOnce: 1})
-        }
+            .then(() => this.setState({ likes: this.props.info.likes }))
     }
 
     unlike() {
         this.state.likes.forEach(like => {
             if (like.username === this.props.currentUser.username) {
-                this.props.deleteLike(like._id)
+                this.props.deleteLike(like._id).then(() => { this.setState({ likes: [] }) })
             }
         })
-        this.setState({ currentLike: '' })
-        //!fix
-        window.location.reload()
     }
 
     render() {
