@@ -173,9 +173,18 @@
                 position: absolute;
                 right: 30px;
                 color: $dark-gray;
+                cursor: pointer;
 
                 &:hover {
                     color: $green;
+                }
+            }
+
+            .close-search-btn {
+                cursor: pointer;
+
+                &:hover {
+                    color: $red;
                 }
             }
         }
@@ -197,7 +206,10 @@
             border-right: 2px solid $magenta;
             border-left: 2px solid $magenta;
             
-        
+            &::-webkit-scrollbar { 
+                display: none; 
+            }
+            
             .tag-search-results-outer-container {
                 width: 100%;
 

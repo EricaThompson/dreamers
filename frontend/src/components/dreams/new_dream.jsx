@@ -48,7 +48,6 @@ class NewDream extends React.Component {
         if (e.target.value.length > 0) {
             this.props.fetchSearchResults(e.target.value);
         } else if (e.target.value.length === 0) {
-        console.log(e.target.value.length)
             this.hideShow();
         }
         this.setState({ searchValue: e.target.value, showClose: true })
