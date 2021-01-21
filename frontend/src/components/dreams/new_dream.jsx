@@ -106,7 +106,6 @@ class NewDream extends React.Component {
             let idx = newTags.indexOf(tag)
             delete newTags[idx]
             let newestTags = newTags.filter(t => t.length > 0)
-            console.log(newestTags)
             this.setState({ tags: newestTags })
             this.props.clearErrors();
         }
