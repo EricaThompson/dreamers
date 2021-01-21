@@ -24,13 +24,17 @@ const DreamSchema = new Schema({
   likes: [{
     _id: false,
     id: {
-    type: Schema.Types.ObjectId,
-    ref: 'likes'
+      type: Schema.Types.ObjectId,
+      ref: 'likes'
     }, 
     username: {
       type: String, 
       required: true, 
       unique: true
+    },
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: 'user'
     }
   }],
 

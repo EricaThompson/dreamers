@@ -17,6 +17,10 @@
     .edit-profile-form {
         width: 234px;
 
+        .inner-profile-item {
+            padding: 4px 4px 4px 0px;
+        }
+
         cursor: default;
         input {
             width: 70%;
@@ -121,12 +125,16 @@
                 .followers {
                     cursor: pointer;
                 }
+
+                .inner-profile-item {
+                    padding: 4px 4px 4px 0px;
+                }
             }
+
             .follower-popout-container {
                 position: absolute;
                 top: 142px;
-                right: 30px;
-                padding: 5px;
+                right: 39px;
                 background-color: $off-white;
                 border: 2px solid $dark-gray;
                 border-radius: 5px;
@@ -160,9 +168,7 @@
                         font-family: $serif;
                         font-size: 14px;
                         width: 220px;
-                        height: 28px;
-                        margin-left: -5px;
-                        margin-bottom: 1px;
+                        box-sizing: border-box;
                     }
                     
                     .popout-item:hover {
@@ -172,9 +178,7 @@
                 }
             }
             
-            div {
-                padding: 4px 4px 4px 0px;
-            }
+            
             .profile-edit-button {
                 
                 padding-bottom: 4px;
@@ -244,8 +248,7 @@
                 .follower-popout-container {
                     position: absolute;
                     top: 146px;
-                    right: 55px;
-                    padding: 5px;
+                    left: 420px;
                     background-color: $off-white;
                     border: 2px solid $dark-gray;
                     border-radius: 5px;
@@ -262,20 +265,12 @@
                     .likes-popout-inner-container {
                         position: relative;
 
-                        .close-popout-btn {
-                            position: absolute;
-                            top: 0px;
-                            right: 0px;
-                        }
-
                         .popout-item,
                         .popout-item-none {
                             color: $dark-gray;
                             font-family: $serif;
                             font-size: 14px;
                             width: 220px;
-                            margin-left: -5px;
-                            height: 30px;
                             box-sizing: border-box;
                         }
                         

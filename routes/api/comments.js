@@ -94,7 +94,7 @@ router.patch('/:commentId',
     Comment.findOne(query)
       .then(comment => {
         
-        if (comment.userId != req.user.id ) {
+        if (comment.userId != req.user.id) {
           res.status(400)
             .json({ userauth: 'You can only edit your own comments'})
         } else {

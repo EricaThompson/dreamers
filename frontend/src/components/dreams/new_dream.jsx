@@ -45,12 +45,17 @@ class NewDream extends React.Component {
 
     handleSearchChange(e) {
         this.props.clearErrors();
-        this.props.fetchSearchResults(e.target.value);
+        if (e.target.value.length > 0) {
+            this.props.fetchSearchResults(e.target.value);
+        } else if (e.target.value.length === 0) {
+            this.hideShow();
+        }
         this.setState({ searchValue: e.target.value, showClose: true })
     }
 
     hideShow() {
         this.props.clearSearch();
+        this.props.clearErrors();
         this.setState({ showClose: false, searchValue: '' })
     }
 
@@ -89,11 +94,9 @@ class NewDream extends React.Component {
     }
 
     addTag() {
-
         this.props.createTag({tag: this.state.searchValue})
             .then(()=> setTimeout(() => this.handleTags(this.state.searchValue), 500))
             .catch(() => setTimeout(() =>this.setState({searchValue: 'test'}), 500))
-
     }
 
 
@@ -141,7 +144,7 @@ class NewDream extends React.Component {
 
         if (Object.values(this.props.searchResults).length > 0) {
 
-            search = <div>
+            search = <div className="tag-search-results-wrapper" >
                         {Object.values(this.props.searchResults.tags)
                             .map((result, idx) => (
                                 <div 
@@ -270,7 +273,8 @@ class NewDream extends React.Component {
                     </form>
                     <div className="session-errors-container">
                         {Object.values(this.props.errors).map((err, idx) => {
-                        return <p key={idx} className="session-errors" >{err}</p>
+                            // debugger;
+                        return <p key={idx} className="session-errors" >{err.includes("<") ? "Tag cannot have spaces" : err}</p>
                     })}
                     </div>
                 </div>
