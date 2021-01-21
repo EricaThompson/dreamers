@@ -237,8 +237,6 @@ class DreamItem extends React.Component {
             optionsIcon = <i
                             className="fas fa-ellipsis-h"
                             onClick={() => this.toggleMenu()}>
-                            <br />
-                            {/* {likeIcon} */}
                         </i>
 
             editIcon = <div
