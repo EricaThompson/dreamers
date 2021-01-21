@@ -106,7 +106,6 @@ class NewDream extends React.Component {
             let idx = newTags.indexOf(tag)
             delete newTags[idx]
             let newestTags = newTags.filter(t => t.length > 0)
-            console.log(newestTags)
             this.setState({ tags: newestTags })
             this.props.clearErrors();
         }
@@ -273,9 +272,8 @@ class NewDream extends React.Component {
                     </form>
                     <div className="session-errors-container">
                         {Object.values(this.props.errors).map((err, idx) => {
-                            // debugger;
-                        return <p key={idx} className="session-errors" >{err.includes("<") ? "Tag cannot have spaces" : err}</p>
-                    })}
+                            return <p key={idx} className="session-errors" >{err.includes("<") ? "Tag cannot have spaces" : err}</p>
+                        })}
                     </div>
                 </div>
                 <div className="create-dream-btn" >
