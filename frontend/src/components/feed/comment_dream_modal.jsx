@@ -8,6 +8,7 @@ class CommentDreamModal extends React.Component {
         this.state = {
             comment: '',
             likes: [],
+            loading: false
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -45,20 +46,26 @@ class CommentDreamModal extends React.Component {
             dreamId: this.props.info._id,
             userId: this.props.currentUser.id,
         }
-        this.props.createLike(this.props.info._id, like)
-            .then(() => this.setState({ likes: this.props.info.likes }))
+        if (this.state.loading === false) {
+            this.setState({ loading: true });
+            this.props.createLike(this.props.info._id, like)
+                .then(() => this.setState({ likes: this.props.info.likes, loading: false }))
+        }
     }
 
     unlike() {
-        this.state.likes.forEach(like => {
-            if (like.username === this.props.currentUser.username) {
-                if (like.id) {
-                    this.props.deleteLike(like.id).then(() => { this.setState({ likes: [] }) })
-                } else {
-                    this.props.deleteLike(like._id).then(() => { this.setState({ likes: [] }) })
+        if (this.state.loading === false) {
+            this.setState({ loading: true });
+            this.state.likes.forEach(like => {
+                if (like.username === this.props.currentUser.username) {
+                    if (like.id) {
+                        this.props.deleteLike(like.id).then(() => { this.setState({ likes: [], loading: false }) })
+                    } else {
+                        this.props.deleteLike(like._id).then(() => { this.setState({ likes: [], loading: false }) })
+                    }
                 }
-            }
-        })
+            })
+        }
     }
 
     render() {
