@@ -50,7 +50,7 @@
             
             .search-results-outer-container {
                 position: absolute;
-                top: 38px;
+                top: 37px;
                 left: 14px;
                 background-color: $off-white;
                 z-index: 10;
@@ -60,6 +60,8 @@
                 border-bottom: 2px solid $magenta;
                 border-right: 2px solid $magenta;
                 border-left: 2px solid $magenta;
+                border-top: 2px solid $off-white;
+
                 
                 .search-results-inner-container {
                     padding: 5px;

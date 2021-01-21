@@ -17,6 +17,10 @@
     .edit-profile-form {
         width: 234px;
 
+        .inner-profile-item {
+            padding: 4px 4px 4px 0px;
+        }
+
         cursor: default;
         input {
             width: 70%;

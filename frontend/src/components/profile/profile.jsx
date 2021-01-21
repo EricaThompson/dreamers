@@ -237,15 +237,14 @@ class Profile extends React.Component {
 
         if (this.state.showEditForm) {
             editForm = <div className="edit-profile-form">
-                            <div className="username">
+                            <div className="username inner-profile-item">
                                 {this.state.profileUser.username}
                             </div>
-                            <div>
-                                Dreamer Since: {month} {date.getDate()} 
-                                {date.getFullYear()}
+                            <div className='inner-profile-item'>
+                                Dreamer Since: {month} {date.getDate()}, {date.getFullYear()}
                             </div>
                             <div 
-                                className="location"> 
+                                className="location inner-profile-item"> 
                                 Location: 
                                 <input 
                                     onChange={this.handleChange('location')}
@@ -253,7 +252,7 @@ class Profile extends React.Component {
                                 />
                             </div>
                             <div 
-                                className="age">
+                                className="age inner-profile-item">
                                 Age: 
                                 <input
                                     onChange={this.handleChange('age')}
@@ -261,7 +260,7 @@ class Profile extends React.Component {
                                     /> 
                             </div>
                             <div 
-                                className="bio">
+                                className="about inner-profile-item">
                                 Bio: 
                                 <input
                                     onChange={this.handleChange('bio')}
@@ -269,6 +268,7 @@ class Profile extends React.Component {
                                 />
                             </div>
                                 <button 
+                                    className="inner-profile-item"
                                     onClick={() => this.handleSubmit()}>
                                         update
                                 </button>
