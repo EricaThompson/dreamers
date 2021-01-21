@@ -31,6 +31,8 @@ class AboutPage extends React.Component {
                     <p className="team-member">
                         -
                             <a 
+                                target="_blank"
+                                rel="noreferrer" 
                                 href="https://github.com/EricaThompson/dreamers">
                                     Dreamers Repository
                             </a>
