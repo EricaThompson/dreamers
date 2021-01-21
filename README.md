@@ -145,7 +145,7 @@ router.post('/follow/:userId',
 
 
 To-dos and future features:
-- An index route to return Dreams from only followed and/or follower users
 - AWS S3 image hosting for profile/cover pictures
 - Privacy levels for users and dreams to restrict dream visibility
 - Consolidated search by relevancy
+- Backend db reset procedure
