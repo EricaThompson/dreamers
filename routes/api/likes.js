@@ -34,7 +34,13 @@ router.post('/:dreamId',
             newLike.save().then(like => {
                 var update = { 
                         $push: { 
-                            likes: {id: like._id, username: newLike.username}}},
+                            likes: {
+                                id: like._id,
+                                username: newLike.username,
+                                userId: req.user.id,
+                            }
+                        }
+                    },
                     options = { new: true }
                 Dream.findOneAndUpdate(query, update, options, (err, dream) => {
                     if (err) {
