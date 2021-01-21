@@ -38,7 +38,9 @@ class Feed extends React.Component {
     }
 
     handleChange(e) {
-        this.props.fetchSearchResults(e.target.value);
+        if (e.target.value.length > 0) {
+            this.props.fetchSearchResults(e.target.value);
+        }
         this.setState({ searchValue: e.target.value, showClose: true })
     }
 
