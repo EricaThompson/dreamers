@@ -72,12 +72,14 @@
                         position: absolute;
                         bottom: 2px;
                         right: 82px;
+                        z-index: 2;
                     }
 
                     .icon:nth-child(2){
                         position: absolute;
                         bottom: 2px;
                         right: 34px;
+                        z-index: 2;
                     }
 
                     .fa-trash-alt:hover {
