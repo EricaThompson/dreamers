@@ -276,28 +276,28 @@ class Profile extends React.Component {
         } else {
             profile = <div className='inner-profile'>
                         <div 
-                            className="username"
+                            className="username inner-profile-item"
                         >
                             {this.state.profileUser.username}
                         </div>
-                        <div>
+                        <div className='inner-profile-item'>
                             Dreamer Since: {
                                 month} {
                                 date.getDate()}, {
                                 date.getFullYear()
                             }
                         </div>
-                        <div>
+                        <div className='inner-profile-item'>
                             Location: {this.state.profileUser.location}
                         </div>
-                        <div className="age">
+                        <div className="age inner-profile-item">
                             Age: {this.state.profileUser.age}
                         </div>
-                        <div className="about">
+                        <div className="about inner-profile-item">
                             Bio: {this.state.profileUser.bio}
                         </div>
                         <div 
-                            className="followers" 
+                            className="followers inner-profile-item" 
                             onClick={this.handlePopOut}
                         >
                             Followers: {this.state.followers.length}
