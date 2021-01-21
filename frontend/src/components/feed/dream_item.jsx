@@ -284,7 +284,7 @@ class DreamItem extends React.Component {
                 {this.state.likes.map((like, idx) => {
                     return <Link 
                                 key={idx} 
-                                to={`/users/${like.userId}`} 
+                                to={`/users/${like.id}`} 
                                 style={{ textDecoration: 'none' }}
                             >
                                 <div className="popout-item" >
