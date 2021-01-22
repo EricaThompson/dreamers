@@ -133,6 +133,7 @@ class Feed extends React.Component {
                         clearComments={clearComments} 
                         currentUser={currentUser}
                         deleteDream={deleteDream}
+                        createLike={createLike}
                         deleteLike={deleteLike}
                         fetchLike={fetchLike}
                         like={like}
@@ -155,6 +156,7 @@ class Feed extends React.Component {
                         clearComments={clearComments} 
                         currentUser={currentUser}
                         deleteDream={deleteDream} 
+                        createLike={createLike}
                         deleteLike={deleteLike}
                         fetchLike={fetchLike}
                         like={like}

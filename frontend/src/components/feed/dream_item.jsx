@@ -10,6 +10,7 @@ class DreamItem extends React.Component {
             likes: [],
             timestamp: null,
             popout: false,
+            loading: false
         }
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleOpenEditModal = this.handleOpenEditModal.bind(this);
@@ -67,25 +68,31 @@ class DreamItem extends React.Component {
 
     like(){
         let like = {
-            username: this.props.dream.username,
+            username: this.props.currentUser.username,
             dreamId: this.props.dream._id,
             userId: this.props.currentUser._id,
         }
-        this.props.createLike(this.props.dream._id, like)
-            .then(() => this.setState({ likes: this.props.dream.likes }))
+        if (this.state.loading === false) {
+            this.setState({loading: true});
+            this.props.createLike(this.props.dream._id, like)
+                .then(() => this.setState({ likes: this.props.dream.likes, loading: false }))
+        }
     }
 
 
     unlike(){
-        this.state.likes.forEach(like=>{
-            if (like.username === this.props.currentUser.username){
-                if (like.id) {
-                    this.props.deleteLike(like.id).then(() =>{this.setState({likes: this.props.dream.likes})})
-                } else {
-                    this.props.deleteLike(like._id).then(() => { this.setState({ likes: this.props.dream.likes }) })
+        if (this.state.loading === false) {
+            this.setState({ loading: true });
+            this.state.likes.forEach(like=>{
+                if (like.username === this.props.currentUser.username){
+                    if (like.id) {
+                        this.props.deleteLike(like.id).then(() => { this.setState({ likes: this.props.dream.likes, loading: false})})
+                    } else {
+                        this.props.deleteLike(like._id).then(() => { this.setState({ likes: this.props.dream.likes, loading: false }) })
+                    }
                 }
-            }
-        })
+            })
+        }
     }
 
     handlePopOut() {
